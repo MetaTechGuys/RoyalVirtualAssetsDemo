@@ -13,9 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const originalNbWidth = computedNbStyle.width;
     const originalCollapseOpacity = computedCollapseStyle.opacity;
     const originalCollapseVisibility = computedCollapseStyle.visibility;
+    const originalCollapseDisplay = computedCollapseStyle.display;
 
     // Set transitions for smooth animation
-    collapse.style.transition = 'opacity 0.4s, visibility 0.8s';
+    collapse.style.transition = 'opacity 0.4s, visibility 0.8s, display 0.8s';
     logo.style.transition = 'margin-right 0.8s, width 0.8s, margin-left 0.8s';
     nb.style.transition = 'width 0.8s, opacity 0.2s';
 
@@ -28,11 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Scroll down: hide .collapse
             collapse.style.opacity = '0';
             collapse.style.visibility = 'hidden';
+            collapse.style.display = 'none';
 
             // Keep logo size, decrease margin-right
             logo.style.marginRight = '0px';
             logo.style.marginLeft = '0%';
-            logo.style.width = '164px';
+            logo.style.width = '140px';
 
             // #nb width to 28%
             nb.style.width = '28%';
@@ -42,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Scroll up: revert to original styles
             collapse.style.opacity = originalCollapseOpacity;
             collapse.style.visibility = originalCollapseVisibility;
+            collapse.style.display = originalCollapseDisplay;
 
             logo.style.marginRight = originalLogoMarginRight;
             logo.style.marginLeft = '0%';
