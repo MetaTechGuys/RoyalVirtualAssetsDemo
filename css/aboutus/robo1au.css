@@ -1,0 +1,380 @@
+@media (min-width: 1920px) and (max-width: 2560px) {
+    .robot1 {
+      width: 100%;
+      display: flex;
+      height: auto;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      /* margin-bottom: 8%; */
+    }
+    .robo1 {
+      background-color: transparent !important;
+      /* border: 48px solid transparent; */
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+      /* margin-top: 8% !important; */
+    }
+    
+    .roboimg1 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 60%;
+        /* height: 100%; */
+        margin-top: 0%;
+        margin-left: 48%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+    .roboimg2 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 80%;
+        /* height: 100%; */
+        /* margin-top: 14%; */
+        /* margin-left: 14%; */
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+    
+  }
+  @media (min-width: 1400px) and (max-width: 1919px) {
+    .robot1 {
+      width: 100%;
+      display: flex;
+      height: auto;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      /* margin-bottom: 8%; */
+    }
+    .robo1 {
+      background-color: transparent !important;
+      /* border: 48px solid transparent; */
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+      /* margin-top: 8% !important; */
+    }
+    
+    .roboimg1 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 60%;
+        /* height: 100%; */
+        margin-top: 0%;
+        margin-left: 48%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+    .roboimg2 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 80%;
+        /* height: 100%; */
+        /* margin-top: 14%; */
+        /* margin-left: 14%; */
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+  }
+  @media (min-width: 1200px) and (max-width: 1399px) {
+    .robot1 {
+      width: 100%;
+      display: flex;
+      height: auto;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      /* margin-bottom: 8%; */
+    }
+    .robo1 {
+      background-color: transparent !important;
+      /* border: 48px solid transparent; */
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+      /* margin-top: 8% !important; */
+    }
+    
+    .roboimg1 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 60%;
+        /* height: 100%; */
+        margin-top: 0%;
+        margin-left: 48%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+    .roboimg2 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 80%;
+        /* height: 100%; */
+        /* margin-top: 14%; */
+        /* margin-left: 14%; */
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .robot1 {
+      width: 100%;
+      display: flex;
+      height: auto;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      /* margin-bottom: 8%; */
+    }
+    .robo1 {
+      background-color: transparent !important;
+      /* border: 48px solid transparent; */
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+      /* margin-top: 8% !important; */
+    }
+    
+    .roboimg1 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 60%;
+        /* height: 100%; */
+        margin-top: 0%;
+        margin-left: 48%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+    .roboimg2 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 80%;
+        /* height: 100%; */
+        /* margin-top: 14%; */
+        /* margin-left: 14%; */
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    .robot1 {
+      width: 100%;
+      display: flex;
+      height: auto;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      /* margin-bottom: 8%; */
+    }
+    .robo1 {
+      background-color: transparent !important;
+      /* border: 48px solid transparent; */
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+      /* margin-top: 8% !important; */
+    }
+    
+    .roboimg1 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 60%;
+        /* height: 100%; */
+        margin-top: 0%;
+        margin-left: 48%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+    .roboimg2 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 80%;
+        /* height: 100%; */
+        /* margin-top: 14%; */
+        /* margin-left: 14%; */
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+  }
+  @media (min-width: 576px) and (max-width: 767px) {
+    .robot1 {
+      width: 100%;
+      display: flex;
+      height: auto;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      /* margin-bottom: 8%; */
+    }
+    .robo1 {
+      background-color: transparent !important;
+      /* border: 48px solid transparent; */
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+      /* margin-top: 8% !important; */
+    }
+    
+    .roboimg1 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 60%;
+        /* height: 100%; */
+        margin-top: 0%;
+        margin-left: 48%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+    .roboimg2 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 80%;
+        /* height: 100%; */
+        /* margin-top: 14%; */
+        /* margin-left: 14%; */
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+  }
+  @media (max-width: 575px) {
+    .robot1 {
+      width: 100%;
+      display: flex;
+      height: auto;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      /* margin-bottom: 8%; */
+    }
+    .robo1 {
+      background-color: transparent !important;
+      /* border: 48px solid transparent; */
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+      /* margin-top: 8% !important; */
+    }
+    
+    .roboimg1 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 60%;
+        /* height: 100%; */
+        margin-top: 0%;
+        margin-left: 48%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+    .roboimg2 {
+      width: 48%;
+      /* float: right; */
+      overflow: hidden;
+      z-index: 2;
+      > img {
+        width: 80%;
+        /* height: 100%; */
+        /* margin-top: 14%; */
+        /* margin-left: 14%; */
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+      }
+    }
+  }
+  

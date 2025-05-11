@@ -1,0 +1,933 @@
+@media (min-width: 1920px) and (max-width: 2560px) {
+    .vid {
+      width: 100%;
+      /* display: flex; */
+      height: 120vh;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      justify-items: center;
+      margin-top: 8%;
+      > img {
+        position: absolute;
+        width: 20%;
+        /* height: 40%; */
+        /* filter: grayscale(100%); */
+        /* rotate: 0deg; */
+        z-index: -1;
+        /* visibility: hidden !important; */
+        /* background-color: #000 !important; */
+        left: 0%;
+        opacity: 0.8;
+      }
+    }
+    .vidhelp {
+      background-color: transparent !important;
+      border: 48px solid transparent;
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+    }
+    .vidtext {
+        /* text-align: center; */
+        /* padding-left: 140px; */
+        width: 64%;
+        z-index: 2;
+        
+        /* float: left; */
+        /* margin-bottom: 8%; */
+        > h4 {
+          /* padding-top: 20%; */
+      font-family: "sora-b" !important;
+        
+        color: #000 !important;
+        font-size: 44px;
+        /* text-align: center; */
+        margin-bottom: 2%;
+      }
+      > span {
+      font-family: "jb-mono" !important;
+
+        color: #000 !important;
+        font-size: 20px;
+        /* margin-left: 20%; */
+        /* margin-right: 20%; */
+  
+      }
+    }
+  
+    .vidimg {
+      width: 100%;
+      /* float: right; */
+      overflow: hidden;
+      /* margin-left: 14%; */
+      text-align: center;
+      z-index: 2;
+      > video {
+        width: 64%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+        margin-bottom: 4%;
+        z-index: 2;
+      }
+    }
+
+    .buttons1 {
+      font-family: "sora" !important;
+
+      /* float: right; */
+      /* padding-top: 44%; */
+      position: absolute;
+      top: 84%;
+      left: 20%;
+      opacity: 1;
+      width: 80%;
+    }
+
+    .golden1 {
+      /* background-color: #886a38 !important; */
+      position: relative;
+      background: #2A2B41;
+      color: whitesmoke !important;
+      width: 280px;
+      height: 68px;
+      border-radius:48px !important;
+      font-size: 20px !important;
+      font-weight: 500 !important;
+      margin-left: 8%;
+      overflow: hidden;
+      border: none !important;
+      z-index: 1;
+      cursor: pointer;
+      transition: 0.08s ease-in;
+      -o-transition: 0.08s ease-in;
+      -ms-transition: 0.08s ease-in;
+      -moz-transition: 0.08s ease-in;
+      -webkit-transition: 0.08s ease-in;
+    }
+
+    .golden1:hover {
+      color: #2A2B41 !important;
+      background-color: whitesmoke !important;
+      border: 4px solid #2A2B41 !important;
+    }
+  
+    .golden1:before {
+      content: "";
+      position: absolute;
+      background: whitesmoke;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: -1;
+      -webkit-transition: top 0.09s ease-in;
+    }
+  
+    .golden1:hover:before {
+      top: 0;
+    }
+
+  }
+  @media (min-width: 1400px) and (max-width: 1919px) {
+    .vid {
+      width: 100%;
+      /* display: flex; */
+      height: 136vh;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      justify-items: center;
+      margin-top: 8%;
+      > img {
+        position: absolute;
+        width: 20%;
+        /* height: 40%; */
+        /* filter: grayscale(100%); */
+        /* rotate: 0deg; */
+        z-index: -1;
+        /* visibility: hidden !important; */
+        /* background-color: #000 !important; */
+        left: 0%;
+        opacity: 0.8;
+      }
+    }
+    .vidhelp {
+      background-color: transparent !important;
+      border: 48px solid transparent;
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+    }
+    .vidtext {
+        /* text-align: center; */
+        /* padding-left: 140px; */
+        width: 64%;
+        z-index: 2;
+        
+        /* float: left; */
+        /* margin-bottom: 8%; */
+        > h4 {
+          /* padding-top: 20%; */
+      font-family: "sora-b" !important;
+        
+        color: #000 !important;
+        font-size: 28px;
+        /* text-align: center; */
+        margin-bottom: 2%;
+      }
+      > span {
+      font-family: "jb-mono" !important;
+
+        color: #000 !important;
+        font-size: 14px;
+        /* margin-left: 20%; */
+        /* margin-right: 20%; */
+  
+      }
+    }
+  
+    .vidimg {
+      width: 100%;
+      /* float: right; */
+      overflow: hidden;
+      /* margin-left: 14%; */
+      text-align: center;
+      z-index: 2;
+      > video {
+        width: 64%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+        margin-bottom: 4%;
+        z-index: 2;
+      }
+    }
+
+    .buttons1 {
+      font-family: "sora" !important;
+
+      /* float: right; */
+      /* padding-top: 44%; */
+      position: absolute;
+      top: 88%;
+      left: 16%;
+      opacity: 1;
+      width: 80%;
+    }
+
+    .golden1 {
+      /* background-color: #886a38 !important; */
+      position: relative;
+      background: #2A2B41;
+      color: whitesmoke !important;
+      width: 220px;
+      height: 60px;
+      border-radius:48px !important;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      margin-left: 8%;
+      overflow: hidden;
+      border: none !important;
+      z-index: 1;
+      cursor: pointer;
+      transition: 0.08s ease-in;
+      -o-transition: 0.08s ease-in;
+      -ms-transition: 0.08s ease-in;
+      -moz-transition: 0.08s ease-in;
+      -webkit-transition: 0.08s ease-in;
+    }
+
+    .golden1:hover {
+      color: #2A2B41 !important;
+      background-color: whitesmoke !important;
+      border: 4px solid #2A2B41 !important;
+    }
+  
+    .golden1:before {
+      content: "";
+      position: absolute;
+      background: whitesmoke;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: -1;
+      -webkit-transition: top 0.09s ease-in;
+    }
+  
+    .golden1:hover:before {
+      top: 0;
+    }
+  }
+  @media (min-width: 1200px) and (max-width: 1399px) {
+    .vid {
+      width: 100%;
+      /* display: flex; */
+      height: 120vh;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      justify-items: center;
+      margin-top: 8%;
+      > img {
+        position: absolute;
+        width: 20%;
+        /* height: 40%; */
+        /* filter: grayscale(100%); */
+        /* rotate: 0deg; */
+        z-index: -1;
+        /* visibility: hidden !important; */
+        /* background-color: #000 !important; */
+        left: 0%;
+        opacity: 0.8;
+      }
+    }
+    .vidhelp {
+      background-color: transparent !important;
+      border: 48px solid transparent;
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+    }
+    .vidtext {
+        /* text-align: center; */
+        /* padding-left: 140px; */
+        width: 64%;
+        z-index: 2;
+        
+        /* float: left; */
+        /* margin-bottom: 8%; */
+        > h4 {
+          /* padding-top: 20%; */
+      font-family: "sora-b" !important;
+        
+        color: #000 !important;
+        font-size: 44px;
+        /* text-align: center; */
+        margin-bottom: 2%;
+      }
+      > span {
+      font-family: "jb-mono" !important;
+
+        color: #000 !important;
+        font-size: 20px;
+        /* margin-left: 20%; */
+        /* margin-right: 20%; */
+  
+      }
+    }
+  
+    .vidimg {
+      width: 100%;
+      /* float: right; */
+      overflow: hidden;
+      /* margin-left: 14%; */
+      text-align: center;
+      z-index: 2;
+      > video {
+        width: 64%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+        margin-bottom: 4%;
+        z-index: 2;
+      }
+    }
+
+    .buttons1 {
+      font-family: "sora" !important;
+
+      /* float: right; */
+      /* padding-top: 44%; */
+      position: absolute;
+      top: 84%;
+      left: 20%;
+      opacity: 1;
+      width: 80%;
+    }
+
+    .golden1 {
+      /* background-color: #886a38 !important; */
+      position: relative;
+      background: #2A2B41;
+      color: whitesmoke !important;
+      width: 280px;
+      height: 68px;
+      border-radius:48px !important;
+      font-size: 20px !important;
+      font-weight: 500 !important;
+      margin-left: 8%;
+      overflow: hidden;
+      border: none !important;
+      z-index: 1;
+      cursor: pointer;
+      transition: 0.08s ease-in;
+      -o-transition: 0.08s ease-in;
+      -ms-transition: 0.08s ease-in;
+      -moz-transition: 0.08s ease-in;
+      -webkit-transition: 0.08s ease-in;
+    }
+
+    .golden1:hover {
+      color: #2A2B41 !important;
+      background-color: whitesmoke !important;
+      border: 4px solid #2A2B41 !important;
+    }
+  
+    .golden1:before {
+      content: "";
+      position: absolute;
+      background: whitesmoke;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: -1;
+      -webkit-transition: top 0.09s ease-in;
+    }
+  
+    .golden1:hover:before {
+      top: 0;
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .vid {
+      width: 100%;
+      /* display: flex; */
+      height: 120vh;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      justify-items: center;
+      margin-top: 8%;
+      > img {
+        position: absolute;
+        width: 20%;
+        /* height: 40%; */
+        /* filter: grayscale(100%); */
+        /* rotate: 0deg; */
+        z-index: -1;
+        /* visibility: hidden !important; */
+        /* background-color: #000 !important; */
+        left: 0%;
+        opacity: 0.8;
+      }
+    }
+    .vidhelp {
+      background-color: transparent !important;
+      border: 48px solid transparent;
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+    }
+    .vidtext {
+        /* text-align: center; */
+        /* padding-left: 140px; */
+        width: 64%;
+        z-index: 2;
+        
+        /* float: left; */
+        /* margin-bottom: 8%; */
+        > h4 {
+          /* padding-top: 20%; */
+      font-family: "sora-b" !important;
+        
+        color: #000 !important;
+        font-size: 44px;
+        /* text-align: center; */
+        margin-bottom: 2%;
+      }
+      > span {
+      font-family: "jb-mono" !important;
+
+        color: #000 !important;
+        font-size: 20px;
+        /* margin-left: 20%; */
+        /* margin-right: 20%; */
+  
+      }
+    }
+  
+    .vidimg {
+      width: 100%;
+      /* float: right; */
+      overflow: hidden;
+      /* margin-left: 14%; */
+      text-align: center;
+      z-index: 2;
+      > video {
+        width: 64%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+        margin-bottom: 4%;
+        z-index: 2;
+      }
+    }
+
+    .buttons1 {
+      font-family: "sora" !important;
+
+      /* float: right; */
+      /* padding-top: 44%; */
+      position: absolute;
+      top: 84%;
+      left: 20%;
+      opacity: 1;
+      width: 80%;
+    }
+
+    .golden1 {
+      /* background-color: #886a38 !important; */
+      position: relative;
+      background: #2A2B41;
+      color: whitesmoke !important;
+      width: 280px;
+      height: 68px;
+      border-radius:48px !important;
+      font-size: 20px !important;
+      font-weight: 500 !important;
+      margin-left: 8%;
+      overflow: hidden;
+      border: none !important;
+      z-index: 1;
+      cursor: pointer;
+      transition: 0.08s ease-in;
+      -o-transition: 0.08s ease-in;
+      -ms-transition: 0.08s ease-in;
+      -moz-transition: 0.08s ease-in;
+      -webkit-transition: 0.08s ease-in;
+    }
+
+    .golden1:hover {
+      color: #2A2B41 !important;
+      background-color: whitesmoke !important;
+      border: 4px solid #2A2B41 !important;
+    }
+  
+    .golden1:before {
+      content: "";
+      position: absolute;
+      background: whitesmoke;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: -1;
+      -webkit-transition: top 0.09s ease-in;
+    }
+  
+    .golden1:hover:before {
+      top: 0;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    .vid {
+      width: 100%;
+      /* display: flex; */
+      height: 120vh;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      justify-items: center;
+      margin-top: 8%;
+      > img {
+        position: absolute;
+        width: 20%;
+        /* height: 40%; */
+        /* filter: grayscale(100%); */
+        /* rotate: 0deg; */
+        z-index: -1;
+        /* visibility: hidden !important; */
+        /* background-color: #000 !important; */
+        left: 0%;
+        opacity: 0.8;
+      }
+    }
+    .vidhelp {
+      background-color: transparent !important;
+      border: 48px solid transparent;
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+    }
+    .vidtext {
+        /* text-align: center; */
+        /* padding-left: 140px; */
+        width: 64%;
+        z-index: 2;
+        
+        /* float: left; */
+        /* margin-bottom: 8%; */
+        > h4 {
+          /* padding-top: 20%; */
+      font-family: "sora-b" !important;
+        
+        color: #000 !important;
+        font-size: 44px;
+        /* text-align: center; */
+        margin-bottom: 2%;
+      }
+      > span {
+      font-family: "jb-mono" !important;
+
+        color: #000 !important;
+        font-size: 20px;
+        /* margin-left: 20%; */
+        /* margin-right: 20%; */
+  
+      }
+    }
+  
+    .vidimg {
+      width: 100%;
+      /* float: right; */
+      overflow: hidden;
+      /* margin-left: 14%; */
+      text-align: center;
+      z-index: 2;
+      > video {
+        width: 64%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+        margin-bottom: 4%;
+        z-index: 2;
+      }
+    }
+
+    .buttons1 {
+      font-family: "sora" !important;
+
+      /* float: right; */
+      /* padding-top: 44%; */
+      position: absolute;
+      top: 84%;
+      left: 20%;
+      opacity: 1;
+      width: 80%;
+    }
+
+    .golden1 {
+      /* background-color: #886a38 !important; */
+      position: relative;
+      background: #2A2B41;
+      color: whitesmoke !important;
+      width: 280px;
+      height: 68px;
+      border-radius:48px !important;
+      font-size: 20px !important;
+      font-weight: 500 !important;
+      margin-left: 8%;
+      overflow: hidden;
+      border: none !important;
+      z-index: 1;
+      cursor: pointer;
+      transition: 0.08s ease-in;
+      -o-transition: 0.08s ease-in;
+      -ms-transition: 0.08s ease-in;
+      -moz-transition: 0.08s ease-in;
+      -webkit-transition: 0.08s ease-in;
+    }
+
+    .golden1:hover {
+      color: #2A2B41 !important;
+      background-color: whitesmoke !important;
+      border: 4px solid #2A2B41 !important;
+    }
+  
+    .golden1:before {
+      content: "";
+      position: absolute;
+      background: whitesmoke;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: -1;
+      -webkit-transition: top 0.09s ease-in;
+    }
+  
+    .golden1:hover:before {
+      top: 0;
+    }
+  }
+  @media (min-width: 576px) and (max-width: 767px) {
+    .vid {
+      width: 100%;
+      /* display: flex; */
+      height: 120vh;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      justify-items: center;
+      margin-top: 8%;
+      > img {
+        position: absolute;
+        width: 20%;
+        /* height: 40%; */
+        /* filter: grayscale(100%); */
+        /* rotate: 0deg; */
+        z-index: -1;
+        /* visibility: hidden !important; */
+        /* background-color: #000 !important; */
+        left: 0%;
+        opacity: 0.8;
+      }
+    }
+    .vidhelp {
+      background-color: transparent !important;
+      border: 48px solid transparent;
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+    }
+    .vidtext {
+        /* text-align: center; */
+        /* padding-left: 140px; */
+        width: 64%;
+        z-index: 2;
+        
+        /* float: left; */
+        /* margin-bottom: 8%; */
+        > h4 {
+          /* padding-top: 20%; */
+      font-family: "sora-b" !important;
+        
+        color: #000 !important;
+        font-size: 44px;
+        /* text-align: center; */
+        margin-bottom: 2%;
+      }
+      > span {
+      font-family: "jb-mono" !important;
+
+        color: #000 !important;
+        font-size: 20px;
+        /* margin-left: 20%; */
+        /* margin-right: 20%; */
+  
+      }
+    }
+  
+    .vidimg {
+      width: 100%;
+      /* float: right; */
+      overflow: hidden;
+      /* margin-left: 14%; */
+      text-align: center;
+      z-index: 2;
+      > video {
+        width: 64%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+        margin-bottom: 4%;
+        z-index: 2;
+      }
+    }
+
+    .buttons1 {
+      font-family: "sora" !important;
+
+      /* float: right; */
+      /* padding-top: 44%; */
+      position: absolute;
+      top: 84%;
+      left: 20%;
+      opacity: 1;
+      width: 80%;
+    }
+
+    .golden1 {
+      /* background-color: #886a38 !important; */
+      position: relative;
+      background: #2A2B41;
+      color: whitesmoke !important;
+      width: 280px;
+      height: 68px;
+      border-radius:48px !important;
+      font-size: 20px !important;
+      font-weight: 500 !important;
+      margin-left: 8%;
+      overflow: hidden;
+      border: none !important;
+      z-index: 1;
+      cursor: pointer;
+      transition: 0.08s ease-in;
+      -o-transition: 0.08s ease-in;
+      -ms-transition: 0.08s ease-in;
+      -moz-transition: 0.08s ease-in;
+      -webkit-transition: 0.08s ease-in;
+    }
+
+    .golden1:hover {
+      color: #2A2B41 !important;
+      background-color: whitesmoke !important;
+      border: 4px solid #2A2B41 !important;
+    }
+  
+    .golden1:before {
+      content: "";
+      position: absolute;
+      background: whitesmoke;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: -1;
+      -webkit-transition: top 0.09s ease-in;
+    }
+  
+    .golden1:hover:before {
+      top: 0;
+    }
+  }
+  @media (max-width: 575px) {
+    .vid {
+      width: 100%;
+      /* display: flex; */
+      height: 120vh;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      /* background-color: #2a2b41 !important; */
+      position: relative;
+      justify-items: center;
+      margin-top: 8%;
+      > img {
+        position: absolute;
+        width: 20%;
+        /* height: 40%; */
+        /* filter: grayscale(100%); */
+        /* rotate: 0deg; */
+        z-index: -1;
+        /* visibility: hidden !important; */
+        /* background-color: #000 !important; */
+        left: 0%;
+        opacity: 0.8;
+      }
+    }
+    .vidhelp {
+      background-color: transparent !important;
+      border: 48px solid transparent;
+      border-bottom: 24px solid transparent;
+      border-top: 24px solid transparent;
+    }
+    .vidtext {
+        /* text-align: center; */
+        /* padding-left: 140px; */
+        width: 64%;
+        z-index: 2;
+        
+        /* float: left; */
+        /* margin-bottom: 8%; */
+        > h4 {
+          /* padding-top: 20%; */
+      font-family: "sora-b" !important;
+        
+        color: #000 !important;
+        font-size: 44px;
+        /* text-align: center; */
+        margin-bottom: 2%;
+      }
+      > span {
+      font-family: "jb-mono" !important;
+
+        color: #000 !important;
+        font-size: 20px;
+        /* margin-left: 20%; */
+        /* margin-right: 20%; */
+  
+      }
+    }
+  
+    .vidimg {
+      width: 100%;
+      /* float: right; */
+      overflow: hidden;
+      /* margin-left: 14%; */
+      text-align: center;
+      z-index: 2;
+      > video {
+        width: 64%;
+        border-radius: 20px;
+        /* height: auto; */
+        /* overflow: hidden; */
+        /* filter: grayscale(88%); */
+        /* opacity: 0.68 !important; */
+        margin-bottom: 4%;
+        z-index: 2;
+      }
+    }
+
+    .buttons1 {
+      font-family: "sora" !important;
+
+      /* float: right; */
+      /* padding-top: 44%; */
+      position: absolute;
+      top: 84%;
+      left: 20%;
+      opacity: 1;
+      width: 80%;
+    }
+
+    .golden1 {
+      /* background-color: #886a38 !important; */
+      position: relative;
+      background: #2A2B41;
+      color: whitesmoke !important;
+      width: 280px;
+      height: 68px;
+      border-radius:48px !important;
+      font-size: 20px !important;
+      font-weight: 500 !important;
+      margin-left: 8%;
+      overflow: hidden;
+      border: none !important;
+      z-index: 1;
+      cursor: pointer;
+      transition: 0.08s ease-in;
+      -o-transition: 0.08s ease-in;
+      -ms-transition: 0.08s ease-in;
+      -moz-transition: 0.08s ease-in;
+      -webkit-transition: 0.08s ease-in;
+    }
+
+    .golden1:hover {
+      color: #2A2B41 !important;
+      background-color: whitesmoke !important;
+      border: 4px solid #2A2B41 !important;
+    }
+  
+    .golden1:before {
+      content: "";
+      position: absolute;
+      background: whitesmoke;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: -1;
+      -webkit-transition: top 0.09s ease-in;
+    }
+  
+    .golden1:hover:before {
+      top: 0;
+    }
+  }
+  
