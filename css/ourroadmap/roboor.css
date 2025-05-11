@@ -1,4 +1,4 @@
-@media (min-width: 1920px) and (max-width: 2560px) {
+@media (min-width: 1921px) and (max-width: 2560px) {
     .robot {
       width: 100%;
       display: flex;
@@ -55,8 +55,8 @@ margin-bottom: 18%;
       /* float: right; */
       /* padding-top: 44%; */
       position: absolute;
-      top: 84%;
-      left: 68%;
+      top: 80%;
+      left: 60%;
       /* text-align: center; */
       opacity: 1;
       width: 100%;
@@ -185,7 +185,7 @@ margin-bottom: 18%;
       top: 0;
     }
   }
-  @media (min-width: 1400px) and (max-width: 1919px) {
+  @media (min-width: 1401px) and (max-width: 1920px) {
     .robot {
       width: 100%;
       display: flex;
@@ -372,7 +372,7 @@ margin-bottom: 20%;
       top: 0;
     }
   }
-  @media (min-width: 1200px) and (max-width: 1399px) {
+  @media (min-width: 1201px) and (max-width: 1400px) {
     .robot {
       width: 100%;
       display: flex;
@@ -559,7 +559,7 @@ margin-bottom: 18%;
       top: 0;
     }
   }
-  @media (min-width: 992px) and (max-width: 1199px) {
+  @media (min-width: 993px) and (max-width: 1200px) {
     .robot {
       width: 100%;
       display: flex;
@@ -746,7 +746,7 @@ margin-bottom: 18%;
       top: 0;
     }
   }
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (min-width: 769px) and (max-width: 992px) {
     .robot {
       width: 100%;
       display: flex;
@@ -933,7 +933,7 @@ margin-bottom: 18%;
       top: 0;
     }
   }
-  @media (min-width: 576px) and (max-width: 767px) {
+  @media (min-width: 577px) and (max-width: 768px) {
     .robot {
       width: 100%;
       display: flex;
@@ -1120,7 +1120,7 @@ margin-bottom: 18%;
       top: 0;
     }
   }
-  @media (max-width: 575px) {
+  @media (max-width: 576px) {
     .robot {
       width: 100%;
       display: flex;

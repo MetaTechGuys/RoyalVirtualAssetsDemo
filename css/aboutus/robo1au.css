@@ -1,4 +1,4 @@
-@media (min-width: 1920px) and (max-width: 2560px) {
+@media (min-width: 1921px) and (max-width: 2560px) {
     .robot1 {
       width: 100%;
       display: flex;
@@ -53,7 +53,7 @@
     }
     
   }
-  @media (min-width: 1400px) and (max-width: 1919px) {
+  @media (min-width: 1401px) and (max-width: 1920px) {
     .robot1 {
       width: 100%;
       display: flex;
@@ -107,7 +107,7 @@
       }
     }
   }
-  @media (min-width: 1200px) and (max-width: 1399px) {
+  @media (min-width: 1201px) and (max-width: 1400px) {
     .robot1 {
       width: 100%;
       display: flex;
@@ -161,7 +161,7 @@
       }
     }
   }
-  @media (min-width: 992px) and (max-width: 1199px) {
+  @media (min-width: 993px) and (max-width: 1200px) {
     .robot1 {
       width: 100%;
       display: flex;
@@ -215,7 +215,7 @@
       }
     }
   }
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (min-width: 769px) and (max-width: 992px) {
     .robot1 {
       width: 100%;
       display: flex;
@@ -269,7 +269,7 @@
       }
     }
   }
-  @media (min-width: 576px) and (max-width: 767px) {
+  @media (min-width: 577px) and (max-width: 768px) {
     .robot1 {
       width: 100%;
       display: flex;
@@ -323,7 +323,7 @@
       }
     }
   }
-  @media (max-width: 575px) {
+  @media (max-width: 576px) {
     .robot1 {
       width: 100%;
       display: flex;
