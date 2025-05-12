@@ -1243,7 +1243,7 @@
   @media (max-width: 575px) {
     .robot {
       width: 100%;
-      display: flex;
+      /* display: flex; */
       height: auto;
       border-radius: 20px !important;
       overflow: hidden !important;
@@ -1253,15 +1253,15 @@
     }
     .robo {
       background-color: transparent !important;
-      border: 48px solid transparent;
-      border-bottom: 24px solid transparent;
-      border-top: 24px solid transparent;
+      border: 8px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-top: 4px solid transparent;
       margin-top: 8% !important;
     }
     .robotext {
-      padding-top: 8%;
+      padding: 2%;
       /* padding-left: 140px; */
-      width: 60%;
+      width: 100%;
       overflow: visible;
       > img {
         position: absolute;
@@ -1277,37 +1277,40 @@
         opacity: 0.8 !important;
       }
       > h4 {
+        
         color: #000 !important;
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 48px;
+        font-size: 14px;
         /* text-align: center; */
       }
       > span {
         /* margin-bottom: 14%; */
         /* margin-top: 480%; */
-        font-family: "jb-mono" !important;
+        font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 24px;
+        font-size: 8px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
+        line-height: 0.2 !important;
       }
     }
   
     .roboimg {
-      width: 48%;
+      width: 100%;
       /* float: right; */
       overflow: hidden;
+      text-align: center;
       z-index: 2;
       > img {
         width: 80%;
         /* height: 100%; */
-        margin-top: 14%;
-        margin-left: 14%;
-        border-radius: 20px;
+        margin-top: 4%;
+        /* margin-left: 12%; */
+        border-radius: 8px;
         /* height: auto; */
         /* overflow: hidden; */
         /* filter: grayscale(88%); */
@@ -1321,7 +1324,7 @@
       /* top: 55%; */
       /* left: 22%; */
       opacity: 1;
-      width: 80%;
+      width: 100%;
       margin-top: 8%;
     }
   
@@ -1332,12 +1335,12 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 240px;
-      height: 68px;
-      border-radius:48px !important;
-      font-size: 20px !important;
+      width: 88px;
+      height: 24px;
+      border-radius:20px !important;
+      font-size: 7px !important;
       font-weight: 500 !important;
-      margin-left: 82px;
+      margin-left: 80px;
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -1353,13 +1356,13 @@
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 240px;
-      height: 68px;
-      border-radius: 48px !important;
-      font-size: 20px !important;
+      width: 88px;
+      height: 24px;
+      border-radius:20px !important;
+      font-size: 7px !important;
       font-weight: 500 !important;
-      margin-left: 28px;
-      border-width: 4px !important;
+      margin-left: 8px;
+      border-width: 2px !important;
       position: relative;
   
       /* display:block;

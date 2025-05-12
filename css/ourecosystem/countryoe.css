@@ -743,8 +743,9 @@
     }
     .country {
         padding-left: 0 !important;
-        /* width: 64%; */
+        width: 100%;
         background-color: transparent !important;
+        padding: 0 !important;
         /* border: 48px solid transparent; */
         /* border-bottom: 24px solid transparent; */
         /* border-top: 24px solid transparent; */
@@ -752,8 +753,8 @@
     .ctext {
         padding: 2%;
         /* padding-left: 4%; */
-        border-top-right-radius: 20px !important;
-        border-bottom-right-radius: 20px !important;
+        /* border-top-right-radius: 20px !important; */
+        /* border-bottom-right-radius: 20px !important; */
       /* height: 28vh; */
       width: 100%;
       z-index: 2;
@@ -763,15 +764,15 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 40px;
+        font-size: 14px;
         /* text-align: center; */
         /* margin-top:18%; */
         /* margin-bottom: 2%; */
       }
       > span {
-        /* font-family: "jb-mono" !important; */
+        font-family: "inter" !important;
         color: whitesmoke !important;
-        font-size: 20px;
+        font-size: 7px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -799,12 +800,13 @@
     }
     .country1 {
         padding-right: 0 !important;
-        /* width: 64%; */
+        width: 100%;
         background-color: transparent !important;
         /* border: 48px solid transparent; */
         /* border-bottom: 24px solid transparent; */
         /* border-top: 24px solid transparent; */
         justify-items: end;
+        padding: 0 !important;
         >img{
           width: 14%;
             position: absolute;
@@ -815,8 +817,8 @@
     .ctext1 {
         padding: 2%;
         /* padding-left: 4%; */
-        border-top-left-radius: 20px !important;
-        border-bottom-left-radius: 20px !important;
+        /* border-top-left-radius: 20px !important; */
+        /* border-bottom-left-radius: 20px !important; */
         /* height: 28vh; */
 
       width: 100%;
@@ -827,15 +829,15 @@
       /* float: left; */
       > h4 {
         color: #2a2b41 !important;
-        font-size: 40px;
+        font-size: 14px;
         /* text-align: center; */
         /* margin-top:18%; */
         /* margin-bottom: 2%; */
       }
       > span {
-        /* font-family: "jb-mono" !important; */
+        font-family: "inter" !important;
         color: #2a2b41 !important;
-        font-size: 20px;
+        font-size: 7px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }

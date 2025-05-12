@@ -44,7 +44,7 @@
       width: 100% !important;
     }
     .logo {
-      width: 400px;
+      width: 320px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -238,7 +238,7 @@
       width: 100% !important;
     }
     .logo {
-      width: 288px;
+      width: 248px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -1178,23 +1178,22 @@
     .navbar-expand-lg {
       /* position: sticky !important; */
       /* height: 14% !important; */
-      border-radius: 14px;
+      /* border-radius: 14px; */
       /* background-color: transparent !important; */
       width: 100% !important;
       height: 28% !important;
-      background-color: transparent !important;
-      position: absolute;
-      top: 0;
-      left:0;
+      background-color: #2A2B41 !important;
     }
     /* .navhelp{
       overflow: clip;
     } */
     .collapse{
       width: 100% !important;
+      display: inline-block !important;
+      flex-basis: 33% !important;
     }
     .logo {
-      width: 280px;
+      width: 64px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -1230,8 +1229,8 @@
       padding: 0 !important;
     }
     .justright {
-      width: 48px;
-      height: 48px;
+      width: 12px;
+      height: 12px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -1267,9 +1266,13 @@
       text-align: center !important;
       align-content: center;
       font-family: "sora-b" !important;
-  
+  /* display: block; */
     }
   
+    .navbar-toggler{
+      display: none !important;
+  
+    }
     
     .dropstart{
       float: left !important;

@@ -328,7 +328,7 @@
       width: 100%;
       display: flex;
       height: auto;
-      border-radius: 20px !important;
+      border-radius: 14px !important;
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
       position: relative;
@@ -337,18 +337,18 @@
     .robo1 {
       background-color: transparent !important;
       /* border: 48px solid transparent; */
-      border-bottom: 24px solid transparent;
-      border-top: 24px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-top: 4px solid transparent;
       /* margin-top: 8% !important; */
     }
     
     .roboimg1 {
-      width: 48%;
+      width: 0%;
       /* float: right; */
       overflow: hidden;
       z-index: 2;
       > img {
-        width: 60%;
+        width: 80%;
         /* height: 100%; */
         margin-top: 0%;
         margin-left: 48%;
@@ -357,19 +357,21 @@
         /* overflow: hidden; */
         /* filter: grayscale(88%); */
         /* opacity: 0.68 !important; */
+        
       }
     }
     .roboimg2 {
-      width: 48%;
+      width: 100%;
       /* float: right; */
       overflow: hidden;
       z-index: 2;
+      text-align: center;
       > img {
-        width: 80%;
+        width: 64%;
         /* height: 100%; */
         /* margin-top: 14%; */
         /* margin-left: 14%; */
-        border-radius: 20px;
+        border-radius: 14px;
         /* height: auto; */
         /* overflow: hidden; */
         /* filter: grayscale(88%); */
