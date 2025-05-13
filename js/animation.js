@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             hambur.style.display = 'none';
             // #nb width to 28%
-            nb.style.width = '264px';
+            nb.style.width = '268px';
             // nb.style.paddingLeft = '4%';
             nb.style.opacity = '0.8';
         } else if (scrollTop < lastScrollTop) {
