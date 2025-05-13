@@ -40,22 +40,22 @@ margin-bottom: 20%;
 
 > img {
   position: absolute;
-  width: 40%;
+  width: 60%;
   /* height: 100%; */
-  filter: invert(100%);
+  /* filter: invert(100%); */
   /* rotate: 0deg; */
-  z-index: 0 !important;
+  z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
   top: -14%;
-  left: 64%;
-  opacity: 0.24 !important;
+  left: 52%;
+  /* opacity: 0.8 !important; */
 }
       > h4 {
         color: #000 !important;
         font-family: "sora-b" !important;
   
-        z-index: 2;
+        z-index: 2 !important;
         font-size: 48px;
         /* text-align: center; */
       }
@@ -66,7 +66,7 @@ margin-bottom: 20%;
   
         color: #000 !important;
         font-size: 24px;
-        z-index: 2;
+        z-index: 2 !important;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
       }
@@ -241,16 +241,16 @@ margin-bottom: 22%;
 /* position: relative; */
 > img {
   position: absolute;
-  width: 40%;
+  width: 60%;
   /* height: 100%; */
-  filter: invert(100%);
+  /* filter: invert(100%); */
   /* rotate: 0deg; */
-  z-index: 0 !important;
+  z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: -20%;
-  left: 64%;
-  opacity: 0.24 !important;
+  top: -24%;
+  left: 51%;
+  /* opacity: 0.8 !important; */
 }
       > h4 {
         color: #000 !important;
@@ -442,16 +442,16 @@ margin-bottom: 22%;
 /* position: relative; */
 > img {
   position: absolute;
-  width: 40%;
+  width: 60%;
   /* height: 100%; */
-  filter: invert(100%);
+  /* filter: invert(100%); */
   /* rotate: 0deg; */
-  z-index: 0 !important;
+  z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
   top: -20%;
-  left: 64%;
-  opacity: 0.24 !important;
+  left: 52%;
+  /* opacity: 0.8 !important; */
 }
       > h4 {
         color: #000 !important;
@@ -642,16 +642,16 @@ margin-bottom: 22%;
 margin-bottom: 18%;
 > img {
   position: absolute;
-  width: 40%;
+  width: 60%;
   /* height: 100%; */
-  filter: invert(100%);
+  /* filter: invert(100%); */
   /* rotate: 0deg; */
-  z-index: 0 !important;
+  z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 10%;
-  left: 60%;
-  opacity: 0.24 !important;
+  top: 20%;
+  left: 48%;
+  /* opacity: 0.8 !important; */
 }
       > h4 {
         color: #000 !important;
@@ -842,16 +842,16 @@ margin-bottom: 18%;
 margin-bottom: 18%;
 > img {
   position: absolute;
-  width: 40%;
+  width: 48%;
   /* height: 100%; */
-  filter: invert(100%);
+  /* filter: invert(100%); */
   /* rotate: 0deg; */
-  z-index: 0 !important;
+  z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 12%;
-  left: 64%;
-  opacity: 0.24 !important;
+  top: 22%;
+  left: 56%;
+  /* opacity: 0.8 !important; */
 }
       > h4 {
         color: #000 !important;
@@ -1042,16 +1042,16 @@ margin-bottom: 18%;
 margin-bottom: 18%;
 > img {
   position: absolute;
-  width: 40%;
+  width: 48%;
   /* height: 100%; */
-  filter: invert(100%);
+  /* filter: invert(100%); */
   /* rotate: 0deg; */
-  z-index: 0 !important;
+  z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 22%;
-  left: 64%;
-  opacity: 0.24 !important;
+  top: 24%;
+  left: 56%;
+  /* opacity: 0.8 !important; */
 }
       > h4 {
         color: #000 !important;
@@ -1242,16 +1242,16 @@ margin-bottom: 18%;
 margin-bottom: 18%;
 > img {
   position: absolute;
-  width: 40%;
+  width: 48%;
   /* height: 100%; */
-  filter: invert(100%);
+  /* filter: invert(100%); */
   /* rotate: 0deg; */
-  z-index: 0 !important;
+  z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 0%;
-  left: 28%;
-  opacity: 0.24 !important;
+  top: 24%;
+  left: 56%;
+  /* opacity: 0.8 !important; */
 }
       > h4 {
         color: #000 !important;

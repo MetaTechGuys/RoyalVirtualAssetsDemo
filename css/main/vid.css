@@ -2,7 +2,7 @@
     .vid {
       width: 100%;
       /* display: inline-flexbox; */
-      height: 120vh;
+      height: 1400px;
       border-radius: 20px !important;
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
@@ -81,11 +81,14 @@
 
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 84%;
-      left: 20%;
+      /* position: absolute; */
+      /* top: 94%; */
+      /* left: 24%; */
       opacity: 1;
-      width: 80%;
+      width: 100%;
+      margin-top: 4%;
+      text-align: center;
+      /* align-content: space-between; */
     }
 
     .golden1 {
@@ -98,7 +101,7 @@
       border-radius:48px !important;
       font-size: 20px !important;
       font-weight: 500 !important;
-      margin-left: 8%;
+      margin-left: 1%;
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -137,7 +140,7 @@
     .vid {
       width: 100%;
       /* display: inline-flexbox; */
-      height: 120vh;
+      height: 1080px;
       border-radius: 20px !important;
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
@@ -216,11 +219,13 @@
 
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 88%;
-      left: 28%;
-      opacity: 1;
-      width: 80%;
+      /* position: absolute; */
+      /* top: 90%; */
+      /* left: 28%; */
+      /* opacity: 1; */
+      margin-top: 4%;
+      width: 100%;
+      text-align: center;
     }
 
     .golden1 {
@@ -233,7 +238,7 @@
       border-radius:48px !important;
       font-size: 12px !important;
       font-weight: 500 !important;
-      margin-left: 4%;
+      margin-left: 1%;
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -271,7 +276,7 @@
     .vid {
       width: 100%;
       /* display: inline-flexbox; */
-      height: 120vh;
+      height: 880px;
       border-radius: 20px !important;
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
@@ -350,11 +355,12 @@
 
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 88%;
-      left: 24%;
-      opacity: 1;
-      width: 80%;
+      /* position: absolute; */
+      /* top: 88%; */
+      /* left: 24.8%; */
+      /* opacity: 1; */
+      width: 100%;
+      margin-top: 4%;
     }
 
     .golden1 {
@@ -367,7 +373,7 @@
       border-radius:48px !important;
       font-size: 10px !important;
       font-weight: 500 !important;
-      margin-left: 2%;
+      margin-left: 6%;
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -485,10 +491,11 @@
 
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 92%;
-      left: 24%;
-      opacity: 1;
+      /* position: absolute; */
+      /* top: 92%; */
+      /* left: 24%; */
+      /* opacity: 1; */
+      margin-top: 4%;
       width: 100%;
     }
 
@@ -502,7 +509,7 @@
       border-radius:20px !important;
       font-size: 12px !important;
       font-weight: 500 !important;
-      margin-left: 2%;
+      margin-left: 10%;
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -620,10 +627,11 @@
 
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 88%;
-      left: 20%;
-      opacity: 1;
+      /* position: absolute; */
+      /* top: 88%; */
+      /* left: 20%; */
+      /* opacity: 1; */
+      margin-top: 4%;
       width: 100%;
     }
 
@@ -637,7 +645,7 @@
       border-radius:20px !important;
       font-size: 12px !important;
       font-weight: 500 !important;
-      margin-left: 2%;
+      margin-left: 10%;
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -755,10 +763,11 @@
 
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 88%;
-      left: 12%;
-      opacity: 1;
+      /* position: absolute; */
+      /* top: 88%; */
+      /* left: 12%; */
+      /* opacity: 1; */
+      margin-top: 4%;
       width: 100%;
     }
 
@@ -772,7 +781,7 @@
       border-radius:20px !important;
       font-size: 8px !important;
       font-weight: 500 !important;
-      margin-left: 4%;
+      margin-left: 8%;
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -901,8 +910,8 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 94px;
-      height: 20px;
+      width: 96px;
+      height: 24px;
       border-radius:20px !important;
       font-size: 6px !important;
       font-weight: 500 !important;
