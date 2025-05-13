@@ -414,14 +414,14 @@
     .navbar-expand-lg {
       /* position: sticky !important; */
       /* height: 14% !important; */
-      border-radius: 14px;
+      /* border-radius: 14px; */
       /* background-color: transparent !important; */
       width: 100% !important;
       height: 28% !important;
-      background-color: transparent !important;
-      position: absolute;
-      top: 0;
-      left:0;
+      background-color: #2A2B41 !important;
+      /* position: absolute; */
+      /* top: 0; */
+      /* left:0; */
     }
     /* .navhelp{
       overflow: clip;
@@ -430,7 +430,7 @@
       width: 100% !important;
     }
     .logo {
-      width: 280px;
+      width: 228px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -466,8 +466,8 @@
       padding: 0 !important;
     }
     .justright {
-      width: 48px;
-      height: 48px;
+      width: 28px;
+      height: 28px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -531,13 +531,13 @@
     }
   
     .dropdown-menu {
-      width: 40vw !important;
+      width: 18vw !important;
       height: auto !important;
       position: absolute;
-      right: -124%;
-      top: 140% !important;
+      right: -1400%;
+      top: 240% !important;
       /* display: flex; */
-      background-color: rgba(255, 255, 255, 0.4) !important;
+      background-color: #2A2B41 !important;
       /* opacity: 0; */
       visibility: visible !important;
       animation: menu 0.4s linear forwards;
@@ -549,25 +549,26 @@
       opacity: 0.2;
     }
     100% {
-      right: -124%;
+      right: -128%;
       opacity: 1;
     }
     
   }
   
     .left {
-      width: 40% !important;
+      width: 80% !important;
       float: left;
   
     }
     .right {
-      width: 40% !important;
+      width: 80% !important;
       float: left;
     }
     .dropdown-item {
-      color: black !important;
-      margin-top: 4%;
-      margin-bottom: 4%;
+      color: whitesmoke !important;
+      font-family: "sora-b" !important;
+      margin-top: 10%;
+      margin-bottom: 10%;
       font-size: 14px !important;
       /* letter-spacing: 1px; */
     }
@@ -605,23 +606,22 @@
     .navbar-expand-lg {
       /* position: sticky !important; */
       /* height: 14% !important; */
-      border-radius: 14px;
+      /* border-radius: 14px; */
       /* background-color: transparent !important; */
       width: 100% !important;
       height: 28% !important;
-      background-color: transparent !important;
-      position: absolute;
-      top: 0;
-      left:0;
+      background-color: #2A2B41 !important;
     }
     /* .navhelp{
       overflow: clip;
     } */
     .collapse{
       width: 100% !important;
+      display: inline-block !important;
+      flex-basis: 33% !important;
     }
     .logo {
-      width: 280px;
+      width: 188px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -657,8 +657,8 @@
       padding: 0 !important;
     }
     .justright {
-      width: 48px;
-      height: 48px;
+      width: 24px;
+      height: 24px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -694,9 +694,13 @@
       text-align: center !important;
       align-content: center;
       font-family: "sora-b" !important;
-  
+  /* display: block; */
     }
   
+    .navbar-toggler{
+      display: none !important;
+  
+    }
     
     .dropstart{
       float: left !important;
@@ -796,23 +800,22 @@
     .navbar-expand-lg {
       /* position: sticky !important; */
       /* height: 14% !important; */
-      border-radius: 14px;
+      /* border-radius: 14px; */
       /* background-color: transparent !important; */
       width: 100% !important;
       height: 28% !important;
-      background-color: transparent !important;
-      position: absolute;
-      top: 0;
-      left:0;
+      background-color: #2A2B41 !important;
     }
     /* .navhelp{
       overflow: clip;
     } */
     .collapse{
       width: 100% !important;
+      display: inline-block !important;
+      flex-basis: 33% !important;
     }
     .logo {
-      width: 280px;
+      width: 188px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -848,8 +851,8 @@
       padding: 0 !important;
     }
     .justright {
-      width: 48px;
-      height: 48px;
+      width: 22px;
+      height: 22px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -885,9 +888,13 @@
       text-align: center !important;
       align-content: center;
       font-family: "sora-b" !important;
-  
+  /* display: block; */
     }
   
+    .navbar-toggler{
+      display: none !important;
+  
+    }
     
     .dropstart{
       float: left !important;
@@ -958,7 +965,7 @@
     }
   }
   @media (min-width: 577px) and (max-width: 768px){
-         /* head {
+        /* head {
       margin-left: 500px;
     } */
     #nb {
@@ -987,23 +994,22 @@
     .navbar-expand-lg {
       /* position: sticky !important; */
       /* height: 14% !important; */
-      border-radius: 14px;
+      /* border-radius: 14px; */
       /* background-color: transparent !important; */
       width: 100% !important;
       height: 28% !important;
-      background-color: transparent !important;
-      position: absolute;
-      top: 0;
-      left:0;
+      background-color: #2A2B41 !important;
     }
     /* .navhelp{
       overflow: clip;
     } */
     .collapse{
       width: 100% !important;
+      display: inline-block !important;
+      flex-basis: 33% !important;
     }
     .logo {
-      width: 280px;
+      width: 188px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -1039,8 +1045,8 @@
       padding: 0 !important;
     }
     .justright {
-      width: 48px;
-      height: 48px;
+      width: 22px;
+      height: 22px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -1076,9 +1082,13 @@
       text-align: center !important;
       align-content: center;
       font-family: "sora-b" !important;
-  
+  /* display: block; */
     }
   
+    .navbar-toggler{
+      display: none !important;
+  
+    }
     
     .dropstart{
       float: left !important;

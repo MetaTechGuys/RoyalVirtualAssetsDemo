@@ -218,7 +218,7 @@
       /* padding-top: 44%; */
       position: absolute;
       top: 88%;
-      left: 16%;
+      left: 28%;
       opacity: 1;
       width: 80%;
     }
@@ -228,12 +228,12 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 220px;
+      width: 200px;
       height: 60px;
       border-radius:48px !important;
-      font-size: 14px !important;
+      font-size: 12px !important;
       font-weight: 500 !important;
-      margin-left: 8%;
+      margin-left: 4%;
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -270,14 +270,14 @@
   @media (min-width: 1201px) and (max-width: 1400px) {
     .vid {
       width: 100%;
-      /* display: flex; */
+      /* display: inline-flexbox; */
       height: 120vh;
       border-radius: 20px !important;
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
       position: relative;
-      justify-items: center;
-      margin-top: 8%;
+      /* justify-content: center; */
+      margin-top: 0%;
       > img {
         position: absolute;
         width: 20%;
@@ -302,7 +302,8 @@
         /* padding-left: 140px; */
         width: 64%;
         z-index: 2;
-        
+      margin-left: auto;
+      margin-right: auto;
         /* float: left; */
         /* margin-bottom: 8%; */
         > h4 {
@@ -310,7 +311,7 @@
       font-family: "sora-b" !important;
         
         color: #000 !important;
-        font-size: 44px;
+        font-size: 28px;
         /* text-align: center; */
         margin-bottom: 2%;
       }
@@ -318,7 +319,7 @@
       font-family: "jb-mono" !important;
 
         color: #000 !important;
-        font-size: 20px;
+        font-size: 14px;
         /* margin-left: 20%; */
         /* margin-right: 20%; */
   
@@ -350,8 +351,8 @@
       /* float: right; */
       /* padding-top: 44%; */
       position: absolute;
-      top: 84%;
-      left: 20%;
+      top: 88%;
+      left: 24%;
       opacity: 1;
       width: 80%;
     }
@@ -361,12 +362,12 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 280px;
-      height: 68px;
+      width: 180px;
+      height: 60px;
       border-radius:48px !important;
-      font-size: 20px !important;
+      font-size: 10px !important;
       font-weight: 500 !important;
-      margin-left: 8%;
+      margin-left: 2%;
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -404,13 +405,13 @@
     .vid {
       width: 100%;
       /* display: flex; */
-      height: 120vh;
+      height: auto;
       border-radius: 20px !important;
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
       position: relative;
       justify-items: center;
-      margin-top: 8%;
+      margin-top: 4%;
       > img {
         position: absolute;
         width: 20%;
@@ -426,32 +427,34 @@
     }
     .vidhelp {
       background-color: transparent !important;
-      border: 48px solid transparent;
-      border-bottom: 24px solid transparent;
-      border-top: 24px solid transparent;
+      border: 4px solid transparent;
+      border-bottom: 2px solid transparent;
+      border-top: 2px solid transparent;
     }
     .vidtext {
         /* text-align: center; */
         /* padding-left: 140px; */
-        width: 64%;
+        padding: 4%;
+        width: 88%;
         z-index: 2;
         
         /* float: left; */
-        /* margin-bottom: 8%; */
+        margin-bottom: 8%;
         > h4 {
           /* padding-top: 20%; */
       font-family: "sora-b" !important;
         
         color: #000 !important;
-        font-size: 44px;
+        font-size: 26px;
         /* text-align: center; */
         margin-bottom: 2%;
+        margin-bottom: 0;
       }
       > span {
-      font-family: "jb-mono" !important;
+      font-family: "inter" !important;
 
         color: #000 !important;
-        font-size: 20px;
+        font-size: 16px;
         /* margin-left: 20%; */
         /* margin-right: 20%; */
   
@@ -466,7 +469,7 @@
       text-align: center;
       z-index: 2;
       > video {
-        width: 64%;
+        width: 80%;
         border-radius: 20px;
         /* height: auto; */
         /* overflow: hidden; */
@@ -483,10 +486,10 @@
       /* float: right; */
       /* padding-top: 44%; */
       position: absolute;
-      top: 84%;
-      left: 20%;
+      top: 92%;
+      left: 24%;
       opacity: 1;
-      width: 80%;
+      width: 100%;
     }
 
     .golden1 {
@@ -494,12 +497,12 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 280px;
-      height: 68px;
-      border-radius:48px !important;
-      font-size: 20px !important;
+      width: 180px;
+      height: 44px;
+      border-radius:20px !important;
+      font-size: 12px !important;
       font-weight: 500 !important;
-      margin-left: 8%;
+      margin-left: 2%;
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -537,13 +540,13 @@
     .vid {
       width: 100%;
       /* display: flex; */
-      height: 120vh;
+      height: auto;
       border-radius: 20px !important;
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
       position: relative;
       justify-items: center;
-      margin-top: 8%;
+      margin-top: 4%;
       > img {
         position: absolute;
         width: 20%;
@@ -559,32 +562,34 @@
     }
     .vidhelp {
       background-color: transparent !important;
-      border: 48px solid transparent;
-      border-bottom: 24px solid transparent;
-      border-top: 24px solid transparent;
+      border: 4px solid transparent;
+      border-bottom: 2px solid transparent;
+      border-top: 2px solid transparent;
     }
     .vidtext {
         /* text-align: center; */
         /* padding-left: 140px; */
-        width: 64%;
+        padding: 4%;
+        width: 88%;
         z-index: 2;
         
         /* float: left; */
-        /* margin-bottom: 8%; */
+        margin-bottom: 14%;
         > h4 {
           /* padding-top: 20%; */
       font-family: "sora-b" !important;
         
         color: #000 !important;
-        font-size: 44px;
+        font-size: 22px;
         /* text-align: center; */
         margin-bottom: 2%;
+        margin-bottom: 0;
       }
       > span {
-      font-family: "jb-mono" !important;
+      font-family: "inter" !important;
 
         color: #000 !important;
-        font-size: 20px;
+        font-size: 14px;
         /* margin-left: 20%; */
         /* margin-right: 20%; */
   
@@ -599,7 +604,7 @@
       text-align: center;
       z-index: 2;
       > video {
-        width: 64%;
+        width: 80%;
         border-radius: 20px;
         /* height: auto; */
         /* overflow: hidden; */
@@ -616,10 +621,10 @@
       /* float: right; */
       /* padding-top: 44%; */
       position: absolute;
-      top: 84%;
+      top: 88%;
       left: 20%;
       opacity: 1;
-      width: 80%;
+      width: 100%;
     }
 
     .golden1 {
@@ -627,12 +632,12 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 280px;
-      height: 68px;
-      border-radius:48px !important;
-      font-size: 20px !important;
+      width: 164px;
+      height: 44px;
+      border-radius:20px !important;
+      font-size: 12px !important;
       font-weight: 500 !important;
-      margin-left: 8%;
+      margin-left: 2%;
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -670,13 +675,13 @@
     .vid {
       width: 100%;
       /* display: flex; */
-      height: 120vh;
+      height: auto;
       border-radius: 20px !important;
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
       position: relative;
       justify-items: center;
-      margin-top: 8%;
+      margin-top: 4%;
       > img {
         position: absolute;
         width: 20%;
@@ -692,32 +697,34 @@
     }
     .vidhelp {
       background-color: transparent !important;
-      border: 48px solid transparent;
-      border-bottom: 24px solid transparent;
-      border-top: 24px solid transparent;
+      border: 4px solid transparent;
+      border-bottom: 2px solid transparent;
+      border-top: 2px solid transparent;
     }
     .vidtext {
         /* text-align: center; */
         /* padding-left: 140px; */
-        width: 64%;
+        padding: 4%;
+        width: 100%;
         z-index: 2;
         
         /* float: left; */
-        /* margin-bottom: 8%; */
+        margin-bottom: 14%;
         > h4 {
           /* padding-top: 20%; */
       font-family: "sora-b" !important;
         
         color: #000 !important;
-        font-size: 44px;
+        font-size: 18px;
         /* text-align: center; */
         margin-bottom: 2%;
+        margin-bottom: 0;
       }
       > span {
-      font-family: "jb-mono" !important;
+      font-family: "inter" !important;
 
         color: #000 !important;
-        font-size: 20px;
+        font-size: 12px;
         /* margin-left: 20%; */
         /* margin-right: 20%; */
   
@@ -732,7 +739,7 @@
       text-align: center;
       z-index: 2;
       > video {
-        width: 64%;
+        width: 80%;
         border-radius: 20px;
         /* height: auto; */
         /* overflow: hidden; */
@@ -749,10 +756,10 @@
       /* float: right; */
       /* padding-top: 44%; */
       position: absolute;
-      top: 84%;
-      left: 20%;
+      top: 88%;
+      left: 12%;
       opacity: 1;
-      width: 80%;
+      width: 100%;
     }
 
     .golden1 {
@@ -760,12 +767,12 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 280px;
-      height: 68px;
-      border-radius:48px !important;
-      font-size: 20px !important;
+      width: 140px;
+      height: 40px;
+      border-radius:20px !important;
+      font-size: 8px !important;
       font-weight: 500 !important;
-      margin-left: 8%;
+      margin-left: 4%;
       overflow: hidden;
       border: none !important;
       z-index: 1;

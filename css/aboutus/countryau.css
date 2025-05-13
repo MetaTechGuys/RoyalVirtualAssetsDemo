@@ -360,7 +360,7 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 40px;
+        font-size: 28px;
         /* text-align: center; */
         /* margin-top:18%; */
         /* margin-bottom: 2%; */
@@ -368,7 +368,7 @@
       > span {
         /* font-family: "jb-mono" !important; */
         color: whitesmoke !important;
-        font-size: 20px;
+        font-size: 14px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -401,7 +401,8 @@
         /* border: 48px solid transparent; */
         border-bottom: 24px solid transparent;
         border-top: 24px solid transparent;
-        justify-items: end;
+        display: flex;
+        justify-content: end;
     }
     .ctext1 {
         padding: 2%;
@@ -418,7 +419,7 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 40px;
+        font-size: 28px;
         /* text-align: center; */
         /* margin-top:18%; */
         /* margin-bottom: 2%; */
@@ -426,7 +427,7 @@
       > span {
         /* font-family: "jb-mono" !important; */
         color: whitesmoke !important;
-        font-size: 20px;
+        font-size: 14px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -501,16 +502,16 @@
         /* width: 64%; */
         background-color: transparent !important;
         /* border: 48px solid transparent; */
-        border-bottom: 24px solid transparent;
-        border-top: 24px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-top: 4px solid transparent;
     }
     .ctext {
         padding: 2%;
         /* padding-left: 4%; */
-        border-top-right-radius: 20px !important;
-        border-bottom-right-radius: 20px !important;
+        border-top-right-radius: 14px !important;
+        border-bottom-right-radius: 14px !important;
       /* height: 28vh; */
-      width: 64%;
+      width: 88%;
       z-index: 2;
       background-color: #1e88e5 !important;
 
@@ -518,29 +519,31 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 40px;
+        font-size: 22px;
         /* text-align: center; */
         /* margin-top:18%; */
         /* margin-bottom: 2%; */
+        margin-bottom: 0;
       }
       > span {
+        font-family: 'inter';
         /* font-family: "jb-mono" !important; */
         color: whitesmoke !important;
-        font-size: 20px;
+        font-size: 14px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
     }
     .countries1 {
       width: 100%;
-      height: 40vh;
+      height: auto;
 
       display: flex;
       height: auto;
       overflow: hidden !important;
       position: relative;
-      margin-bottom: 8%;
-      margin-top: 8%;
+      margin-bottom: 4%;
+      margin-top: 4%;
       align-content: center;
       > video {
           position: absolute;
@@ -557,18 +560,18 @@
         /* width: 64%; */
         background-color: transparent !important;
         /* border: 48px solid transparent; */
-        border-bottom: 24px solid transparent;
-        border-top: 24px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-top: 4px solid transparent;
         justify-items: end;
     }
     .ctext1 {
         padding: 2%;
         /* padding-left: 4%; */
-        border-top-left-radius: 20px !important;
-        border-bottom-left-radius: 20px !important;
+        border-top-left-radius: 14px !important;
+        border-bottom-left-radius: 14px !important;
         /* height: 28vh; */
 
-      width: 64%;
+      width: 88%;
       z-index: 2;
       background-color: #1e88e5 !important;
 
@@ -576,15 +579,18 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 40px;
+        font-size: 24px;
         /* text-align: center; */
         /* margin-top:18%; */
         /* margin-bottom: 2%; */
+        margin-bottom: 0;
+
       }
       > span {
         /* font-family: "jb-mono" !important; */
+        font-family: 'inter';
         color: whitesmoke !important;
-        font-size: 20px;
+        font-size: 16px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -659,16 +665,16 @@
         /* width: 64%; */
         background-color: transparent !important;
         /* border: 48px solid transparent; */
-        border-bottom: 24px solid transparent;
-        border-top: 24px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-top: 4px solid transparent;
     }
     .ctext {
         padding: 2%;
         /* padding-left: 4%; */
-        border-top-right-radius: 20px !important;
-        border-bottom-right-radius: 20px !important;
+        border-top-right-radius: 14px !important;
+        border-bottom-right-radius: 14px !important;
       /* height: 28vh; */
-      width: 64%;
+      width: 88%;
       z-index: 2;
       background-color: #1e88e5 !important;
 
@@ -676,29 +682,31 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 40px;
+        font-size: 22px;
         /* text-align: center; */
         /* margin-top:18%; */
         /* margin-bottom: 2%; */
+        margin-bottom: 0;
       }
       > span {
+        font-family: 'inter';
         /* font-family: "jb-mono" !important; */
         color: whitesmoke !important;
-        font-size: 20px;
+        font-size: 14px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
     }
     .countries1 {
       width: 100%;
-      height: 40vh;
+      height: auto;
 
       display: flex;
       height: auto;
       overflow: hidden !important;
       position: relative;
-      margin-bottom: 8%;
-      margin-top: 8%;
+      margin-bottom: 4%;
+      margin-top: 4%;
       align-content: center;
       > video {
           position: absolute;
@@ -715,18 +723,18 @@
         /* width: 64%; */
         background-color: transparent !important;
         /* border: 48px solid transparent; */
-        border-bottom: 24px solid transparent;
-        border-top: 24px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-top: 4px solid transparent;
         justify-items: end;
     }
     .ctext1 {
         padding: 2%;
         /* padding-left: 4%; */
-        border-top-left-radius: 20px !important;
-        border-bottom-left-radius: 20px !important;
+        border-top-left-radius: 14px !important;
+        border-bottom-left-radius: 14px !important;
         /* height: 28vh; */
 
-      width: 64%;
+      width: 88%;
       z-index: 2;
       background-color: #1e88e5 !important;
 
@@ -734,15 +742,18 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 40px;
+        font-size: 22px;
         /* text-align: center; */
         /* margin-top:18%; */
         /* margin-bottom: 2%; */
+        margin-bottom: 0;
+
       }
       > span {
         /* font-family: "jb-mono" !important; */
+        font-family: 'inter';
         color: whitesmoke !important;
-        font-size: 20px;
+        font-size: 14px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -793,6 +804,7 @@
       
   }
   @media (min-width: 577px) and (max-width: 768px) {
+    
     .countries {
       width: 100%;
       display: flex;
@@ -817,16 +829,16 @@
         /* width: 64%; */
         background-color: transparent !important;
         /* border: 48px solid transparent; */
-        border-bottom: 24px solid transparent;
-        border-top: 24px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-top: 4px solid transparent;
     }
     .ctext {
         padding: 2%;
         /* padding-left: 4%; */
-        border-top-right-radius: 20px !important;
-        border-bottom-right-radius: 20px !important;
+        border-top-right-radius: 14px !important;
+        border-bottom-right-radius: 14px !important;
       /* height: 28vh; */
-      width: 64%;
+      width: 88%;
       z-index: 2;
       background-color: #1e88e5 !important;
 
@@ -834,29 +846,31 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 40px;
+        font-size: 18px;
         /* text-align: center; */
         /* margin-top:18%; */
         /* margin-bottom: 2%; */
+        margin-bottom: 0;
       }
       > span {
+        font-family: 'inter';
         /* font-family: "jb-mono" !important; */
         color: whitesmoke !important;
-        font-size: 20px;
+        font-size: 12px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
     }
     .countries1 {
       width: 100%;
-      height: 40vh;
+      height: auto;
 
       display: flex;
       height: auto;
       overflow: hidden !important;
       position: relative;
-      margin-bottom: 8%;
-      margin-top: 8%;
+      margin-bottom: 4%;
+      margin-top: 4%;
       align-content: center;
       > video {
           position: absolute;
@@ -873,18 +887,18 @@
         /* width: 64%; */
         background-color: transparent !important;
         /* border: 48px solid transparent; */
-        border-bottom: 24px solid transparent;
-        border-top: 24px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-top: 4px solid transparent;
         justify-items: end;
     }
     .ctext1 {
         padding: 2%;
         /* padding-left: 4%; */
-        border-top-left-radius: 20px !important;
-        border-bottom-left-radius: 20px !important;
+        border-top-left-radius: 14px !important;
+        border-bottom-left-radius: 14px !important;
         /* height: 28vh; */
 
-      width: 64%;
+      width: 88%;
       z-index: 2;
       background-color: #1e88e5 !important;
 
@@ -892,15 +906,18 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 40px;
+        font-size: 18px;
         /* text-align: center; */
         /* margin-top:18%; */
         /* margin-bottom: 2%; */
+        margin-bottom: 0;
+
       }
       > span {
         /* font-family: "jb-mono" !important; */
+        font-family: 'inter';
         color: whitesmoke !important;
-        font-size: 20px;
+        font-size: 12px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }

@@ -403,13 +403,13 @@ margin-bottom: 20%;
       /* padding-left: 140px; */
       width: 64%;
       overflow: visible;
-margin-bottom: 18%;
+margin-bottom: 20%;
       > h4 {
         color: #000 !important;
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 48px;
+        font-size: 24px;
         /* text-align: center; */
       }
       > span {
@@ -418,7 +418,7 @@ margin-bottom: 18%;
         font-family: "jb-mono" !important;
   
         color: #000 !important;
-        font-size: 24px;
+        font-size: 14px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -429,8 +429,8 @@ margin-bottom: 18%;
       /* float: right; */
       /* padding-top: 44%; */
       position: absolute;
-      top: 84%;
-      left: 68%;
+      top: 80%;
+      left: 32%;
       /* text-align: center; */
       opacity: 1;
       width: 100%;
@@ -444,10 +444,10 @@ margin-bottom: 18%;
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 280px;
-      height: 80px;
+      width: 240px;
+      height: 60px;
       border-radius:48px !important;
-      font-size: 20px !important;
+      font-size: 14px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -465,10 +465,10 @@ margin-bottom: 18%;
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 280px;
-      height: 80px;
+      width: 240px;
+      height: 60px;
       border-radius: 48px !important;
-      font-size: 20px !important;
+      font-size: 14px !important;
       font-weight: 500 !important;
       margin-left: 28px;
       border-width: 4px !important;
@@ -579,8 +579,8 @@ margin-bottom: 18%;
     }
     .robo {
       background-color: transparent !important;
-      border: 48px solid transparent;
-      border-bottom: 24px solid transparent;
+      border: 8px solid transparent;
+      border-bottom: 4px solid transparent;
       /* border-top: 24px solid transparent; */
       /* margin-top: 8% !important; */
       padding: 8%;
@@ -588,24 +588,24 @@ margin-bottom: 18%;
     .robotext {
       /* padding-top: 8%; */
       /* padding-left: 140px; */
-      width: 64%;
+      width: 100%;
       overflow: visible;
-margin-bottom: 18%;
+margin-bottom: 14%;
       > h4 {
         color: #000 !important;
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 48px;
+        font-size: 24px;
         /* text-align: center; */
       }
       > span {
         /* margin-bottom: 14%; */
         /* margin-top: 480%; */
-        font-family: "jb-mono" !important;
+        font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 24px;
+        font-size: 16px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -616,8 +616,8 @@ margin-bottom: 18%;
       /* float: right; */
       /* padding-top: 44%; */
       position: absolute;
-      top: 84%;
-      left: 68%;
+      top: 80%;
+      left: 30%;
       /* text-align: center; */
       opacity: 1;
       width: 100%;
@@ -631,10 +631,10 @@ margin-bottom: 18%;
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 280px;
-      height: 80px;
-      border-radius:48px !important;
-      font-size: 20px !important;
+      width: 148px;
+      height: 44px;
+      border-radius:20px !important;
+      font-size: 11px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -652,13 +652,13 @@ margin-bottom: 18%;
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 280px;
-      height: 80px;
-      border-radius: 48px !important;
-      font-size: 20px !important;
+      width: 148px;
+      height: 44px;
+      border-radius:20px !important;
+      font-size: 11px !important;
       font-weight: 500 !important;
-      margin-left: 28px;
-      border-width: 4px !important;
+      margin-left: 14px;
+      border-width: 2px !important;
       position: relative;
   
       /* display:block;
@@ -766,8 +766,8 @@ margin-bottom: 18%;
     }
     .robo {
       background-color: transparent !important;
-      border: 48px solid transparent;
-      border-bottom: 24px solid transparent;
+      border: 8px solid transparent;
+      border-bottom: 4px solid transparent;
       /* border-top: 24px solid transparent; */
       /* margin-top: 8% !important; */
       padding: 8%;
@@ -775,7 +775,7 @@ margin-bottom: 18%;
     .robotext {
       /* padding-top: 8%; */
       /* padding-left: 140px; */
-      width: 64%;
+      width: 100%;
       overflow: visible;
 margin-bottom: 18%;
       > h4 {
@@ -783,16 +783,16 @@ margin-bottom: 18%;
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 48px;
+        font-size: 22px;
         /* text-align: center; */
       }
       > span {
         /* margin-bottom: 14%; */
         /* margin-top: 480%; */
-        font-family: "jb-mono" !important;
+        font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 24px;
+        font-size: 14px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -803,8 +803,8 @@ margin-bottom: 18%;
       /* float: right; */
       /* padding-top: 44%; */
       position: absolute;
-      top: 84%;
-      left: 68%;
+      top: 80%;
+      left: 30%;
       /* text-align: center; */
       opacity: 1;
       width: 100%;
@@ -818,10 +818,10 @@ margin-bottom: 18%;
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 280px;
-      height: 80px;
-      border-radius:48px !important;
-      font-size: 20px !important;
+      width: 148px;
+      height: 44px;
+      border-radius:20px !important;
+      font-size: 10px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -839,13 +839,13 @@ margin-bottom: 18%;
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 280px;
-      height: 80px;
-      border-radius: 48px !important;
-      font-size: 20px !important;
+      width: 148px;
+      height: 44px;
+      border-radius:20px !important;
+      font-size: 10px !important;
       font-weight: 500 !important;
-      margin-left: 28px;
-      border-width: 4px !important;
+      margin-left: 14px;
+      border-width: 2px !important;
       position: relative;
   
       /* display:block;
@@ -953,8 +953,8 @@ margin-bottom: 18%;
     }
     .robo {
       background-color: transparent !important;
-      border: 48px solid transparent;
-      border-bottom: 24px solid transparent;
+      border: 8px solid transparent;
+      border-bottom: 4px solid transparent;
       /* border-top: 24px solid transparent; */
       /* margin-top: 8% !important; */
       padding: 8%;
@@ -962,7 +962,7 @@ margin-bottom: 18%;
     .robotext {
       /* padding-top: 8%; */
       /* padding-left: 140px; */
-      width: 64%;
+      width: 100%;
       overflow: visible;
 margin-bottom: 18%;
       > h4 {
@@ -970,16 +970,16 @@ margin-bottom: 18%;
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 48px;
+        font-size: 18px;
         /* text-align: center; */
       }
       > span {
         /* margin-bottom: 14%; */
         /* margin-top: 480%; */
-        font-family: "jb-mono" !important;
+        font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 24px;
+        font-size: 14px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -990,8 +990,8 @@ margin-bottom: 18%;
       /* float: right; */
       /* padding-top: 44%; */
       position: absolute;
-      top: 84%;
-      left: 68%;
+      top: 80%;
+      left: 24%;
       /* text-align: center; */
       opacity: 1;
       width: 100%;
@@ -1005,10 +1005,10 @@ margin-bottom: 18%;
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 280px;
-      height: 80px;
-      border-radius:48px !important;
-      font-size: 20px !important;
+      width: 140px;
+      height: 40px;
+      border-radius:20px !important;
+      font-size: 10px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -1026,13 +1026,13 @@ margin-bottom: 18%;
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 280px;
-      height: 80px;
-      border-radius: 48px !important;
-      font-size: 20px !important;
+      width: 140px;
+      height: 40px;
+      border-radius:20px !important;
+      font-size: 10px !important;
       font-weight: 500 !important;
-      margin-left: 28px;
-      border-width: 4px !important;
+      margin-left: 14px;
+      border-width: 2px !important;
       position: relative;
   
       /* display:block;
@@ -1192,10 +1192,10 @@ margin-bottom: 18%;
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 100px;
+      width: 88px;
       height: 24px;
       border-radius:20px !important;
-      font-size: 7px !important;
+      font-size: 6px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -1213,10 +1213,10 @@ margin-bottom: 18%;
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 100px;
+      width: 88px;
       height: 24px;
       border-radius:20px !important;
-      font-size: 7px !important;
+      font-size: 6px !important;
       font-weight: 500 !important;
       margin-left: 8px;
       border-width: 2px !important;

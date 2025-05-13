@@ -9,11 +9,9 @@
     href="bootstrap/bootstrap-5.3.5-dist/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="./css/main/main.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-    <title>Royal Virtual Asset</title>
+    <link rel="icon" type="image/png" href="/media/icon/Artboard 19.png">
+
+    <title>Roial Virtual Asset</title>
   </head>
   <body>
     <div id="cursor"></div>
@@ -174,7 +172,7 @@
                 Enjoy the <span>Thriving</span>
               </h1>
               <!-- <h4>
-                Royal Virtual Asset
+                Roial Virtual Asset
               </h4> -->
                 <div class="buttons">
                   <button type="button" class="btn btn-secondary golden" data-cursor="pointer2">
@@ -192,7 +190,7 @@
             <div class="container-fluid rich">
               <!-- <video src="./media/videos/0202.mp4" autoplay loop muted></video> -->
               <div class="richtext">
-                <h4>Welcome to Royal Virtual Assets</h4>
+                <h4>Welcome to Roial Virtual Assets</h4>
                 <span
                   >Pioneering the Future of Decentralised Finance At RVA,we are building a next-generation blockchain ecosystem
                   designed to reshape the digital asset landscape.
@@ -218,7 +216,7 @@
                   <div class="carousel-item active">
                     <img src="./media/img/016.jpg" class="d-block1 slimge" alt="...">\
                   <div class="stext"><h2>Shaping the Future of Decentralised Finance</h2>
-                    <h4>Unlock the full potential of blockchain with RVA’s integrated ecosystem — <br> secure, scalable, and built for the next generation of finance.</h4>
+                    <h4>Unlock the full potential of blockchain with RVA’s integrated ecosystem — secure, scalable, and built for the next generation of finance.</h4>
                     <a href="./ourecosystem.html"><button type="button" class="btn btn-outline-secondary white1" data-cursor="pointer2">
                       Explore Our Ecosystem
                     </button></a>
@@ -227,7 +225,7 @@
                   <div class="carousel-item">
                     <img src="./media/img/004.jpg" class="d-block1 slimge" alt="...">
                   <div class="stext"><h2>Four Powerful Products, One Unified Ecosystem</h2>
-                    <h4>From ICO/IDO launchpad and secure wallet to smart chain and decentralised <br><br>
+                    <h4>From ICO/IDO launchpad and secure wallet to smart chain and decentralised
                       exchange — RVA delivers a seamless end-to-end blockchain experience.</h4>
                     <a href="./ourecosystem.html"><button type="button" class="btn btn-outline-secondary white1" data-cursor="pointer2">
                       Discover How It Works
@@ -237,7 +235,7 @@
                   <div class="carousel-item">
                     <img src="./media/img/005.jpg" class="d-block1 slimge" alt="...">
                   <div class="stext"><h2>Built on Transparency, Efficiency, and Security</h2>
-                    <h4>We prioritise trust, performance, and protection at every level — <br> ensuring our 
+                    <h4>We prioritise trust, performance, and protection at every level — ensuring our 
                       users and partners can participate with confidence.</h4>
                     <a href="./aboutus.html"></a><button type="button" class="btn btn-outline-secondary white1" data-cursor="pointer2">
                       Learn About Our Principles
@@ -248,7 +246,7 @@
                     <img src="./media/img/003.jpg" class="d-block1 slimge" alt="...">
                   <div class="stext"><h2>Join the RVA Community Today</h2>
                     <h4>Be part of a global    transforming digital finance. Collaborate, trade,
-                      innovate — <br> and help shape the decentralised future</h4>
+                      innovate — and help shape the decentralised future</h4>
                     <a href="#"><button type="button" class="btn btn-outline-secondary white1" data-cursor="pointer2">
                       Join the Community
                     </button></a>
@@ -351,7 +349,7 @@
 
               <div class="split1">
                 <!-- <video src="./media/videos/Rva-General Video Lq 01(1).mp4" autoplay loop muted></video> -->
-                 <h4>Royal Visual Asset</h4>
+                 <h4>Roial Virtual Asset</h4>
                  <span class="sfirst">Tron Solana BNB Dai Aptas Sui Dogecoin Bitcoin Ether Shiba XRP Stellar Pi Ondo VeChain Cosmos Celestia Bonk</span>
                  <br>
                  <br>
@@ -369,7 +367,7 @@
             <div class="footer">
                     <div class="container-fluid foot">
         
-                      <h4>Royal Virtual Assets Ltd. is committed to delivering secure, efficient, and transparent blockchain solutions.</h4>
+                      <h4>Roial Virtual Assets Ltd. is committed to delivering secure, efficient, and transparent blockchain solutions.</h4>
                       <span>Follow us on</span>
                           <div class="soc">
                             <button
@@ -395,7 +393,7 @@
                 
                     
                     <div class="end">
-                      <h5>&#169;2025 Royal Virtual Assets Ltd. All rights reserved.</h5>
+                      <h5>&#169;2025 Roial Virtual Assets Ltd. All rights reserved.</h5>
                     </div>
             </div>
           </footer>
@@ -448,6 +446,36 @@
     </script>
     
 
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+  // Get all images inside nav-links
+  const navImages = document.querySelectorAll('.nav-link > img');
+  
+  // Add click event to each image
+  navImages.forEach(img => {
+    img.addEventListener('click', function(event) {
+      event.stopPropagation(); // Prevent event from bubbling up
+      
+      // Find the closest form input
+      const input = document.querySelector('.form > input');
+      
+      // Toggle the visible class
+      input.classList.toggle('visible');
+    });
+  });
+  
+  // Close the input when clicking elsewhere
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('.nav-link > img') && !event.target.closest('.form > input')) {
+      const input = document.querySelector('.form > input');
+      if (input.classList.contains('visible')) {
+        input.classList.remove('visible');
+      }
+    }
+  });
+});
+
+    </script>
 
   </body>
 </html>

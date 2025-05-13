@@ -100,7 +100,7 @@ letter-spacing: 2px;
     background-color: transparent !important;
     border: 48px solid transparent;
     border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
+    border-top: 0px solid transparent;
   }
   .richtext {
     padding-top: 80px;
@@ -122,7 +122,7 @@ letter-spacing: 2px;
       font-family: "jb-mono" !important;
 
       color: #000 !important;
-      font-size: 14px;
+      font-size: 16px;
       margin-bottom: 240px;
 /* letter-spacing: 2px; */
     }
@@ -132,7 +132,7 @@ letter-spacing: 2px;
     width: 40%;
     float: right;
     overflow: hidden;
-    margin-left: 28%;
+    margin-left: 20%;
     > img {
       position: absolute;
       width: 20%;
@@ -159,7 +159,7 @@ letter-spacing: 2px;
   .rich {
     width: 100%;
     display: flex;
-    height: 80vh;
+    height: 84vh;
     border-radius: 20px !important;
     overflow: hidden !important;
     /* background-color: #2a2b41 !important; */
@@ -179,11 +179,11 @@ letter-spacing: 2px;
     background-color: transparent !important;
     border: 48px solid transparent;
     border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
+    border-top: 0px solid transparent;
   }
   .richtext {
-    padding-top: 100px;
-    padding-left: 140px;
+    padding-top: 80px;
+    padding-left: 80px;
     width: 60%;
     z-index: 2;
 
@@ -192,18 +192,18 @@ letter-spacing: 2px;
       font-family: "sora-b" !important;
 
       color: #000 !important;
-      font-size: 48px;
+      font-size: 28px;
       /* text-align: center; */
       margin-bottom: 6%;
-      margin-top: 28%;
+      margin-top: 20%;
     }
     > span {
       font-family: "jb-mono" !important;
 
       color: #000 !important;
-      font-size: 20px;
+      font-size: 16px;
       margin-bottom: 240px;
-letter-spacing: 2px;
+/* letter-spacing: 2px; */
     }
   }
 
@@ -211,7 +211,7 @@ letter-spacing: 2px;
     width: 40%;
     float: right;
     overflow: hidden;
-    margin-left: 28%;
+    margin-left: 20%;
     > img {
       position: absolute;
       width: 20%;
@@ -225,7 +225,8 @@ letter-spacing: 2px;
       opacity: 0.8;
     }
     > video {
-      height: 88%;
+      margin-top: 20%;
+      height: 80%;
       /* height: auto; */
       /* overflow: hidden; */
       /* filter: grayscale(88%); */
@@ -236,13 +237,15 @@ letter-spacing: 2px;
 @media (min-width: 993px) and (max-width: 1200px) {
   .rich {
     width: 100%;
-    display: flex;
-    height: 80vh;
+    /* display: flex; */
+    height: auto;
     border-radius: 20px !important;
     overflow: hidden !important;
     /* background-color: #2a2b41 !important; */
     position: relative;
     margin-bottom: 8%;
+    text-align: center;
+    /* justify-content: center; */
     > video {
       position: absolute;
       height: 100%;
@@ -255,14 +258,15 @@ letter-spacing: 2px;
   }
   .richhelp {
     background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
+    border: 4px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid transparent;
   }
   .richtext {
-    padding-top: 100px;
-    padding-left: 140px;
-    width: 60%;
+    /* padding-top: 2px; */
+    padding: 8%;
+    padding-top: 0;
+    width: 100%;
     z-index: 2;
 
     /* float: left; */
@@ -270,26 +274,27 @@ letter-spacing: 2px;
       font-family: "sora-b" !important;
 
       color: #000 !important;
-      font-size: 48px;
+      font-size: 28px;
       /* text-align: center; */
-      margin-bottom: 6%;
-      margin-top: 28%;
+      margin-bottom: 4%;
+      margin-top: 2%;
     }
     > span {
-      font-family: "jb-mono" !important;
-
+      font-family: "inter" !important;
+/* line-gap-override: 2px; */
+line-height: 0.2;
       color: #000 !important;
-      font-size: 20px;
-      margin-bottom: 240px;
-letter-spacing: 2px;
+      font-size: 18px;
+      /* margin-bottom: 240px; */
+/* letter-spacing: 2px; */
     }
   }
 
   .richimg {
-    width: 40%;
+    width: 100%;
     float: right;
     overflow: hidden;
-    margin-left: 28%;
+    /* margin-top: 2%; */
     > img {
       position: absolute;
       width: 20%;
@@ -303,7 +308,7 @@ letter-spacing: 2px;
       opacity: 0.8;
     }
     > video {
-      height: 88%;
+      width: 28%;
       /* height: auto; */
       /* overflow: hidden; */
       /* filter: grayscale(88%); */
@@ -314,13 +319,15 @@ letter-spacing: 2px;
 @media (min-width: 769px) and (max-width: 992px) {
   .rich {
     width: 100%;
-    display: flex;
-    height: 80vh;
+    /* display: flex; */
+    height: auto;
     border-radius: 20px !important;
     overflow: hidden !important;
     /* background-color: #2a2b41 !important; */
     position: relative;
     margin-bottom: 8%;
+    text-align: center;
+    /* justify-content: center; */
     > video {
       position: absolute;
       height: 100%;
@@ -333,14 +340,15 @@ letter-spacing: 2px;
   }
   .richhelp {
     background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
+    border: 4px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid transparent;
   }
   .richtext {
-    padding-top: 100px;
-    padding-left: 140px;
-    width: 60%;
+    /* padding-top: 2px; */
+    padding: 8%;
+    padding-top: 0;
+    width: 100%;
     z-index: 2;
 
     /* float: left; */
@@ -348,26 +356,27 @@ letter-spacing: 2px;
       font-family: "sora-b" !important;
 
       color: #000 !important;
-      font-size: 48px;
+      font-size: 24px;
       /* text-align: center; */
       margin-bottom: 6%;
-      margin-top: 28%;
+      margin-top: 14%;
     }
     > span {
-      font-family: "jb-mono" !important;
-
+      font-family: "inter" !important;
+/* line-gap-override: 2px; */
+line-height: 0.2;
       color: #000 !important;
-      font-size: 20px;
-      margin-bottom: 240px;
-letter-spacing: 2px;
+      font-size: 14px;
+      /* margin-bottom: 240px; */
+/* letter-spacing: 2px; */
     }
   }
 
   .richimg {
-    width: 40%;
+    width: 100%;
     float: right;
     overflow: hidden;
-    margin-left: 28%;
+    /* margin-top: 2%; */
     > img {
       position: absolute;
       width: 20%;
@@ -381,7 +390,7 @@ letter-spacing: 2px;
       opacity: 0.8;
     }
     > video {
-      height: 88%;
+      width: 40%;
       /* height: auto; */
       /* overflow: hidden; */
       /* filter: grayscale(88%); */
@@ -392,13 +401,15 @@ letter-spacing: 2px;
 @media (min-width: 577px) and (max-width: 768px) {
   .rich {
     width: 100%;
-    display: flex;
-    height: 80vh;
+    /* display: flex; */
+    height: auto;
     border-radius: 20px !important;
     overflow: hidden !important;
     /* background-color: #2a2b41 !important; */
     position: relative;
     margin-bottom: 8%;
+    text-align: center;
+    /* justify-content: center; */
     > video {
       position: absolute;
       height: 100%;
@@ -411,14 +422,15 @@ letter-spacing: 2px;
   }
   .richhelp {
     background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
+    border: 4px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid transparent;
   }
   .richtext {
-    padding-top: 100px;
-    padding-left: 140px;
-    width: 60%;
+    /* padding-top: 2px; */
+    padding: 8%;
+    padding-top: 0;
+    width: 100%;
     z-index: 2;
 
     /* float: left; */
@@ -426,26 +438,27 @@ letter-spacing: 2px;
       font-family: "sora-b" !important;
 
       color: #000 !important;
-      font-size: 48px;
+      font-size: 18px;
       /* text-align: center; */
       margin-bottom: 6%;
-      margin-top: 28%;
+      margin-top: 14%;
     }
     > span {
-      font-family: "jb-mono" !important;
-
+      font-family: "inter" !important;
+/* line-gap-override: 2px; */
+line-height: 0.2;
       color: #000 !important;
-      font-size: 20px;
-      margin-bottom: 240px;
-letter-spacing: 2px;
+      font-size: 12px;
+      /* margin-bottom: 240px; */
+/* letter-spacing: 2px; */
     }
   }
 
   .richimg {
-    width: 40%;
+    width: 100%;
     float: right;
     overflow: hidden;
-    margin-left: 28%;
+    /* margin-top: 2%; */
     > img {
       position: absolute;
       width: 20%;
@@ -459,7 +472,7 @@ letter-spacing: 2px;
       opacity: 0.8;
     }
     > video {
-      height: 88%;
+      width: 40%;
       /* height: auto; */
       /* overflow: hidden; */
       /* filter: grayscale(88%); */
