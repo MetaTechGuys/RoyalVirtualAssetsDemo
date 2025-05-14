@@ -1,391 +1,231 @@
 @media (min-width: 1921px) and (max-width: 2560px) {
-  /* head {
-    margin-left: 500px;
-  } */
-  #nb {
-    /* border: 48px solid transparent; */
-    border-top: none;
-    border-bottom: none;
-    /* position: -webkit-fixed !important; */
-    position: relative !important;
-    /* top: 0 !important; */
-    /* z-index: 3 !important; */
-    /* transition: top 0.3s; */
-    /* background-color: rgba(0, 0, 0, 0) !important; */
-    /* opacity: 0.74; */
-    margin-left: auto !important;
-    margin-right: auto !important;
-    /* border: 48px solid transparent !important; */
-    width: 100% !important;
-    height: auto !important;
-    /* background: url(../../media/img/020\(1\).jpg) no-repeat center center; */
-    >img{
-      width: 100%;
-      height: 100%;
+    /* head {
+      margin-left: 500px;
+    } */
+    #nb {
+      /* border: 48px solid transparent; */
+      border-top: none;
+      border-bottom: none;
+      /* position: -webkit-fixed !important; */
+      position: relative !important;
+      /* top: 0 !important; */
+      /* z-index: 3 !important; */
+      /* transition: top 0.3s; */
+      /* background-color: rgba(0, 0, 0, 0) !important; */
+      /* opacity: 0.74; */
+      margin-left: auto !important;
+      margin-right: auto !important;
+      /* border: 48px solid transparent !important; */
+      width: 100% !important;
+      height: auto !important;
+      /* background: url(../../media/img/020\(1\).jpg) no-repeat center center; */
+      >img{
+        width: 100%;
+        height: 100%;
+      }
     }
-  }
-   
-  .navbar-expand-lg {
-    /* position: sticky !important; */
-    /* height: 14% !important; */
-    border-radius: 14px;
-    /* background-color: transparent !important; */
-    width: 100% !important;
-    height: 28% !important;
-    background-color: transparent !important;
-    position: absolute;
-    top: 0;
-    left:0;
-  }
-  /* .navhelp{
-    overflow: clip;
-  } */
-  .collapse{
-    width: 100% !important;
-  }
-  .logo {
-    width: 248px;
-    height: auto;
-    /* background-color: #000 !important; */
-    background-color: transparent !important;
-    /* margin-right: 480vw; */
-    margin-left: 14%;
-    /* z-index: 99 !important; */
-    /* left: 4%; */
-  }
-  .navbar-brand {
-    /* background-color: black !important; */
-    background-color: transparent !important;
-  }
-  .navi {
-    /* background-color: black !important; */
-    background-color: transparent !important;
-  }
-  .navbar-nav {
-    /* background-color: black !important; */
-    background-color: transparent !important;
-    width: 100% !important;
-    /* padding-left: 14% !important; */
-    /* visibility: hidden !important; */
-  }
-  .container-fluid {
-    /* background-color: black !important; */
-    background-color: transparent !important;
-
-  }
-  .hambur {
-    /* background-color: black !important; */
-    background-color: transparent !important;
-    border: none !important;
-    visibility: visible !important;
-margin-left: 148%;
-    padding: 0 !important;
-  }
-  .justright {
-    width: 40px;
-    height: 40px;
-    /* background-color: whitesmoke; */
-    /* filter: invert(100%); */
-    /* transition: 500ms; */
-    /* padding-bottom: 8%; */
-    margin-left: 10vw;
-    float: right !important;
-
-  }
-  .navbar-brand{
-    margin-left: auto !important;
-  }
-  /* .justright:hover { */
-    /* transition: opacity 1s; */
-    /* background-image: url(../media/svg/align-justify\ \(1\).svg); */
-  /* } */
-  .nav-link {
-    color: whitesmoke !important;
-    /* margin-right: 40px !important; */
-    /* font-family: 'DMSerifDisplay-Regular' !important; */
-    /* font-size: 48px !important; */
-    /* padding: 0 !important; */
-    /* width: 100% !important; */
-    >img{
-      padding-top: 18.8%;
+     
+    .navbar-expand-lg {
+      /* position: sticky !important; */
+      /* height: 14% !important; */
+      border-radius: 14px;
+      /* background-color: transparent !important; */
+      width: 100% !important;
+      height: 28% !important;
+      background-color: transparent !important;
+      position: absolute;
+      top: 0;
+      left:0;
     }
-  }
-  .nav-item {
-    /* margin-left: 8% !important; */
-  width: 40% !important;
-    letter-spacing: 2px;
-    /* color: #fff !important; */
-    /* vertical-align: middle; */
-    text-align: center !important;
-    align-content: center;
-    font-family: "sora-b" !important;
+    /* .navhelp{
+      overflow: clip;
+    } */
+    .collapse{
+      width: 100% !important;
+    }
+    .logo {
+      width: 248px;
+      height: auto;
+      /* background-color: #000 !important; */
+      background-color: transparent !important;
+      /* margin-right: 480vw; */
+      margin-left: 14%;
+      /* z-index: 99 !important; */
+      /* left: 4%; */
+    }
+    .navbar-brand {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+    }
+    .navi {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+    }
+    .navbar-nav {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+      width: 100% !important;
+      /* padding-left: 14% !important; */
+      /* visibility: hidden !important; */
+    }
+    .container-fluid {
+      /* background-color: black !important; */
+      background-color: transparent !important;
 
-  }
-
+    }
+    .hambur {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+      border: none !important;
+      visibility: visible !important;
+  margin-left: 148%;
+      padding: 0 !important;
+    }
+    .justright {
+      width: 40px;
+      height: 40px;
+      /* background-color: whitesmoke; */
+      /* filter: invert(100%); */
+      /* transition: 500ms; */
+      /* padding-bottom: 8%; */
+      margin-left: 10vw;
+      float: right !important;
   
-  .dropstart{
-    float: left !important;
-  }
-  .justright:click{
-    >dropdown-menu{
-      /* animation: menu 1s linear forwards; */
     }
-  }
+    .navbar-brand{
+      margin-left: auto !important;
+    }
+    /* .justright:hover { */
+      /* transition: opacity 1s; */
+      /* background-image: url(../media/svg/align-justify\ \(1\).svg); */
+    /* } */
+    .nav-link {
+      color: whitesmoke !important;
+      /* margin-right: 40px !important; */
+      /* font-family: 'DMSerifDisplay-Regular' !important; */
+      /* font-size: 48px !important; */
+      /* padding: 0 !important; */
+      /* width: 100% !important; */
+      >img{
+        padding-top: 18.8%;
+      }
+    }
+    .nav-item {
+      /* margin-left: 8% !important; */
+    width: 40% !important;
+      letter-spacing: 2px;
+      /* color: #fff !important; */
+      /* vertical-align: middle; */
+      text-align: center !important;
+      align-content: center;
+      font-family: "sora-b" !important;
+  
+    }
+  
+    
+    .dropstart{
+      float: left !important;
+    }
+    .justright:click{
+      >dropdown-menu{
+        /* animation: menu 1s linear forwards; */
+      }
+    }
+  
+    .form>input{
+      margin-top: auto;
+      margin-bottom: auto;
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      /* padding-bottom: 20% !important; */
+      /* background-color: black; */
+      /* border-bottom: 2px solid #fff; */
+      color: #2A2B41 !important;
+      width: 180% !important;
+      visibility: hidden;
+    }
+  
+    .dropdown-menu {
+  transition: none !important;
+}
 
-  .form>input{
-    margin-top: auto;
-    margin-bottom: auto;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    /* padding-bottom: 20% !important; */
-    /* background-color: black; */
-    /* border-bottom: 2px solid #fff; */
-    color: #2A2B41 !important;
-    width: 180% !important;
-    visibility: hidden;
-  }
+/* Then set up our initial state */
+.dropdown-menu {
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+  width: 28vw !important;
+  height: 104vh !important;
+  top: var(--bs-dropdown-spacer) !important;
+  background-color: #2A2B41 !important;
+  
+  /* Initial state - hidden and off-screen */
+  transform: translateX(100%) !important;
+  opacity: 0 !important;
+  
+  /* Make sure it's still in the DOM */
+  display: block !important;
+  visibility: hidden !important;
+}
 
-  .dropdown-menu {
-    width: 18vw !important;
-    height: auto !important;
-    position: absolute;
-    right: 8%;
-    top: 240% !important;
-    /* display: flex; */
-    background-color: #2A2B41 !important;
-    /* opacity: 0; */
-    visibility: visible !important;
-    animation: menu 0.4s linear forwards;
-  }
+/* When shown, apply our transition */
+.dropdown-menu.show {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  
+  /* Apply transition only when showing */
+  transition: transform 0.8s ease, opacity 0.4s ease, visibility 0.4s !important;
+}
 
+/* For dropstart specific positioning */
+.dropstart .dropdown-menu {
+  top: -1vh !important;
+  right: -0.2vw !important;
+  left: auto !important;
+}
+
+/* Ensure the dropdown container doesn't restrict positioning */
+.btn-group.dropstart {
+  position: static !important;
+}
+
+/* Remove the keyframes animation since we're using transitions instead */
+/* If you still want to use keyframes, keep them but don't apply them by default */
 @keyframes menu {
-  0% {
-    right: -400%;
-    opacity: 0.2;
+  from {
+    transform: translateX(100%);
+    opacity: 0;
   }
-  100% {
-    right: -128%;
+  to {
+    transform: translateX(0);
     opacity: 1;
   }
-  
 }
-
-  .left {
-    width: 80% !important;
-    float: left;
-
-  }
-  .right {
-    width: 80% !important;
-    float: left;
-  }
-  .dropdown-item {
-    color: whitesmoke !important;
-    font-family: "sora-b" !important;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    font-size: 18px !important;
-    /* letter-spacing: 1px; */
+.dropdown-item {
+  color: whitesmoke !important;
+  font-family: "sora-b" !important;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 14px !important;
+  /* letter-spacing: 1px; */
+    a{
+      margin-left: 8%;
+    }
+   >.nav-link{display: block !important;}
   }
   .dropdown-item:hover {
-    color: #2b2b2b !important;
-  }
-}
-@media (min-width: 1401px) and (max-width: 1920px){
-      /* head {
-    margin-left: 500px;
-  } */
-  #nb {
-    /* border: 48px solid transparent; */
-    border-top: none;
-    border-bottom: none;
-    /* position: -webkit-fixed !important; */
-    position: relative !important;
-    /* top: 0 !important; */
-    /* z-index: 3 !important; */
-    /* transition: top 0.3s; */
-    /* background-color: rgba(0, 0, 0, 0) !important; */
-    /* opacity: 0.74; */
-    margin-left: auto !important;
-    margin-right: auto !important;
-    /* border: 48px solid transparent !important; */
-    width: 100% !important;
-    height: auto !important;
-    /* background: url(../../media/img/020\(1\).jpg) no-repeat center center; */
-    >img{
-      width: 100%;
-      height: 100%;
+    a{
+      color: #2A2B41 !important;
     }
   }
-   
-  .navbar-expand-lg {
-    /* position: sticky !important; */
-    /* height: 14% !important; */
-    border-radius: 14px;
-    /* background-color: transparent !important; */
-    width: 100% !important;
-    height: 28% !important;
-    background-color: transparent !important;
-    position: absolute;
-    top: 0;
-    left:0;
   }
-  /* .navhelp{
-    overflow: clip;
-  } */
-  .collapse{
-    width: 100% !important;
-  }
-  .logo {
-    width: 200px;
-    height: auto;
-    /* background-color: #000 !important; */
-    background-color: transparent !important;
-    /* margin-right: 480vw; */
-    margin-left: 14%;
-    /* z-index: 99 !important; */
-  }
-  .navbar-brand {
-    /* background-color: black !important; */
-    background-color: transparent !important;
-  }
-  .navi {
-    /* background-color: black !important; */
-    background-color: transparent !important;
-  }
-  .navbar-nav {
-    /* background-color: black !important; */
-    background-color: transparent !important;
-    width: 100% !important;
-    /* padding-left: 14% !important; */
-    /* visibility: hidden !important; */
-  }
-  .container-fluid {
-    /* background-color: black !important; */
-    background-color: transparent !important;
-  }
-  .hambur {
-    /* background-color: black !important; */
-    background-color: transparent !important;
-    border: none !important;
-    visibility: visible !important;
-margin-left: 148%;
-    padding: 0 !important;
-  }
-  .justright {
-    width: 28px;
-    height: 28px;
-    /* background-color: whitesmoke; */
-    /* filter: invert(100%); */
-    /* transition: 500ms; */
-    /* padding-bottom: 8%; */
-    margin-left: 10vw;
-    float: right !important;
-
-  }
-  .navbar-brand{
-    margin-left: auto !important;
-  }
-  /* .justright:hover { */
-    /* transition: opacity 1s; */
-    /* background-image: url(../media/svg/align-justify\ \(1\).svg); */
-  /* } */
-  .nav-link {
-    color: whitesmoke !important;
-    /* margin-right: 40px !important; */
-    /* font-family: 'DMSerifDisplay-Regular' !important; */
-    /* font-size: 48px !important; */
-    /* padding: 0 !important; */
-    /* width: 100% !important; */
-    >img{
-      padding-top: 18.8%;
-    }
-  }
-  .nav-item {
-    /* margin-left: 8% !important; */
-  width: 40% !important;
-    letter-spacing: 2px;
-    /* color: #fff !important; */
-    /* vertical-align: middle; */
-    text-align: center !important;
-    align-content: center;
-    font-family: "sora-b" !important;
-
-  }
-
-  
-  .dropstart{
-    float: left !important;
-  }
-  .justright:click{
-    >dropdown-menu{
-      /* animation: menu 1s linear forwards; */
-    }
-  }
-
-  .form>input{
-    margin-top: auto;
-    margin-bottom: auto;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    /* padding-bottom: 20% !important; */
-    /* background-color: black; */
-    /* border-bottom: 2px solid #fff; */
-    color: #2A2B41 !important;
-    width: 180% !important;
-    visibility: hidden;
-  }
-
-  .dropdown-menu {
-    width: 18vw !important;
-    height: auto !important;
-    position: absolute;
-    right: -1400%;
-    top: 240% !important;
-    /* display: flex; */
-    background-color: #2A2B41 !important;
-    /* opacity: 0; */
-    visibility: visible !important;
-    animation: menu 0.4s linear forwards;
-  }
-
-@keyframes menu {
-  0% {
-    right: -400%;
-    opacity: 0.2;
-  }
-  100% {
-    right: -128%;
-    opacity: 1;
-  }
-  
-}
-
-  .left {
-    width: 80% !important;
-    float: left;
-
-  }
-  .right {
-    width: 80% !important;
-    float: left;
-  }
-  .dropdown-item {
-    color: whitesmoke !important;
-    font-family: "sora-b" !important;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    font-size: 14px !important;
-    /* letter-spacing: 1px; */
-  }
-  .dropdown-item:hover {
-    color: #2b2b2b !important;
-  }
-}
-  @media (min-width: 1201px) and (max-width: 1400px){
-         /* head {
+  @media (min-width: 1401px) and (max-width: 1920px){
+        /* head {
       margin-left: 500px;
     } */
     #nb {
@@ -531,50 +371,307 @@ margin-left: 148%;
     }
   
     .dropdown-menu {
-      width: 18vw !important;
-      height: auto !important;
-      position: absolute;
-      right: -1400%;
-      top: 240% !important;
-      /* display: flex; */
-      background-color: #2A2B41 !important;
-      /* opacity: 0; */
-      visibility: visible !important;
-      animation: menu 0.4s linear forwards;
-    }
+  transition: none !important;
+}
+
+/* Then set up our initial state */
+.dropdown-menu {
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+  width: 28vw !important;
+  height: 104vh !important;
+  top: var(--bs-dropdown-spacer) !important;
+  background-color: #2A2B41 !important;
   
-  @keyframes menu {
-    0% {
-      right: -400%;
-      opacity: 0.2;
-    }
-    100% {
-      right: -128%;
-      opacity: 1;
-    }
-    
+  /* Initial state - hidden and off-screen */
+  transform: translateX(100%) !important;
+  opacity: 0 !important;
+  
+  /* Make sure it's still in the DOM */
+  display: block !important;
+  visibility: hidden !important;
+}
+
+/* When shown, apply our transition */
+.dropdown-menu.show {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  
+  /* Apply transition only when showing */
+  transition: transform 0.8s ease, opacity 0.4s ease, visibility 0.4s !important;
+}
+
+/* For dropstart specific positioning */
+.dropstart .dropdown-menu {
+  top: -1vh !important;
+  right: -0.2vw !important;
+  left: auto !important;
+}
+
+/* Ensure the dropdown container doesn't restrict positioning */
+.btn-group.dropstart {
+  position: static !important;
+}
+
+/* Remove the keyframes animation since we're using transitions instead */
+/* If you still want to use keyframes, keep them but don't apply them by default */
+@keyframes menu {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
   }
-  
-    .left {
-      width: 80% !important;
-      float: left;
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.dropdown-item {
+  color: whitesmoke !important;
+  font-family: "sora-b" !important;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 14px !important;
+  /* letter-spacing: 1px; */
+    a{
+      margin-left: 8%;
+    }
+   >.nav-link{display: block !important;}
+  }
+  .dropdown-item:hover {
+    a{
+      color: #2A2B41 !important;
+    }
+  }
+  }
+  @media (min-width: 1201px) and (max-width: 1400px){
+        /* head {
+      margin-left: 500px;
+    } */
+    #nb {
+      /* border: 48px solid transparent; */
+      border-top: none;
+      border-bottom: none;
+      /* position: -webkit-fixed !important; */
+      position: relative !important;
+      /* top: 0 !important; */
+      /* z-index: 3 !important; */
+      /* transition: top 0.3s; */
+      /* background-color: rgba(0, 0, 0, 0) !important; */
+      /* opacity: 0.74; */
+      margin-left: auto !important;
+      margin-right: auto !important;
+      /* border: 48px solid transparent !important; */
+      width: 100% !important;
+      height: auto !important;
+      /* background: url(../../media/img/020\(1\).jpg) no-repeat center center; */
+      >img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+     
+    .navbar-expand-lg {
+      /* position: sticky !important; */
+      /* height: 14% !important; */
+      border-radius: 14px;
+      /* background-color: transparent !important; */
+      width: 100% !important;
+      height: 28% !important;
+      background-color: transparent !important;
+      position: absolute;
+      top: 0;
+      left:0;
+    }
+    /* .navhelp{
+      overflow: clip;
+    } */
+    .collapse{
+      width: 100% !important;
+    }
+    .logo {
+      width: 200px;
+      height: auto;
+      /* background-color: #000 !important; */
+      background-color: transparent !important;
+      /* margin-right: 480vw; */
+      margin-left: 14%;
+      /* z-index: 99 !important; */
+    }
+    .navbar-brand {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+    }
+    .navi {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+    }
+    .navbar-nav {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+      width: 100% !important;
+      /* padding-left: 14% !important; */
+      /* visibility: hidden !important; */
+    }
+    .container-fluid {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+    }
+    .hambur {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+      border: none !important;
+      visibility: visible !important;
+  margin-left: 148%;
+      padding: 0 !important;
+    }
+    .justright {
+      width: 28px;
+      height: 28px;
+      /* background-color: whitesmoke; */
+      /* filter: invert(100%); */
+      /* transition: 500ms; */
+      /* padding-bottom: 8%; */
+      margin-left: 10vw;
+      float: right !important;
   
     }
-    .right {
-      width: 80% !important;
-      float: left;
+    .navbar-brand{
+      margin-left: auto !important;
     }
-    .dropdown-item {
+    /* .justright:hover { */
+      /* transition: opacity 1s; */
+      /* background-image: url(../media/svg/align-justify\ \(1\).svg); */
+    /* } */
+    .nav-link {
       color: whitesmoke !important;
+      /* margin-right: 40px !important; */
+      /* font-family: 'DMSerifDisplay-Regular' !important; */
+      /* font-size: 48px !important; */
+      /* padding: 0 !important; */
+      /* width: 100% !important; */
+      >img{
+        padding-top: 18.8%;
+      }
+    }
+    .nav-item {
+      /* margin-left: 8% !important; */
+    width: 40% !important;
+      letter-spacing: 2px;
+      /* color: #fff !important; */
+      /* vertical-align: middle; */
+      text-align: center !important;
+      align-content: center;
       font-family: "sora-b" !important;
-      margin-top: 10%;
-      margin-bottom: 10%;
-      font-size: 14px !important;
-      /* letter-spacing: 1px; */
+  
     }
-    .dropdown-item:hover {
-      color: #2b2b2b !important;
+  
+    
+    .dropstart{
+      float: left !important;
     }
+    .justright:click{
+      >dropdown-menu{
+        /* animation: menu 1s linear forwards; */
+      }
+    }
+  
+    .form>input{
+      margin-top: auto;
+      margin-bottom: auto;
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      /* padding-bottom: 20% !important; */
+      /* background-color: black; */
+      /* border-bottom: 2px solid #fff; */
+      color: #2A2B41 !important;
+      width: 180% !important;
+      visibility: hidden;
+    }
+  
+    .dropdown-menu {
+  transition: none !important;
+}
+
+/* Then set up our initial state */
+.dropdown-menu {
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+  width: 28vw !important;
+  height: 104vh !important;
+  top: var(--bs-dropdown-spacer) !important;
+  background-color: #2A2B41 !important;
+  
+  /* Initial state - hidden and off-screen */
+  transform: translateX(100%) !important;
+  opacity: 0 !important;
+  
+  /* Make sure it's still in the DOM */
+  display: block !important;
+  visibility: hidden !important;
+}
+
+/* When shown, apply our transition */
+.dropdown-menu.show {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  
+  /* Apply transition only when showing */
+  transition: transform 0.8s ease, opacity 0.4s ease, visibility 0.4s !important;
+}
+
+/* For dropstart specific positioning */
+.dropstart .dropdown-menu {
+  top: -1vh !important;
+  right: -0.2vw !important;
+  left: auto !important;
+}
+
+/* Ensure the dropdown container doesn't restrict positioning */
+.btn-group.dropstart {
+  position: static !important;
+}
+
+/* Remove the keyframes animation since we're using transitions instead */
+/* If you still want to use keyframes, keep them but don't apply them by default */
+@keyframes menu {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.dropdown-item {
+  color: whitesmoke !important;
+  font-family: "sora-b" !important;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 14px !important;
+  /* letter-spacing: 1px; */
+    a{
+      margin-left: 8%;
+    }
+   >.nav-link{display: block !important;}
+  }
+  .dropdown-item:hover {
+    a{
+      color: #2A2B41 !important;
+    }
+  }
   }
   @media (min-width: 993px) and (max-width: 1200px){
         /* head {
@@ -730,449 +827,547 @@ margin-left: 148%;
     }
   
     .dropdown-menu {
-      width: 8vw !important;
-      height: auto !important;
-      position: absolute;
-      right: 8%;
-      top: 200% !important;
-      /* display: flex; */
-      background-color: #2A2B41 !important;
-      /* opacity: 0; */
-      visibility: visible !important;
-      animation: menu 0.4s linear forwards;
-    }
+  transition: none !important;
+}
+
+/* Then set up our initial state */
+.dropdown-menu {
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+  width: 28vw !important;
+  height: 104vh !important;
+  top: var(--bs-dropdown-spacer) !important;
+  background-color: #2A2B41 !important;
   
-  @keyframes menu {
-    0% {
-      right: -400%;
-      opacity: 0.2;
-    }
-    100% {
-      right: -800%;
-      opacity: 1;
-    }
-    
+  /* Initial state - hidden and off-screen */
+  transform: translateX(100%) !important;
+  opacity: 0 !important;
+  
+  /* Make sure it's still in the DOM */
+  display: block !important;
+  visibility: hidden !important;
+}
+
+/* When shown, apply our transition */
+.dropdown-menu.show {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  
+  /* Apply transition only when showing */
+  transition: transform 0.8s ease, opacity 0.4s ease, visibility 0.4s !important;
+}
+
+/* For dropstart specific positioning */
+.dropstart .dropdown-menu {
+  top: -1vh !important;
+  right: -0.2vw !important;
+  left: auto !important;
+}
+
+/* Ensure the dropdown container doesn't restrict positioning */
+.btn-group.dropstart {
+  position: static !important;
+}
+
+/* Remove the keyframes animation since we're using transitions instead */
+/* If you still want to use keyframes, keep them but don't apply them by default */
+@keyframes menu {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
   }
-  
-    .left {
-      width: 80% !important;
-      float: left;
-  
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.dropdown-item {
+  color: whitesmoke !important;
+  font-family: "sora-b" !important;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 12px !important;
+  /* letter-spacing: 1px; */
+    a{
+      margin-left: 8%;
     }
-    .right {
-      width: 80% !important;
-      float: left;
+   >.nav-link{display: block !important;}
+  }
+  .dropdown-item:hover {
+    a{
+      color: #2A2B41 !important;
     }
-    .dropdown-item {
-      color: whitesmoke !important;
-      font-family: "sora-b" !important;
-      margin-top: 2%;
-      margin-bottom: 2%;
-      font-size: 0px !important;
-      /* letter-spacing: 1px; */
-    }
-    .dropdown-item:hover {
-      color: #2b2b2b !important;
-    }
+  }
   }
   @media (min-width: 769px) and (max-width: 992px){
-    /* head {
-  margin-left: 500px;
-} */
-#nb {
-  /* border: 48px solid transparent; */
-  border-top: none;
-  border-bottom: none;
-  /* position: -webkit-fixed !important; */
-  position: relative !important;
-  /* top: 0 !important; */
-  /* z-index: 3 !important; */
-  /* transition: top 0.3s; */
-  /* background-color: rgba(0, 0, 0, 0) !important; */
-  /* opacity: 0.74; */
-  margin-left: auto !important;
-  margin-right: auto !important;
-  /* border: 48px solid transparent !important; */
-  width: 100% !important;
-  height: auto !important;
-  /* background: url(../../media/img/020\(1\).jpg) no-repeat center center; */
-  >img{
-    width: 100%;
-    height: 100%;
-  }
-}
- 
-.navbar-expand-lg {
-  /* position: sticky !important; */
-  /* height: 14% !important; */
-  border-radius: 14px;
-  /* background-color: transparent !important; */
-  width: 100% !important;
-  height: 28% !important;
-  background-color: transparent !important;
-  position: absolute;
-  top: 0;
-  left:0;
-}
-/* .navhelp{
-  overflow: clip;
-} */
-.collapse{
-  width: 100% !important;
-  display: inline-block !important;
-  flex-basis: 33% !important;
+        /* head {
+      margin-left: 500px;
+    } */
+    #nb {
+      /* border: 48px solid transparent; */
+      border-top: none;
+      border-bottom: none;
+      /* position: -webkit-fixed !important; */
+      position: relative !important;
+      /* top: 0 !important; */
+      /* z-index: 3 !important; */
+      /* transition: top 0.3s; */
+      /* background-color: rgba(0, 0, 0, 0) !important; */
+      /* opacity: 0.74; */
+      margin-left: auto !important;
+      margin-right: auto !important;
+      /* border: 48px solid transparent !important; */
+      width: 100% !important;
+      height: auto !important;
+      /* background: url(../../media/img/020\(1\).jpg) no-repeat center center; */
+      >img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+     
+    .navbar-expand-lg {
+      /* position: sticky !important; */
+      /* height: 14% !important; */
+      border-radius: 14px;
+      /* background-color: transparent !important; */
+      width: 100% !important;
+      height: 28% !important;
+      background-color: transparent !important;
+      position: absolute;
+      top: 0;
+      left:0;
+    }
+    /* .navhelp{
+      overflow: clip;
+    } */
+    .collapse{
+      width: 100% !important;
+      display: inline-block !important;
+      flex-basis: 33% !important;
 
+    }
+    .logo {
+      width: 124px;
+      height: auto;
+      /* background-color: #000 !important; */
+      background-color: transparent !important;
+      /* margin-right: 480vw; */
+      /* margin-left: 4%; */
+      /* z-index: 99 !important; */
+    }
+    .navbar-brand {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+    }
+    .navi {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+    }
+    .navbar-nav {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+      width: 100% !important;
+      /* padding-left: 14% !important; */
+      /* visibility: hidden !important; */
+    }
+    .container-fluid {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+    }
+    .hambur {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+      border: none !important;
+      visibility: visible !important;
+  margin-left: 148%;
+      padding: 0 !important;
+    }
+    .justright {
+      width: 24px;
+      height: 24px;
+      /* background-color: whitesmoke; */
+      /* filter: invert(100%); */
+      /* transition: 500ms; */
+      /* padding-bottom: 8%; */
+      margin-left: 10vw;
+      float: right !important;
+  
+    }
+    .navbar-brand{
+      margin-left: auto !important;
+    }
+    /* .justright:hover { */
+      /* transition: opacity 1s; */
+      /* background-image: url(../media/svg/align-justify\ \(1\).svg); */
+    /* } */
+    .nav-link {
+      color: whitesmoke !important;
+      /* margin-right: 40px !important; */
+      /* font-family: 'DMSerifDisplay-Regular' !important; */
+      /* font-size: 48px !important; */
+      /* padding: 0 !important; */
+      /* width: 100% !important; */
+      >img{
+        /* padding-top: 18.8%; */
+      }
+    }
+    .nav-item {
+      /* margin-left: 8% !important; */
+    width: 40% !important;
+      letter-spacing: 2px;
+      /* color: #fff !important; */
+      /* vertical-align: middle; */
+      text-align: center !important;
+      align-content: center;
+      font-family: "sora-b" !important;
+  
+    }
+  
+    .navbar-toggler{
+      display: none !important;
+  
+    }
+    
+    .dropstart{
+      float: left !important;
+    }
+    .justright:click{
+      >dropdown-menu{
+        /* animation: menu 1s linear forwards; */
+      }
+    }
+  
+    .form>input{
+      margin-top: auto;
+      margin-bottom: auto;
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      /* padding-bottom: 20% !important; */
+      /* background-color: black; */
+      /* border-bottom: 2px solid #fff; */
+      color: #2A2B41 !important;
+      width: 180% !important;
+      visibility: hidden;
+    }
+  
+    .dropdown-menu {
+  transition: none !important;
 }
-.logo {
-  width: 124px;
-  height: auto;
-  /* background-color: #000 !important; */
-  background-color: transparent !important;
-  /* margin-right: 480vw; */
-  /* margin-left: 4%; */
-  /* z-index: 99 !important; */
-}
-.navbar-brand {
-  /* background-color: black !important; */
-  background-color: transparent !important;
-}
-.navi {
-  /* background-color: black !important; */
-  background-color: transparent !important;
-}
-.navbar-nav {
-  /* background-color: black !important; */
-  background-color: transparent !important;
-  width: 100% !important;
-  /* padding-left: 14% !important; */
-  /* visibility: hidden !important; */
-}
-.container-fluid {
-  /* background-color: black !important; */
-  background-color: transparent !important;
-}
-.hambur {
-  /* background-color: black !important; */
-  background-color: transparent !important;
-  border: none !important;
-  visibility: visible !important;
-margin-left: 148%;
-  padding: 0 !important;
-}
-.justright {
-  width: 24px;
-  height: 24px;
-  /* background-color: whitesmoke; */
-  /* filter: invert(100%); */
-  /* transition: 500ms; */
-  /* padding-bottom: 8%; */
-  margin-left: 10vw;
-  float: right !important;
 
-}
-.navbar-brand{
-  margin-left: auto !important;
-}
-/* .justright:hover { */
-  /* transition: opacity 1s; */
-  /* background-image: url(../media/svg/align-justify\ \(1\).svg); */
-/* } */
-.nav-link {
-  color: whitesmoke !important;
-  /* margin-right: 40px !important; */
-  /* font-family: 'DMSerifDisplay-Regular' !important; */
-  /* font-size: 48px !important; */
-  /* padding: 0 !important; */
-  /* width: 100% !important; */
-  >img{
-    /* padding-top: 18.8%; */
-  }
-}
-.nav-item {
-  /* margin-left: 8% !important; */
-width: 40% !important;
-  letter-spacing: 2px;
-  /* color: #fff !important; */
-  /* vertical-align: middle; */
-  text-align: center !important;
-  align-content: center;
-  font-family: "sora-b" !important;
-
-}
-
-.navbar-toggler{
-  display: none !important;
-
-}
-
-.dropstart{
-  float: left !important;
-}
-.justright:click{
-  >dropdown-menu{
-    /* animation: menu 1s linear forwards; */
-  }
-}
-
-.form>input{
-  margin-top: auto;
-  margin-bottom: auto;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  /* padding-bottom: 20% !important; */
-  /* background-color: black; */
-  /* border-bottom: 2px solid #fff; */
-  color: #2A2B41 !important;
-  width: 180% !important;
-  visibility: hidden;
-}
-
+/* Then set up our initial state */
 .dropdown-menu {
-  width: 8vw !important;
-  height: auto !important;
-  position: absolute;
-  right: 8%;
-  top: 200% !important;
-  /* display: flex; */
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+  width: 28vw !important;
+  height: 104vh !important;
+  top: var(--bs-dropdown-spacer) !important;
   background-color: #2A2B41 !important;
-  /* opacity: 0; */
+  
+  /* Initial state - hidden and off-screen */
+  transform: translateX(100%) !important;
+  opacity: 0 !important;
+  
+  /* Make sure it's still in the DOM */
+  display: block !important;
+  visibility: hidden !important;
+}
+
+/* When shown, apply our transition */
+.dropdown-menu.show {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
   visibility: visible !important;
-  animation: menu 0.4s linear forwards;
+  
+  /* Apply transition only when showing */
+  transition: transform 0.8s ease, opacity 0.4s ease, visibility 0.4s !important;
 }
 
+/* For dropstart specific positioning */
+.dropstart .dropdown-menu {
+  top: -1vh !important;
+  right: -0.2vw !important;
+  left: auto !important;
+}
+
+/* Ensure the dropdown container doesn't restrict positioning */
+.btn-group.dropstart {
+  position: static !important;
+}
+
+/* Remove the keyframes animation since we're using transitions instead */
+/* If you still want to use keyframes, keep them but don't apply them by default */
 @keyframes menu {
-0% {
-  right: -400%;
-  opacity: 0.2;
-}
-100% {
-  right: -800%;
-  opacity: 1;
-}
-
-}
-
-.left {
-  width: 80% !important;
-  float: left;
-
-}
-.right {
-  width: 80% !important;
-  float: left;
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 .dropdown-item {
   color: whitesmoke !important;
   font-family: "sora-b" !important;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-size: 0px !important;
+  font-size: 12px !important;
   /* letter-spacing: 1px; */
-}
-.dropdown-item:hover {
-  color: #2b2b2b !important;
-}
-}
+    a{
+      margin-left: 8%;
+    }
+   >.nav-link{display: block !important;}
+  }
+  .dropdown-item:hover {
+    a{
+      color: #2A2B41 !important;
+    }
+  }
+  }
   @media (min-width: 577px) and (max-width: 768px){
-    /* head {
-  margin-left: 500px;
-} */
-#nb {
-  /* border: 48px solid transparent; */
-  border-top: none;
-  border-bottom: none;
-  /* position: -webkit-fixed !important; */
-  position: relative !important;
-  /* top: 0 !important; */
-  /* z-index: 3 !important; */
-  /* transition: top 0.3s; */
-  /* background-color: rgba(0, 0, 0, 0) !important; */
-  /* opacity: 0.74; */
-  margin-left: auto !important;
-  margin-right: auto !important;
-  /* border: 48px solid transparent !important; */
-  width: 100% !important;
-  height: auto !important;
-  /* background: url(../../media/img/020\(1\).jpg) no-repeat center center; */
-  >img{
-    width: 100%;
-    height: 100%;
-  }
-}
- 
-.navbar-expand-lg {
-  /* position: sticky !important; */
-  /* height: 14% !important; */
-  border-radius: 14px;
-  /* background-color: transparent !important; */
-  width: 100% !important;
-  height: 28% !important;
-  background-color: transparent !important;
-  position: absolute;
-  top: 0;
-  left:0;
-}
-/* .navhelp{
-  overflow: clip;
-} */
-.collapse{
-  width: 100% !important;
-  display: inline-block !important;
-  flex-basis: 33% !important;
+        /* head {
+      margin-left: 500px;
+    } */
+    #nb {
+      /* border: 48px solid transparent; */
+      border-top: none;
+      border-bottom: none;
+      /* position: -webkit-fixed !important; */
+      position: relative !important;
+      /* top: 0 !important; */
+      /* z-index: 3 !important; */
+      /* transition: top 0.3s; */
+      /* background-color: rgba(0, 0, 0, 0) !important; */
+      /* opacity: 0.74; */
+      margin-left: auto !important;
+      margin-right: auto !important;
+      /* border: 48px solid transparent !important; */
+      width: 100% !important;
+      height: auto !important;
+      /* background: url(../../media/img/020\(1\).jpg) no-repeat center center; */
+      >img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+     
+    .navbar-expand-lg {
+      /* position: sticky !important; */
+      /* height: 14% !important; */
+      border-radius: 14px;
+      /* background-color: transparent !important; */
+      width: 100% !important;
+      height: 28% !important;
+      background-color: transparent !important;
+      position: absolute;
+      top: 0;
+      left:0;
+    }
+    /* .navhelp{
+      overflow: clip;
+    } */
+    .collapse{
+      width: 100% !important;
+      display: inline-block !important;
+      flex-basis: 33% !important;
 
+    }
+    .logo {
+      width: 96px;
+      height: auto;
+      /* background-color: #000 !important; */
+      background-color: transparent !important;
+      /* margin-right: 480vw; */
+      /* margin-left: 4%; */
+      /* z-index: 99 !important; */
+    }
+    .navbar-brand {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+    }
+    .navi {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+    }
+    .navbar-nav {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+      width: 100% !important;
+      /* padding-left: 14% !important; */
+      /* visibility: hidden !important; */
+    }
+    .container-fluid {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+    }
+    .hambur {
+      /* background-color: black !important; */
+      background-color: transparent !important;
+      border: none !important;
+      visibility: visible !important;
+  margin-left: 148%;
+      padding: 0 !important;
+    }
+    .justright {
+      width: 20px;
+      height: 20px;
+      /* background-color: whitesmoke; */
+      /* filter: invert(100%); */
+      /* transition: 500ms; */
+      /* padding-bottom: 8%; */
+      margin-left: 10vw;
+      float: right !important;
+  
+    }
+    .navbar-brand{
+      margin-left: auto !important;
+    }
+    /* .justright:hover { */
+      /* transition: opacity 1s; */
+      /* background-image: url(../media/svg/align-justify\ \(1\).svg); */
+    /* } */
+    .nav-link {
+      color: whitesmoke !important;
+      /* margin-right: 40px !important; */
+      /* font-family: 'DMSerifDisplay-Regular' !important; */
+      /* font-size: 48px !important; */
+      /* padding: 0 !important; */
+      /* width: 100% !important; */
+      >img{
+        /* padding-top: 18.8%; */
+      }
+    }
+    .nav-item {
+      /* margin-left: 8% !important; */
+    width: 40% !important;
+      letter-spacing: 2px;
+      /* color: #fff !important; */
+      /* vertical-align: middle; */
+      text-align: center !important;
+      align-content: center;
+      font-family: "sora-b" !important;
+  
+    }
+  
+    .navbar-toggler{
+      display: none !important;
+  
+    }
+    
+    .dropstart{
+      float: left !important;
+    }
+    .justright:click{
+      >dropdown-menu{
+        /* animation: menu 1s linear forwards; */
+      }
+    }
+  
+    .form>input{
+      margin-top: auto;
+      margin-bottom: auto;
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      /* padding-bottom: 20% !important; */
+      /* background-color: black; */
+      /* border-bottom: 2px solid #fff; */
+      color: #2A2B41 !important;
+      width: 180% !important;
+      visibility: hidden;
+    }
+  
+    .dropdown-menu {
+  transition: none !important;
 }
-.logo {
-  width: 96px;
-  height: auto;
-  /* background-color: #000 !important; */
-  background-color: transparent !important;
-  /* margin-right: 480vw; */
-  /* margin-left: 4%; */
-  /* z-index: 99 !important; */
-}
-.navbar-brand {
-  /* background-color: black !important; */
-  background-color: transparent !important;
-}
-.navi {
-  /* background-color: black !important; */
-  background-color: transparent !important;
-}
-.navbar-nav {
-  /* background-color: black !important; */
-  background-color: transparent !important;
-  width: 100% !important;
-  /* padding-left: 14% !important; */
-  /* visibility: hidden !important; */
-}
-.container-fluid {
-  /* background-color: black !important; */
-  background-color: transparent !important;
-}
-.hambur {
-  /* background-color: black !important; */
-  background-color: transparent !important;
-  border: none !important;
-  visibility: visible !important;
-margin-left: 148%;
-  padding: 0 !important;
-}
-.justright {
-  width: 20px;
-  height: 20px;
-  /* background-color: whitesmoke; */
-  /* filter: invert(100%); */
-  /* transition: 500ms; */
-  /* padding-bottom: 8%; */
-  margin-left: 10vw;
-  float: right !important;
 
-}
-.navbar-brand{
-  margin-left: auto !important;
-}
-/* .justright:hover { */
-  /* transition: opacity 1s; */
-  /* background-image: url(../media/svg/align-justify\ \(1\).svg); */
-/* } */
-.nav-link {
-  color: whitesmoke !important;
-  /* margin-right: 40px !important; */
-  /* font-family: 'DMSerifDisplay-Regular' !important; */
-  /* font-size: 48px !important; */
-  /* padding: 0 !important; */
-  /* width: 100% !important; */
-  >img{
-    /* padding-top: 18.8%; */
-  }
-}
-.nav-item {
-  /* margin-left: 8% !important; */
-width: 40% !important;
-  letter-spacing: 2px;
-  /* color: #fff !important; */
-  /* vertical-align: middle; */
-  text-align: center !important;
-  align-content: center;
-  font-family: "sora-b" !important;
-
-}
-
-.navbar-toggler{
-  display: none !important;
-
-}
-
-.dropstart{
-  float: left !important;
-}
-.justright:click{
-  >dropdown-menu{
-    /* animation: menu 1s linear forwards; */
-  }
-}
-
-.form>input{
-  margin-top: auto;
-  margin-bottom: auto;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  /* padding-bottom: 20% !important; */
-  /* background-color: black; */
-  /* border-bottom: 2px solid #fff; */
-  color: #2A2B41 !important;
-  width: 180% !important;
-  visibility: hidden;
-}
-
+/* Then set up our initial state */
 .dropdown-menu {
-  width: 8vw !important;
-  height: auto !important;
-  position: absolute;
-  right: 8%;
-  top: 200% !important;
-  /* display: flex; */
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+  width: 28vw !important;
+  height: 104vh !important;
+  top: var(--bs-dropdown-spacer) !important;
   background-color: #2A2B41 !important;
-  /* opacity: 0; */
+  
+  /* Initial state - hidden and off-screen */
+  transform: translateX(100%) !important;
+  opacity: 0 !important;
+  
+  /* Make sure it's still in the DOM */
+  display: block !important;
+  visibility: hidden !important;
+}
+
+/* When shown, apply our transition */
+.dropdown-menu.show {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
   visibility: visible !important;
-  animation: menu 0.4s linear forwards;
+  
+  /* Apply transition only when showing */
+  transition: transform 0.8s ease, opacity 0.4s ease, visibility 0.4s !important;
 }
 
+/* For dropstart specific positioning */
+.dropstart .dropdown-menu {
+  top: -1vh !important;
+  right: -0.2vw !important;
+  left: auto !important;
+}
+
+/* Ensure the dropdown container doesn't restrict positioning */
+.btn-group.dropstart {
+  position: static !important;
+}
+
+/* Remove the keyframes animation since we're using transitions instead */
+/* If you still want to use keyframes, keep them but don't apply them by default */
 @keyframes menu {
-0% {
-  right: -400%;
-  opacity: 0.2;
-}
-100% {
-  right: -800%;
-  opacity: 1;
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-}
 
-.left {
-  width: 80% !important;
-  float: left;
-
-}
-.right {
-  width: 80% !important;
-  float: left;
-}
 .dropdown-item {
   color: whitesmoke !important;
   font-family: "sora-b" !important;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-size: 0px !important;
+  font-size: 8px !important;
   /* letter-spacing: 1px; */
-}
-.dropdown-item:hover {
-  color: #2b2b2b !important;
-}
-}
+    a{
+      margin-left: 8%;
+    }
+   >.nav-link{display: block !important;}
+  }
+  .dropdown-item:hover {
+    a{
+      color: #2A2B41 !important;
+    }
+  }
+  }
   @media (max-width: 576px){
         /* head {
       margin-left: 500px;
@@ -1327,49 +1522,82 @@ width: 40% !important;
     }
   
     .dropdown-menu {
-      width: 8vw !important;
-      height: auto !important;
-      position: absolute;
-      right: 8%;
-      top: 200% !important;
-      /* display: flex; */
-      background-color: #2A2B41 !important;
-      /* opacity: 0; */
-      visibility: visible !important;
-      animation: menu 0.4s linear forwards;
-    }
+  transition: none !important;
+}
+
+/* Then set up our initial state */
+.dropdown-menu {
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+  width: 28vw !important;
+  height: 104vh !important;
+  top: var(--bs-dropdown-spacer) !important;
+  background-color: #2A2B41 !important;
   
-  @keyframes menu {
-    0% {
-      right: -400%;
-      opacity: 0.2;
-    }
-    100% {
-      right: -800%;
-      opacity: 1;
-    }
-    
+  /* Initial state - hidden and off-screen */
+  transform: translateX(100%) !important;
+  opacity: 0 !important;
+  
+  /* Make sure it's still in the DOM */
+  display: block !important;
+  visibility: hidden !important;
+}
+
+/* When shown, apply our transition */
+.dropdown-menu.show {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  
+  /* Apply transition only when showing */
+  transition: transform 0.8s ease, opacity 0.4s ease, visibility 0.4s !important;
+}
+
+/* For dropstart specific positioning */
+.dropstart .dropdown-menu {
+  top: -1vh !important;
+  right: -0.2vw !important;
+  left: auto !important;
+}
+
+/* Ensure the dropdown container doesn't restrict positioning */
+.btn-group.dropstart {
+  position: static !important;
+}
+
+/* Remove the keyframes animation since we're using transitions instead */
+/* If you still want to use keyframes, keep them but don't apply them by default */
+@keyframes menu {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
   }
-  
-    .left {
-      width: 80% !important;
-      float: left;
-  
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.dropdown-item {
+  color: whitesmoke !important;
+  font-family: "sora-b" !important;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 8px !important;
+  /* letter-spacing: 1px; */
+    a{
+      margin-left: 8%;
     }
-    .right {
-      width: 80% !important;
-      float: left;
+   >.nav-link{display: block !important;}
+  }
+  .dropdown-item:hover {
+    a{
+      color: #2A2B41 !important;
     }
-    .dropdown-item {
-      color: whitesmoke !important;
-      font-family: "sora-b" !important;
-      margin-top: 2%;
-      margin-bottom: 2%;
-      font-size: 0px !important;
-      /* letter-spacing: 1px; */
-    }
-    .dropdown-item:hover {
-      color: #2b2b2b !important;
-    }
+  }
   }
   

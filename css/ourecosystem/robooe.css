@@ -75,13 +75,11 @@ margin-bottom: 20%;
     .buttons {
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 80%;
-      left: 36%;
-      /* text-align: center; */
-      opacity: 1;
       width: 100%;
-      /* margin-top: 8%; */
+      margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -276,13 +274,11 @@ margin-bottom: 22%;
     .buttons {
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 80%;
-      left: 36%;
-      /* text-align: center; */
-      opacity: 1;
       width: 100%;
-      /* margin-top: 8%; */
+      margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -477,13 +473,11 @@ margin-bottom: 22%;
     .buttons {
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 80%;
-      left: 36%;
-      /* text-align: center; */
-      opacity: 1;
       width: 100%;
-      /* margin-top: 8%; */
+      margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -677,13 +671,11 @@ margin-bottom: 18%;
     .buttons {
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 68%;
-      left: 28%;
-      /* text-align: center; */
-      opacity: 1;
-      width: 100%;
-      /* margin-top: 8%; */
+      width: 80%;
+      margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -877,13 +869,11 @@ margin-bottom: 18%;
     .buttons {
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 68%;
-      left: 28%;
-      /* text-align: center; */
-      opacity: 1;
-      width: 100%;
-      /* margin-top: 8%; */
+      width: 80%;
+      margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -1077,13 +1067,11 @@ margin-bottom: 18%;
     .buttons {
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 72%;
-      left: 28%;
-      /* text-align: center; */
-      opacity: 1;
-      width: 100%;
-      /* margin-top: 8%; */
+      width: 80%;
+      margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -1225,7 +1213,7 @@ margin-bottom: 18%;
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
       position: relative;
-      margin-bottom: 8%;
+      /* margin-bottom: 8%; */
       >img{
         width: 20%;
         position: absolute;
@@ -1277,13 +1265,11 @@ margin-bottom: 18%;
     .buttons {
       /* float: right; */
       /* padding-top: 44%; */
-      position: absolute;
-      top: 84%;
-      left: 24%;
-      /* text-align: center; */
-      opacity: 1;
-      width: 100%;
-      /* margin-top: 8%; */
+      width: 80%;
+      margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {

@@ -36,7 +36,7 @@
     background-color: #2a2b41 !important;
     /* padding-top: 80px; */
     /* padding-left: 140px; */
-    width: 64%;
+    width: 1200px;
     height: 400px;
     z-index: 2;
     border-radius: 20px !important;
@@ -52,7 +52,7 @@
       background-color: #1e88e5;
       z-index: 2;
       top: 38%;
-      left: 28%;
+      left: 26%;
       border-radius: 48px;
       padding-top: 14px;
       padding-left: 28px;
@@ -157,7 +157,7 @@
     background-color: #2a2b41 !important;
     /* padding-top: 80px; */
     /* padding-left: 140px; */
-    width: 64%;
+    width: 1000px;
     height: 400px;
     z-index: 2;
     border-radius: 20px !important;
@@ -167,13 +167,13 @@
     > h4 {
       color: whitesmoke !important;
       position: absolute;
-      font-size: 28px;
+      font-size: 40px;
       /* text-align: center; */
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
       top: 40%;
-      left: 35%;
+      left: 28%;
       border-radius: 48px;
       padding-top: 14px;
       padding-left: 28px;
@@ -184,7 +184,7 @@
       position: absolute;
       color: whitesmoke !important;
       opacity: 0.8;
-      font-size: 28px;
+      font-size: 40px;
       /* margin-bottom: 1440px; */
       letter-spacing: 2px;
       white-space: nowrap;
@@ -240,7 +240,7 @@
     }
   }
 }
-@media (min-width: 1200px) and (max-width: 1400px) {
+@media (min-width: 1201px) and (max-width: 1400px) {
   .split {
     width: 100%;
     display: flex;
@@ -278,8 +278,8 @@
     background-color: #2a2b41 !important;
     /* padding-top: 80px; */
     /* padding-left: 140px; */
-    width: 72%;
-    height: 400px;
+    width: 800px;
+    height: 280px;
     z-index: 2;
     border-radius: 20px !important;
     overflow: clip !important;
@@ -294,7 +294,7 @@
       background-color: #1e88e5;
       z-index: 2;
       top: 40%;
-      left: 32%;
+      left: 30%;
       border-radius: 48px;
       padding-top: 14px;
       padding-left: 28px;
@@ -399,8 +399,8 @@
     background-color: #2a2b41 !important;
     padding-top: 80px;
     /* padding-left: 140px; */
-    width: 80%;
-    height: 280px;
+    width: 680px;
+    height: 240px;
     z-index: 2;
     border-radius: 20px !important;
     overflow: clip !important;
@@ -409,13 +409,13 @@
     > h4 {
       color: whitesmoke !important;
       position: absolute;
-      font-size: 36px;
+      font-size: 24px;
       /* text-align: center; */
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
       top: 38%;
-      left: 30%;
+      left: 31%;
       border-radius: 48px;
       padding-top: 8px;
       padding-left: 16px;
@@ -426,7 +426,7 @@
       position: absolute;
       color: whitesmoke !important;
       opacity: 0.8;
-      font-size: 36px;
+      font-size: 24px;
       /* margin-bottom: 1440px; */
       letter-spacing: 2px;
       white-space: nowrap;
@@ -520,7 +520,7 @@
     background-color: #2a2b41 !important;
     padding-top: 80px;
     /* padding-left: 140px; */
-    width: 80%;
+    width: 600px;
     height: 240px;
     z-index: 2;
     border-radius: 20px !important;
@@ -530,13 +530,13 @@
     > h4 {
       color: whitesmoke !important;
       position: absolute;
-      font-size: 28px;
+      font-size: 20px;
       /* text-align: center; */
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
-      top: 38%;
-      left: 30%;
+      top: 40%;
+      left: 32%;
       border-radius: 48px;
       padding-top: 8px;
       padding-left: 16px;
@@ -547,7 +547,7 @@
       position: absolute;
       color: whitesmoke !important;
       opacity: 0.8;
-      font-size: 28px;
+      font-size: 20px;
       /* margin-bottom: 1440px; */
       letter-spacing: 2px;
       white-space: nowrap;
@@ -641,8 +641,8 @@
     background-color: #2a2b41 !important;
     padding-top: 80px;
     /* padding-left: 140px; */
-    width: 80%;
-    height: 200px;
+    width: 480px;
+    height: 180px;
     z-index: 2;
     border-radius: 20px !important;
     overflow: clip !important;
@@ -651,13 +651,13 @@
     > h4 {
       color: whitesmoke !important;
       position: absolute;
-      font-size: 26px;
+      font-size: 18px;
       /* text-align: center; */
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
-      top: 38%;
-      left: 28%;
+      top: 40%;
+      left: 30%;
       border-radius: 48px;
       padding-top: 4px;
       padding-left: 8px;
@@ -668,7 +668,7 @@
       position: absolute;
       color: whitesmoke !important;
       opacity: 0.8;
-      font-size: 24px;
+      font-size: 18px;
       /* margin-bottom: 1440px; */
       letter-spacing: 2px;
       white-space: nowrap;
@@ -762,7 +762,7 @@
     background-color: #2a2b41 !important;
     padding-top: 80px;
     /* padding-left: 140px; */
-    width: 88%;
+    width: 360px;
     height: 140px;
     z-index: 2;
     border-radius: 20px !important;
@@ -778,7 +778,7 @@
       background-color: #1e88e5;
       z-index: 2;
       top: 40%;
-      left: 28%;
+      left: 30%;
       border-radius: 48px;
       padding-top: 4px;
       padding-left: 8px;

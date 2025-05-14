@@ -61,7 +61,9 @@ body {
   /* background-size: 200px 200px; */
   /* background: linear-gradient(circle at 80% 20%, whitesmoke, #1e88e5) !important; */
   /* background: linear-gradient(to bottom, #f5f5f5, #1e88e515) !important; */
-  background: linear-gradient(180deg, #ffffff 0%, #f7fafd 100%);
+  /* background: linear-gradient(180deg, #ffffff 0%, #f7fafd 100%); */
+  background-color: #f5f5f5 !important;
+
 
   overflow-x: clip !important;
 

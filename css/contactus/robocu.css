@@ -27,10 +27,22 @@
     .robotext {
       /* padding-top: 8%; */
       /* padding-left: 140px; */
-      width: 100%;
+      width: 68%;
       overflow: visible;
       /* text-align: center; */
-
+> img {
+  position: absolute;
+  width: 48%;
+  /* height: 100%; */
+  /* filter: invert(100%); */
+  /* rotate: 0deg; */
+  z-index: -1 !important;
+  /* visibility: hidden !important; */
+  /* background-color: #000 !important; */
+  top: -14%;
+  left: 52%;
+  /* opacity: 0.8 !important; */
+}
       > h4 {
         color: #000 !important;
         font-family: "sora-b" !important;
@@ -58,10 +70,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      text-align: center;
-      opacity: 1;
       width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -215,9 +228,21 @@
     .robotext {
       /* padding-top: 8%; */
       /* padding-left: 140px; */
-      width: 100%;
+      width: 68%;
       overflow: visible;
-
+> img {
+  position: absolute;
+  width: 48%;
+  /* height: 100%; */
+  /* filter: invert(100%); */
+  /* rotate: 0deg; */
+  z-index: -1 !important;
+  /* visibility: hidden !important; */
+  /* background-color: #000 !important; */
+  top: -24%;
+  left: 60%;
+  /* opacity: 0.8 !important; */
+}
       > h4 {
         color: #000 !important;
         font-family: "sora-b" !important;
@@ -245,10 +270,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      text-align: center;
-      opacity: 1;
       width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -397,14 +423,26 @@
       border-bottom: 24px solid transparent;
       /* border-top: 24px solid transparent; */
       /* margin-top: 8% !important; */
-      padding: 8%;
+      padding: 4%;
     }
     .robotext {
       /* padding-top: 8%; */
       /* padding-left: 140px; */
-      width: 100%;
+      width: 68%;
       overflow: visible;
-
+> img {
+  position: absolute;
+  width: 60%;
+  /* height: 100%; */
+  /* filter: invert(100%); */
+  /* rotate: 0deg; */
+  z-index: -1 !important;
+  /* visibility: hidden !important; */
+  /* background-color: #000 !important; */
+  top: -18%;
+  left: 52%;
+  /* opacity: 0.8 !important; */
+}
       > h4 {
         color: #000 !important;
         font-family: "sora-b" !important;
@@ -432,10 +470,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      text-align: center;
-      opacity: 1;
       width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -445,10 +484,10 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 280px;
+      width: 240px;
       height: 60px;
       border-radius:48px !important;
-      font-size: 16px !important;
+      font-size: 14px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -466,10 +505,10 @@
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 280px;
+      width: 240px;
       height: 60px;
       border-radius: 48px !important;
-      font-size: 16px !important;
+      font-size: 14px !important;
       font-weight: 500 !important;
       margin-left: 28px;
       border-width: 4px !important;
@@ -589,9 +628,21 @@
     .robotext {
       /* padding-top: 8%; */
       /* padding-left: 140px; */
-      width: 100%;
+      width: 68%;
       overflow: visible;
-
+> img {
+  position: absolute;
+  width: 60%;
+  /* height: 100%; */
+  /* filter: invert(100%); */
+  /* rotate: 0deg; */
+  z-index: -1 !important;
+  /* visibility: hidden !important; */
+  /* background-color: #000 !important; */
+  top: -8%;
+  left: 52%;
+  /* opacity: 0.8 !important; */
+}
       > h4 {
         color: #000 !important;
         font-family: "sora-b" !important;
@@ -619,10 +670,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      text-align: center;
-      opacity: 1;
       width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -658,7 +710,7 @@
       border-radius:20px !important;
       font-size: 12px !important;
       font-weight: 500 !important;
-      margin-left: 8px;
+      margin-left: 14px;
       border-width: 2px !important;
       position: relative;
   
@@ -778,7 +830,19 @@
       /* padding-left: 140px; */
       width: 100%;
       overflow: visible;
-
+> img {
+  position: absolute;
+  width: 60%;
+  /* height: 100%; */
+  /* filter: invert(100%); */
+  /* rotate: 0deg; */
+  z-index: -1 !important;
+  /* visibility: hidden !important; */
+  /* background-color: #000 !important; */
+  top: -2%;
+  left: 50%;
+  /* opacity: 0.8 !important; */
+}
       > h4 {
         color: #000 !important;
         font-family: "sora-b" !important;
@@ -806,10 +870,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      text-align: center;
-      opacity: 1;
       width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -965,7 +1030,19 @@
       /* padding-left: 140px; */
       width: 100%;
       overflow: visible;
-
+> img {
+  position: absolute;
+  width: 80%;
+  /* height: 100%; */
+  /* filter: invert(100%); */
+  /* rotate: 0deg; */
+  z-index: -1 !important;
+  /* visibility: hidden !important; */
+  /* background-color: #000 !important; */
+  top: -4%;
+  left: 40%;
+  /* opacity: 0.8 !important; */
+}
       > h4 {
         color: #000 !important;
         font-family: "sora-b" !important;
@@ -993,10 +1070,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      text-align: center;
-      opacity: 1;
       width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -1152,7 +1230,19 @@
       /* padding-left: 140px; */
       width: 100%;
       overflow: visible;
-
+> img {
+  position: absolute;
+  width: 88%;
+  /* height: 100%; */
+  /* filter: invert(100%); */
+  /* rotate: 0deg; */
+  z-index: -1 !important;
+  /* visibility: hidden !important; */
+  /* background-color: #000 !important; */
+  top: -4%;
+  left: 28%;
+  /* opacity: 0.8 !important; */
+}
       > h4 {
         color: #000 !important;
         font-family: "sora-b" !important;
@@ -1180,10 +1270,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      text-align: center;
-      opacity: 1;
       width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {

@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Keep logo size, decrease margin-right
             logo.style.marginRight = '0px';
             logo.style.marginLeft = '0%';
-            logo.style.width = '142px';
+            logo.style.width = '140px';
 
 
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             hambur.style.display = 'none';
             // #nb width to 28%
-            nb.style.width = '268px';
+            nb.style.width = '260px'
             // nb.style.paddingLeft = '4%';
             nb.style.opacity = '0.8';
         } else if (scrollTop < lastScrollTop) {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dropdown.style.visibility = originalDropdownVisibility;
 
             logo.style.marginRight = originalLogoMarginRight;
-            logo.style.marginLeft = '0%';
+            logo.style.marginLeft = '40%';
             logo.style.width = originalLogoWidth;
 
             nb.style.width = '100%';

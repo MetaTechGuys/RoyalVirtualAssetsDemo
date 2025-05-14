@@ -78,9 +78,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      opacity: 1;
-      width: 80%;
+      width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -95,7 +97,7 @@
       border-radius:48px !important;
       font-size: 20px !important;
       font-weight: 500 !important;
-      margin-left: 82px;
+      /* margin-left: 82px; */
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -285,9 +287,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      opacity: 1;
-      width: 80%;
+      width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -302,7 +306,7 @@
       border-radius:48px !important;
       font-size: 16px !important;
       font-weight: 500 !important;
-      margin-left: 82px;
+      /* margin-left: 82px; */
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -492,9 +496,12 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      opacity: 1;
-      width: 80%;
+      /* opacity: 1; */
+      width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -509,7 +516,7 @@
       border-radius:48px !important;
       font-size: 14px !important;
       font-weight: 500 !important;
-      margin-left: 82px;
+      /* margin-left: 82px; */
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -702,9 +709,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      opacity: 1;
       width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -719,7 +728,7 @@
       border-radius:20px !important;
       font-size: 12px !important;
       font-weight: 500 !important;
-      margin-left: 32%;
+      /* margin-left: 32%; */
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -912,9 +921,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      opacity: 1;
       width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -929,7 +940,7 @@
       border-radius:20px !important;
       font-size: 10px !important;
       font-weight: 500 !important;
-      margin-left: 28%;
+      /* margin-left: 28%; */
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -1122,9 +1133,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      opacity: 1;
       width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -1139,7 +1152,7 @@
       border-radius:20px !important;
       font-size: 10px !important;
       font-weight: 500 !important;
-      margin-left: 28%;
+      /* margin-left: 28%; */
       overflow: hidden;
       border: none !important;
       z-index: 1;
@@ -1332,9 +1345,11 @@
       /* position: absolute; */
       /* top: 55%; */
       /* left: 22%; */
-      opacity: 1;
       width: 100%;
       margin-top: 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   
     .golden {
@@ -1349,7 +1364,7 @@
       border-radius:20px !important;
       font-size: 7px !important;
       font-weight: 500 !important;
-      margin-left: 80px;
+      /* margin-left: 80px; */
       overflow: hidden;
       border: none !important;
       z-index: 1;
