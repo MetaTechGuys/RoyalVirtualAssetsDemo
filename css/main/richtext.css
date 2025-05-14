@@ -56,18 +56,6 @@ letter-spacing: 2px;
     overflow: hidden;
     margin-left: 28%;
     > img {
-      position: absolute;
-      width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
-      z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
-      left: 0%;
-      opacity: 0.8;
-    }
-    > video {
       height: 88%;
       /* height: auto; */
       /* overflow: hidden; */
@@ -133,19 +121,8 @@ letter-spacing: 2px;
     float: right;
     overflow: hidden;
     margin-left: 20%;
+    
     > img {
-      position: absolute;
-      width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
-      z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
-      left: 0%;
-      opacity: 0.8;
-    }
-    > video {
       margin-top: 20%;
       height: 80%;
       /* height: auto; */
@@ -212,19 +189,8 @@ letter-spacing: 2px;
     float: right;
     overflow: hidden;
     margin-left: 20%;
+    
     > img {
-      position: absolute;
-      width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
-      z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
-      left: 0%;
-      opacity: 0.8;
-    }
-    > video {
       margin-top: 20%;
       height: 80%;
       /* height: auto; */
@@ -295,19 +261,8 @@ line-height: 0.2;
     float: right;
     overflow: hidden;
     /* margin-top: 2%; */
+  
     > img {
-      position: absolute;
-      width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
-      z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
-      left: 0%;
-      opacity: 0.8;
-    }
-    > video {
       width: 28%;
       /* height: auto; */
       /* overflow: hidden; */
@@ -366,7 +321,7 @@ line-height: 0.2;
 /* line-gap-override: 2px; */
 line-height: 0.2;
       color: #000 !important;
-      font-size: 14px;
+      font-size: 16px;
       /* margin-bottom: 240px; */
 /* letter-spacing: 2px; */
     }
@@ -378,18 +333,6 @@ line-height: 0.2;
     overflow: hidden;
     /* margin-top: 2%; */
     > img {
-      position: absolute;
-      width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
-      z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
-      left: 0%;
-      opacity: 0.8;
-    }
-    > video {
       width: 40%;
       /* height: auto; */
       /* overflow: hidden; */
@@ -448,7 +391,7 @@ line-height: 0.2;
 /* line-gap-override: 2px; */
 line-height: 0.2;
       color: #000 !important;
-      font-size: 12px;
+      font-size: 14px;
       /* margin-bottom: 240px; */
 /* letter-spacing: 2px; */
     }
@@ -459,19 +402,8 @@ line-height: 0.2;
     float: right;
     overflow: hidden;
     /* margin-top: 2%; */
+    
     > img {
-      position: absolute;
-      width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
-      z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
-      left: 0%;
-      opacity: 0.8;
-    }
-    > video {
       width: 40%;
       /* height: auto; */
       /* overflow: hidden; */
@@ -492,7 +424,7 @@ line-height: 0.2;
     margin-bottom: 8%;
     text-align: center;
     /* justify-content: center; */
-    > video {
+    > img {
       position: absolute;
       height: 100%;
       /* filter: grayscale(100%); */
@@ -520,7 +452,7 @@ line-height: 0.2;
       font-family: "sora-b" !important;
 
       color: #000 !important;
-      font-size: 14px;
+      font-size: 16px;
       /* text-align: center; */
       margin-bottom: 6%;
       margin-top: 28%;
@@ -530,7 +462,7 @@ line-height: 0.2;
 /* line-gap-override: 2px; */
 line-height: 0.2;
       color: #000 !important;
-      font-size: 8px;
+      font-size: 12px;
       /* margin-bottom: 240px; */
 /* letter-spacing: 2px; */
     }
@@ -541,19 +473,8 @@ line-height: 0.2;
     float: right;
     overflow: hidden;
     /* margin-top: 2%; */
+    
     > img {
-      position: absolute;
-      width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
-      z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
-      left: 0%;
-      opacity: 0.8;
-    }
-    > video {
       width: 40%;
       /* height: auto; */
       /* overflow: hidden; */

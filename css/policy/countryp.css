@@ -785,7 +785,7 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 12px;
+        font-size: 14px;
         margin-bottom: 0;
         /* text-align: center; */
         /* margin-top:18%; */
@@ -794,7 +794,7 @@
       > span {
         font-family: "inter" !important;
         color: whitesmoke !important;
-        font-size: 6px;
+        font-size: 10px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -851,7 +851,7 @@
       /* float: left; */
       > h4 {
         color: #2a2b41 !important;
-        font-size: 12px;
+        font-size: 14px;
         margin-bottom: 0;
         /* text-align: center; */
         /* margin-top:18%; */
@@ -860,7 +860,7 @@
       > span {
         font-family: "inter" !important;
         color: #2a2b41 !important;
-        font-size: 6px;
+        font-size: 10px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }

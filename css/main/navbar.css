@@ -1708,7 +1708,7 @@ filter: invert(1);
   font-family: "sora-b" !important;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-size: 8px !important;
+  font-size: 10px !important;
   /* letter-spacing: 1px; */    
 >.nav-link{display: block !important;}
 a{

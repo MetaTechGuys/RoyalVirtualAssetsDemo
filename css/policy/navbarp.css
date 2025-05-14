@@ -1371,7 +1371,7 @@
       flex-basis: 33% !important;
     }
     .logo {
-      width: 64px;
+      width: 88px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -1407,8 +1407,8 @@
       padding: 0 !important;
     }
     .justright {
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -1541,7 +1541,7 @@
   font-family: "sora-b" !important;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-size: 8px !important;
+  font-size: 10px !important;
   /* letter-spacing: 1px; */
     a{
       margin-left: 8%;

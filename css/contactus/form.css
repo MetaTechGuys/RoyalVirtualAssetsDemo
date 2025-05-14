@@ -2,7 +2,7 @@
 @media (min-width: 1921px) and (max-width: 2560px) {
     .cu {
         width: 50%;
-        margin: 0 auto; /* centers horizontally */
+        margin: 0 0; /* centers horizontally */
         background-color: #fff;
         color: black;
         padding: 20px;
@@ -12,12 +12,18 @@
         font-family: "jb-mono";
         /* border: 2px solid black; */
         padding: 4%;
-        margin-bottom: 0%;
+        padding-bottom: 0;
       }
       
       .form1 {
         /* display: flex; */
-        text-align: center;
+        /* text-align: center; */
+        display: flex;
+        /* text-align: center; */
+        flex-wrap: wrap;
+        /* align-content: space-around; */
+        justify-content: center;
+        margin-bottom: 8%;
       }
       .texture{
           width: 20%;
@@ -117,6 +123,7 @@
         -ms-transition: 0.08s ease-in;
         -moz-transition: 0.08s ease-in;
         -webkit-transition: 0.08s ease-in;
+        margin-bottom: 2%;
       }
       
       .cu button[type="submit"]:hover {
@@ -144,7 +151,7 @@
   @media (min-width: 1401px) and (max-width: 1920px) {
     .cu {
       width: 50%;
-      margin: 0 auto; /* centers horizontally */
+      margin: 0 0 !important; /* centers horizontally */
       background-color: #fff;
       color: black;
       padding: 20px;
@@ -154,12 +161,18 @@
       font-family: "jb-mono";
       /* border: 2px solid black; */
       padding: 4%;
-      margin-bottom: 0%;
+      padding-bottom: 0;
+      /* margin-left: 0; */
+      
     }
     
     .form1 {
-      /* display: flex; */
-      text-align: center;
+      margin-bottom: 8%;
+      display: flex;
+      /* text-align: center; */
+      flex-wrap: wrap;
+      /* align-content: space-around; */
+      justify-content: center;
     }
     .texture{
         width: 20%;
@@ -205,7 +218,7 @@
     .cu input[type="text"],
     .cu input[type="email"],
     .cu input[type="tel"] {
-      width: 49%;
+      width: 48%;
       padding: 8px 10px;
       margin-bottom: 16px;
       border: 1px solid #000;
@@ -258,6 +271,8 @@
       -ms-transition: 0.08s ease-in;
       -moz-transition: 0.08s ease-in;
       -webkit-transition: 0.08s ease-in;
+        margin-bottom: 2%;
+
     }
     
     .cu button[type="submit"]:hover {
@@ -293,12 +308,21 @@
       font-family: "jb-mono";
       /* border: 2px solid black; */
       padding: 4%;
-      margin-bottom: 0%;
+      padding-bottom: 0;
+      /* margin-bottom: 0%; */
+      /* margin-bottom: 4%; */
     }
     
     .form1 {
       /* display: flex; */
-      text-align: center;
+      /* text-align: center; */
+      display: flex;
+      /* text-align: center; */
+      flex-wrap: wrap;
+      /* align-content: space-around; */
+      justify-content: center;
+        margin-bottom: 8%;
+
     }
     .texture{
         width: 20%;
@@ -344,7 +368,7 @@
     .cu input[type="text"],
     .cu input[type="email"],
     .cu input[type="tel"] {
-      width: 49%;
+      width: 48%;
       padding: 8px 10px;
       margin-bottom: 16px;
       border: 1px solid #000;
@@ -397,6 +421,8 @@
       -ms-transition: 0.08s ease-in;
       -moz-transition: 0.08s ease-in;
       -webkit-transition: 0.08s ease-in;
+        margin-bottom: 2%;
+
     }
     
     .cu button[type="submit"]:hover {
@@ -432,7 +458,8 @@
       font-family: "inter";
       /* border: 2px solid black; */
       padding: 4%;
-      margin-bottom: 0%;
+      margin-bottom: 4%;
+      padding-bottom: 0;
 margin-top: 4%;
     }
     
@@ -445,7 +472,12 @@ margin-top: 4%;
     }
     .form1 {
       /* display: flex; */
-      text-align: center;
+      /* text-align: center; */
+      display: flex;
+      /* text-align: center; */
+      flex-wrap: wrap;
+      /* align-content: space-around; */
+      justify-content: center;
     }
     .cu h2 {
       /* text-align: center; */
@@ -478,7 +510,7 @@ margin-top: 4%;
     .cu input[type="text"],
     .cu input[type="email"],
     .cu input[type="tel"] {
-      width: 49.2%;
+      width: 48.5%;
       padding: 4px 8px;
       margin-bottom: 4px;
       border: 1px solid #000;
@@ -534,6 +566,7 @@ margin-top: 4%;
       -ms-transition: 0.08s ease-in;
       -moz-transition: 0.08s ease-in;
       -webkit-transition: 0.08s ease-in;
+      margin-bottom: 2%;
     }
     
     .cu button[type="submit"]:hover {
@@ -569,7 +602,8 @@ margin-top: 4%;
       font-family: "inter";
       /* border: 2px solid black; */
       padding: 4%;
-      /* margin-bottom: 40%; */
+      /* margin-bottom: 4%; */
+      padding-bottom: 0;
 margin-top: 4%;
     }
     
@@ -581,8 +615,15 @@ margin-top: 4%;
           z-index: 1;
     }
     .form1 {
+        margin-bottom: 8%;
+
       /* display: flex; */
-      text-align: center;
+      /* text-align: center; */
+      display: flex;
+      /* text-align: center; */
+      flex-wrap: wrap;
+      /* align-content: space-around; */
+      justify-content: center;
     }
     .cu h2 {
       /* text-align: center; */
@@ -615,7 +656,7 @@ margin-top: 4%;
     .cu input[type="text"],
     .cu input[type="email"],
     .cu input[type="tel"] {
-      width: 49%;
+      width: 48%;
       padding: 4px 8px;
       margin-bottom: 4px;
       border: 1px solid #000;
@@ -671,6 +712,8 @@ margin-top: 4%;
       -ms-transition: 0.08s ease-in;
       -moz-transition: 0.08s ease-in;
       -webkit-transition: 0.08s ease-in;
+        margin-bottom: 2%;
+
     }
     
     .cu button[type="submit"]:hover {
@@ -706,7 +749,8 @@ margin-top: 4%;
       font-family: "inter";
       /* border: 2px solid black; */
       padding: 4%;
-      /* margin-bottom: 40%; */
+      /* margin-bottom: 4%; */
+      padding-bottom: 0;
 margin-top: 4%;
     }
     
@@ -719,7 +763,14 @@ margin-top: 4%;
     }
     .form1 {
       /* display: flex; */
-      text-align: center;
+      /* text-align: center; */
+      display: flex;
+      /* text-align: center; */
+      flex-wrap: wrap;
+      /* align-content: space-around; */
+      justify-content: center;
+        margin-bottom: 8%;
+
     }
     .cu h2 {
       /* text-align: center; */
@@ -752,7 +803,7 @@ margin-top: 4%;
     .cu input[type="text"],
     .cu input[type="email"],
     .cu input[type="tel"] {
-      width: 48.8%;
+      width: 48%;
       padding: 4px 8px;
       margin-bottom: 4px;
       border: 1px solid #000;
@@ -808,6 +859,8 @@ margin-top: 4%;
       -ms-transition: 0.08s ease-in;
       -moz-transition: 0.08s ease-in;
       -webkit-transition: 0.08s ease-in;
+        margin-bottom: 2%;
+
     }
     
     .cu button[type="submit"]:hover {
@@ -832,7 +885,7 @@ margin-top: 4%;
   }
   @media (max-width: 576px) {
     .cu {
-      width: 80%;
+      width: 68%;
       margin: 0 auto; /* centers horizontally */
       background-color: #fff;
       color: black;
@@ -843,7 +896,7 @@ margin-top: 4%;
       font-family: "inter";
       /* border: 2px solid black; */
       padding: 2%;
-      /* margin-bottom: 40%; */
+      /* margin-bottom: 4%; */
     }
     
     .rob{
@@ -855,7 +908,14 @@ margin-top: 4%;
     }
     .form1 {
       /* display: flex; */
-      text-align: center;
+      /* text-align: center; */
+      display: flex;
+      /* text-align: center; */
+      flex-wrap: wrap;
+      /* align-content: space-around; */
+      justify-content: center;
+        margin-bottom: 8%;
+
     }
     .cu h2 {
       /* text-align: center; */
@@ -888,7 +948,7 @@ margin-top: 4%;
     .cu input[type="text"],
     .cu input[type="email"],
     .cu input[type="tel"] {
-      width: 48.5%;
+      width: 48%;
       padding: 2px 4px;
       margin-bottom: 4px;
       border: 1px solid #000;

@@ -44,7 +44,7 @@
       width: 100% !important;
     }
     .logo {
-      width: 248px;
+      width: 288px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -82,8 +82,8 @@
       padding: 0 !important;
     }
     .justright {
-      width: 40px;
-      height: 40px;
+      width: 48px;
+      height: 48px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -271,12 +271,12 @@ a{
       width: 100% !important;
     }
     .logo {
-      width: 200px;
+      width: 228px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
       /* margin-right: 480vw; */
-      margin-left: 14%;
+      margin-left: 8%;
       /* z-index: 99 !important; */
     }
     .navbar-brand {
@@ -307,8 +307,8 @@ a{
       padding: 0 !important;
     }
     .justright {
-      width: 28px;
-      height: 28px;
+      width: 40px;
+      height: 40px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -497,12 +497,12 @@ a{
       width: 100% !important;
     }
     .logo {
-      width: 200px;
+      width: 172px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
       /* margin-right: 480vw; */
-      margin-left: 14%;
+      margin-left: 8%;
       /* z-index: 99 !important; */
     }
     .navbar-brand {
@@ -533,8 +533,8 @@ a{
       padding: 0 !important;
     }
     .justright {
-      width: 28px;
-      height: 28px;
+      width: 36px;
+      height: 36px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -725,7 +725,7 @@ a{
 
     }
     .logo {
-      width: 144px;
+      width: 160px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -761,8 +761,8 @@ a{
       padding: 0 !important;
     }
     .justright {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -993,13 +993,13 @@ a{
       padding: 0 !important;
     }
     .justright {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
       /* padding-bottom: 8%; */
-      margin-left: 10vw;
+      margin-left: 9.5vw;
       float: right !important;
   
     }
@@ -1225,13 +1225,13 @@ a{
       padding: 0 !important;
     }
     .justright {
-      width: 20px;
-      height: 20px;
+      width: 26px;
+      height: 26px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
       /* padding-bottom: 8%; */
-      margin-left: 10vw;
+      margin-left: 9vw;
       float: right !important;
   
     }
@@ -1360,7 +1360,7 @@ a{
   font-family: "sora-b" !important;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-size: 8px !important;
+  font-size: 10px !important;
   /* letter-spacing: 1px; */    
 >.nav-link{display: block !important;}
 a{
@@ -1423,7 +1423,7 @@ a{
 
     }
     .logo {
-      width: 48px;
+      width: 68px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -1459,13 +1459,13 @@ a{
       padding: 0 !important;
     }
     .justright {
-      width: 12px;
-      height: 12px;
+      width: 20px;
+      height: 20px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
       /* padding-bottom: 8%; */
-      margin-left: 10vw;
+      margin-left: 9vw;
       float: right !important;
   
     }
@@ -1593,7 +1593,7 @@ a{
   font-family: "sora-b" !important;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-size: 8px !important;
+  font-size: 10px !important;
   /* letter-spacing: 1px; */
 >.nav-link{display: block !important;}
 a{

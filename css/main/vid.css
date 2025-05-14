@@ -884,7 +884,7 @@
       font-family: "inter" !important;
 
         color: #000 !important;
-        font-size: 7.5px;
+        font-size: 10px;
         /* margin-left: 20%; */
         /* margin-right: 20%; */
   
@@ -931,10 +931,10 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 96px;
-      height: 24px;
+      width: 140px;
+      height: 28px;
       border-radius:20px !important;
-      font-size: 6px !important;
+      font-size: 10px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
