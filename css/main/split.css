@@ -641,8 +641,8 @@
     background-color: #2a2b41 !important;
     padding-top: 80px;
     /* padding-left: 140px; */
-    width: 480px;
-    height: 180px;
+    width: 680px;
+    height: 240px;
     z-index: 2;
     border-radius: 20px !important;
     overflow: clip !important;
@@ -651,7 +651,7 @@
     > h4 {
       color: whitesmoke !important;
       position: absolute;
-      font-size: 18px;
+      font-size: 28px;
       /* text-align: center; */
       margin-bottom: 6%;
       background-color: #1e88e5;
@@ -668,7 +668,7 @@
       position: absolute;
       color: whitesmoke !important;
       opacity: 0.8;
-      font-size: 18px;
+      font-size: 28px;
       /* margin-bottom: 1440px; */
       letter-spacing: 2px;
       white-space: nowrap;
@@ -772,13 +772,13 @@
     > h4 {
       color: whitesmoke !important;
       position: absolute;
-      font-size: 14px;
+      font-size: 16px;
       /* text-align: center; */
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
       top: 40%;
-      left: 30%;
+      left: 27%;
       border-radius: 48px;
       padding-top: 4px;
       padding-left: 8px;
@@ -789,7 +789,7 @@
       position: absolute;
       color: whitesmoke !important;
       opacity: 0.8;
-      font-size: 14px;
+      font-size: 16px;
       /* margin-bottom: 1440px; */
       letter-spacing: 2px;
       white-space: nowrap;

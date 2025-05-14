@@ -763,6 +763,7 @@ color: #383736;*/
     position: relative;
     background-color: #2a2b41;
     /* align-content: center; */
+    text-align: center;
 }
 .slidehelp{
     width: 100% !important;
@@ -785,14 +786,15 @@ color: #383736;*/
 
 
 .stext{
-position: absolute;
+/* position: absolute;
 top: 14%;
-left: 44%;
+left: 44%; */
+padding: 2%;
   > h2 {
     font-family: "sora-b" !important;
 
     color: whitesmoke !important;
-    font-size: 14px;
+    font-size: 26px;
     /* text-align: center; */
     margin-bottom: 4%;
     /* margin-top: 28%; */
@@ -801,7 +803,7 @@ left: 44%;
     color: whitesmoke !important;
     font-family: "jb-mono" !important;
 
-    font-size: 12px;
+    font-size: 24px;
     margin-bottom: 4%;
   /* letter-spacing: 2px; */
   /* line-height: 24px; */
@@ -813,7 +815,7 @@ left: 44%;
 } */
 .slimge{
     border-radius: 8px !important;
-    width: 40% !important;
+    width: 80% !important;
     height: auto !important;
     /* height: 60vh; */
     /* align-self: center !important; */
@@ -837,10 +839,10 @@ left: 44%;
   color: whitesmoke !important;
   border-color: whitesmoke !important;
   background-color: #1e88e5;
-  width: 140px;
-  height: 36px;
+  width: 268px;
+  height: 48px;
   border-radius: 20px !important;
-  font-size: 8px !important;
+  font-size: 17px !important;
   font-weight: 500 !important;
   /* margin-left: 28px; */
   border-width: 2px !important;
@@ -913,6 +915,7 @@ color: #383736;*/
     position: relative;
     background-color: #2a2b41;
     /* align-content: center; */
+    text-align: center;
 }
 .slidehelp{
     width: 100% !important;
@@ -935,14 +938,15 @@ color: #383736;*/
 
 
 .stext{
-position: absolute;
-top: 14%;
-left: 42%;
+/* position: absolute; */
+/* top: 14%; */
+/* left: 42%; */
+padding: 2%;
   > h2 {
     font-family: "sora-b" !important;
 
     color: whitesmoke !important;
-    font-size: 12px;
+    font-size: 14px;
     /* text-align: center; */
     margin-bottom: 4%;
     /* margin-top: 28%; */
@@ -951,7 +955,7 @@ left: 42%;
     color: whitesmoke !important;
     font-family: "inter" !important;
 
-    font-size: 10px;
+    font-size: 11px;
     margin-bottom: 4%;
   /* letter-spacing: 2px; */
   /* line-height: 24px; */
@@ -963,7 +967,7 @@ left: 42%;
 } */
 .slimge{
     border-radius: 8px !important;
-    width: 38% !important;
+    width: 80% !important;
     height: auto !important;
     /* height: 60vh; */
     /* align-self: center !important; */
@@ -987,10 +991,10 @@ left: 42%;
   color: whitesmoke !important;
   border-color: whitesmoke !important;
   background-color: #1e88e5;
-  width: 114px;
-  height: 24px;
+  width: 164px;
+  height: 28px;
   border-radius: 20px !important;
-  font-size: 6px !important;
+  font-size: 10px !important;
   font-weight: 500 !important;
   /* margin-left: 28px; */
   border-width: 2px !important;

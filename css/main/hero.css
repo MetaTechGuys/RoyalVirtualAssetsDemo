@@ -2238,17 +2238,17 @@ left: 0%;
     /* font-family: "Times New Roman", Times, serif; */
     font-family: "sora-b" !important;
 
-    font-size: 32px;
+    font-size: 48px;
     margin-bottom: 2%;
     /* padding-right: 200px; */
     margin-top: 10%;
     position: absolute;
     opacity: 1;
 top: 40%;
-left: 14%;
+left: 10%;
 >span{
   /* font-family: "Times New Roman", Times, serif; */
-  font-size: 32px;
+  font-size: 48px;
 }
   }
   .first{
@@ -2377,7 +2377,7 @@ left: 14%;
     /* padding-top: 44%; */
     position: absolute;
     top: 80%;
-    left: 4%;
+    left: 0%;
     opacity: 1;
     width: 80%;
   }
@@ -2388,10 +2388,10 @@ left: 14%;
     position: relative;
     background: #2A2B41;
     color: whitesmoke !important;
-    width: 140px;
-    height: 36px;
+    width: 228px;
+    height: 48px;
     border-radius:24px !important;
-    font-size: 8px !important;
+    font-size: 16px !important;
     font-weight: 500 !important;
     margin-left: 82px;
     overflow: hidden;
@@ -2409,10 +2409,10 @@ left: 14%;
 
     color: #2A2B41 !important;
     border-color: #2A2B41 !important;
-    width: 140px;
-    height: 36px;
-    border-radius: 24px !important;
-    font-size: 8px !important;
+    width: 228px;
+    height: 48px;
+    border-radius:24px !important;
+    font-size: 16px !important;
     font-weight: 500 !important;
     margin-left: 8px;
     border-width: 2px !important;
@@ -2671,7 +2671,7 @@ left: 0%;
     position: absolute;
     opacity: 1;
 top: 40%;
-left: 14%;
+left: 8%;
 >span{
   /* font-family: "Times New Roman", Times, serif; */
   font-size: 28px;
@@ -2768,7 +2768,7 @@ left: 14%;
     /* top: 40%; */
     opacity: 1;
     top: 52%;
-    left: 36%;
+    left: 20%;
   }
   .info {
     display: flex;
@@ -2805,7 +2805,7 @@ left: 14%;
     top: 80%;
     left: 0%;
     opacity: 1;
-    width: 80%;
+    width: 100%;
   }
   .golden {
     font-family: "sora" !important;
@@ -2814,12 +2814,12 @@ left: 14%;
     position: relative;
     background: #2A2B41;
     color: whitesmoke !important;
-    width: 120px;
+    width: 114px;
     height: 32px;
     border-radius:24px !important;
     font-size: 8px !important;
     font-weight: 500 !important;
-    margin-left: 82px;
+    margin-left: 40px;
     overflow: hidden;
     border: none !important;
     z-index: 1;
@@ -2835,7 +2835,7 @@ left: 14%;
 
     color: #2A2B41 !important;
     border-color: #2A2B41 !important;
-    width: 120px;
+    width: 114px;
     height: 32px;
     border-radius: 24px !important;
     font-size: 8px !important;

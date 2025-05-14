@@ -697,8 +697,9 @@
     .vid {
       width: 100%;
       /* display: flex; */
+      padding: 0;
       height: auto;
-      border-radius: 20px !important;
+      /* border-radius: 20px !important; */
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
       position: relative;
@@ -719,14 +720,14 @@
     }
     .vidhelp {
       background-color: transparent !important;
-      border: 4px solid transparent;
+      /* border: 4px solid transparent; */
       border-bottom: 2px solid transparent;
       border-top: 2px solid transparent;
     }
     .vidtext {
         /* text-align: center; */
         /* padding-left: 140px; */
-        padding: 4%;
+        padding: 2%;
         width: 100%;
         z-index: 2;
         
@@ -737,16 +738,16 @@
       font-family: "sora-b" !important;
         
         color: #000 !important;
-        font-size: 18px;
+        font-size: 32px;
         /* text-align: center; */
         margin-bottom: 2%;
-        margin-bottom: 0;
+        /* margin-bottom: 0; */
       }
       > span {
       font-family: "inter" !important;
 
         color: #000 !important;
-        font-size: 12px;
+        font-size: 24px;
         /* margin-left: 20%; */
         /* margin-right: 20%; */
   
@@ -761,8 +762,8 @@
       text-align: center;
       z-index: 2;
       > video {
-        width: 80%;
-        border-radius: 20px;
+        width: 100%;
+        /* border-radius: 20px; */
         /* height: auto; */
         /* overflow: hidden; */
         /* filter: grayscale(88%); */
@@ -793,10 +794,10 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 140px;
-      height: 40px;
+      width: 180px;
+      height: 48px;
       border-radius:20px !important;
-      font-size: 8px !important;
+      font-size: 18px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -931,7 +932,7 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 140px;
+      width: 108px;
       height: 28px;
       border-radius:20px !important;
       font-size: 10px !important;
