@@ -317,15 +317,15 @@
     width: 100%;
     > img {
       position: absolute;
-      width: 40%;
+      width: 48%;
       /* height: 100%; */
       filter: invert(100%);
       /* rotate: 0deg; */
       z-index: 0 !important;
       /* visibility: hidden !important; */
       /* background-color: #000 !important; */
-      top: -14%;
-      left: 60%;
+      top: -12%;
+      left: 54%;
       opacity: 0.24 !important;
     }
     > h4 {
@@ -333,7 +333,7 @@
       font-family: "sora-b" !important;
 
       z-index: 2;
-      font-size: 22px;
+      font-size: 40px;
       /* text-align: center; */
       /* margin-bottom: 6%; */
       margin-top: 8%;
@@ -343,7 +343,7 @@
       font-family: "inter" !important;
 
       color: #000 !important;
-      font-size: 14px;
+      font-size: 28px;
       z-index: 2;
       /* margin-bottom: 240px; */
       /* letter-spacing: 2px; */
@@ -356,7 +356,7 @@
     overflow: hidden;
     text-align: center;
     > img {
-      width: 48%;
+      width: 80%;
       /* height: 100%; */
       margin-top: 4%;
       /* margin-left: 4%; */
@@ -466,15 +466,15 @@
     width: 100%;
     > img {
       position: absolute;
-      width: 40%;
+      width: 48%;
       /* height: 100%; */
       filter: invert(100%);
       /* rotate: 0deg; */
       z-index: 0 !important;
       /* visibility: hidden !important; */
       /* background-color: #000 !important; */
-      top: -14%;
-      left: 60%;
+      top: -12%;
+      left: 48%;
       opacity: 0.24 !important;
     }
     > h4 {
@@ -482,7 +482,7 @@
       font-family: "sora-b" !important;
 
       z-index: 2;
-      font-size: 18px;
+      font-size: 24px;
       /* text-align: center; */
       /* margin-bottom: 6%; */
       margin-top: 8%;
@@ -492,7 +492,7 @@
       font-family: "inter" !important;
 
       color: #000 !important;
-      font-size: 12px;
+      font-size: 14px;
       z-index: 2;
       /* margin-bottom: 240px; */
       /* letter-spacing: 2px; */
@@ -505,7 +505,7 @@
     overflow: hidden;
     text-align: center;
     > img {
-      width: 48%;
+      width: 80%;
       /* height: 100%; */
       margin-top: 4%;
       /* margin-left: 4%; */

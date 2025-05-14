@@ -1109,8 +1109,8 @@ filter: invert(1);
     
   }
   .justright {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     /* background-color: whitesmoke; */
     /* filter: invert(100%); */
     /* transition: 500ms; */
@@ -1246,7 +1246,7 @@ filter: invert(1);
   font-family: "sora-b" !important;
   margin-top: 8%;
   margin-bottom: 8%;
-  font-size: 12px !important;
+  font-size: 18px !important;
   /* letter-spacing: 1px; */
 >.nav-link{display: block !important;}
 a{

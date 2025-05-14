@@ -311,7 +311,7 @@ line-height: 0.2;
       font-family: "sora-b" !important;
 
       color: #000 !important;
-      font-size: 24px;
+      font-size: 40px;
       /* text-align: center; */
       margin-bottom: 6%;
       margin-top: 14%;
@@ -319,9 +319,9 @@ line-height: 0.2;
     > span {
       font-family: "inter" !important;
 /* line-gap-override: 2px; */
-line-height: 0.2;
+/* line-height: 0.2; */
       color: #000 !important;
-      font-size: 16px;
+      font-size: 28px;
       /* margin-bottom: 240px; */
 /* letter-spacing: 2px; */
     }

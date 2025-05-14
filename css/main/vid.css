@@ -559,12 +559,13 @@
       width: 100%;
       /* display: flex; */
       height: auto;
-      border-radius: 20px !important;
+      /* border-radius: 20px !important; */
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
       position: relative;
       justify-items: center;
       margin-top: 4%;
+      padding: 0;
       > img {
         position: absolute;
         width: 20%;
@@ -580,25 +581,26 @@
     }
     .vidhelp {
       background-color: transparent !important;
-      border: 4px solid transparent;
+      /* border: 4px solid transparent; */
       border-bottom: 2px solid transparent;
       border-top: 2px solid transparent;
     }
     .vidtext {
         /* text-align: center; */
         /* padding-left: 140px; */
-        padding: 4%;
+        /* padding: 4%; */
         width: 88%;
         z-index: 2;
         
         /* float: left; */
         margin-bottom: 14%;
+        padding: 2%;
         > h4 {
           /* padding-top: 20%; */
       font-family: "sora-b" !important;
         
         color: #000 !important;
-        font-size: 22px;
+        font-size: 40px;
         /* text-align: center; */
         margin-bottom: 2%;
         margin-bottom: 0;
@@ -607,7 +609,7 @@
       font-family: "inter" !important;
 
         color: #000 !important;
-        font-size: 14px;
+        font-size: 28px;
         /* margin-left: 20%; */
         /* margin-right: 20%; */
   
@@ -622,8 +624,8 @@
       text-align: center;
       z-index: 2;
       > video {
-        width: 80%;
-        border-radius: 20px;
+        width: 100%;
+        /* border-radius: 20px; */
         /* height: auto; */
         /* overflow: hidden; */
         /* filter: grayscale(88%); */
@@ -654,10 +656,10 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 164px;
-      height: 44px;
-      border-radius:20px !important;
-      font-size: 12px !important;
+      width: 200px;
+      height: 60px;
+      border-radius:28px !important;
+      font-size: 20px !important;
       font-weight: 500 !important;
       /* margin-left: 10%; */
       overflow: hidden;
@@ -838,12 +840,13 @@
       width: 100%;
       /* display: flex; */
       height: auto;
-      border-radius: 20px !important;
+      /* border-radius: 20px !important; */
       overflow: hidden !important;
       /* background-color: #2a2b41 !important; */
       position: relative;
       justify-items: center;
       margin-top: 4%;
+      padding: 0;
       > img {
         position: absolute;
         width: 20%;
@@ -859,7 +862,7 @@
     }
     .vidhelp {
       background-color: transparent !important;
-      border: 4px solid transparent;
+      /* border: 4px solid transparent; */
       border-bottom: 2px solid transparent;
       border-top: 2px solid transparent;
     }
@@ -868,6 +871,7 @@
         /* padding-left: 140px; */
         width: 100%;
         z-index: 2;
+        padding: 2%;
         
         /* float: left; */
         margin-bottom: 14%;
@@ -876,7 +880,7 @@
       font-family: "sora-b" !important;
         
         color: #000 !important;
-        font-size: 14px;
+        font-size: 18px;
         /* text-align: center; */
         margin-bottom: 2%;
         margin-bottom: 0;
@@ -885,7 +889,7 @@
       font-family: "inter" !important;
 
         color: #000 !important;
-        font-size: 10px;
+        font-size: 14px;
         /* margin-left: 20%; */
         /* margin-right: 20%; */
   
@@ -901,7 +905,7 @@
       z-index: 2;
       > video {
         width: 100%;
-        border-radius: 20px;
+        /* border-radius: 20px; */
         /* height: auto; */
         /* overflow: hidden; */
         /* filter: grayscale(88%); */
@@ -932,7 +936,7 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 108px;
+      width: 120px;
       height: 28px;
       border-radius:20px !important;
       font-size: 10px !important;
