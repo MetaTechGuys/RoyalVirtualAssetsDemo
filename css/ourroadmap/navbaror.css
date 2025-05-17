@@ -965,6 +965,15 @@ a{
       /* margin-left: 4%; */
       /* z-index: 99 !important; */
     }
+    .logo1 {
+      width: 280px;
+      height: auto;
+      /* background-color: #000 !important; */
+      background-color: transparent !important;
+      /* margin-right: 480vw; */
+      /* margin-left: 4%; */
+      /* z-index: 99 !important; */
+    }
     .navbar-brand {
       /* background-color: black !important; */
       background-color: transparent !important;
@@ -1190,6 +1199,15 @@ a{
     }
     .logo {
       width: 96px;
+      height: auto;
+      /* background-color: #000 !important; */
+      background-color: transparent !important;
+      /* margin-right: 480vw; */
+      /* margin-left: 4%; */
+      /* z-index: 99 !important; */
+    }
+    .logo1 {
+      width: 240px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -1424,6 +1442,15 @@ a{
     }
     .logo {
       width: 68px;
+      height: auto;
+      /* background-color: #000 !important; */
+      background-color: transparent !important;
+      /* margin-right: 480vw; */
+      /* margin-left: 4%; */
+      /* z-index: 99 !important; */
+    }
+    .logo1 {
+      width: 160px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;

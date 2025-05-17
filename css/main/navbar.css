@@ -47,6 +47,15 @@
     margin-left: 40%;
     /* z-index: 99 !important; */
   }
+  .logo1 {
+    width: 280px;
+    height: auto;
+    /* background-color: #000 !important; */
+    background-color: transparent !important;
+    margin-right: 0vw;
+    /* margin-left: 40%; */
+    /* z-index: 99 !important; */
+  }
   .navbar-brand {
     /* background-color: black !important; */
     background-color: transparent !important;
@@ -301,6 +310,17 @@ margin-left: 88%;
 
     /* z-index: 99 !important; */
   }
+  .logo1 {
+    width: 240px;
+    height: auto;
+    /* background-color: #000 !important; */
+    background-color: transparent !important;
+    /* margin-right: 0vw; */
+    /* float: left; */
+        /* margin-left: 40%; */
+
+    /* z-index: 99 !important; */
+  }
   .navbar-brand {
     /* background-color: black !important; */
     background-color: transparent !important;
@@ -506,7 +526,7 @@ font-size: 14px;
   font-family: "sora-b" !important;
   margin-top: 8%;
   margin-bottom: 8%;
-  font-size: 14px !important;
+  font-size: 18px !important;
   /* letter-spacing: 1px; */
     a{
       margin-left: 8%;
@@ -569,6 +589,17 @@ font-size: 14px;
     /* margin-right: 0vw; */
     /* float: left; */
         margin-left: 40%;
+
+    /* z-index: 99 !important; */
+  }
+  .logo1 {
+    width: 180px;
+    height: auto;
+    /* background-color: #000 !important; */
+    background-color: transparent !important;
+    /* margin-right: 0vw; */
+    /* float: left; */
+        /* margin-left: 40%; */
 
     /* z-index: 99 !important; */
   }
@@ -830,6 +861,16 @@ font-size: 12px;
 
     /* z-index: 99 !important; */
   }
+  .logo1 {
+    width: 164px !important;
+    height: auto;
+    /* background-color: #000 !important; */
+    background-color: transparent !important;
+    margin-right: 0vw;
+    /* margin-left: 40%; */
+
+    /* z-index: 99 !important; */
+  }
   .navbar-brand {
     /* background-color: black !important; */
     background-color: transparent !important;
@@ -1084,6 +1125,17 @@ margin-left: 148%;
     display: none !important;
 /* filter: invert(1); */
   }
+  .logo1 {
+    width: 360px !important;
+    /* height: auto; */
+    /* background-color: #000 !important; */
+    background-color: transparent !important;
+    margin-right: 0vw;
+    /* margin-left: 4%; */
+    /* z-index: 99 !important; */
+    /* display: none !important; */
+/* filter: invert(1); */
+  }
   .navbar-brand {
     /* background-color: black !important; */
     background-color: transparent !important;
@@ -1111,7 +1163,7 @@ margin-left: 148%;
     visibility: visible !important;
 margin-left: 80%;
     padding: 0 !important;
-filter: invert(1);
+/* filter: invert(1); */
     
   }
   .justright {
@@ -1316,6 +1368,17 @@ filter: invert(1);
     display: none !important;
 /* filter: invert(1); */
   }
+  .logo1 {
+    width: 280px !important;
+    /* height: auto; */
+    /* background-color: #000 !important; */
+    background-color: transparent !important;
+    margin-right: 0vw;
+    /* margin-left: 4%; */
+    /* z-index: 99 !important; */
+    /* display: none !important; */
+/* filter: invert(1); */
+  }
   .navbar-brand {
     /* background-color: black !important; */
     background-color: transparent !important;
@@ -1343,7 +1406,7 @@ filter: invert(1);
     visibility: visible !important;
 margin-left: 40%;
     padding: 0 !important;
-filter: invert(1);
+/* filter: invert(1); */
     
   }
   .justright {
@@ -1547,6 +1610,17 @@ filter: invert(1);
     display: none !important;
 /* filter: invert(1); */
   }
+  .logo1 {
+    width: 160px !important;
+    /* height: auto; */
+    /* background-color: #000 !important; */
+    background-color: transparent !important;
+    margin-right: 0vw;
+    /* margin-left: 4%; */
+    /* z-index: 99 !important; */
+    /* display: none !important; */
+/* filter: invert(1); */
+  }
   .navbar-brand {
     /* background-color: black !important; */
     background-color: transparent !important;
@@ -1574,7 +1648,7 @@ filter: invert(1);
     visibility: visible !important;
 margin-left: 28%;
     padding: 0 !important;
-filter: invert(1);
+/* filter: invert(1); */
     
   }
   .justright {
