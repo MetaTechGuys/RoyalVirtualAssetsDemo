@@ -957,7 +957,7 @@ a{
 
     }
     .logo {
-      width: 124px;
+      width: 240px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -1198,7 +1198,7 @@ a{
 
     }
     .logo {
-      width: 96px;
+      width: 180px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -1441,12 +1441,12 @@ a{
 
     }
     .logo {
-      width: 68px;
+      width: 120px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
       /* margin-right: 480vw; */
-      /* margin-left: 4%; */
+      margin-left: 4%;
       /* z-index: 99 !important; */
     }
     .logo1 {
