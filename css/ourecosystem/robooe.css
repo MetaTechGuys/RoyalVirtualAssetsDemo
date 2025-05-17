@@ -1235,18 +1235,18 @@ margin-bottom: 8%;
       /* padding-left: 140px; */
       width: 100%;
       overflow: visible;
-margin-bottom: 8%;
+margin-bottom: 48%;
 > img {
   position: absolute;
-  width: 48%;
+  width: 80%;
   /* height: 100%; */
   /* filter: invert(100%); */
   /* rotate: 0deg; */
   z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 60%;
-  left: 60%;
+  top: 64%;
+  left: 8%;
   /* opacity: 0.8 !important; */
 }
       > h4 {
@@ -1277,7 +1277,7 @@ margin-bottom: 8%;
       margin-top: 8%;
       display: flex;
       flex-wrap: wrap;
-      justify-content: left;
+      justify-content: center;
     }
   
     .golden {

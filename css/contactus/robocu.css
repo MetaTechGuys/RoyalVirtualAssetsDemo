@@ -1233,24 +1233,24 @@
       /* border-top: 24px solid transparent; */
       /* margin-top: 8% !important; */
       padding: 2%;
-      margin-bottom: 8%;
     }
     .robotext {
       /* padding-top: 8%; */
       /* padding-left: 140px; */
+      margin-bottom: 48%;
       width: 100%;
       overflow: visible;
 > img {
   position: absolute;
-  width: 68%;
+  width: 80%;
   /* height: 100%; */
   /* filter: invert(100%); */
   /* rotate: 0deg; */
   z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 44%;
-  left: 48%;
+  top: 68%;
+  left: 8%;
   /* opacity: 0.8 !important; */
 }
       > h4 {
@@ -1281,7 +1281,7 @@
       /* top: 55%; */
       /* left: 22%; */
       width: 100%;
-      margin-top: 14%;
+      margin-top: 8%;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
