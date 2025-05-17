@@ -847,7 +847,7 @@
   z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 2%;
+  top: 42%;
   left: 50%;
   /* opacity: 0.8 !important; */
 }
@@ -856,7 +856,7 @@
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 22px;
+        font-size: 28px;
         /* text-align: center; */
       }
       > span {
@@ -865,7 +865,7 @@
         font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 14px;
+        font-size: 24px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -882,7 +882,7 @@
       margin-top: 8%;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: left;
     }
   
     .golden {
@@ -892,10 +892,10 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 160px;
-      height: 44px;
-      border-radius:20px !important;
-      font-size: 10px !important;
+      width: 248px;
+      height: 60px;
+      border-radius:28px !important;
+      font-size: 18px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -913,10 +913,10 @@
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 160px;
-      height: 44px;
-      border-radius:20px !important;
-      font-size: 10px !important;
+      width: 248px;
+      height: 60px;
+      border-radius:28px !important;
+      font-size: 18px !important;
       font-weight: 500 !important;
       margin-left: 8px;
       border-width: 2px !important;
@@ -1048,8 +1048,8 @@
   z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 16%;
-  left: 42%;
+  top: 36%;
+  left: 48%;
   /* opacity: 0.8 !important; */
 }
       > h4 {
@@ -1057,7 +1057,7 @@
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 18px;
+        font-size: 24px;
         /* text-align: center; */
       }
       > span {
@@ -1066,7 +1066,7 @@
         font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 14px;
+        font-size: 20px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -1080,10 +1080,10 @@
       /* top: 55%; */
       /* left: 22%; */
       width: 100%;
-      margin-top: 14%;
+      margin-top: 8%;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: left;
     }
   
     .golden {
@@ -1093,10 +1093,10 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 148px;
-      height: 40px;
-      border-radius:20px !important;
-      font-size: 10px !important;
+      width: 224px;
+      height: 60px;
+      border-radius:28px !important;
+      font-size: 16px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -1114,10 +1114,10 @@
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 148px;
-      height: 40px;
-      border-radius: 20px !important;
-      font-size: 10px !important;
+      width: 224px;
+      height: 60px;
+      border-radius:28px !important;
+      font-size: 16px !important;
       font-weight: 500 !important;
       margin-left: 8px;
       border-width: 2px !important;
@@ -1249,8 +1249,8 @@
   z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 32%;
-  left: 44%;
+  top: 44%;
+  left: 48%;
   /* opacity: 0.8 !important; */
 }
       > h4 {
@@ -1258,7 +1258,7 @@
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 16px;
+        font-size: 20px;
         /* text-align: center; */
       }
       > span {
@@ -1267,7 +1267,7 @@
         font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 10px;
+        font-size: 12px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -1320,7 +1320,7 @@
       border-radius: 20px !important;
       font-size:10px !important;
       font-weight: 500 !important;
-      margin-left: 8px;
+      margin-left: 18px;
       border-width: 2px !important;
       position: relative;
   

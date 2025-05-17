@@ -880,7 +880,7 @@
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 22px;
+        font-size: 28px;
         /* text-align: center; */
       }
       > span {
@@ -889,11 +889,11 @@
         font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 14px;
+        font-size: 24px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
-        line-height: 0.2 !important;
+        /* line-height: 0.2 !important; */
       }
     }
   
@@ -935,10 +935,10 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 160px;
-      height: 44px;
-      border-radius:20px !important;
-      font-size: 10px !important;
+      width: 280px;
+      height: 68px;
+      border-radius:36px !important;
+      font-size: 22px !important;
       font-weight: 500 !important;
       /* margin-left: 28%; */
       overflow: hidden;
@@ -956,12 +956,12 @@
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 160px;
-      height: 44px;
-      border-radius:20px !important;
-      font-size: 10px !important;
+      width: 280px;
+      height: 68px;
+      border-radius:36px !important;
+      font-size: 22px !important;
       font-weight: 500 !important;
-      margin-left: 14px;
+      margin-left: 24px;
       border-width: 2px !important;
       position: relative;
   
@@ -1092,7 +1092,7 @@
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 18px;
+        font-size: 28px;
         /* text-align: center; */
       }
       > span {
@@ -1101,11 +1101,11 @@
         font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 12px;
+        font-size: 18px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
-        line-height: 0.2 !important;
+        /* line-height: 0.2 !important; */
       }
     }
   
@@ -1147,10 +1147,10 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 140px;
-      height: 40px;
-      border-radius:20px !important;
-      font-size: 10px !important;
+      width: 240px;
+      height: 60px;
+      border-radius:28px !important;
+      font-size: 18px !important;
       font-weight: 500 !important;
       /* margin-left: 28%; */
       overflow: hidden;
@@ -1168,12 +1168,12 @@
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 140px;
-      height: 40px;
-      border-radius:20px !important;
-      font-size: 10px !important;
+      width: 240px;
+      height: 60px;
+      border-radius:28px !important;
+      font-size: 18px !important;
       font-weight: 500 !important;
-      margin-left: 8px;
+      margin-left: 18px;
       border-width: 2px !important;
       position: relative;
   
@@ -1304,7 +1304,7 @@
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 14px;
+        font-size: 20px;
         /* text-align: center; */
       }
       > span {
@@ -1313,7 +1313,7 @@
         font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 10px;
+        font-size: 16px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -1359,10 +1359,10 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 88px;
-      height: 24px;
+      width: 140px;
+      height: 40px;
       border-radius:20px !important;
-      font-size: 7px !important;
+      font-size: 12px !important;
       font-weight: 500 !important;
       /* margin-left: 80px; */
       overflow: hidden;
@@ -1380,10 +1380,10 @@
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 88px;
-      height: 24px;
+      width: 140px;
+      height: 40px;
       border-radius:20px !important;
-      font-size: 7px !important;
+      font-size: 12px !important;
       font-weight: 500 !important;
       margin-left: 8px;
       border-width: 2px !important;

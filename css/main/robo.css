@@ -7,7 +7,7 @@
     overflow: hidden !important;
     /* background-color: #2a2b41 !important; */
     position: relative;
-    margin-bottom: 8%;
+    margin-bottom: 4%;
   }
   .robo {
     background-color: transparent !important;
@@ -39,7 +39,7 @@
       font-family: "sora-b" !important;
 
       z-index: 2;
-      font-size: 48px;
+      font-size: 60px;
       /* text-align: center; */
       margin-bottom: 4%;
       margin-top: 28%;
@@ -48,7 +48,7 @@
       font-family: "jb-mono" !important;
 
       color: #000 !important;
-      font-size: 24px;
+      font-size: 28px;
       z-index: 2;
       margin-bottom: 240px;
       letter-spacing: 2px;
@@ -112,7 +112,7 @@
       font-family: "sora-b" !important;
 
       z-index: 1 !important;
-      font-size: 28px;
+      font-size: 48px;
       /* text-align: center; */
       margin-bottom: 2%;
       margin-top: 28%;
@@ -121,7 +121,7 @@
       font-family: "jb-mono" !important;
 
       color: #000 !important;
-      font-size: 14px;
+      font-size: 18px;
       z-index: 1 !important;
       margin-bottom: 240px;
       /* letter-spacing: 2px; */
@@ -333,17 +333,17 @@
       font-family: "sora-b" !important;
 
       z-index: 2;
-      font-size: 40px;
+      font-size: 60px;
       /* text-align: center; */
       /* margin-bottom: 6%; */
       margin-top: 8%;
-      margin-bottom: 0;
+      /* margin-bottom: 0; */
     }
     > span {
       font-family: "inter" !important;
 
       color: #000 !important;
-      font-size: 28px;
+      font-size: 36px;
       z-index: 2;
       /* margin-bottom: 240px; */
       /* letter-spacing: 2px; */
@@ -408,17 +408,17 @@
       font-family: "sora-b" !important;
 
       z-index: 2;
-      font-size: 32px;
+      font-size: 48px;
       /* text-align: center; */
       /* margin-bottom: 6%; */
       margin-top: 8%;
-      margin-bottom: 0;
+      margin-bottom: 2%;
     }
     > span {
       font-family: "inter" !important;
 
       color: #000 !important;
-      font-size: 24px;
+      font-size: 32px;
       z-index: 2;
       /* margin-bottom: 240px; */
       /* letter-spacing: 2px; */
@@ -482,17 +482,17 @@
       font-family: "sora-b" !important;
 
       z-index: 2;
-      font-size: 24px;
+      font-size: 28px;
       /* text-align: center; */
       /* margin-bottom: 6%; */
       margin-top: 8%;
-      margin-bottom: 0;
+      margin-bottom: 2%;
     }
     > span {
       font-family: "inter" !important;
 
       color: #000 !important;
-      font-size: 14px;
+      font-size: 16px;
       z-index: 2;
       /* margin-bottom: 240px; */
       /* letter-spacing: 2px; */

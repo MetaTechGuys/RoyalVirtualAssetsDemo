@@ -839,7 +839,7 @@ margin-bottom: 18%;
       /* padding-left: 140px; */
       width: 100%;
       overflow: visible;
-margin-bottom: 18%;
+margin-bottom: 8%;
 > img {
   position: absolute;
   width: 48%;
@@ -849,7 +849,7 @@ margin-bottom: 18%;
   z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 22%;
+  top: 44%;
   left: 56%;
   /* opacity: 0.8 !important; */
 }
@@ -858,7 +858,7 @@ margin-bottom: 18%;
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 22px;
+        font-size: 28px;
         /* text-align: center; */
       }
       > span {
@@ -867,7 +867,7 @@ margin-bottom: 18%;
         font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 14px;
+        font-size: 24px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -877,11 +877,11 @@ margin-bottom: 18%;
     .buttons {
       /* float: right; */
       /* padding-top: 44%; */
-      width: 80%;
+      width: 100%;
       margin-top: 8%;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: left;
     }
   
     .golden {
@@ -891,10 +891,10 @@ margin-bottom: 18%;
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 148px;
-      height: 44px;
-      border-radius:20px !important;
-      font-size: 10px !important;
+      width: 260px;
+      height: 64px;
+      border-radius:28px !important;
+      font-size: 20px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -912,12 +912,12 @@ margin-bottom: 18%;
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 148px;
-      height: 44px;
-      border-radius:20px !important;
-      font-size: 10px !important;
+      width: 260px;
+      height: 64px;
+      border-radius:28px !important;
+      font-size: 20px !important;
       font-weight: 500 !important;
-      margin-left: 8px;
+      margin-left: 14px;
       border-width: 2px !important;
       position: relative;
   
@@ -1037,7 +1037,7 @@ margin-bottom: 18%;
       /* padding-left: 140px; */
       width: 100%;
       overflow: visible;
-margin-bottom: 18%;
+margin-bottom: 8%;
 > img {
   position: absolute;
   width: 48%;
@@ -1047,7 +1047,7 @@ margin-bottom: 18%;
   z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 24%;
+  top: 48%;
   left: 56%;
   /* opacity: 0.8 !important; */
 }
@@ -1056,7 +1056,7 @@ margin-bottom: 18%;
         font-family: "sora-b" !important;
   
         z-index: 2;
-        font-size: 18px;
+        font-size: 24px;
         /* text-align: center; */
       }
       > span {
@@ -1065,7 +1065,7 @@ margin-bottom: 18%;
         font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 12px;
+        font-size: 22px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -1075,11 +1075,11 @@ margin-bottom: 18%;
     .buttons {
       /* float: right; */
       /* padding-top: 44%; */
-      width: 80%;
+      width: 100%;
       margin-top: 8%;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: left;
     }
   
     .golden {
@@ -1089,10 +1089,10 @@ margin-bottom: 18%;
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 140px;
-      height: 40px;
-      border-radius:20px !important;
-      font-size: 10px !important;
+      width: 220px;
+      height: 60px;
+      border-radius:28px !important;
+      font-size: 18px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -1110,12 +1110,12 @@ margin-bottom: 18%;
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 140px;
-      height: 40px;
-      border-radius:20px !important;
-      font-size: 10px !important;
+      width: 220px;
+      height: 60px;
+      border-radius:28px !important;
+      font-size: 18px !important;
       font-weight: 500 !important;
-      margin-left: 8px;
+      margin-left: 14px;
       border-width: 2px !important;
       position: relative;
   
@@ -1211,7 +1211,7 @@ margin-bottom: 18%;
       border-bottom: 4px solid transparent;
       /* border-top: 24px solid transparent; */
       /* margin-top: 8% !important; */
-      padding: 2%;
+      padding: 4%;
     }
     .robot {
       width: 100%;
@@ -1235,7 +1235,7 @@ margin-bottom: 18%;
       /* padding-left: 140px; */
       width: 100%;
       overflow: visible;
-margin-bottom: 18%;
+margin-bottom: 8%;
 > img {
   position: absolute;
   width: 48%;
@@ -1245,8 +1245,8 @@ margin-bottom: 18%;
   z-index: -1 !important;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
-  top: 24%;
-  left: 56%;
+  top: 60%;
+  left: 60%;
   /* opacity: 0.8 !important; */
 }
       > h4 {
@@ -1263,7 +1263,7 @@ margin-bottom: 18%;
         font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 10px;
+        font-size: 14px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -1273,11 +1273,11 @@ margin-bottom: 18%;
     .buttons {
       /* float: right; */
       /* padding-top: 44%; */
-      width: 80%;
+      width: 100%;
       margin-top: 8%;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: left;
     }
   
     .golden {
@@ -1287,10 +1287,10 @@ margin-bottom: 18%;
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 140px;
-      height: 28px;
+      width: 128px;
+      height: 36px;
       border-radius:20px !important;
-      font-size: 10px !important;
+      font-size: 12px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -1308,10 +1308,10 @@ margin-bottom: 18%;
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 140px;
-      height: 28px;
+      width: 128px;
+      height: 36px;
       border-radius:20px !important;
-      font-size: 10px !important;
+      font-size: 12px !important;
       font-weight: 500 !important;
       margin-left: 8px;
       border-width: 2px !important;

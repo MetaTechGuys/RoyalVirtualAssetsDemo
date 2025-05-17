@@ -537,7 +537,7 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 20px;
+        font-size: 36px;
         /* text-align: center; */
         /* margin-top:18%; */
         margin-bottom: 0%;
@@ -545,7 +545,7 @@
       > span {
         font-family: "inter" !important;
         color: whitesmoke !important;
-        font-size: 14px;
+        font-size: 28px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -603,7 +603,7 @@
       /* float: left; */
       > h4 {
         color: #2a2b41 !important;
-        font-size: 20px;
+        font-size: 36px;
         /* text-align: center; */
         /* margin-top:18%; */
         margin-bottom: 0%;
@@ -611,7 +611,7 @@
       > span {
         font-family: "inter" !important;
         color: #2a2b41 !important;
-        font-size: 14px;
+        font-size: 28px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -662,7 +662,7 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 18px;
+        font-size: 28px;
         /* text-align: center; */
         /* margin-top:18%; */
         margin-bottom: 0%;
@@ -728,7 +728,7 @@
       /* float: left; */
       > h4 {
         color: #2a2b41 !important;
-        font-size: 18px;
+        font-size: 28px;
         /* text-align: center; */
         /* margin-top:18%; */
         margin-bottom: 0%;
@@ -736,7 +736,7 @@
       > span {
         font-family: "inter" !important;
         color: #2a2b41 !important;
-        font-size: 12px;
+        font-size: 22px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -785,7 +785,7 @@
       /* float: left; */
       > h4 {
         color: whitesmoke !important;
-        font-size: 14px;
+        font-size: 18px;
         margin-bottom: 0;
         /* text-align: center; */
         /* margin-top:18%; */
@@ -794,7 +794,7 @@
       > span {
         font-family: "inter" !important;
         color: whitesmoke !important;
-        font-size: 10px;
+        font-size: 14px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -851,7 +851,7 @@
       /* float: left; */
       > h4 {
         color: #2a2b41 !important;
-        font-size: 14px;
+        font-size: 18px;
         margin-bottom: 0;
         /* text-align: center; */
         /* margin-top:18%; */
@@ -860,7 +860,7 @@
       > span {
         font-family: "inter" !important;
         color: #2a2b41 !important;
-        font-size: 10px;
+        font-size: 14px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }

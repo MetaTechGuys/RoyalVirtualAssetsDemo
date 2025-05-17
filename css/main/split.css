@@ -46,13 +46,13 @@
     > h4 {
       color: whitesmoke !important;
       position: absolute;
-      font-size: 60px;
+      font-size: 48px;
       /* text-align: center; */
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
       top: 38%;
-      left: 26%;
+      left: 30%;
       border-radius: 48px;
       padding-top: 14px;
       padding-left: 28px;
@@ -63,7 +63,7 @@
       position: absolute;
       color: whitesmoke !important;
       opacity: 0.8;
-      font-size: 60px;
+      font-size: 48px;
       /* margin-bottom: 1440px; */
       letter-spacing: 2px;
       white-space: nowrap;
@@ -167,13 +167,13 @@
     > h4 {
       color: whitesmoke !important;
       position: absolute;
-      font-size: 40px;
+      font-size: 36px;
       /* text-align: center; */
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
       top: 40%;
-      left: 28%;
+      left: 30%;
       border-radius: 48px;
       padding-top: 14px;
       padding-left: 28px;
@@ -184,7 +184,7 @@
       position: absolute;
       color: whitesmoke !important;
       opacity: 0.8;
-      font-size: 40px;
+      font-size: 36px;
       /* margin-bottom: 1440px; */
       letter-spacing: 2px;
       white-space: nowrap;
@@ -530,13 +530,13 @@
     > h4 {
       color: whitesmoke !important;
       position: absolute;
-      font-size: 32px;
+      font-size: 36px;
       /* text-align: center; */
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
       top: 40%;
-      left: 31%;
+      left: 30%;
       border-radius: 48px;
       padding-top: 8px;
       padding-left: 16px;
@@ -547,7 +547,7 @@
       position: absolute;
       color: whitesmoke !important;
       opacity: 0.8;
-      font-size: 32px;
+      font-size: 36px;
       /* margin-bottom: 1440px; */
       letter-spacing: 2px;
       white-space: nowrap;
@@ -651,13 +651,13 @@
     > h4 {
       color: whitesmoke !important;
       position: absolute;
-      font-size: 28px;
+      font-size: 30px;
       /* text-align: center; */
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
       top: 40%;
-      left: 30%;
+      left: 28%;
       border-radius: 48px;
       padding-top: 4px;
       padding-left: 8px;
@@ -668,7 +668,7 @@
       position: absolute;
       color: whitesmoke !important;
       opacity: 0.8;
-      font-size: 28px;
+      font-size: 30px;
       /* margin-bottom: 1440px; */
       letter-spacing: 2px;
       white-space: nowrap;

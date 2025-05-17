@@ -925,7 +925,7 @@
       flex-basis: 33% !important;
     }
     .logo {
-      width: 188px;
+      width: 248px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -957,12 +957,12 @@
       background-color: transparent !important;
       border: none !important;
       visibility: visible !important;
-  margin-left: 148%;
+  margin-left: 114%;
       padding: 0 !important;
     }
     .justright {
-      width: 22px;
-      height: 22px;
+      width: 40px;
+      height: 40px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -1036,7 +1036,7 @@
   margin: 0 !important;
   border-radius: 0 !important;
   max-width: 100% !important;
-  width: 28vw !important;
+  width: 60vw !important;
   height: 104vh !important;
   top: var(--bs-dropdown-spacer) !important;
   background-color: #2A2B41 !important;
@@ -1086,12 +1086,12 @@
 }
 .dropdown-item {
   color: whitesmoke !important;
-  font-family: "sora-b" !important;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  font-size: 12px !important;
+  margin-top: 8%;
+  /* margin-bottom: 2%; */
+  font-size: 24px !important;
   /* letter-spacing: 1px; */
-    a{
+  a{
+      font-family: "inter" !important;
       margin-left: 8%;
     }
    >.nav-link{display: block !important;}
@@ -1147,7 +1147,7 @@
       flex-basis: 33% !important;
     }
     .logo {
-      width: 188px;
+      width: 240px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -1179,12 +1179,12 @@
       background-color: transparent !important;
       border: none !important;
       visibility: visible !important;
-  margin-left: 148%;
+  margin-left: 108%;
       padding: 0 !important;
     }
     .justright {
-      width: 22px;
-      height: 22px;
+      width: 40px;
+      height: 40px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -1258,7 +1258,7 @@
   margin: 0 !important;
   border-radius: 0 !important;
   max-width: 100% !important;
-  width: 28vw !important;
+  width: 60vw !important;
   height: 104vh !important;
   top: var(--bs-dropdown-spacer) !important;
   background-color: #2A2B41 !important;
@@ -1310,12 +1310,12 @@
 
 .dropdown-item {
   color: whitesmoke !important;
-  font-family: "sora-b" !important;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  font-size: 8px !important;
+  margin-top: 8%;
+  /* margin-bottom: 2%; */
+  font-size: 22px !important;
   /* letter-spacing: 1px; */
-    a{
+  a{
+      font-family: "inter" !important;
       margin-left: 8%;
     }
    >.nav-link{display: block !important;}
@@ -1371,7 +1371,7 @@
       flex-basis: 33% !important;
     }
     .logo {
-      width: 88px;
+      width: 148px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -1403,12 +1403,12 @@
       background-color: transparent !important;
       border: none !important;
       visibility: visible !important;
-  margin-left: 148%;
+  margin-left: 100%;
       padding: 0 !important;
     }
     .justright {
-      width: 14px;
-      height: 14px;
+      width: 28px;
+      height: 28px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -1487,7 +1487,7 @@
   margin: 0 !important;
   border-radius: 0 !important;
   max-width: 100% !important;
-  width: 28vw !important;
+  width: 60vw !important;
   height: 104vh !important;
   top: var(--bs-dropdown-spacer) !important;
   background-color: #2A2B41 !important;
@@ -1514,7 +1514,7 @@
 /* For dropstart specific positioning */
 .dropstart .dropdown-menu {
   top: -1vh !important;
-  right: -0.2vw !important;
+  right: -2vw !important;
   left: auto !important;
 }
 
@@ -1538,12 +1538,12 @@
 
 .dropdown-item {
   color: whitesmoke !important;
-  font-family: "sora-b" !important;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  font-size: 10px !important;
+  margin-top: 8%;
+  /* margin-bottom: 2%; */
+  font-size: 16px !important;
   /* letter-spacing: 1px; */
-    a{
+  a{
+      font-family: "inter" !important;
       margin-left: 8%;
     }
    >.nav-link{display: block !important;}

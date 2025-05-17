@@ -8,3 +8,6 @@
 @import url(robo.css);
 @import url(country.css);
 @import url(footer.css);
+canvas {
+      display: block;
+    }

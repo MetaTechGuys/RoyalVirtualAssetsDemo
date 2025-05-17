@@ -544,7 +544,7 @@
       /* background-color: #2a2b41 !important; */
       position: relative;
       justify-items: center;
-      margin-top: 8%;
+      margin-top: 4%;
       > img {
         position: absolute;
         /* width: 80%; */
@@ -560,14 +560,14 @@
     }
     .vidhelp {
       background-color: transparent !important;
-      border: 48px solid transparent;
-      border-bottom: 24px solid transparent;
-      border-top: 24px solid transparent;
+      border: 8px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-top: 4px solid transparent;
     }
     .vidtext {
         text-align: center;
         /* padding-left: 140px; */
-        width: 68%;
+        width: 80%;
         z-index: 2;
         
         /* float: left; */
@@ -577,7 +577,7 @@
       font-family: "sora-b" !important;
         
         color: #000 !important;
-        font-size: 22px;
+        font-size: 28px;
         /* text-align: center; */
         margin-bottom: 2%;
       }
@@ -585,7 +585,7 @@
       font-family: "inter" !important;
 
         color: #000 !important;
-        font-size: 14px;
+        font-size: 24px;
         /* margin-left: 20%; */
         /* margin-right: 20%; */
   
@@ -600,8 +600,8 @@
       text-align: center;
       z-index: 2;
       > img {
-        width: 64%;
-        border-radius: 8px;
+        width: 80%;
+        border-radius: 18px;
         /* height: auto; */
         /* overflow: hidden; */
         /* filter: grayscale(88%); */
@@ -677,7 +677,7 @@
       /* background-color: #2a2b41 !important; */
       position: relative;
       justify-items: center;
-      margin-top: 8%;
+      margin-top: 4%;
       > img {
         position: absolute;
         /* width: 80%; */
@@ -693,14 +693,14 @@
     }
     .vidhelp {
       background-color: transparent !important;
-      border: 48px solid transparent;
-      border-bottom: 24px solid transparent;
-      border-top: 24px solid transparent;
+      border: 8px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-top: 4px solid transparent;
     }
     .vidtext {
         text-align: center;
         /* padding-left: 140px; */
-        width: 68%;
+        width: 80%;
         z-index: 2;
         
         /* float: left; */
@@ -718,7 +718,7 @@
       font-family: "inter" !important;
 
         color: #000 !important;
-        font-size: 12px;
+        font-size: 20px;
         /* margin-left: 20%; */
         /* margin-right: 20%; */
   
@@ -733,8 +733,8 @@
       text-align: center;
       z-index: 2;
       > img {
-        width: 68%;
-        border-radius: 8px;
+        width: 80%;
+        border-radius: 18px;
         /* height: auto; */
         /* overflow: hidden; */
         /* filter: grayscale(88%); */
@@ -810,7 +810,7 @@
       /* background-color: #2a2b41 !important; */
       position: relative;
       justify-items: center;
-      margin-top: 8%;
+      margin-top: 4%;
       > img {
         position: absolute;
         /* width: 80%; */
@@ -826,9 +826,9 @@
     }
     .vidhelp {
       background-color: transparent !important;
-      border: 48px solid transparent;
-      border-bottom: 24px solid transparent;
-      border-top: 24px solid transparent;
+      border: 8px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-top: 4px solid transparent;
     }
     .vidtext {
         text-align: center;
@@ -851,7 +851,7 @@
       font-family: "inter" !important;
 
         color: #000 !important;
-        font-size: 10px;
+        font-size: 14px;
         /* margin-left: 20%; */
         /* margin-right: 20%; */
   
@@ -866,8 +866,8 @@
       text-align: center;
       z-index: 2;
       > img {
-        width: 80%;
-        border-radius: 8px;
+        width: 88%;
+        border-radius: 14px;
         /* height: auto; */
         /* overflow: hidden; */
         /* filter: grayscale(88%); */
