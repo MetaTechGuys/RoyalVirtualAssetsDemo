@@ -1043,7 +1043,7 @@ margin-bottom: 18%;
   /* visibility: hidden !important; */
   /* background-color: #000 !important; */
   top: 44%;
-  left: 56%;
+  left: 60%;
   /* opacity: 0.8 !important; */
 }
       > h4 {
@@ -1060,7 +1060,7 @@ margin-bottom: 18%;
         font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 20px;
+        font-size: 16px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -1084,10 +1084,10 @@ margin-bottom: 18%;
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 188px;
-      height: 52px;
+      width: 148px;
+      height: 40px;
       border-radius:28px !important;
-      font-size: 16px !important;
+      font-size: 14px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -1105,10 +1105,10 @@ margin-bottom: 18%;
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 188px;
-      height: 52px;
+      width: 148px;
+      height: 40px;
       border-radius:28px !important;
-      font-size: 16px !important;
+      font-size: 14px !important;
       font-weight: 500 !important;
       margin-left: 14px;
       border-width: 2px !important;

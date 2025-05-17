@@ -1066,7 +1066,7 @@
         font-family: "inter" !important;
   
         color: #000 !important;
-        font-size: 20px;
+        font-size: 16px;
         z-index: 2;
         /* margin-bottom: 240px; */
         /* letter-spacing: 2px; */
@@ -1093,10 +1093,10 @@
       position: relative;
       background: #2A2B41;
       color: whitesmoke !important;
-      width: 224px;
-      height: 60px;
+      width: 200px;
+      height: 48px;
       border-radius:28px !important;
-      font-size: 16px !important;
+      font-size: 14px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;
@@ -1114,10 +1114,10 @@
   
       color: #2A2B41 !important;
       border-color: #2A2B41 !important;
-      width: 224px;
-      height: 60px;
+      width: 200px;
+      height: 48px;
       border-radius:28px !important;
-      font-size: 16px !important;
+      font-size: 14px !important;
       font-weight: 500 !important;
       margin-left: 8px;
       border-width: 2px !important;

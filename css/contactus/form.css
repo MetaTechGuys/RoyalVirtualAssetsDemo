@@ -775,7 +775,7 @@ margin-top: 4%;
     .cu h2 {
       /* text-align: center; */
       margin-bottom: 2px;
-      font-size: 28px;
+      font-size: 20px;
       font-family: "sora-b";
     }
     
@@ -783,7 +783,7 @@ margin-top: 4%;
       display: block;
       /* text-align: center; */
       margin-bottom: 20px;
-      font-size: 20px;
+      font-size: 16px;
       color: black;
       font-family: 'inter';
     }
@@ -795,7 +795,7 @@ margin-top: 4%;
       border: 1px solid #000;
       border-radius: 4px;
       box-sizing: border-box;
-      font-size: 20px;
+      font-size: 16px;
       color: black;
       background-color: white;
       font-family: "jb-mono";
@@ -809,7 +809,7 @@ margin-top: 4%;
       border: 1px solid #000;
       border-radius: 4px;
       box-sizing: border-box;
-      font-size: 20px;
+      font-size: 16px;
       color: black;
       background-color: white;
       font-family: "jb-mono";
@@ -831,7 +831,7 @@ margin-top: 4%;
     
     .checkbox-container label {
       cursor: pointer;
-      font-size: 20px;
+      font-size: 16px;
       color: black;
       margin-left: 2%;
     }
@@ -845,10 +845,10 @@ margin-top: 4%;
       position: relative;
       background: #2a2b41;
       color: whitesmoke !important;
-      width: 148px;
-      height: 48px;
+      width: 140px;
+      height: 40px;
       border-radius: 28px !important;
-      font-size: 20px !important;
+      font-size: 14px !important;
       font-weight: 500 !important;
       /* margin-left: 8%; */
       overflow: hidden;

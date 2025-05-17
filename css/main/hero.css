@@ -2238,7 +2238,7 @@ left: 0%;
     /* font-family: "Times New Roman", Times, serif; */
     font-family: "sora-b" !important;
 
-    font-size: 54px;
+    font-size: 44px;
     margin-bottom: 2%;
     /* padding-right: 200px; */
     margin-top: 10%;
@@ -2248,7 +2248,7 @@ top: 40%;
 left: 8%;
 >span{
   /* font-family: "Times New Roman", Times, serif; */
-  font-size: 54px;
+  font-size: 44px;
 }
   }
   .first{
@@ -2388,12 +2388,12 @@ left: 8%;
     position: relative;
     background: #2A2B41;
     color: whitesmoke !important;
-    width: 268px;
-    height: 68px;
+    width: 228px;
+    height: 48px;
     border-radius:36px !important;
-    font-size: 20px !important;
+    font-size: 18px !important;
     font-weight: 500 !important;
-    margin-left: 82px;
+    margin-left: 40px;
     overflow: hidden;
     border: none !important;
     z-index: 1;
@@ -2409,10 +2409,10 @@ left: 8%;
 
     color: #2A2B41 !important;
     border-color: #2A2B41 !important;
-    width: 268px;
-    height: 68px;
+    width: 228px;
+    height: 48px;
     border-radius:36px !important;
-    font-size: 20px !important;
+    font-size: 18px !important;
     font-weight: 500 !important;
     margin-left: 8px;
     border-width: 2px !important;

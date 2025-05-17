@@ -1279,12 +1279,12 @@ a{
       background-color: transparent !important;
       border: none !important;
       visibility: visible !important;
-  margin-left: 114%;
+  margin-left: 108%;
       padding: 0 !important;
     }
     .justright {
-      width: 42px;
-      height: 42px;
+      width: 28px;
+      height: 28px;
       /* background-color: whitesmoke; */
       /* filter: invert(100%); */
       /* transition: 500ms; */
@@ -1417,7 +1417,7 @@ a{
   color: whitesmoke !important;
   margin-top: 8%;
   /* margin-bottom: 2%; */
-  font-size: 28px !important;
+  font-size: 18px !important;
   /* letter-spacing: 1px; */    
   >.nav-link{display: block !important;}
   a{

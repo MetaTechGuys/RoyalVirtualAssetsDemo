@@ -664,7 +664,7 @@
       > span {
         font-family: "inter" !important;
         color: whitesmoke !important;
-        font-size: 20px;
+        font-size: 14px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -730,7 +730,7 @@
       > span {
         font-family: "inter" !important;
         color: #2a2b41 !important;
-        font-size: 20px;
+        font-size: 14px;
         /* margin-bottom: 40px; */
         /* line-height: 2; */
       }
@@ -767,7 +767,7 @@
     }
     .ctext {
         padding: 8%;
-        /* padding-top: 0 !important; */
+        padding-top: 0 !important;
 
         /* padding-left: 4%; */
         /* border-top-right-radius: 20px !important; */
@@ -833,7 +833,7 @@
     }
     .ctext1 {
         padding: 8%;
-        /* padding-top: 0 !important; */
+        padding-top: 0 !important;
         /* padding-left: 4%; */
         /* border-top-left-radius: 20px !important; */
         /* border-bottom-left-radius: 20px !important; */
