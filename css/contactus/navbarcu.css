@@ -964,6 +964,8 @@ a{
       /* margin-right: 480vw; */
       /* margin-left: 4%; */
       /* z-index: 99 !important; */
+      display: none;
+
     }
     .logo1 {
       width: 280px;
@@ -1204,6 +1206,8 @@ a{
       background-color: transparent !important;
       /* margin-right: 480vw; */
       /* margin-left: 4%; */
+      display: none;
+
       /* z-index: 99 !important; */
     }
     .logo1 {
@@ -1448,6 +1452,8 @@ a{
       /* margin-right: 480vw; */
       margin-left: 4%;
       /* z-index: 99 !important; */
+      display: none;
+
     }
     .logo1 {
       width: 160px;

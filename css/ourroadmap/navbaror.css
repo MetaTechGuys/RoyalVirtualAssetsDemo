@@ -964,6 +964,8 @@ a{
       /* margin-right: 480vw; */
       /* margin-left: 4%; */
       /* z-index: 99 !important; */
+      display: none;
+
     }
     .logo1 {
       width: 280px;
@@ -1205,6 +1207,8 @@ a{
       /* margin-right: 480vw; */
       /* margin-left: 4%; */
       /* z-index: 99 !important; */
+      display: none;
+
     }
     .logo1 {
       width: 240px;
@@ -1448,6 +1452,8 @@ a{
       /* margin-right: 480vw; */
       margin-left: 4%;
       /* z-index: 99 !important; */
+      display: none;
+
     }
     .logo1 {
       width: 160px;
