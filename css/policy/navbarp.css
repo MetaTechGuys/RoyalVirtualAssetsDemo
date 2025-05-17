@@ -53,6 +53,16 @@
       /* z-index: 99 !important; */
       left: 4%;
     }
+    .logo1 {
+      width: 400px;
+      height: auto;
+      /* background-color: #000 !important; */
+      background-color: transparent !important;
+      /* margin-right: 480vw; */
+      /* margin-left: 4%; */
+      /* z-index: 99 !important; */
+      /* left: 4%; */
+    }
     .navbar-brand {
       /* background-color: black !important; */
       background-color: transparent !important;
@@ -206,7 +216,7 @@
   font-family: "sora-b" !important;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-size: 14px !important;
+  font-size: 24px !important;
   /* letter-spacing: 1px; */
     a{
       margin-left: 8%;
@@ -266,6 +276,15 @@
     }
     .logo {
       width: 248px;
+      height: auto;
+      /* background-color: #000 !important; */
+      background-color: transparent !important;
+      /* margin-right: 480vw; */
+      /* margin-left: 4%; */
+      /* z-index: 99 !important; */
+    }
+    .logo1 {
+      width: 280px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -426,7 +445,7 @@
   font-family: "sora-b" !important;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-size: 14px !important;
+  font-size: 18px !important;
   /* letter-spacing: 1px; */
     a{
       margin-left: 8%;
@@ -486,6 +505,15 @@
     }
     .logo {
       width: 228px;
+      height: auto;
+      /* background-color: #000 !important; */
+      background-color: transparent !important;
+      /* margin-right: 480vw; */
+      /* margin-left: 4%; */
+      /* z-index: 99 !important; */
+    }
+    .logo1 {
+      width: 240px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
@@ -645,7 +673,7 @@
   font-family: "sora-b" !important;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-size: 14px !important;
+  font-size: 16px !important;
   /* letter-spacing: 1px; */
     a{
       margin-left: 8%;
@@ -704,6 +732,15 @@
     }
     .logo {
       width: 188px;
+      height: auto;
+      /* background-color: #000 !important; */
+      background-color: transparent !important;
+      /* margin-right: 480vw; */
+      /* margin-left: 4%; */
+      /* z-index: 99 !important; */
+    }
+    .logo1 {
+      width: 200px;
       height: auto;
       /* background-color: #000 !important; */
       background-color: transparent !important;
