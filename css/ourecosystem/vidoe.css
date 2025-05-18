@@ -143,7 +143,7 @@
       /* background-color: #2a2b41 !important; */
       position: relative;
       justify-items: center;
-      margin-top: 8%;
+      margin-top: 2%;
       > img {
         position: absolute;
         width: 20%;
@@ -166,7 +166,7 @@
     .vidtext {
         text-align: center;
         /* padding-left: 140px; */
-        width: 40%;
+        width: 54%;
         z-index: 2;
         margin-left: auto;
         margin-right: auto;
@@ -200,7 +200,7 @@
       text-align: center;
       z-index: 2;
       > img {
-        width: 40%;
+        width: 54%;
         border-radius: 20px;
         /* height: auto; */
         /* overflow: hidden; */

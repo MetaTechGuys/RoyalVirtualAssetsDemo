@@ -25,11 +25,12 @@
   
   .navbar-expand-lg {
     /* position: sticky !important; */
-    height: 80px !important;
-    border-radius: 14px;
+    height: 108px !important;
+    border-radius: 48px;
     /* background-color: transparent !important; */
     /* width: 100% !important; */
-    background-color: #2A2B41 !important;
+    background-color: transparent !important;
+    border: 2px solid whitesmoke !important;
     
   }
   /* .navhelp{
@@ -39,7 +40,7 @@
     width: 100% !important;
   }
   .logo {
-    width: 200px;
+    width: 240px;
     height: auto;
     /* background-color: #000 !important; */
     background-color: transparent !important;
@@ -282,18 +283,24 @@ margin-left: 88%;
     /* height: 14% !important; */
   }
   
+  /* Add this to your existing CSS file */
+.navbar-scrolled {
+  background-color: black !important;
+  transition: background-color 0.3s ease;
+}
+
   .navhelp{
     justify-content: left;
   }
   
   .navbar-expand-lg {
     /* position: sticky !important; */
-    height: 64px !important;
-    border-radius: 14px;
+    height: 80px !important;
+    border-radius: 48px;
     /* background-color: transparent !important; */
     /* width: 100% !important; */
-    background-color: #2A2B41 !important;
-    
+    background-color: transparent !important;
+    border: 2px solid whitesmoke !important;
   }
 
   .collapse{
@@ -570,11 +577,12 @@ font-size: 14px;
   
   .navbar-expand-lg {
     /* position: sticky !important; */
-    height: 60px !important;
-    border-radius: 14px;
+    height: 68px !important;
+    border-radius: 48px;
     /* background-color: transparent !important; */
     /* width: 100% !important; */
-    background-color: #2A2B41 !important;
+    background-color: transparent !important;
+    border: 2px solid whitesmoke !important;
     
   }
 
@@ -582,7 +590,7 @@ font-size: 14px;
     width: 100% !important;
   }
   .logo {
-    width: 128px;
+    width: 120px;
     height: auto;
     /* background-color: #000 !important; */
     background-color: transparent !important;
@@ -838,11 +846,12 @@ font-size: 12px;
   
   .navbar-expand-lg {
     /* position: sticky !important; */
-    height: 48px !important;
-    border-radius: 14px;
+    height: 60px !important;
+    border-radius: 48px;
     /* background-color: transparent !important; */
     /* width: 100% !important; */
-    background-color: #2A2B41 !important;
+    background-color: transparent !important;
+    border: 2px solid whitesmoke !important;
     
   }
   /* .navhelp{
@@ -852,7 +861,7 @@ font-size: 12px;
     width: 100% !important;
   }
   .logo {
-    width: 140px !important;
+    width: 128px !important;
     height: auto;
     /* background-color: #000 !important; */
     background-color: transparent !important;

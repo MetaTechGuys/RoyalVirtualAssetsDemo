@@ -123,6 +123,7 @@ left: 0%;
   .bottom-left > h1 {
     /* font-family: "Times New Roman", Times, serif; */
     font-family: "sora-b" !important;
+    color: whitesmoke !important;
 
     font-size: 88px;
     margin-bottom: 2%;
@@ -130,8 +131,8 @@ left: 0%;
     margin-top: 10%;
     position: absolute;
     opacity: 1;
-top: 22%;
-left: 24%;
+top: -4%;
+left: 32%;
 >span{
   /* font-family: "Times New Roman", Times, serif; */
   font-size: 88px;
@@ -140,7 +141,7 @@ left: 24%;
   .first{
     >span{
       font-family: "sora-b" !important;
-      color: blue;
+      color: #1e88e5;
       /* background-image: url(../media/img/Group\ 1.png); */
     }
     animation: change1;
@@ -153,7 +154,7 @@ left: 24%;
   .second{
     >span{
       font-family: "sora-b" !important;
-      color: midnightblue;
+      color: #1e88e5;
     }
     animation: change2;
     transition: 4s;
@@ -166,7 +167,7 @@ left: 24%;
   .third{
     >span{
       font-family: "sora-b" !important;
-      color: royalblue;
+      color: #1e88e5;
     }
     animation: change3;
     transition: 4s;
@@ -219,51 +220,12 @@ left: 24%;
       opacity: 0;
     }
   }
-  .bottom-left > h4 {
-    /* font-family: "Times New Roman", Times, serif; */
-  
-    font-size: 64px;
-    margin-bottom: 2%;
-    position: absolute;
-    /* top: 40%; */
-    opacity: 1;
-    top: 52%;
-    left: 36%;
-  }
-  .info {
-    display: flex;
-    width: 100%;
-    
-  }
-  .markets {
-    width: 60%;
-    /* display: flex; */
-    position: absolute;
-    /* top: 60%; */
-    opacity: 1;
-  }
-  .market {
-    width: 30%;
-    margin-bottom: 2%;
-    
-
-  }
-  .market > img {
-    margin-bottom: 8px;
-    padding-top: 0px;
-  }
-  .market > span {
-    /* font-family: "Times New Roman", Times, serif; */
-    font-size: 24px;
-    margin-bottom: 8px;
-    margin-left: 8px;
-  }
   .buttons {
     float: right;
     /* padding-top: 44%; */
     position: absolute;
-    top: 55%;
-    left: 22%;
+    top: 80%;
+    left: 42%;
     opacity: 1;
     width: 80%;
   }
@@ -272,14 +234,14 @@ left: 24%;
 
     /* background-color: #886a38 !important; */
     position: relative;
-    background: #2A2B41;
+    background: transparent !important;
     color: whitesmoke !important;
-    width: 300px;
+    width: 380px;
     height: 68px;
     border-radius:48px !important;
-    font-size: 20px !important;
+    font-size: 22px !important;
     font-weight: 500 !important;
-    margin-left: 82px;
+    /* margin-left: 82px; */
     overflow: hidden;
     border: none !important;
     z-index: 1;
@@ -289,6 +251,8 @@ left: 24%;
     -ms-transition: 0.08s ease-in;
     -moz-transition: 0.08s ease-in;
     -webkit-transition: 0.08s ease-in;
+    border:4px solid whitesmoke !important;
+
   }
   .white {
     font-family: "sora" !important;
@@ -388,6 +352,13 @@ left: 24%;
   .white:hover:before {
     top: 0;
   }
+  .carousel-indicators{
+    z-index: 4 !important;
+    margin-bottom: 6% !important;
+  }
+  .btns{
+    z-index: 4 !important;
+  }
   .buttons{
     >.dropdown-menu{
       background-color: #2A2B41 !important;
@@ -453,12 +424,14 @@ left: 0%;
     width: 100% !important;
     background-color: transparent;
     /* border: 48px solid transparent; */
+    border: 20px solid whitesmoke;
     border-top: none;
-    border-bottom: 0px solid transparent;
   }
   /* Bottom left text */
   .bottom-left {
     position: absolute;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
     bottom: 0%;
     /* left: 0%; */
     width: 60%;
@@ -471,97 +444,28 @@ left: 0%;
     
   }
 
-  /* .overlay:hover{
-    .bottom-left>h1{
-      animation: fadettb linear forwards;
-      transition: 1s;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    }
-    .bottom-left>h4{
-      animation: fadettb2 linear forwards;
-      transition: 1s;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-delay: 0.8s;
-    }
-    .markets{
-      animation: fadettb3 linear forwards;
-      transition: 1s;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-delay: 1.6s;
-    }
-    .buttons{
-      animation: fadebtt linear forwards;
-      transition: 1s;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-delay: 2.4s;
-    }
-  } */
-
-  /* @keyframes fadettb {
-    from {
-      top: 0%;
-      opacity: 0;
-    }
-    to {
-      top: 6%;
-      opacity: 1;
-    }
-  }
-  @keyframes fadettb2 {
-    from {
-      top: 40%;
-      opacity: 0;
-    }
-    to {
-      top: 46%;
-      opacity: 1;
-    }
-  }
-  @keyframes fadettb3 {
-    from {
-      top: 58%;
-      opacity: 0;
-    }
-    to {
-      top: 64%;
-      opacity: 1;
-    }
-  }
-  @keyframes fadebtt {
-    from {
-      top: 60%;
-      opacity: 0;
-    }
-    to {
-      top: 54%;
-      opacity: 1;
-    }
-  } */
   .bottom-left > h1 {
     /* font-family: "Times New Roman", Times, serif; */
     font-family: "sora-b" !important;
-
-    font-size: 68px;
+/* display: flex; */
+    color: whitesmoke !important;
+    font-size: 64px;
     margin-bottom: 2%;
     /* padding-right: 200px; */
     margin-top: 10%;
     position: absolute;
     opacity: 1;
-top: 22%;
-left: 20%;
+top: -4%;
+left: 32%;
 >span{
   /* font-family: "Times New Roman", Times, serif; */
-  font-size: 68px;
+  font-size: 64px;
 }
   }
   .first{
     >span{
       font-family: "sora-b" !important;
-      color: blue;
+      color: #1e88e5;
       /* background-image: url(../media/img/Group\ 1.png); */
     }
     animation: change1;
@@ -574,7 +478,7 @@ left: 20%;
   .second{
     >span{
       font-family: "sora-b" !important;
-      color: midnightblue;
+      color: #1e88e5;
     }
     animation: change2;
     transition: 4s;
@@ -587,7 +491,7 @@ left: 20%;
   .third{
     >span{
       font-family: "sora-b" !important;
-      color: royalblue;
+      color: #1e88e5;
     }
     animation: change3;
     transition: 4s;
@@ -640,51 +544,12 @@ left: 20%;
       opacity: 0;
     }
   }
-  .bottom-left > h4 {
-    /* font-family: "Times New Roman", Times, serif; */
-  
-    font-size: 64px;
-    margin-bottom: 2%;
-    position: absolute;
-    /* top: 40%; */
-    opacity: 1;
-    top: 52%;
-    left: 36%;
-  }
-  .info {
-    display: flex;
-    width: 100%;
-    
-  }
-  .markets {
-    width: 60%;
-    /* display: flex; */
-    position: absolute;
-    /* top: 60%; */
-    opacity: 1;
-  }
-  .market {
-    width: 30%;
-    margin-bottom: 2%;
-    
-
-  }
-  .market > img {
-    margin-bottom: 8px;
-    padding-top: 0px;
-  }
-  .market > span {
-    /* font-family: "Times New Roman", Times, serif; */
-    font-size: 24px;
-    margin-bottom: 8px;
-    margin-left: 8px;
-  }
   .buttons {
     float: right;
     /* padding-top: 44%; */
     position: absolute;
-    top: 55%;
-    left: 18%;
+    top: 80%;
+    left: 42%;
     opacity: 1;
     width: 80%;
   }
@@ -693,16 +558,16 @@ left: 20%;
 
     /* background-color: #886a38 !important; */
     position: relative;
-    background: #2A2B41;
+    background: transparent !important;
     color: whitesmoke !important;
-    width: 240px;
+    width: 318px;
     height: 60px;
     border-radius:48px !important;
-    font-size: 16px !important;
+    font-size: 18px !important;
     font-weight: 500 !important;
-    margin-left: 82px;
+    /* margin-left: 82px; */
     overflow: hidden;
-    border: none !important;
+    /* border: none !important; */
     z-index: 1;
     cursor: pointer;
     transition: 0.08s ease-in;
@@ -710,12 +575,12 @@ left: 20%;
     -ms-transition: 0.08s ease-in;
     -moz-transition: 0.08s ease-in;
     -webkit-transition: 0.08s ease-in;
+    border:4px solid whitesmoke !important;
   }
   .white {
     font-family: "sora" !important;
 
     color: #2A2B41 !important;
-    border-color: #2A2B41 !important;
     width: 240px;
     height: 60px;
     border-radius: 48px !important;
@@ -810,6 +675,13 @@ left: 20%;
     top: 0;
   }
 
+  .carousel-indicators{
+    z-index: 4 !important;
+    margin-bottom: 6% !important;
+  }
+  .btns{
+    z-index: 4 !important;
+  }
   .buttons{
     >.dropdown-menu{
       background-color: #2A2B41 !important;
@@ -966,6 +838,7 @@ left: 0%;
   .bottom-left > h1 {
     /* font-family: "Times New Roman", Times, serif; */
     font-family: "sora-b" !important;
+    color: whitesmoke !important;
 
     font-size: 48px;
     margin-bottom: 2%;
@@ -973,8 +846,8 @@ left: 0%;
     margin-top: 10%;
     position: absolute;
     opacity: 1;
-top: 22%;
-left: 20%;
+top: -2%;
+left: 32%;
 >span{
   /* font-family: "Times New Roman", Times, serif; */
   font-size: 48px;
@@ -983,7 +856,7 @@ left: 20%;
   .first{
     >span{
       font-family: "sora-b" !important;
-      color: blue;
+      color: #1e88e5;
       /* background-image: url(../media/img/Group\ 1.png); */
     }
     animation: change1;
@@ -996,7 +869,7 @@ left: 20%;
   .second{
     >span{
       font-family: "sora-b" !important;
-      color: midnightblue;
+      color: #1e88e5;
     }
     animation: change2;
     transition: 4s;
@@ -1009,7 +882,7 @@ left: 20%;
   .third{
     >span{
       font-family: "sora-b" !important;
-      color: royalblue;
+      color: #1e88e5;
     }
     animation: change3;
     transition: 4s;
@@ -1062,51 +935,14 @@ left: 20%;
       opacity: 0;
     }
   }
-  .bottom-left > h4 {
-    /* font-family: "Times New Roman", Times, serif; */
-  
-    font-size: 64px;
-    margin-bottom: 2%;
-    position: absolute;
-    /* top: 40%; */
-    opacity: 1;
-    top: 52%;
-    left: 36%;
-  }
-  .info {
-    display: flex;
-    width: 100%;
-    
-  }
-  .markets {
-    width: 60%;
-    /* display: flex; */
-    position: absolute;
-    /* top: 60%; */
-    opacity: 1;
-  }
-  .market {
-    width: 30%;
-    margin-bottom: 2%;
-    
 
-  }
-  .market > img {
-    margin-bottom: 8px;
-    padding-top: 0px;
-  }
-  .market > span {
-    /* font-family: "Times New Roman", Times, serif; */
-    font-size: 24px;
-    margin-bottom: 8px;
-    margin-left: 8px;
-  }
+  
   .buttons {
     float: right;
     /* padding-top: 44%; */
     position: absolute;
-    top: 55%;
-    left: 16%;
+    top: 88%;
+    left: 35.5%;
     opacity: 1;
     width: 80%;
   }
@@ -1115,10 +951,10 @@ left: 20%;
 
     /* background-color: #886a38 !important; */
     position: relative;
-    background: #2A2B41;
+    background: transparent !important;
     color: whitesmoke !important;
-    width: 168px;
-    height: 44px;
+    width: 248px;
+    height: 48px;
     border-radius:48px !important;
     font-size: 12px !important;
     font-weight: 500 !important;
@@ -1132,6 +968,8 @@ left: 20%;
     -ms-transition: 0.08s ease-in;
     -moz-transition: 0.08s ease-in;
     -webkit-transition: 0.08s ease-in;
+    border:4px solid whitesmoke !important;
+
   }
   .white {
     font-family: "sora" !important;
@@ -1230,6 +1068,13 @@ left: 20%;
 
   .white:hover:before {
     top: 0;
+  }
+  .carousel-indicators{
+    z-index: 4 !important;
+    margin-bottom: 0% !important;
+  }
+  .btns{
+    z-index: 4 !important;
   }
   .buttons{
     >.dropdown-menu{
@@ -1388,15 +1233,15 @@ left: 0%;
   .bottom-left > h1 {
     /* font-family: "Times New Roman", Times, serif; */
     font-family: "sora-b" !important;
-
+color: whitesmoke !important;
     font-size: 44px;
     margin-bottom: 2%;
     /* padding-right: 200px; */
     margin-top: 10%;
     position: absolute;
     opacity: 1;
-top: 28%;
-left: 14%;
+top: 0%;
+left: 30%;
 >span{
   /* font-family: "Times New Roman", Times, serif; */
   font-size: 44px;
@@ -1405,7 +1250,7 @@ left: 14%;
   .first{
     >span{
       font-family: "sora-b" !important;
-      color: blue;
+      color: #1e88e5;
       /* background-image: url(../media/img/Group\ 1.png); */
     }
     animation: change1;
@@ -1418,7 +1263,7 @@ left: 14%;
   .second{
     >span{
       font-family: "sora-b" !important;
-      color: midnightblue;
+      color: #1e88e5;
     }
     animation: change2;
     transition: 4s;
@@ -1431,7 +1276,7 @@ left: 14%;
   .third{
     >span{
       font-family: "sora-b" !important;
-      color: royalblue;
+      color: #1e88e5;
     }
     animation: change3;
     transition: 4s;
@@ -1527,8 +1372,8 @@ left: 14%;
     float: right;
     /* padding-top: 44%; */
     position: absolute;
-    top: 64%;
-    left: 8%;
+    top: 88%;
+    left: 35%;
     opacity: 1;
     width: 80%;
   }
@@ -1537,10 +1382,11 @@ left: 14%;
 
     /* background-color: #886a38 !important; */
     position: relative;
-    background: #2A2B41;
+        background: transparent !important;
+
     color: whitesmoke !important;
-    width: 168px;
-    height: 40px;
+    width: 200px;
+    height: 48px;
     border-radius:24px !important;
     font-size: 12px !important;
     font-weight: 500 !important;
@@ -1554,6 +1400,8 @@ left: 14%;
     -ms-transition: 0.08s ease-in;
     -moz-transition: 0.08s ease-in;
     -webkit-transition: 0.08s ease-in;
+    border:4px solid whitesmoke !important;
+
   }
   .white {
     font-family: "sora" !important;
@@ -1652,6 +1500,13 @@ left: 14%;
 
   .white:hover:before {
     top: 0;
+  }
+  .carousel-indicators{
+    z-index: 4 !important;
+    margin-bottom: 0% !important;
+  }
+  .btns{
+    z-index: 4 !important;
   }
   .buttons{
     >.dropdown-menu{
@@ -1828,7 +1683,7 @@ left: 8%;
   .first{
     >span{
       font-family: "sora-b" !important;
-      color: blue;
+      color: #1e88e5;
       /* background-image: url(../media/img/Group\ 1.png); */
     }
     animation: change1;
@@ -1841,7 +1696,7 @@ left: 8%;
   .second{
     >span{
       font-family: "sora-b" !important;
-      color: midnightblue;
+      color: #1e88e5;
     }
     animation: change2;
     transition: 4s;
@@ -1854,7 +1709,7 @@ left: 8%;
   .third{
     >span{
       font-family: "sora-b" !important;
-      color: royalblue;
+      color: #1e88e5;
     }
     animation: change3;
     transition: 4s;
@@ -2254,7 +2109,7 @@ left: 8%;
   .first{
     >span{
       font-family: "sora-b" !important;
-      color: blue;
+      color: #1e88e5;
       /* background-image: url(../media/img/Group\ 1.png); */
     }
     animation: change1;
@@ -2267,7 +2122,7 @@ left: 8%;
   .second{
     >span{
       font-family: "sora-b" !important;
-      color: midnightblue;
+      color: #1e88e5;
     }
     animation: change2;
     transition: 4s;
@@ -2280,7 +2135,7 @@ left: 8%;
   .third{
     >span{
       font-family: "sora-b" !important;
-      color: royalblue;
+      color: #1e88e5;
     }
     animation: change3;
     transition: 4s;
@@ -2680,7 +2535,7 @@ left: 4%;
   .first{
     >span{
       font-family: "sora-b" !important;
-      color: blue;
+      color: #1e88e5;
       /* background-image: url(../media/img/Group\ 1.png); */
     }
     animation: change1;
@@ -2693,7 +2548,7 @@ left: 4%;
   .second{
     >span{
       font-family: "sora-b" !important;
-      color: midnightblue;
+      color: #1e88e5;
     }
     animation: change2;
     transition: 4s;
@@ -2706,7 +2561,7 @@ left: 4%;
   .third{
     >span{
       font-family: "sora-b" !important;
-      color: royalblue;
+      color: #1e88e5;
     }
     animation: change3;
     transition: 4s;

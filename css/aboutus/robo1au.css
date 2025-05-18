@@ -22,6 +22,7 @@
       /* float: right; */
       overflow: hidden;
       z-index: 2;
+      display: none;
       > img {
         width: 60%;
         /* height: 100%; */
@@ -35,12 +36,13 @@
       }
     }
     .roboimg2 {
-      width: 48%;
+      width: 100%;
       /* float: right; */
       overflow: hidden;
+      text-align: center;
       z-index: 2;
       > img {
-        width: 80%;
+        width: 60%;
         /* height: 100%; */
         /* margin-top: 14%; */
         /* margin-left: 14%; */
@@ -77,6 +79,7 @@
       /* float: right; */
       overflow: hidden;
       z-index: 2;
+      display: none;
       > img {
         width: 60%;
         /* height: 100%; */
@@ -90,12 +93,13 @@
       }
     }
     .roboimg2 {
-      width: 48%;
+      width: 100%;
       /* float: right; */
       overflow: hidden;
       z-index: 2;
+      text-align: center;
       > img {
-        width: 80%;
+        width: 60%;
         /* height: 100%; */
         /* margin-top: 14%; */
         /* margin-left: 14%; */
@@ -131,6 +135,7 @@
       /* float: right; */
       overflow: hidden;
       z-index: 2;
+      display: none;
       > img {
         width: 60%;
         /* height: 100%; */
@@ -144,12 +149,13 @@
       }
     }
     .roboimg2 {
-      width: 48%;
+      width: 100%;
       /* float: right; */
       overflow: hidden;
+      text-align: center;
       z-index: 2;
       > img {
-        width: 80%;
+        width: 64%;
         /* height: 100%; */
         /* margin-top: 14%; */
         /* margin-left: 14%; */
@@ -205,7 +211,7 @@
       z-index: 2;
       text-align: center;
       > img {
-        width: 40%;
+        width: 64%;
         /* height: 100%; */
         /* margin-top: 14%; */
         /* margin-left: 14%; */
