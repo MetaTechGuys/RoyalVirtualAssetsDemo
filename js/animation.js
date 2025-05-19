@@ -92,6 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Get the navbar and hero elements
   const navbar = document.querySelector('.navbar-expand-lg');
   const hero = document.querySelector('.hero');
+  const hambur = document.querySelector('.hambur');
+
   
   if (!navbar) {
     console.error('Navbar element not found');
@@ -101,30 +103,50 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!hero) {
     console.error('Hero element not found');
     // If no hero, just set navbar to black
-    navbar.setAttribute('style', 'background-color: black !important');
+    if (window.innerWidth > 993) {
+      navbar.setAttribute('style', 'background-color: black !important');
+    }
     return;
   }
   
   console.log('Elements found, setting up scroll listener');
   
   function updateNavbar() {
-    // Get the current scroll position
-    const scrollPosition = window.scrollY;
-    
-    // Get the height of the hero section
-    const heroHeight = hero.offsetHeight;
-    
-    console.log(`Scroll: ${scrollPosition}, Hero height: ${heroHeight}`);
-    
-    // Check if we've scrolled past the hero
-    if (scrollPosition > heroHeight - navbar.offsetHeight) {
-      // Past hero - set black background
-      navbar.setAttribute('style', 'background-color: #2a2b41 !important; border: 2px solid whitesmoke !important;');
-    //   console.log('Setting black background');
-    } else {
-      // On hero - set transparent background
-      navbar.setAttribute('style', 'background-color: transparent !important; border: 2px solid whitesmoke !important;');
-    //   console.log('Setting transparent background');
+    // Only apply this functionality for screens wider than 993px
+    if (window.innerWidth > 993) {
+      // Get the current scroll position
+      const scrollPosition = window.scrollY;
+      
+      // Get the height of the hero section
+      const heroHeight = hero.offsetHeight;
+      
+      console.log(`Scroll: ${scrollPosition}, Hero height: ${heroHeight}`);
+      
+      // Check if we've scrolled past the hero
+      if (scrollPosition > heroHeight - navbar.offsetHeight) {
+        // Past hero - set black background
+        navbar.setAttribute('style', 'background-color: #2a2b41 !important;');
+      } else {
+        // On hero - set transparent background
+        navbar.setAttribute('style', 'background-color: transparent !important;');
+      }
+    }
+    else {
+      const scrollPosition = window.scrollY;
+      
+      // Get the height of the hero section
+      const heroHeight = hero.offsetHeight;
+      
+      console.log(`Scroll: ${scrollPosition}, Hero height: ${heroHeight}`);
+      
+      // Check if we've scrolled past the hero
+      if (scrollPosition > heroHeight - navbar.offsetHeight) {
+        // Past hero - set black background
+        hambur.setAttribute('style', 'filter: invert(0) !important;');
+      } else {
+        // On hero - set transparent background
+        hambur.setAttribute('style', 'filter: invert(1) !important;');
+      }
     }
   }
   
@@ -133,4 +155,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Add scroll event listener
   window.addEventListener('scroll', updateNavbar);
+  
+  // Also update when window is resized
+  window.addEventListener('resize', updateNavbar);
 });
+

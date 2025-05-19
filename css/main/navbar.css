@@ -17,12 +17,14 @@
     margin-right: auto !important;
     border: 48px solid transparent !important;
     width: 100%;
+    z-index: 8 !important;
   }
   
   .navhelp{
     justify-content: left;
   }
-  
+
+
   .navbar-expand-lg {
     /* position: sticky !important; */
     height: 108px !important;
@@ -30,7 +32,7 @@
     /* background-color: transparent !important; */
     /* width: 100% !important; */
     background-color: transparent !important;
-    border: 2px solid whitesmoke !important;
+    /* border: 2px solid whitesmoke !important; */
     
   }
   /* .navhelp{
@@ -44,7 +46,7 @@
     height: auto;
     /* background-color: #000 !important; */
     background-color: transparent !important;
-    margin-right: 0vw;
+    /* margin-right: 0vw; */
     margin-left: 40%;
     /* z-index: 99 !important; */
   }
@@ -53,7 +55,7 @@
     height: auto;
     /* background-color: #000 !important; */
     background-color: transparent !important;
-    margin-right: 0vw;
+    /* margin-right: 0vw; */
     /* margin-left: 40%; */
     /* z-index: 99 !important; */
   }
@@ -281,13 +283,12 @@ margin-left: 88%;
     border: 40px solid transparent !important;
     width: 100%;
     /* height: 14% !important; */
+    z-index: 8 !important;
+
   }
   
   /* Add this to your existing CSS file */
-.navbar-scrolled {
-  background-color: black !important;
-  transition: background-color 0.3s ease;
-}
+
 
   .navhelp{
     justify-content: left;
@@ -300,7 +301,7 @@ margin-left: 88%;
     /* background-color: transparent !important; */
     /* width: 100% !important; */
     background-color: transparent !important;
-    border: 2px solid whitesmoke !important;
+    /* border: 2px solid whitesmoke !important; */
   }
 
   .collapse{
@@ -569,6 +570,8 @@ font-size: 14px;
     border: 40px solid transparent !important;
     width: 100%;
     /* height: 14% !important; */
+    z-index: 8 !important;
+
   }
   
   .navhelp{
@@ -582,7 +585,7 @@ font-size: 14px;
     /* background-color: transparent !important; */
     /* width: 100% !important; */
     background-color: transparent !important;
-    border: 2px solid whitesmoke !important;
+    /* border: 2px solid whitesmoke !important; */
     
   }
 
@@ -590,7 +593,7 @@ font-size: 14px;
     width: 100% !important;
   }
   .logo {
-    width: 120px;
+    width: 180px;
     height: auto;
     /* background-color: #000 !important; */
     background-color: transparent !important;
@@ -641,8 +644,8 @@ margin-left: 148%;
 
   }
   .justright {
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
     /* background-color: whitesmoke; */
     /* filter: invert(100%); */
     /* transition: 500ms; */
@@ -837,6 +840,8 @@ font-size: 12px;
     margin-right: auto !important;
     border: 48px solid transparent !important;
     width: 100%;
+    z-index: 8 !important;
+
   }
   
   .navhelp{
@@ -851,7 +856,7 @@ font-size: 12px;
     /* background-color: transparent !important; */
     /* width: 100% !important; */
     background-color: transparent !important;
-    border: 2px solid whitesmoke !important;
+    /* border: 2px solid whitesmoke !important; */
     
   }
   /* .navhelp{
@@ -1096,13 +1101,14 @@ margin-left: 148%;
     position: -webkit-fixed !important;
     position: fixed !important;
     top: 0 !important;
-    z-index: 3 !important;
+    z-index: 8 !important;
     /* transition: top 0.3s; */
-    /* background-color: rgba(0, 0, 0, 0) !important; */
+    background-color: transparent !important;
     /* opacity: 0.74; */
     margin-left: auto !important;
     margin-right: auto !important;
-    border: 14px solid transparent !important;
+    border: 40px solid transparent !important;
+    border-left: none !important;
     width: 100%;
   }
   
@@ -1115,7 +1121,7 @@ margin-left: 148%;
     background-color: transparent !important;
     /* width: 100% !important; */
     /* background-color: #2A2B41 !important; */
-    
+    /* border: none !important; */
   }
   /* .navhelp{
     } */
@@ -1339,13 +1345,14 @@ margin-left: 80%;
     position: -webkit-fixed !important;
     position: fixed !important;
     top: 0 !important;
-    z-index: 3 !important;
+    z-index: 8 !important;
     /* transition: top 0.3s; */
     /* background-color: rgba(0, 0, 0, 0) !important; */
     /* opacity: 0.74; */
     margin-left: auto !important;
     margin-right: auto !important;
-    border: 14px solid transparent !important;
+    border: 24px solid transparent !important;
+    border-left: none !important;
     width: 100%;
   }
   
@@ -1581,13 +1588,14 @@ margin-left: 40%;
     position: -webkit-fixed !important;
     position: fixed !important;
     top: 0 !important;
-    z-index: 3 !important;
+    z-index: 8 !important;
     /* transition: top 0.3s; */
     /* background-color: rgba(0, 0, 0, 0) !important; */
     /* opacity: 0.74; */
     margin-left: auto !important;
     margin-right: auto !important;
-    border: 8px solid transparent !important;
+    border: 20px solid transparent !important;
+    border-left: none !important;
     width: 100%;
   }
   
