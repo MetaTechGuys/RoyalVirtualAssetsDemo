@@ -1976,7 +1976,7 @@ left: 8%; */
     width: 100% !important;
     overflow: hidden !important;
     /* border-radius: 20px; */
-        border-radius: 18px;
+        /* border-radius: 18px; */
 
     /* background: url(../../media/img/all-17.JPG); */
     /* content: url(../../media/img/all-18.jpg); */
@@ -2144,7 +2144,7 @@ left: 4%; */
     color: whitesmoke !important;
     width: 140px;
     height: 28px;
-    border-radius:12px !important;
+    border-radius:10px !important;
     font-size: 8px !important;
     font-weight: 500 !important;
     /* margin-left: 20px; */
