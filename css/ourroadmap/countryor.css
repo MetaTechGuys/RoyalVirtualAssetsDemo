@@ -690,9 +690,9 @@
     .r1{
       position: absolute;
       z-index: 4 !important;
-      left: 20%;
+      left: 28%;
       top: 20%;
-      height: 70%;
+      height: 64%;
       opacity: 0.28;
       /* filter: blur(2px); */
     }
