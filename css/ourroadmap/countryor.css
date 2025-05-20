@@ -832,9 +832,10 @@
     .r1{
       position: absolute;
       z-index: 4 !important;
-      left: 20%;
-      top: 28.8%;
-      height: 60.8%;
+      /* left: 20%; */
+      /* top: 28.8%; */
+      height: 68%;
+      width: 114%;
       opacity: 0.28;
       /* filter: blur(2px); */
     }
