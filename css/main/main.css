@@ -8,6 +8,7 @@
 @import url(robo.css);
 @import url(country.css);
 @import url(footer.css);
-canvas {
-      display: block;
-    }
+@import url(cryptoapi.css);
+@import url(crypto-converter.css);
+@import url(obj.css);
+@import url(cards.css);

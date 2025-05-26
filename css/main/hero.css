@@ -324,6 +324,26 @@ left: 32%; */
   }
 }
 @media (min-width: 1401px) and (max-width: 1920px) {
+
+
+  .swiper {
+      width: 100%;
+      padding-top: 8%;
+      padding-bottom: 4%;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 400px;
+      height: 400px;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+    }
+
   .lion {
     object-fit: fill;
     width: 100%;
@@ -357,7 +377,7 @@ left: 0%;
     width: 100% !important;
     background-color: transparent;
     /* border: 48px solid transparent; */
-    border: 20px solid whitesmoke;
+    /* border: 20px solid whitesmoke; */
     /* border-top: none; */
     /* display: flex; */
   }
@@ -378,6 +398,7 @@ left: 0%;
     text-align: center;
     justify-content: center;
     align-items: baseline;
+    pointer-events: none;
   }
 
   .bottom-left > h1 {
@@ -488,6 +509,7 @@ left: 0%;
     /* left: 42%; */
     opacity: 1;
     width: 80%;
+    pointer-events: visible;
   }
   .golden {
     font-family: "sora" !important;

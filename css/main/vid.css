@@ -148,7 +148,7 @@
       /* background-color: #2a2b41 !important; */
       position: relative;
       /* justify-content: center; */
-      margin-top: 0%;
+      margin-top: 8%;
       > img {
         position: absolute;
         width: 20%;
@@ -181,7 +181,7 @@
           /* padding-top: 20%; */
       font-family: "sora-b" !important;
         
-        color: #000 !important;
+        color: #1e88e5 !important;
         font-size: 48px;
         /* text-align: center; */
         margin-bottom: 2%;

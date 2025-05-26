@@ -112,14 +112,14 @@ display: inline-block;
     border-top: 24px solid transparent;
   }
   .ctext {
-    padding-top: 0%;
+    padding-top: 8%;
     padding-left: 4%;
-    width: 60%;
+    width: 50%;
     z-index: 2;
 display: inline-block;
     /* float: left; */
     > h4 {
-      color: #000 !important;
+      color: #1e88e5 !important;
       font-size: 48px;
       /* text-align: center; */
       margin-top: 6%;
@@ -144,7 +144,7 @@ display: inline-block;
     }
   }
   .cimg {
-    width: 36%;
+    width: 50%;
     /* height: inherit; */
     float: right;
     overflow: hidden;

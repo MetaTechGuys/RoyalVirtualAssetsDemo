@@ -11,6 +11,9 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "live-server": "^1.2.2"
+    "cryptocurrency-icons": "^0.18.1",
+    "live-server": "^1.2.0",
+    "three": "^0.176.0",
+    "three-svg-loader": "^0.3.1"
   }
 }
