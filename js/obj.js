@@ -9,7 +9,7 @@ class Crypto3DVisualizer {
         this.config = {
             containerSelector: options.containerSelector || '#crypto-3d-container',
             width: options.width || window.innerWidth,
-            height: options.height || 1000, // Increased height to 900px
+            height: options.height || window.innerHeight, // Increased height to 900px
             backgroundColor: options.backgroundColor || 0x0a0a14,
             apiInstance: options.apiInstance || window.cryptoApi,
             cryptoCount: options.cryptoCount || 0, // 0 means include all available cryptos
