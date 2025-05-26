@@ -9,7 +9,7 @@ class CryptoAPI {
         this.config = {
             apiKey: options.apiKey || '',
             baseUrl: 'https://api.coingecko.com/api/v3',
-            updateInterval: options.updateInterval || 80000, // Default: update every minute
+            updateInterval: options.updateInterval || 240000, // Default: update every minute
             containerSelector: options.containerSelector || '#crypto-prices',
             limit: options.limit || 20,
             currency: options.currency || 'usd',
@@ -310,7 +310,7 @@ class CryptoAPI {
         footer.className = 'crypto-footer';
         footer.innerHTML = `
             <span>Last updated: ${new Date().toLocaleTimeString()}</span>
-            <span>Data provided by CoinGecko</span>
+            <span>Data refreshed automatically every 2 hours</span>
         `;
         container.appendChild(footer);
         

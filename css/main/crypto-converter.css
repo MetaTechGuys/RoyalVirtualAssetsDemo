@@ -344,3 +344,14 @@ position: relative;
 .crypto-result.highlight {
   animation: highlight 1s ease-out;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
