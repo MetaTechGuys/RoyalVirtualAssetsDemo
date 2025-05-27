@@ -1427,29 +1427,29 @@ setupSVGDirectory() {
         });
         
         // Add a highlight effect
-        if (!object.userData.highlightMesh) {
-            // Create a highlight circle around the object
-            const geometry = new THREE.CircleGeometry(this.config.logoSize * 0.8, 32);
-            const material = new THREE.MeshBasicMaterial({
-                color: 0xffffff,
-                transparent: true,
-                opacity: 0.2,
-                side: THREE.DoubleSide
-            });
+        // if (!object.userData.highlightMesh) {
+        //     // Create a highlight circle around the object
+        //     const geometry = new THREE.CircleGeometry(this.config.logoSize * 0.8, 32);
+        //     const material = new THREE.MeshBasicMaterial({
+        //         color: 0xffffff,
+        //         transparent: true,
+        //         opacity: 0.2,
+        //         side: THREE.DoubleSide
+        //     });
             
-            const highlightMesh = new THREE.Mesh(geometry, material);
-            highlightMesh.position.z = -0.1; // Position slightly behind the logo
-            object.add(highlightMesh);
-            object.userData.highlightMesh = highlightMesh;
+        //     const highlightMesh = new THREE.Mesh(geometry, material);
+        //     highlightMesh.position.z = -0.1; // Position slightly behind the logo
+        //     object.add(highlightMesh);
+        //     object.userData.highlightMesh = highlightMesh;
             
-            // Animate the highlight
-            gsap.to(material, {
-                opacity: 0.3,
-                duration: 1,
-                yoyo: true,
-                repeat: -1
-            });
-        }
+        //     // Animate the highlight
+        //     gsap.to(material, {
+        //         opacity: 0.3,
+        //         duration: 1,
+        //         yoyo: true,
+        //         repeat: -1
+        //     });
+        // }
         
         // Set timer to deselect after hover duration
         this.hoverTimer = setTimeout(() => {
@@ -1467,7 +1467,7 @@ setupSVGDirectory() {
             // Fade out instructions after 3 seconds
             setTimeout(() => {
                 instructions.classList.add('fade');
-            }, 3000);
+            }, 8000);
         }
     }
     
