@@ -75,7 +75,15 @@
     font-size: 14px;
     cursor: pointer;
     transition: all 0.2s ease;
+    >option{
+        background-color: #2a2b41;
+        
+    }
 }
+
+
+
+
 
 .crypto-controls select:hover,
 .crypto-controls button:hover,
@@ -84,6 +92,7 @@
 #crypto-sort-btn:hover,
 #crypto-sort-option:hover {
     background-color: #1e88e5;
+    
     
 }
 

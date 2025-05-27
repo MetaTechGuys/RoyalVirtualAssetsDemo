@@ -14,7 +14,7 @@ class Crypto3DVisualizer {
             apiInstance: options.apiInstance || window.cryptoApi,
             cryptoCount: options.cryptoCount || 0, // 0 means include all available cryptos
             logoSize: options.logoSize || 3.5,
-            hoverDuration: options.hoverDuration || 5000 // Duration in ms to maintain hover effect after click
+            hoverDuration: options.hoverDuration || 8000 // Duration in ms to maintain hover effect after click
         };
         
         // Three.js components
@@ -226,7 +226,7 @@ disposeMaterial(material) {
             // Fade out and remove
             gsap.to(loadingIndicator, {
                 opacity: 0,
-                duration: 0.5,
+                duration: 0.8,
                 onComplete: () => {
                     if (loadingIndicator.parentNode) {
                         loadingIndicator.parentNode.removeChild(loadingIndicator);
@@ -251,7 +251,7 @@ disposeMaterial(material) {
             }
             
             // Wait 500ms before checking again
-            await new Promise(resolve => setTimeout(resolve, 500));
+            await new Promise(resolve => setTimeout(resolve, 200));
             attempts++;
         }
         
@@ -293,11 +293,11 @@ disposeMaterial(material) {
         container.appendChild(this.renderer.domElement);
         
         // Add ambient light
-        const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
         this.scene.add(ambientLight);
         
         // Add directional light with shadows
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.4);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
         directionalLight.position.set(5, 10, 7);
         directionalLight.castShadow = true;
         directionalLight.shadow.mapSize.width = 1024;
@@ -313,7 +313,7 @@ disposeMaterial(material) {
         // Add point lights for better highlights
         const colors = [0x3498db, 0xe74c3c, 0xf39c12, 0x2ecc71, 0x9b59b6];
         for (let i = 0; i < 8; i++) { // More lights for more objects
-            const pointLight = new THREE.PointLight(colors[i % colors.length], 1.4, 800);
+            const pointLight = new THREE.PointLight(colors[i % colors.length], 0.8, 800);
             const angle = (i / 8) * Math.PI * 2;
             const radius = 25;
             pointLight.position.set(
@@ -334,7 +334,7 @@ disposeMaterial(material) {
             this.controls.enableDamping = true;
             this.controls.dampingFactor = 0.05;
             this.controls.screenSpacePanning = false;
-            this.controls.minDistance = 15;
+            this.controls.minDistance = 20;
             this.controls.maxDistance = 60;
             this.controls.maxPolarAngle = Math.PI / 2;
             this.controls.autoRotate = true;
@@ -474,12 +474,7 @@ disposeMaterial(material) {
         }, 1000);
     }
     
-    /**
-     * Create 3D objects for cryptocurrencies using their logos
-     */
-    /**
- * Create 3D objects for cryptocurrencies using their SVG logos
- */
+
 /**
  * Create 3D objects for cryptocurrencies using their SVG logos as textures
  */

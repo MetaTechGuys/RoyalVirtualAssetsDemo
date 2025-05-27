@@ -9,11 +9,13 @@ class CryptoAPI {
         this.config = {
             apiKey: options.apiKey || '',
             baseUrl: 'https://api.coingecko.com/api/v3',
-            updateInterval: options.updateInterval || 240000, // Default: update every minute
+            updateInterval: options.updateInterval || 240000, // Default: update every 2 minutes
             containerSelector: options.containerSelector || '#crypto-prices',
             limit: options.limit || 20,
             currency: options.currency || 'usd',
-            initialDisplay: options.initialDisplay || 8 // Default: initially show 10 items
+            initialDisplay: options.initialDisplay || 8, // Default: initially show 10 items
+            maxRetries: options.maxRetries || 8, // Maximum number of retry attempts
+            retryDelay: options.retryDelay || 200 // Delay between retries in ms
         };
         
         this.prices = [];
@@ -22,6 +24,7 @@ class CryptoAPI {
         this.errorMessage = '';
         this.intervalId = null;
         this.showingAll = false; // Track if we're showing all items
+        this.retryCount = 0; // Track retry attempts
         
         // Add sorting state
         this.sortConfig = {
@@ -61,7 +64,7 @@ class CryptoAPI {
     }
     
     /**
-     * Fetch cryptocurrency prices from the API
+     * Fetch cryptocurrency prices from the API with retry functionality
      */
     async fetchPrices() {
         try {
@@ -77,6 +80,29 @@ class CryptoAPI {
             }
             
             const data = await response.json();
+            
+            // Check if data is empty or invalid
+            if (!data || data.length === 0) {
+                // If we haven't exceeded max retries, try again
+                if (this.retryCount < this.config.maxRetries) {
+                    this.retryCount++;
+                    console.log(`No data received. Retry attempt ${this.retryCount}/${this.config.maxRetries}`);
+                    
+                    // Show retry status in UI
+                    this.hasError = true;
+                    this.errorMessage = `No data received. Retrying... (${this.retryCount}/${this.config.maxRetries})`;
+                    this.renderPrices();
+                    
+                    // Wait before retrying
+                    await new Promise(resolve => setTimeout(resolve, this.config.retryDelay));
+                    return this.fetchPrices(); // Recursive retry
+                } else {
+                    throw new Error('Failed to fetch data after multiple attempts');
+                }
+            }
+            
+            // Success - reset retry counter
+            this.retryCount = 0;
             this.prices = data;
             this.hasError = false;
             
@@ -85,8 +111,23 @@ class CryptoAPI {
             
             return this.prices;
         } catch (error) {
-            this.handleError(error);
-            return [];
+            // If we haven't exceeded max retries, try again
+            if (this.retryCount < this.config.maxRetries) {
+                this.retryCount++;
+                console.log(`Error fetching data: ${error.message}. Retry attempt ${this.retryCount}/${this.config.maxRetries}`);
+                
+                // Show retry status in UI
+                this.hasError = true;
+                this.errorMessage = `Error: ${error.message}. Retrying... (${this.retryCount}/${this.config.maxRetries})`;
+                this.renderPrices();
+                
+                // Wait before retrying
+                await new Promise(resolve => setTimeout(resolve, this.config.retryDelay));
+                return this.fetchPrices(); // Recursive retry
+            } else {
+                this.handleError(error);
+                return [];
+            }
         } finally {
             this.isLoading = false;
             this.updateLoadingState();
@@ -240,6 +281,7 @@ class CryptoAPI {
             noDataRow.innerHTML = `
                 <td colspan="5" class="crypto-no-data">
                     No cryptocurrency data available
+                    <button id="crypto-retry-btn" class="crypto-retry-btn">Retry Now</button>
                 </td>
             `;
             tbody.appendChild(noDataRow);
@@ -310,13 +352,49 @@ class CryptoAPI {
         footer.className = 'crypto-footer';
         footer.innerHTML = `
             <span>Last updated: ${new Date().toLocaleTimeString()}</span>
-            <span>Data refreshed automatically every 2 hours</span>
+            <span>Data refreshed automatically every 2 minutes</span>
         `;
         container.appendChild(footer);
         
 
         // Add CSS for sortable columns and sort dropdown
         this.addSortStyles();
+        
+        // Add retry button styles
+        this.addRetryButtonStyles();
+    }
+    
+    /**
+     * Add styles for retry button
+     */
+    addRetryButtonStyles() {
+        if (!document.getElementById('crypto-retry-styles')) {
+            const style = document.createElement('style');
+            style.id = 'crypto-retry-styles';
+            style.textContent = `
+                .crypto-retry-btn {
+                    margin-left: 10px;
+                    padding: 5px 10px;
+                    background-color: #1e88e5;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 12px;
+                }
+                
+                .crypto-retry-btn:hover {
+                    background-color: #1565c0;
+                }
+                
+                .crypto-error, .crypto-no-data {
+                    text-align: center;
+                    padding: 20px;
+                    color: #d32f2f;
+                }
+            `;
+            document.head.appendChild(style);
+        }
     }
     
     /**
@@ -389,7 +467,7 @@ class CryptoAPI {
                 }
                 
                 .crypto-sort-option:hover {
-                    background-color: #f1f1f1;
+                    background-color: #1e88e5;
                 }
                 
                 .crypto-sort-option.active {
@@ -509,6 +587,8 @@ class CryptoAPI {
         
         // Set up new interval
         this.intervalId = setInterval(async () => {
+            // Reset retry count for each scheduled refresh
+            this.retryCount = 0;
             await this.fetchPrices();
             this.renderPrices();
         }, this.config.updateInterval);
@@ -533,13 +613,28 @@ class CryptoAPI {
     }
     
     /**
+     * Manually retry fetching data
+     */
+    retryFetch() {
+        // Reset retry count for manual retry
+        this.retryCount = 0;
+        this.fetchPrices().then(() => this.renderPrices());
+    }
+    
+    /**
      * Set up event listeners for user interaction
      */
     setupEventListeners() {
         document.addEventListener('click', (event) => {
             // Refresh button
             if (event.target.id === 'crypto-refresh-btn') {
+                this.retryCount = 0; // Reset retry count for manual refresh
                 this.fetchPrices().then(() => this.renderPrices());
+            }
+            
+            // Retry button
+            if (event.target.id === 'crypto-retry-btn') {
+                this.retryFetch();
             }
             
             // Show More button
@@ -587,6 +682,7 @@ class CryptoAPI {
             // Currency select
             if (event.target.id === 'crypto-currency-select') {
                 this.config.currency = event.target.value;
+                this.retryCount = 0; // Reset retry count for currency change
                 this.fetchPrices().then(() => this.renderPrices());
             }
         });
