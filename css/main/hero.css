@@ -1,4 +1,22 @@
 @media (min-width: 1921px) and (max-width: 2560px) {
+
+  .swiper {
+      width: 100%;
+      padding-top: 8%;
+      padding-bottom: 4%;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 600px;
+      height: 400px;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+    }
   .lion {
     object-fit: fill;
     width: 100%;
@@ -336,7 +354,7 @@ left: 32%; */
       background-position: center;
       background-size: cover;
       width: 400px;
-      height: 400px;
+      height: 280px;
     }
 
     .swiper-slide img {
@@ -673,6 +691,25 @@ left: 0%;
   }
 }
 @media (min-width: 1201px) and (max-width: 1400px) {
+
+  .swiper {
+      width: 100%;
+      padding-top: 8%;
+      padding-bottom: 4%;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 400px;
+      height: 280px;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+    }
+
   .lion {
     object-fit: fill;
     width: 100%;
@@ -1001,6 +1038,26 @@ left: 32%; */
   }
 }
 @media (min-width: 993px) and (max-width: 1200px) {
+
+
+  .swiper {
+      width: 100%;
+      padding-top: 8%;
+      padding-bottom: 4%;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 400px;
+      height: 280px;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+    }
+
   .lion {
     object-fit: fill;
     width: 100%;
@@ -1327,6 +1384,29 @@ left: 30%; */
   }
 }
 @media (min-width: 769px) and (max-width: 992px) {
+
+
+
+  .swiper {
+      width: 100%;
+      padding-top: 8%;
+      padding-bottom: 4%;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 400px;
+      height: 280px;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+    }
+
+
+
   .lion {
     object-fit: fill;
     width: 100%;
@@ -1655,6 +1735,27 @@ left: 8%; */
   }
 }
 @media (min-width: 577px) and (max-width: 768px) {
+
+
+  .swiper {
+      width: 100%;
+      padding-top: 8%;
+      padding-bottom: 4%;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 280px;
+      height: 200px;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+    }
+
+
   .lion {
     object-fit: fill;
     width: 100%;
@@ -1987,6 +2088,26 @@ left: 8%; */
   }
 }
 @media (max-width: 576px) {
+
+
+  .swiper {
+      width: 100%;
+      padding-top: 8%;
+      padding-bottom: 4%;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 180px;
+      height: 140px;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+    }
+
   .lion {
     object-fit: fill;
     width: 100%;
