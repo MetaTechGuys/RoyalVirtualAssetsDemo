@@ -40,7 +40,7 @@
     overflow: visible;
     margin-bottom: 20%;
 
-    > img {
+    > video {
       position: absolute;
       width: 60%;
       /* height: 100%; */
@@ -243,7 +243,7 @@
     overflow: visible;
     margin-bottom: 14%;
     /* position: relative; */
-    > img {
+    > video {
       position: absolute;
       width: 62%;
       /* height: 100%; */
@@ -445,7 +445,7 @@
     overflow: visible;
     margin-bottom: 20%;
     /* position: relative; */
-    > img {
+    > video {
       position: absolute;
       width: 64%;
       /* height: 100%; */
@@ -645,7 +645,7 @@
     width: 60%;
     overflow: visible;
     margin-bottom: 18%;
-    > img {
+    > video {
       position: absolute;
       width: 62%;
       /* height: 100%; */
@@ -843,7 +843,7 @@
     width: 100%;
     overflow: visible;
     margin-bottom: 8%;
-    > img {
+    > video {
       position: absolute;
       width: 48%;
       /* height: 100%; */
@@ -1041,7 +1041,7 @@
     width: 100%;
     overflow: visible;
     margin-bottom: 8%;
-    > img {
+    > video {
       position: absolute;
       width: 48%;
       /* height: 100%; */
@@ -1239,7 +1239,7 @@
     width: 100%;
     overflow: visible;
     margin-bottom: 48%;
-    > img {
+    > video {
       position: absolute;
       width: 80%;
       /* height: 100%; */

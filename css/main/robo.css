@@ -21,7 +21,7 @@
     /* padding-left: 140px; */
     width: 60%;
     margin-bottom: 14%;
-    > img {
+    > video {
       position: absolute;
       width: 48%;
       /* height: 100%; */
@@ -94,7 +94,7 @@
     /* padding-left: 140px; */
     width: 60%;
     margin-bottom: 14%;
-    > img {
+    > video {
       position: absolute;
       width: 48%;
       /* height: 100%; */
@@ -167,7 +167,7 @@
     /* padding-left: 140px; */
     width: 60%;
     margin-bottom: 14%;
-    > img {
+    > video {
       position: absolute;
       width: 48%;
       /* height: 100%; */
@@ -240,7 +240,7 @@
     padding-top: 0px;
     /* padding-left: 140px; */
     width: 100%;
-    > img {
+    > video {
       position: absolute;
       width: 40%;
       /* height: 100%; */
@@ -315,7 +315,7 @@
     padding-top: 0px;
     /* padding-left: 140px; */
     width: 100%;
-    > img {
+    > video {
       position: absolute;
       width: 48%;
       /* height: 100%; */
@@ -390,7 +390,7 @@
     padding-top: 0px;
     /* padding-left: 140px; */
     width: 100%;
-    > img {
+    > video {
       position: absolute;
       width: 48%;
       /* height: 100%; */
@@ -464,7 +464,7 @@
     /* padding-top: 100px; */
     /* padding-left: 140px; */
     width: 100%;
-    > img {
+    > video {
       position: absolute;
       width: 48%;
       /* height: 100%; */
