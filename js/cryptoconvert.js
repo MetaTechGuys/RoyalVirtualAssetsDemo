@@ -48,46 +48,46 @@ class CryptoConverter {
     container.innerHTML = `
             <h3>Cryptocurrency Converter</h3>
             <div class="crypto-input-group clogos" >
-                <img src="././media/svg/bitcoin-btc-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/bnb-bnb-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/cardano-ada-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/dogecoin-doge-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/ethereum-eth-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/shiba-inu-shib-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/solana-sol-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/sui-sui-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/tether-usdt-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/tron-trx-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/usd-coin-usdc-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/aptos-apt-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/avalanche-avax-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/bitcoin-cash-bch-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/bitget-token-new-bgb-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/chainlink-link-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/cronos-cro-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/hedera-hbar-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/ethereum-classic-etc-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/internet-computer-icp-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/kaspa-kas-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/litecoin-ltc-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/mantra-om-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/monero-xmr-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/multi-collateral-dai-dai-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/ondo-finance-ondo-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/pepe-pepe-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/polkadot-new-dot-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/stellar-xlm-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/toncoin-ton-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/uniswap-uni-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
-                <img src="././media/svg/aave-aave-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;">
+                <img src="././media/svg/bitcoin-btc-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 1">
+                <img src="././media/svg/bnb-bnb-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 2">
+                <img src="././media/svg/cardano-ada-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 3">
+                <img src="././media/svg/dogecoin-doge-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 4">
+                <img src="././media/svg/ethereum-eth-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 5">
+                <img src="././media/svg/shiba-inu-shib-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 6">
+                <img src="././media/svg/solana-sol-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 7">
+                <img src="././media/svg/sui-sui-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 8">
+                <img src="././media/svg/tether-usdt-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 9">
+                <img src="././media/svg/tron-trx-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 10">
+                <img src="././media/svg/usd-coin-usdc-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 11">
+                <img src="././media/svg/aptos-apt-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 12">
+                <img src="././media/svg/avalanche-avax-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 13">
+                <img src="././media/svg/bitcoin-cash-bch-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 14">
+                <img src="././media/svg/bitget-token-new-bgb-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 15">
+                <img src="././media/svg/chainlink-link-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 16">
+                <img src="././media/svg/cronos-cro-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 17">
+                <img src="././media/svg/hedera-hbar-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 18">
+                <img src="././media/svg/ethereum-classic-etc-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 19">
+                <img src="././media/svg/internet-computer-icp-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 20">
+                <img src="././media/svg/kaspa-kas-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 21">
+                <img src="././media/svg/litecoin-ltc-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 22">
+                <img src="././media/svg/mantra-om-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 23">
+                <img src="././media/svg/monero-xmr-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 24">
+                <img src="././media/svg/multi-collateral-dai-dai-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 25">
+                <img src="././media/svg/ondo-finance-ondo-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 26">
+                <img src="././media/svg/pepe-pepe-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 27">
+                <img src="././media/svg/polkadot-new-dot-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 28">
+                <img src="././media/svg/stellar-xlm-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 29">
+                <img src="././media/svg/toncoin-ton-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 30">
+                <img src="././media/svg/uniswap-uni-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 31">
+                <img src="././media/svg/aave-aave-logo.svg" style="width: 40px; height: 40px; vertical-align: middle;" alt="crypto 32">
             </div>
             <div class="crypto-input-group">
-                <label>Amount</label>
+                <label for="crypto-amount">Amount</label>
                 <input type="number" id="crypto-amount" value="1" min="0" step="any">
             </div>
             
             <div class="crypto-input-group">
-                <label>From</label>
+                <label for="currency-from">From</label>
                 <!-- Hidden select for form submission -->
                 <select id="currency-from" style="display:none;"></select>
                 <!-- Custom dropdown with logos -->
@@ -103,11 +103,11 @@ class CryptoConverter {
             </div>
             
             <div class="crypto-equals">
-                <img src="././media/svg/Arrow 3.svg" style="width: 40px; height: 40px; vertical-align: middle;">
+                <img src="././media/svg/Arrow 3.svg" style="width: 40px; height: 40px; vertical-align: middle;"  alt="arrow">
             </div>
             
             <div class="crypto-input-group">
-                <label>To</label>
+                <label for="currency-to">To</label>
                 <!-- Hidden select for form submission -->
                 <select id="currency-to" style="display:none;"></select>
                 <!-- Custom dropdown with logos -->
@@ -131,122 +131,7 @@ class CryptoConverter {
             <div id="crypto-error" class="crypto-error"></div>
         `;
   }
-  // Add CSS for custom dropdowns with logos
-  //     const style = document.createElement('style');
-  //     style.textContent = `
-  //         /* Custom dropdown styles */
-  //         .custom-select {
-  //             position: relative;
-  //             width: 100%;
-  //             user-select: none;
-  //         }
-
-  //         .selected-option {
-  //             display: flex;
-  //             align-items: center;
-  //             padding: 10px 15px;
-  //             border: 1px solid #333;
-  //             border-radius: 4px;
-  //             background: rgba(15, 15, 30, 0.8);
-  //             color: #fff;
-  //             cursor: pointer;
-  //             transition: all 0.3s ease;
-  //         }
-
-  //         .selected-option:hover {
-  //             border-color: #4cc9f0;
-  //         }
-
-  //         .currency-logo {
-  //             width: 24px;
-  //             height: 24px;
-  //             border-radius: 50%;
-  //             margin-right: 10px;
-  //             display: flex;
-  //             align-items: center;
-  //             justify-content: center;
-  //             font-weight: bold;
-  //             font-size: 12px;
-  //             color: #fff;
-  //             text-transform: uppercase;
-  //             background-color: rgba(255, 255, 255, 0.1);
-  //         }
-
-  //         .options-container {
-  //             position: absolute;
-  //             top: 100%;
-  //             left: 0;
-  //             width: 100%;
-  //             max-height: 300px;
-  //             overflow-y: auto;
-  //             background: rgba(15, 15, 30, 0.95);
-  //             border: 1px solid #333;
-  //             border-top: none;
-  //             border-radius: 0 0 4px 4px;
-  //             z-index: 10;
-  //             display: none;
-  //             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  //         }
-
-  //         .options-container.show {
-  //             display: block;
-  //         }
-
-  //         .option-group {
-  //             padding: 8px 10px;
-  //             font-weight: bold;
-  //             color: #4cc9f0;
-  //             background: rgba(76, 201, 240, 0.1);
-  //             border-bottom: 1px solid rgba(76, 201, 240, 0.3);
-  //         }
-
-  //         .option {
-  //             display: flex;
-  //             align-items: center;
-  //             padding: 8px 15px;
-  //             cursor: pointer;
-  //             transition: background 0.2s ease;
-  //         }
-
-  //         .option:hover {
-  //             background: rgba(76, 201, 240, 0.2);
-  //         }
-
-  //         .option.selected {
-  //             background: rgba(76, 201, 240, 0.3);
-  //         }
-
-  //         /* Scrollbar styles for the dropdown */
-  //         .options-container::-webkit-scrollbar {
-  //             width: 8px;
-  //         }
-
-  //         .options-container::-webkit-scrollbar-track {
-  //             background: rgba(0, 0, 0, 0.2);
-  //         }
-
-  //         .options-container::-webkit-scrollbar-thumb {
-  //             background: rgba(76, 201, 240, 0.5);
-  //             border-radius: 4px;
-  //         }
-
-  //         .options-container::-webkit-scrollbar-thumb:hover {
-  //             background: rgba(76, 201, 240, 0.7);
-  //         }
-
-  //         /* Animation for the result */
-  //         @keyframes highlight {
-  //             0% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.5); }
-  //             70% { box-shadow: 0 0 0 10px rgba(76, 201, 240, 0); }
-  //             100% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0); }
-  //         }
-
-  //         .crypto-result.highlight {
-  //             animation: highlight 1s ease-out;
-  //         }
-  //     `;
-  //     document.head.appendChild(style);
-  // }
+ 
 
   /**
    * Fetch cryptocurrency data
@@ -268,7 +153,7 @@ class CryptoConverter {
 
       return true;
     } catch (error) {
-      console.error("Error fetching crypto data:", error);
+      //console.error("Error fetching crypto data:", error);
       document.getElementById("crypto-error").textContent =
         "Failed to load cryptocurrency data";
       document.getElementById("crypto-error").style.display = "block";
@@ -664,7 +549,7 @@ class CryptoConverter {
       void resultInput.offsetWidth; // Trigger reflow
       resultInput.classList.add("highlight");
     } catch (error) {
-      console.error("Conversion error:", error);
+      //console.error("Conversion error:", error);
       const errorElement = document.getElementById("crypto-error");
       if (errorElement) {
         errorElement.textContent =

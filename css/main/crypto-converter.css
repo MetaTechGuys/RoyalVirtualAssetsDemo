@@ -1,2543 +1,2372 @@
 @media (min-width: 1921px) and (max-width: 2560px) {
   .convert {
-  align-content: center;
-  /* width: 100%; */
-  height: 1100px;
-  /* text-align: right; */
-position: relative;
-  > img {
-    width: 100%;
-    z-index: -1;
+    align-content: center;
+
+    height: 1100px;
+
+    position: relative;
+    > img {
+      width: 100%;
+      height: auto;
+      z-index: -1;
+      position: absolute;
+    }
+  }
+
+  .clogos {
+    white-space: nowrap;
+    animation: moves linear forwards;
+    animation-duration: 18s;
+    transition: 18s;
+    animation-iteration-count: infinite;
+    margin-top: 2.8%;
+  }
+
+  @keyframes moves {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-40%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .crypto-converter {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+
+    margin-bottom: 48px;
+    margin-left: auto;
+    margin-right: 8%;
+    margin-top: 8.8%;
+    padding: 40px;
+    background: #35414e48 !important;
+    border-radius: 8px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow-x: clip;
+  }
+
+  .crypto-converter h3 {
+    margin-top: 0;
+    margin-bottom: 28px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+  }
+
+  .crypto-converter h3:after {
+    content: "";
     position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #1e88e5, #2a2b41);
+    border-radius: 3px;
   }
-}
 
-.clogos {
-  white-space: nowrap;
-  animation: moves linear forwards;
-  animation-duration: 18s;
-  transition: 18s;
-  animation-iteration-count: infinite;
-  margin-top: 2.8%;
-}
-
-@keyframes moves {
-  0% {
-    transform: translateX(0);
+  .crypto-input-group {
+    margin-bottom: 15px;
+    position: relative;
   }
-  50% {
-    transform: translateX(-40%);
+
+  .crypto-input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 4%;
   }
-  100% {
-    transform: translateX(0);
+
+  .crypto-input-group input[type="number"],
+  .crypto-input-group input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #35414e48 !important;
+    color: #fff;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: all 0.3s ease;
   }
-}
 
-/* Main container */
-.crypto-converter {
-  font-family: Arial, sans-serif;
-  max-width: 800px;
-  /* max-height: 1000px; */
-  margin-bottom: 48px;
-  margin-left: auto;
-  margin-right: 8%;
-  margin-top: 8.8%;
-  padding:40px;
-  background: #35414e48 !important;
-  border-radius: 8px;
-  color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  overflow-x: clip;
-}
+  .crypto-input-group input:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
+  }
 
-/* Heading */
-.crypto-converter h3 {
-  margin-top: 0;
-  margin-bottom: 28px;
-  color: whitesmoke;
-  text-align: center;
-  font-size: 24px;
-  position: relative;
-}
+  .crypto-result {
+    background: #35414e !important;
+    border-color: #1e88e5 !important;
+    font-weight: bold;
+    font-size: 18px !important;
+  }
 
-.crypto-converter h3:after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, #1e88e5, #2a2b41);
-  border-radius: 3px;
-}
+  .crypto-equals {
+    text-align: center;
+    font-size: 24px;
+    margin: 0 0;
+    margin-top: 8%;
+    color: whitesmoke;
+  }
 
-/* Input groups */
-.crypto-input-group {
-  margin-bottom: 15px;
-  position: relative;
-}
+  .crypto-error,
+  .crypto-notification {
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+  }
 
-.crypto-input-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 4%;
-}
+  .crypto-error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+  }
 
-.crypto-input-group input[type="number"],
-.crypto-input-group input[type="text"] {
-  width: 100%;
-  padding: 12px 15px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background-color: #35414e48 !important;
-  color: #fff;
-  box-sizing: border-box;
-  font-size: 16px;
-  transition: all 0.3s ease;
-}
+  .crypto-notification {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+  }
 
-.crypto-input-group input:focus {
-  outline: none;
-  border-color: #1e88e5;
-  box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
-}
-
-/* Result field */
-.crypto-result {
-  background: #35414e !important;
-  border-color: #1e88e5 !important;
-  font-weight: bold;
-  font-size: 18px !important;
-}
-
-/* Equals sign */
-.crypto-equals {
-  text-align: center;
-  font-size: 24px;
-  margin: 0 0;
-  margin-top: 8%;
-  color: whitesmoke;
-}
-
-/* Error and notification messages */
-.crypto-error,
-.crypto-notification {
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 15px;
-  text-align: center;
-  display: none;
-}
-
-.crypto-error {
-  color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.1);
-  border: 1px solid rgba(255, 107, 107, 0.3);
-}
-
-.crypto-notification {
-  background: rgba(255, 193, 7, 0.1);
-  color: #ffc107;
-  border: 1px solid rgba(255, 193, 7, 0.3);
-}
-
-/* Crypto logos display */
-.crypto-input-group.clogos {
+  .crypto-input-group.clogos {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
-}
-
-.crypto-input-group.clogos img {
-    transition: transform 0.3s ease;
-}
-
-.crypto-input-group.clogos img:hover {
-  transform: scale(1.2);
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Amount input styling */
-#crypto-amount {
-  font-size: 18px;
-  font-weight: 500;
-  text-align: center;
-  height: auto;
-  padding: 15px;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .crypto-converter {
-    padding: 15px;
-    margin: 10px;
-  }
-
-  .crypto-input-group.clogos {
-    gap: 5px;
   }
 
   .crypto-input-group.clogos img {
-    width: 30px;
-    height: 30px;
+    transition: transform 0.3s ease;
+  }
+
+  .crypto-input-group.clogos img:hover {
+    transform: scale(1.2);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #crypto-amount {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    height: auto;
+    padding: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .crypto-converter {
+      padding: 15px;
+      margin: 10px;
+    }
+
+    .crypto-input-group.clogos {
+      gap: 5px;
+    }
+
+    .crypto-input-group.clogos img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .selected-option {
+      padding: 10px 12px;
+    }
+
+    .currency-logo {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .option {
+      padding: 8px 12px;
+    }
+
+    #crypto-amount {
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .crypto-converter {
+      background: #1e1f35;
+    }
+
+    .crypto-input-group input[type="number"],
+    .crypto-input-group input[type="text"],
+    .selected-option {
+      background: #0a0a14;
+    }
+  }
+
+  .custom-select {
+    position: relative;
+    width: 100%;
+    user-select: none;
   }
 
   .selected-option {
-    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #35414e48;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .selected-option:hover {
+    border-color: #1e88e5;
   }
 
   .currency-logo {
     width: 24px;
     height: 24px;
-    margin-right: 8px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .options-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(15, 15, 30, 0.95);
+    border: 1px solid #333;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .options-container.show {
+    display: block;
+  }
+
+  .option-group {
+    padding: 8px 10px;
+    font-weight: bold;
+    color: #1e88e5;
+    background: #35414e48;
+    border-bottom: 1px solid #1e88e5;
   }
 
   .option {
-    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
   }
 
-  #crypto-amount {
-    font-size: 16px;
-    padding: 12px;
-  }
-}
-
-/* Dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-  .crypto-converter {
-    background: #1e1f35;
+  .option:hover {
+    background: #1e88e548;
   }
 
-  .crypto-input-group input[type="number"],
-  .crypto-input-group input[type="text"],
-  .selected-option {
-    background: #0a0a14;
+  .option.selected {
+    background: #1e88e5;
   }
-}
-/* Custom dropdown styles */
-.custom-select {
-  position: relative;
-  width: 100%;
-  user-select: none;
-}
 
-.selected-option {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background: #35414e48;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.selected-option:hover {
-  border-color: #1e88e5;
-}
-
-.currency-logo {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 12px;
-  color: #fff;
-  text-transform: uppercase;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.options-container {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 300px;
-  overflow-y: auto;
-  background: rgba(15, 15, 30, 0.95);
-  border: 1px solid #333;
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  z-index: 10;
-  display: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.options-container.show {
-  display: block;
-}
-
-.option-group {
-  padding: 8px 10px;
-  font-weight: bold;
-  color: #1e88e5;
-  background: #35414e48;
-  border-bottom: 1px solid #1e88e5;
-}
-
-.option {
-  display: flex;
-  align-items: center;
-  padding: 8px 15px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.option:hover {
-  background: #1e88e548;
-}
-
-.option.selected {
-  background: #1e88e5;
-}
-
-/* Scrollbar styles for the dropdown */
-.options-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.options-container::-webkit-scrollbar-track {
-  background: #1e88e528;
-}
-
-.options-container::-webkit-scrollbar-thumb {
-  background: #1e88e588;
-  border-radius: 4px;
-}
-
-.options-container::-webkit-scrollbar-thumb:hover {
-  background: #1e88e5;
-}
-
-/* Animation for the result */
-@keyframes highlight {
-  0% {
-    box-shadow: 0 0 0 0 #1e88e5;
+  .options-container::-webkit-scrollbar {
+    width: 8px;
   }
-  70% {
-    box-shadow: 0 0 0 10px #1e88e500;
+
+  .options-container::-webkit-scrollbar-track {
+    background: #1e88e528;
   }
-  100% {
-    box-shadow: 0 0 0 0 #1e88e500;
+
+  .options-container::-webkit-scrollbar-thumb {
+    background: #1e88e588;
+    border-radius: 4px;
   }
-}
 
-.crypto-result.highlight {
-  animation: highlight 1s ease-out;
-}
+  .options-container::-webkit-scrollbar-thumb:hover {
+    background: #1e88e5;
+  }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+  @keyframes highlight {
+    0% {
+      box-shadow: 0 0 0 0 #1e88e5;
+    }
+    70% {
+      box-shadow: 0 0 0 10px #1e88e500;
+    }
+    100% {
+      box-shadow: 0 0 0 0 #1e88e500;
+    }
+  }
 
-/* For Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+  .crypto-result.highlight {
+    animation: highlight 1s ease-out;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 @media (min-width: 1401px) and (max-width: 1920px) {
   .convert {
-  align-content: center;
-  /* width: 100%; */
-  height: 800px;
-  /* text-align: right; */
-position: relative;
-  > img {
-    width: 100%;
-    z-index: -1;
+    align-content: center;
+
+    height: 800px;
+
+    position: relative;
+    > img {
+      width: 100%;
+      z-index: -1;
+      height: auto;
+
+      position: absolute;
+    }
+  }
+
+  .clogos {
+    white-space: nowrap;
+    animation: moves linear forwards;
+    animation-duration: 18s;
+    transition: 18s;
+    animation-iteration-count: infinite;
+    margin-top: 2.8%;
+  }
+
+  @keyframes moves {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-40%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .crypto-converter {
+    font-family: Arial, sans-serif;
+    max-width: 680px;
+    margin-bottom: 48px;
+    margin-left: auto;
+    margin-right: 8%;
+    margin-top: 88px;
+    padding: 40px;
+    background: #35414e48 !important;
+    border-radius: 8px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow-x: clip;
+  }
+
+  .crypto-converter h3 {
+    margin-top: 0;
+    margin-bottom: 28px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+  }
+
+  .crypto-converter h3:after {
+    content: "";
     position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #1e88e5, #2a2b41);
+    border-radius: 3px;
   }
-}
 
-.clogos {
-  white-space: nowrap;
-  animation: moves linear forwards;
-  animation-duration: 18s;
-  transition: 18s;
-  animation-iteration-count: infinite;
-  margin-top: 2.8%;
-}
-
-@keyframes moves {
-  0% {
-    transform: translateX(0);
+  .crypto-input-group {
+    margin-bottom: 15px;
+    position: relative;
   }
-  50% {
-    transform: translateX(-40%);
+
+  .crypto-input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 4%;
   }
-  100% {
-    transform: translateX(0);
+
+  .crypto-input-group input[type="number"],
+  .crypto-input-group input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #35414e48 !important;
+    color: #fff;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: all 0.3s ease;
   }
-}
 
-/* Main container */
-.crypto-converter {
-  font-family: Arial, sans-serif;
-  max-width: 680px;
-  margin-bottom: 48px;
-  margin-left: auto;
-  margin-right: 8%;
-  margin-top: 88px;
-  padding:40px;
-  background: #35414e48 !important;
-  border-radius: 8px;
-  color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  overflow-x: clip;
-}
+  .crypto-input-group input:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
+  }
 
-/* Heading */
-.crypto-converter h3 {
-  margin-top: 0;
-  margin-bottom: 28px;
-  color: whitesmoke;
-  text-align: center;
-  font-size: 24px;
-  position: relative;
-}
+  .crypto-result {
+    background: #35414e !important;
+    border-color: #1e88e5 !important;
+    font-weight: bold;
+    font-size: 18px !important;
+  }
 
-.crypto-converter h3:after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, #1e88e5, #2a2b41);
-  border-radius: 3px;
-}
+  .crypto-equals {
+    text-align: center;
+    font-size: 24px;
+    margin: 0 0;
+    margin-top: 8%;
+    color: whitesmoke;
+  }
 
-/* Input groups */
-.crypto-input-group {
-  margin-bottom: 15px;
-  position: relative;
-}
+  .crypto-error,
+  .crypto-notification {
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+  }
 
-.crypto-input-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 4%;
-}
+  .crypto-error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+  }
 
-.crypto-input-group input[type="number"],
-.crypto-input-group input[type="text"] {
-  width: 100%;
-  padding: 12px 15px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background-color: #35414e48 !important;
-  color: #fff;
-  box-sizing: border-box;
-  font-size: 16px;
-  transition: all 0.3s ease;
-}
+  .crypto-notification {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+  }
 
-.crypto-input-group input:focus {
-  outline: none;
-  border-color: #1e88e5;
-  box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
-}
-
-/* Result field */
-.crypto-result {
-  background: #35414e !important;
-  border-color: #1e88e5 !important;
-  font-weight: bold;
-  font-size: 18px !important;
-}
-
-/* Equals sign */
-.crypto-equals {
-  text-align: center;
-  font-size: 24px;
-  margin: 0 0;
-  margin-top: 8%;
-  color: whitesmoke;
-}
-
-/* Error and notification messages */
-.crypto-error,
-.crypto-notification {
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 15px;
-  text-align: center;
-  display: none;
-}
-
-.crypto-error {
-  color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.1);
-  border: 1px solid rgba(255, 107, 107, 0.3);
-}
-
-.crypto-notification {
-  background: rgba(255, 193, 7, 0.1);
-  color: #ffc107;
-  border: 1px solid rgba(255, 193, 7, 0.3);
-}
-
-/* Crypto logos display */
-.crypto-input-group.clogos {
+  .crypto-input-group.clogos {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
-}
-
-.crypto-input-group.clogos img {
-    transition: transform 0.3s ease;
-}
-
-.crypto-input-group.clogos img:hover {
-  transform: scale(1.2);
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Amount input styling */
-#crypto-amount {
-  font-size: 18px;
-  font-weight: 500;
-  text-align: center;
-  height: auto;
-  padding: 15px;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .crypto-converter {
-    padding: 15px;
-    margin: 10px;
-  }
-
-  .crypto-input-group.clogos {
-    gap: 5px;
   }
 
   .crypto-input-group.clogos img {
-    width: 30px;
-    height: 30px;
+    transition: transform 0.3s ease;
+  }
+
+  .crypto-input-group.clogos img:hover {
+    transform: scale(1.2);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #crypto-amount {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    height: auto;
+    padding: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .crypto-converter {
+      padding: 15px;
+      margin: 10px;
+    }
+
+    .crypto-input-group.clogos {
+      gap: 5px;
+    }
+
+    .crypto-input-group.clogos img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .selected-option {
+      padding: 10px 12px;
+    }
+
+    .currency-logo {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .option {
+      padding: 8px 12px;
+    }
+
+    #crypto-amount {
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .crypto-converter {
+      background: #1e1f35;
+    }
+
+    .crypto-input-group input[type="number"],
+    .crypto-input-group input[type="text"],
+    .selected-option {
+      background: #0a0a14;
+    }
+  }
+
+  .custom-select {
+    position: relative;
+    width: 100%;
+    user-select: none;
   }
 
   .selected-option {
-    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #35414e48;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .selected-option:hover {
+    border-color: #1e88e5;
   }
 
   .currency-logo {
     width: 24px;
     height: 24px;
-    margin-right: 8px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .options-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(15, 15, 30, 0.95);
+    border: 1px solid #333;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .options-container.show {
+    display: block;
+  }
+
+  .option-group {
+    padding: 8px 10px;
+    font-weight: bold;
+    color: #1e88e5;
+    background: #35414e48;
+    border-bottom: 1px solid #1e88e5;
   }
 
   .option {
-    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
   }
 
-  #crypto-amount {
-    font-size: 16px;
-    padding: 12px;
-  }
-}
-
-/* Dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-  .crypto-converter {
-    background: #1e1f35;
+  .option:hover {
+    background: #1e88e548;
   }
 
-  .crypto-input-group input[type="number"],
-  .crypto-input-group input[type="text"],
-  .selected-option {
-    background: #0a0a14;
+  .option.selected {
+    background: #1e88e5;
   }
-}
-/* Custom dropdown styles */
-.custom-select {
-  position: relative;
-  width: 100%;
-  user-select: none;
-}
 
-.selected-option {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background: #35414e48;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.selected-option:hover {
-  border-color: #1e88e5;
-}
-
-.currency-logo {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 12px;
-  color: #fff;
-  text-transform: uppercase;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.options-container {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 300px;
-  overflow-y: auto;
-  background: rgba(15, 15, 30, 0.95);
-  border: 1px solid #333;
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  z-index: 10;
-  display: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.options-container.show {
-  display: block;
-}
-
-.option-group {
-  padding: 8px 10px;
-  font-weight: bold;
-  color: #1e88e5;
-  background: #35414e48;
-  border-bottom: 1px solid #1e88e5;
-}
-
-.option {
-  display: flex;
-  align-items: center;
-  padding: 8px 15px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.option:hover {
-  background: #1e88e548;
-}
-
-.option.selected {
-  background: #1e88e5;
-}
-
-/* Scrollbar styles for the dropdown */
-.options-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.options-container::-webkit-scrollbar-track {
-  background: #1e88e528;
-}
-
-.options-container::-webkit-scrollbar-thumb {
-  background: #1e88e588;
-  border-radius: 4px;
-}
-
-.options-container::-webkit-scrollbar-thumb:hover {
-  background: #1e88e5;
-}
-
-/* Animation for the result */
-@keyframes highlight {
-  0% {
-    box-shadow: 0 0 0 0 #1e88e5;
+  .options-container::-webkit-scrollbar {
+    width: 8px;
   }
-  70% {
-    box-shadow: 0 0 0 10px #1e88e500;
+
+  .options-container::-webkit-scrollbar-track {
+    background: #1e88e528;
   }
-  100% {
-    box-shadow: 0 0 0 0 #1e88e500;
+
+  .options-container::-webkit-scrollbar-thumb {
+    background: #1e88e588;
+    border-radius: 4px;
   }
-}
 
-.crypto-result.highlight {
-  animation: highlight 1s ease-out;
-}
+  .options-container::-webkit-scrollbar-thumb:hover {
+    background: #1e88e5;
+  }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+  @keyframes highlight {
+    0% {
+      box-shadow: 0 0 0 0 #1e88e5;
+    }
+    70% {
+      box-shadow: 0 0 0 10px #1e88e500;
+    }
+    100% {
+      box-shadow: 0 0 0 0 #1e88e500;
+    }
+  }
 
-/* For Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+  .crypto-result.highlight {
+    animation: highlight 1s ease-out;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 @media (min-width: 1201px) and (max-width: 1400px) {
   .convert {
-  align-content: center;
-  /* width: 100%; */
-  height: 600px;
-  /* text-align: right; */
-position: relative;
-  > img {
-    width: 100%;
-    z-index: -1;
+    align-content: center;
+
+    height: 600px;
+
+    position: relative;
+    > img {
+      width: 100%;
+      z-index: -1;
+      height: auto;
+
+      position: absolute;
+    }
+  }
+
+  .clogos {
+    white-space: nowrap;
+    animation: moves linear forwards;
+    animation-duration: 18s;
+    transition: 18s;
+    animation-iteration-count: infinite;
+    margin-top: 2.8%;
+  }
+
+  @keyframes moves {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-40%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .crypto-converter {
+    font-family: Arial, sans-serif;
+    max-width: 480px;
+    max-height: 680px;
+    margin-bottom: 48px;
+    margin-left: auto;
+    margin-right: 8%;
+
+    padding: 40px;
+    background: #35414e48 !important;
+    border-radius: 8px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow-x: clip;
+  }
+
+  .crypto-converter h3 {
+    margin-top: 0;
+    margin-bottom: 28px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+  }
+
+  .crypto-converter h3:after {
+    content: "";
     position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #1e88e5, #2a2b41);
+    border-radius: 3px;
   }
-}
 
-.clogos {
-  white-space: nowrap;
-  animation: moves linear forwards;
-  animation-duration: 18s;
-  transition: 18s;
-  animation-iteration-count: infinite;
-  margin-top: 2.8%;
-}
-
-@keyframes moves {
-  0% {
-    transform: translateX(0);
+  .crypto-input-group {
+    margin-bottom: 15px;
+    position: relative;
   }
-  50% {
-    transform: translateX(-40%);
+
+  .crypto-input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 4%;
   }
-  100% {
-    transform: translateX(0);
+
+  .crypto-input-group input[type="number"],
+  .crypto-input-group input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #35414e48 !important;
+    color: #fff;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: all 0.3s ease;
   }
-}
 
-/* Main container */
-.crypto-converter {
-  font-family: Arial, sans-serif;
-  max-width: 480px;
-  max-height: 680px;
-  margin-bottom: 48px;
-  margin-left: auto;
-  margin-right: 8%;
-  /* margin-top: 88px; */
-  padding:40px;
-  background: #35414e48 !important;
-  border-radius: 8px;
-  color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  overflow-x: clip;
-}
+  .crypto-input-group input:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
+  }
 
-/* Heading */
-.crypto-converter h3 {
-  margin-top: 0;
-  margin-bottom: 28px;
-  color: whitesmoke;
-  text-align: center;
-  font-size: 24px;
-  position: relative;
-}
+  .crypto-result {
+    background: #35414e !important;
+    border-color: #1e88e5 !important;
+    font-weight: bold;
+    font-size: 18px !important;
+  }
 
-.crypto-converter h3:after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, #1e88e5, #2a2b41);
-  border-radius: 3px;
-}
+  .crypto-equals {
+    text-align: center;
+    font-size: 24px;
+    margin: 0 0;
+    margin-top: 8%;
+    color: whitesmoke;
+  }
 
-/* Input groups */
-.crypto-input-group {
-  margin-bottom: 15px;
-  position: relative;
-}
+  .crypto-error,
+  .crypto-notification {
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+  }
 
-.crypto-input-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 4%;
-}
+  .crypto-error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+  }
 
-.crypto-input-group input[type="number"],
-.crypto-input-group input[type="text"] {
-  width: 100%;
-  padding: 12px 15px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background-color: #35414e48 !important;
-  color: #fff;
-  box-sizing: border-box;
-  font-size: 16px;
-  transition: all 0.3s ease;
-}
+  .crypto-notification {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+  }
 
-.crypto-input-group input:focus {
-  outline: none;
-  border-color: #1e88e5;
-  box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
-}
-
-/* Result field */
-.crypto-result {
-  background: #35414e !important;
-  border-color: #1e88e5 !important;
-  font-weight: bold;
-  font-size: 18px !important;
-}
-
-/* Equals sign */
-.crypto-equals {
-  text-align: center;
-  font-size: 24px;
-  margin: 0 0;
-  margin-top: 8%;
-  color: whitesmoke;
-}
-
-/* Error and notification messages */
-.crypto-error,
-.crypto-notification {
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 15px;
-  text-align: center;
-  display: none;
-}
-
-.crypto-error {
-  color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.1);
-  border: 1px solid rgba(255, 107, 107, 0.3);
-}
-
-.crypto-notification {
-  background: rgba(255, 193, 7, 0.1);
-  color: #ffc107;
-  border: 1px solid rgba(255, 193, 7, 0.3);
-}
-
-/* Crypto logos display */
-.crypto-input-group.clogos {
+  .crypto-input-group.clogos {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
-}
-
-.crypto-input-group.clogos img {
-    transition: transform 0.3s ease;
-}
-
-.crypto-input-group.clogos img:hover {
-  transform: scale(1.2);
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Amount input styling */
-#crypto-amount {
-  font-size: 18px;
-  font-weight: 500;
-  text-align: center;
-  height: auto;
-  padding: 15px;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .crypto-converter {
-    padding: 15px;
-    margin: 10px;
-  }
-
-  .crypto-input-group.clogos {
-    gap: 5px;
   }
 
   .crypto-input-group.clogos img {
-    width: 30px;
-    height: 30px;
+    transition: transform 0.3s ease;
+  }
+
+  .crypto-input-group.clogos img:hover {
+    transform: scale(1.2);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #crypto-amount {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    height: auto;
+    padding: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .crypto-converter {
+      padding: 15px;
+      margin: 10px;
+    }
+
+    .crypto-input-group.clogos {
+      gap: 5px;
+    }
+
+    .crypto-input-group.clogos img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .selected-option {
+      padding: 10px 12px;
+    }
+
+    .currency-logo {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .option {
+      padding: 8px 12px;
+    }
+
+    #crypto-amount {
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .crypto-converter {
+      background: #1e1f35;
+    }
+
+    .crypto-input-group input[type="number"],
+    .crypto-input-group input[type="text"],
+    .selected-option {
+      background: #0a0a14;
+    }
+  }
+
+  .custom-select {
+    position: relative;
+    width: 100%;
+    user-select: none;
   }
 
   .selected-option {
-    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #35414e48;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .selected-option:hover {
+    border-color: #1e88e5;
   }
 
   .currency-logo {
     width: 24px;
     height: 24px;
-    margin-right: 8px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .options-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(15, 15, 30, 0.95);
+    border: 1px solid #333;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .options-container.show {
+    display: block;
+  }
+
+  .option-group {
+    padding: 8px 10px;
+    font-weight: bold;
+    color: #1e88e5;
+    background: #35414e48;
+    border-bottom: 1px solid #1e88e5;
   }
 
   .option {
-    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
   }
 
-  #crypto-amount {
-    font-size: 16px;
-    padding: 12px;
-  }
-}
-
-/* Dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-  .crypto-converter {
-    background: #1e1f35;
+  .option:hover {
+    background: #1e88e548;
   }
 
-  .crypto-input-group input[type="number"],
-  .crypto-input-group input[type="text"],
-  .selected-option {
-    background: #0a0a14;
+  .option.selected {
+    background: #1e88e5;
   }
-}
-/* Custom dropdown styles */
-.custom-select {
-  position: relative;
-  width: 100%;
-  user-select: none;
-}
 
-.selected-option {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background: #35414e48;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.selected-option:hover {
-  border-color: #1e88e5;
-}
-
-.currency-logo {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 12px;
-  color: #fff;
-  text-transform: uppercase;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.options-container {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 300px;
-  overflow-y: auto;
-  background: rgba(15, 15, 30, 0.95);
-  border: 1px solid #333;
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  z-index: 10;
-  display: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.options-container.show {
-  display: block;
-}
-
-.option-group {
-  padding: 8px 10px;
-  font-weight: bold;
-  color: #1e88e5;
-  background: #35414e48;
-  border-bottom: 1px solid #1e88e5;
-}
-
-.option {
-  display: flex;
-  align-items: center;
-  padding: 8px 15px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.option:hover {
-  background: #1e88e548;
-}
-
-.option.selected {
-  background: #1e88e5;
-}
-
-/* Scrollbar styles for the dropdown */
-.options-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.options-container::-webkit-scrollbar-track {
-  background: #1e88e528;
-}
-
-.options-container::-webkit-scrollbar-thumb {
-  background: #1e88e588;
-  border-radius: 4px;
-}
-
-.options-container::-webkit-scrollbar-thumb:hover {
-  background: #1e88e5;
-}
-
-/* Animation for the result */
-@keyframes highlight {
-  0% {
-    box-shadow: 0 0 0 0 #1e88e5;
+  .options-container::-webkit-scrollbar {
+    width: 8px;
   }
-  70% {
-    box-shadow: 0 0 0 10px #1e88e500;
+
+  .options-container::-webkit-scrollbar-track {
+    background: #1e88e528;
   }
-  100% {
-    box-shadow: 0 0 0 0 #1e88e500;
+
+  .options-container::-webkit-scrollbar-thumb {
+    background: #1e88e588;
+    border-radius: 4px;
   }
-}
 
-.crypto-result.highlight {
-  animation: highlight 1s ease-out;
-}
+  .options-container::-webkit-scrollbar-thumb:hover {
+    background: #1e88e5;
+  }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+  @keyframes highlight {
+    0% {
+      box-shadow: 0 0 0 0 #1e88e5;
+    }
+    70% {
+      box-shadow: 0 0 0 10px #1e88e500;
+    }
+    100% {
+      box-shadow: 0 0 0 0 #1e88e500;
+    }
+  }
 
-/* For Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+  .crypto-result.highlight {
+    animation: highlight 1s ease-out;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 @media (min-width: 993px) and (max-width: 1200px) {
   .convert {
-  align-content: center;
-  /* width: 100%; */
-  height: 480px;
-  /* text-align: right; */
-position: relative;
-  > img {
-    width: 100%;
-    z-index: -1;
+    align-content: center;
+
+    height: 480px;
+
+    position: relative;
+    > img {
+      width: 100%;
+      z-index: -1;
+      height: auto;
+
+      position: absolute;
+    }
+  }
+
+  .clogos {
+    white-space: nowrap;
+    animation: moves linear forwards;
+    animation-duration: 18s;
+    transition: 18s;
+    animation-iteration-count: infinite;
+    margin-top: 2.8%;
+  }
+
+  @keyframes moves {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-40%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .crypto-converter {
+    font-family: Arial, sans-serif;
+    max-width: 480px;
+
+    margin-left: auto;
+    margin-right: 4%;
+
+    padding: 14px;
+    background: #35414e48 !important;
+    border-radius: 8px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow-x: clip;
+  }
+
+  .crypto-converter h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+  }
+
+  .crypto-converter h3:after {
+    content: "";
     position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #1e88e5, #2a2b41);
+    border-radius: 3px;
   }
-}
 
-.clogos {
-  white-space: nowrap;
-  animation: moves linear forwards;
-  animation-duration: 18s;
-  transition: 18s;
-  animation-iteration-count: infinite;
-  margin-top: 2.8%;
-
-}
-
-@keyframes moves {
-  0% {
-    transform: translateX(0);
+  .crypto-input-group {
+    margin-bottom: 15px;
+    position: relative;
   }
-  50% {
-    transform: translateX(-40%);
+
+  .crypto-input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 4%;
   }
-  100% {
-    transform: translateX(0);
+
+  .crypto-input-group input[type="number"],
+  .crypto-input-group input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #35414e48 !important;
+    color: #fff;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: all 0.3s ease;
   }
-}
 
-/* Main container */
-.crypto-converter {
-  font-family: Arial, sans-serif;
-  max-width: 480px;
-  /* margin-bottom: 48px; */
-  margin-left: auto;
-  margin-right: 4%;
-  /* margin-top: 88px; */
-  padding:14px;
-  background: #35414e48 !important;
-  border-radius: 8px;
-  color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  overflow-x: clip;
+  .crypto-input-group input:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
+  }
 
-}
+  .crypto-result {
+    background: #35414e !important;
+    border-color: #1e88e5 !important;
+    font-weight: bold;
+    font-size: 14px !important;
+  }
 
-/* Heading */
-.crypto-converter h3 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: whitesmoke;
-  text-align: center;
-  font-size: 20px;
-  position: relative;
+  .crypto-equals {
+    text-align: center;
+    font-size: 14px;
+    margin: 0 0;
+    margin-top: 4%;
+    color: whitesmoke;
+  }
 
-}
+  .crypto-error,
+  .crypto-notification {
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+  }
 
-.crypto-converter h3:after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, #1e88e5, #2a2b41);
-  border-radius: 3px;
-}
+  .crypto-error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+  }
 
-/* Input groups */
-.crypto-input-group {
-  margin-bottom: 15px;
-  position: relative;
-}
+  .crypto-notification {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+  }
 
-.crypto-input-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 4%;
-}
-
-.crypto-input-group input[type="number"],
-.crypto-input-group input[type="text"] {
-  width: 100%;
-  padding: 12px 15px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background-color: #35414e48 !important;
-  color: #fff;
-  box-sizing: border-box;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.crypto-input-group input:focus {
-  outline: none;
-  border-color: #1e88e5;
-  box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
-}
-
-/* Result field */
-.crypto-result {
-  background: #35414e !important;
-  border-color: #1e88e5 !important;
-  font-weight: bold;
-  font-size: 14px !important;
-}
-
-/* Equals sign */
-.crypto-equals {
-  text-align: center;
-  font-size: 14px;
-  margin: 0 0;
-  margin-top: 4%;
-  color: whitesmoke;
-}
-
-/* Error and notification messages */
-.crypto-error,
-.crypto-notification {
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 15px;
-  text-align: center;
-  display: none;
-}
-
-.crypto-error {
-  color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.1);
-  border: 1px solid rgba(255, 107, 107, 0.3);
-}
-
-.crypto-notification {
-  background: rgba(255, 193, 7, 0.1);
-  color: #ffc107;
-  border: 1px solid rgba(255, 193, 7, 0.3);
-}
-
-/* Crypto logos display */
-.crypto-input-group.clogos {
+  .crypto-input-group.clogos {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
-}
-
-.crypto-input-group.clogos img {
-    transition: transform 0.3s ease;
-}
-
-.crypto-input-group.clogos img:hover {
-  transform: scale(1.2);
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Amount input styling */
-#crypto-amount {
-  font-size: 18px;
-  font-weight: 500;
-  text-align: center;
-  height: auto;
-  padding: 15px;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .crypto-converter {
-    padding: 15px;
-    margin: 10px;
-  }
-
-  .crypto-input-group.clogos {
-    gap: 5px;
   }
 
   .crypto-input-group.clogos img {
-    width: 30px;
-    height: 30px;
+    transition: transform 0.3s ease;
   }
 
-  .selected-option {
-    padding: 10px 12px;
+  .crypto-input-group.clogos img:hover {
+    transform: scale(1.2);
   }
 
-  .currency-logo {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-  }
-
-  .option {
-    padding: 8px 12px;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   #crypto-amount {
-    font-size: 16px;
-    padding: 12px;
-  }
-}
-
-/* Dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-  .crypto-converter {
-    background: #1e1f35;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    height: auto;
+    padding: 15px;
   }
 
-  .crypto-input-group input[type="number"],
-  .crypto-input-group input[type="text"],
+  @media (max-width: 768px) {
+    .crypto-converter {
+      padding: 15px;
+      margin: 10px;
+    }
+
+    .crypto-input-group.clogos {
+      gap: 5px;
+    }
+
+    .crypto-input-group.clogos img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .selected-option {
+      padding: 10px 12px;
+    }
+
+    .currency-logo {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .option {
+      padding: 8px 12px;
+    }
+
+    #crypto-amount {
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .crypto-converter {
+      background: #1e1f35;
+    }
+
+    .crypto-input-group input[type="number"],
+    .crypto-input-group input[type="text"],
+    .selected-option {
+      background: #0a0a14;
+    }
+  }
+
+  .custom-select {
+    position: relative;
+    width: 100%;
+    user-select: none;
+  }
+
   .selected-option {
-    background: #0a0a14;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #35414e48;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
-}
-/* Custom dropdown styles */
-.custom-select {
-  position: relative;
-  width: 100%;
-  user-select: none;
-}
 
-.selected-option {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background: #35414e48;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.selected-option:hover {
-  border-color: #1e88e5;
-}
-
-.currency-logo {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 10px;
-  color: #fff;
-  text-transform: uppercase;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.options-container {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 300px;
-  overflow-y: auto;
-  background: rgba(15, 15, 30, 0.95);
-  border: 1px solid #333;
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  z-index: 10;
-  display: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.options-container.show {
-  display: block;
-}
-
-.option-group {
-  padding: 8px 10px;
-  font-weight: bold;
-  color: #1e88e5;
-  background: #35414e48;
-  border-bottom: 1px solid #1e88e5;
-}
-
-.option {
-  display: flex;
-  align-items: center;
-  padding: 8px 15px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.option:hover {
-  background: #1e88e548;
-}
-
-.option.selected {
-  background: #1e88e5;
-}
-
-/* Scrollbar styles for the dropdown */
-.options-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.options-container::-webkit-scrollbar-track {
-  background: #1e88e528;
-}
-
-.options-container::-webkit-scrollbar-thumb {
-  background: #1e88e588;
-  border-radius: 4px;
-}
-
-.options-container::-webkit-scrollbar-thumb:hover {
-  background: #1e88e5;
-}
-
-/* Animation for the result */
-@keyframes highlight {
-  0% {
-    box-shadow: 0 0 0 0 #1e88e5;
+  .selected-option:hover {
+    border-color: #1e88e5;
   }
-  70% {
-    box-shadow: 0 0 0 10px #1e88e500;
+
+  .currency-logo {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.1);
   }
-  100% {
-    box-shadow: 0 0 0 0 #1e88e500;
+
+  .options-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(15, 15, 30, 0.95);
+    border: 1px solid #333;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   }
-}
 
-.crypto-result.highlight {
-  animation: highlight 1s ease-out;
-}
+  .options-container.show {
+    display: block;
+  }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+  .option-group {
+    padding: 8px 10px;
+    font-weight: bold;
+    color: #1e88e5;
+    background: #35414e48;
+    border-bottom: 1px solid #1e88e5;
+  }
 
-/* For Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+  .option {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .option:hover {
+    background: #1e88e548;
+  }
+
+  .option.selected {
+    background: #1e88e5;
+  }
+
+  .options-container::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .options-container::-webkit-scrollbar-track {
+    background: #1e88e528;
+  }
+
+  .options-container::-webkit-scrollbar-thumb {
+    background: #1e88e588;
+    border-radius: 4px;
+  }
+
+  .options-container::-webkit-scrollbar-thumb:hover {
+    background: #1e88e5;
+  }
+
+  @keyframes highlight {
+    0% {
+      box-shadow: 0 0 0 0 #1e88e5;
+    }
+    70% {
+      box-shadow: 0 0 0 10px #1e88e500;
+    }
+    100% {
+      box-shadow: 0 0 0 0 #1e88e500;
+    }
+  }
+
+  .crypto-result.highlight {
+    animation: highlight 1s ease-out;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 @media (min-width: 769px) and (max-width: 992px) {
   .convert {
-  align-content: center;
-  /* width: 100%; */
-  height: 420px;
-  /* text-align: right; */
-position: relative;
-  > img {
-    width: 100%;
-    z-index: -1;
+    align-content: center;
+
+    height: 420px;
+
+    position: relative;
+    > img {
+      width: 100%;
+      z-index: -1;
+      height: auto;
+
+      position: absolute;
+    }
+  }
+
+  .clogos {
+    white-space: nowrap;
+    animation: moves linear forwards;
+    animation-duration: 18s;
+    transition: 18s;
+    animation-iteration-count: infinite;
+    margin-top: 2.8%;
+  }
+
+  @keyframes moves {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-40%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .crypto-converter {
+    font-family: Arial, sans-serif;
+    max-width: 440px;
+
+    margin-left: auto;
+    margin-right: 4%;
+
+    padding: 8px;
+    background: #35414e48 !important;
+    border-radius: 8px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow-x: clip;
+  }
+
+  .crypto-converter h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+  }
+
+  .crypto-converter h3:after {
+    content: "";
     position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #1e88e5, #2a2b41);
+    border-radius: 3px;
   }
-}
 
-.clogos {
-  white-space: nowrap;
-  animation: moves linear forwards;
-  animation-duration: 18s;
-  transition: 18s;
-  animation-iteration-count: infinite;
-  margin-top: 2.8%;
-}
-
-@keyframes moves {
-  0% {
-    transform: translateX(0);
+  .crypto-input-group {
+    margin-bottom: 15px;
+    position: relative;
   }
-  50% {
-    transform: translateX(-40%);
+
+  .crypto-input-group label {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 0%;
   }
-  100% {
-    transform: translateX(0);
+
+  .crypto-input-group input[type="number"],
+  .crypto-input-group input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #35414e48 !important;
+    color: #fff;
+    box-sizing: border-box;
+    font-size: 12px;
+    transition: all 0.3s ease;
   }
-}
 
-/* Main container */
-.crypto-converter {
-  font-family: Arial, sans-serif;
-  max-width: 440px;
-  /* margin-bottom: 48px; */
-  margin-left: auto;
-  margin-right: 4%;
-  /* margin-top: 88px; */
-  padding:8px;
-  background: #35414e48 !important;
-  border-radius: 8px;
-  color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  overflow-x: clip;
+  .crypto-input-group input:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
+  }
 
-}
+  .crypto-result {
+    background: #35414e !important;
+    border-color: #1e88e5 !important;
+    font-weight: bold;
+    font-size: 12px !important;
+  }
 
-/* Heading */
-.crypto-converter h3 {
-  margin-top: 0;
-  margin-bottom: 14px;
-  color: whitesmoke;
-  text-align: center;
-  font-size: 18px;
-  position: relative;
+  .crypto-equals {
+    text-align: center;
+    font-size: 8px;
+    margin: 0 0;
+    margin-top: 2%;
+    color: whitesmoke;
+  }
 
-}
+  .crypto-error,
+  .crypto-notification {
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+  }
 
-.crypto-converter h3:after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, #1e88e5, #2a2b41);
-  border-radius: 3px;
-}
+  .crypto-error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+  }
 
-/* Input groups */
-.crypto-input-group {
-  margin-bottom: 15px;
-  position: relative;
-}
+  .crypto-notification {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+  }
 
-.crypto-input-group label {
-  display: block;
-  margin-bottom: 2px;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 0%;
-}
-
-.crypto-input-group input[type="number"],
-.crypto-input-group input[type="text"] {
-  width: 100%;
-  padding: 12px 15px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background-color: #35414e48 !important;
-  color: #fff;
-  box-sizing: border-box;
-  font-size: 12px;
-  transition: all 0.3s ease;
-}
-
-.crypto-input-group input:focus {
-  outline: none;
-  border-color: #1e88e5;
-  box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
-}
-
-/* Result field */
-.crypto-result {
-  background: #35414e !important;
-  border-color: #1e88e5 !important;
-  font-weight: bold;
-  font-size: 12px !important;
-}
-
-/* Equals sign */
-.crypto-equals {
-  text-align: center;
-  font-size: 8px;
-  margin: 0 0;
-  margin-top: 2%;
-  color: whitesmoke;
-}
-
-/* Error and notification messages */
-.crypto-error,
-.crypto-notification {
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 15px;
-  text-align: center;
-  display: none;
-}
-
-.crypto-error {
-  color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.1);
-  border: 1px solid rgba(255, 107, 107, 0.3);
-}
-
-.crypto-notification {
-  background: rgba(255, 193, 7, 0.1);
-  color: #ffc107;
-  border: 1px solid rgba(255, 193, 7, 0.3);
-}
-
-/* Crypto logos display */
-.crypto-input-group.clogos {
+  .crypto-input-group.clogos {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     gap: 10px;
     margin-bottom: 2px;
-}
-
-.crypto-input-group.clogos img {
-    transition: transform 0.3s ease;
-}
-
-.crypto-input-group.clogos img:hover {
-  transform: scale(1.2);
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Amount input styling */
-#crypto-amount {
-  font-size: 12px;
-  font-weight: 500;
-  text-align: center;
-  height: auto;
-  padding: 12px;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .crypto-converter {
-    padding: 15px;
-    margin: 10px;
-  }
-
-  .crypto-input-group.clogos {
-    gap: 5px;
   }
 
   .crypto-input-group.clogos img {
-    width: 30px;
-    height: 30px;
+    transition: transform 0.3s ease;
   }
 
-  .selected-option {
-    padding: 10px 12px;
+  .crypto-input-group.clogos img:hover {
+    transform: scale(1.2);
   }
 
-  .currency-logo {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-  }
-
-  .option {
-    padding: 8px 12px;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   #crypto-amount {
-    font-size: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    height: auto;
     padding: 12px;
   }
-}
 
-/* Dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-  .crypto-converter {
-    background: #1e1f35;
+  @media (max-width: 768px) {
+    .crypto-converter {
+      padding: 15px;
+      margin: 10px;
+    }
+
+    .crypto-input-group.clogos {
+      gap: 5px;
+    }
+
+    .crypto-input-group.clogos img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .selected-option {
+      padding: 10px 12px;
+    }
+
+    .currency-logo {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .option {
+      padding: 8px 12px;
+    }
+
+    #crypto-amount {
+      font-size: 16px;
+      padding: 12px;
+    }
   }
 
-  .crypto-input-group input[type="number"],
-  .crypto-input-group input[type="text"],
+  @media (prefers-color-scheme: dark) {
+    .crypto-converter {
+      background: #1e1f35;
+    }
+
+    .crypto-input-group input[type="number"],
+    .crypto-input-group input[type="text"],
+    .selected-option {
+      background: #0a0a14;
+    }
+  }
+
+  .custom-select {
+    position: relative;
+    width: 100%;
+    user-select: none;
+  }
+
   .selected-option {
-    background: #0a0a14;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #35414e48;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
-}
-/* Custom dropdown styles */
-.custom-select {
-  position: relative;
-  width: 100%;
-  user-select: none;
-}
 
-.selected-option {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background: #35414e48;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.selected-option:hover {
-  border-color: #1e88e5;
-}
-
-.currency-logo {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 8px;
-  color: #fff;
-  text-transform: uppercase;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.options-container {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 300px;
-  overflow-y: auto;
-  background: rgba(15, 15, 30, 0.95);
-  border: 1px solid #333;
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  z-index: 10;
-  display: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.options-container.show {
-  display: block;
-}
-
-.option-group {
-  padding: 8px 10px;
-  font-weight: bold;
-  color: #1e88e5;
-  background: #35414e48;
-  border-bottom: 1px solid #1e88e5;
-}
-
-.option {
-  display: flex;
-  align-items: center;
-  padding: 8px 15px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.option:hover {
-  background: #1e88e548;
-}
-
-.option.selected {
-  background: #1e88e5;
-}
-
-/* Scrollbar styles for the dropdown */
-.options-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.options-container::-webkit-scrollbar-track {
-  background: #1e88e528;
-}
-
-.options-container::-webkit-scrollbar-thumb {
-  background: #1e88e588;
-  border-radius: 4px;
-}
-
-.options-container::-webkit-scrollbar-thumb:hover {
-  background: #1e88e5;
-}
-
-/* Animation for the result */
-@keyframes highlight {
-  0% {
-    box-shadow: 0 0 0 0 #1e88e5;
+  .selected-option:hover {
+    border-color: #1e88e5;
   }
-  70% {
-    box-shadow: 0 0 0 10px #1e88e500;
+
+  .currency-logo {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 8px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.1);
   }
-  100% {
-    box-shadow: 0 0 0 0 #1e88e500;
+
+  .options-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(15, 15, 30, 0.95);
+    border: 1px solid #333;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   }
-}
 
-.crypto-result.highlight {
-  animation: highlight 1s ease-out;
-}
+  .options-container.show {
+    display: block;
+  }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+  .option-group {
+    padding: 8px 10px;
+    font-weight: bold;
+    color: #1e88e5;
+    background: #35414e48;
+    border-bottom: 1px solid #1e88e5;
+  }
 
-/* For Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+  .option {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .option:hover {
+    background: #1e88e548;
+  }
+
+  .option.selected {
+    background: #1e88e5;
+  }
+
+  .options-container::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .options-container::-webkit-scrollbar-track {
+    background: #1e88e528;
+  }
+
+  .options-container::-webkit-scrollbar-thumb {
+    background: #1e88e588;
+    border-radius: 4px;
+  }
+
+  .options-container::-webkit-scrollbar-thumb:hover {
+    background: #1e88e5;
+  }
+
+  @keyframes highlight {
+    0% {
+      box-shadow: 0 0 0 0 #1e88e5;
+    }
+    70% {
+      box-shadow: 0 0 0 10px #1e88e500;
+    }
+    100% {
+      box-shadow: 0 0 0 0 #1e88e500;
+    }
+  }
+
+  .crypto-result.highlight {
+    animation: highlight 1s ease-out;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 @media (min-width: 577px) and (max-width: 768px) {
   .convert {
-  align-content: center;
-  /* width: 100%; */
-  height: 360px;
-  /* text-align: right; */
-position: relative;
-  > img {
-    width: 100%;
-    z-index: -1;
+    align-content: center;
+
+    height: 360px;
+
+    position: relative;
+    > img {
+      width: 100%;
+      z-index: -1;
+      height: auto;
+
+      position: absolute;
+    }
+  }
+
+  .clogos {
+    white-space: nowrap;
+    animation: moves linear forwards;
+    animation-duration: 18s;
+    transition: 18s;
+    animation-iteration-count: infinite;
+    margin-top: 2.8%;
+  }
+
+  @keyframes moves {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-40%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .crypto-converter {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+
+    margin-left: auto;
+    margin-right: 4%;
+
+    padding: 8px;
+    background: #35414e48 !important;
+    border-radius: 8px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow-x: clip;
+  }
+
+  .crypto-converter h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+  }
+
+  .crypto-converter h3:after {
+    content: "";
     position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #1e88e5, #2a2b41);
+    border-radius: 3px;
   }
-}
 
-.clogos {
-  white-space: nowrap;
-  animation: moves linear forwards;
-  animation-duration: 18s;
-  transition: 18s;
-  animation-iteration-count: infinite;
-  margin-top: 2.8%;
-  /* margin-bottom: 2.8%; */
-}
-
-@keyframes moves {
-  0% {
-    transform: translateX(0);
+  .crypto-input-group {
+    margin-bottom: 15px;
+    position: relative;
   }
-  50% {
-    transform: translateX(-40%);
+
+  .crypto-input-group label {
+    display: inline-block;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 4%;
   }
-  100% {
-    transform: translateX(0);
+
+  .crypto-input-group input[type="number"],
+  .crypto-input-group input[type="text"] {
+    width: 82%;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #35414e48 !important;
+    color: #fff;
+    box-sizing: border-box;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    display: inline-block;
   }
-}
 
-/* Main container */
-.crypto-converter {
-  font-family: Arial, sans-serif;
-  max-width: 400px;
-  /* margin-bottom: 48px; */
-  margin-left: auto;
-  margin-right: 4%;
-  /* margin-top: 88px; */
-  padding:8px;
-  background: #35414e48 !important;
-  border-radius: 8px;
-  color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  overflow-x: clip;
-  
+  .crypto-input-group input:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
+  }
 
-}
+  .crypto-result {
+    background: #35414e !important;
+    border-color: #1e88e5 !important;
+    font-weight: bold;
+    font-size: 12px !important;
+  }
 
-/* Heading */
-.crypto-converter h3 {
-  margin-top: 0;
-  margin-bottom: 14px;
-  color: whitesmoke;
-  text-align: center;
-  font-size: 16px;
-  position: relative;
+  .crypto-equals {
+    text-align: center;
+    font-size: 8px;
+    margin: 0 0;
+    margin-top: 0%;
+    color: whitesmoke;
 
-}
+    > img {
+      height: 20px !important;
+    }
+  }
 
-.crypto-converter h3:after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, #1e88e5, #2a2b41);
-  border-radius: 3px;
-}
+  .crypto-error,
+  .crypto-notification {
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+  }
 
-/* Input groups */
-.crypto-input-group {
-  margin-bottom: 15px;
-  position: relative;
-}
+  .crypto-error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+  }
 
-.crypto-input-group label {
-  display: inline-block;
-  margin-bottom: 0px;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 4%;
-}
+  .crypto-notification {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+  }
 
-.crypto-input-group input[type="number"],
-.crypto-input-group input[type="text"] {
-  width: 82%;
-  padding: 12px 15px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background-color: #35414e48 !important;
-  color: #fff;
-  box-sizing: border-box;
-  font-size: 12px;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.crypto-input-group input:focus {
-  outline: none;
-  border-color: #1e88e5;
-  box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
-}
-
-/* Result field */
-.crypto-result {
-  background: #35414e !important;
-  border-color: #1e88e5 !important;
-  font-weight: bold;
-  font-size: 12px !important;
-}
-
-/* Equals sign */
-.crypto-equals {
-  text-align: center;
-  font-size: 8px;
-  margin: 0 0;
-  margin-top: 0%;
-  color: whitesmoke;
-/* display: none; */
->img{
-  height: 20px !important;
-}
-}
-
-/* Error and notification messages */
-.crypto-error,
-.crypto-notification {
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 15px;
-  text-align: center;
-  display: none;
-}
-
-.crypto-error {
-  color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.1);
-  border: 1px solid rgba(255, 107, 107, 0.3);
-}
-
-.crypto-notification {
-  background: rgba(255, 193, 7, 0.1);
-  color: #ffc107;
-  border: 1px solid rgba(255, 193, 7, 0.3);
-}
-
-/* Crypto logos display */
-.crypto-input-group.clogos {
+  .crypto-input-group.clogos {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     gap: 10px;
     margin-bottom: 2px;
-}
-
-.crypto-input-group.clogos img {
-    transition: transform 0.3s ease;
-}
-
-.crypto-input-group.clogos img:hover {
-  transform: scale(1.2);
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Amount input styling */
-#crypto-amount {
-  font-size: 12px;
-  font-weight: 500;
-  text-align: center;
-  height: auto;
-  padding: 12px;
-}
-
-/* Mobile responsiveness */
-/* @media (max-width: 768px) {
-  .crypto-converter {
-    padding: 15px;
-    margin: 10px;
-  }
-
-  .crypto-input-group.clogos {
-    gap: 5px;
   }
 
   .crypto-input-group.clogos img {
-    width: 30px;
-    height: 30px;
+    transition: transform 0.3s ease;
   }
 
-  .selected-option {
-    padding: 10px 12px;
+  .crypto-input-group.clogos img:hover {
+    transform: scale(1.2);
   }
 
-  .currency-logo {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-  }
-
-  .option {
-    padding: 8px 12px;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   #crypto-amount {
-    font-size: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    height: auto;
     padding: 12px;
   }
-} */
 
-/* Dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-  .crypto-converter {
-    background: #1e1f35;
+  @media (prefers-color-scheme: dark) {
+    .crypto-converter {
+      background: #1e1f35;
+    }
+
+    .crypto-input-group input[type="number"],
+    .crypto-input-group input[type="text"],
+    .selected-option {
+      background: #0a0a14;
+    }
   }
 
-  .crypto-input-group input[type="number"],
-  .crypto-input-group input[type="text"],
+  .custom-select {
+    position: relative;
+    width: 84%;
+    user-select: none;
+    display: inline-block;
+  }
+
   .selected-option {
-    background: #0a0a14;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #35414e48;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
-}
-/* Custom dropdown styles */
-.custom-select {
-  position: relative;
-  width: 84%;
-  user-select: none;
-  display: inline-block;
-}
 
-.selected-option {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background: #35414e48;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.selected-option:hover {
-  border-color: #1e88e5;
-}
-
-.currency-logo {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 8px;
-  color: #fff;
-  text-transform: uppercase;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.options-container {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 300px;
-  overflow-y: auto;
-  background: rgba(15, 15, 30, 0.95);
-  border: 1px solid #333;
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  z-index: 10;
-  display: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.options-container.show {
-  display: block;
-}
-
-.option-group {
-  padding: 8px 10px;
-  font-weight: bold;
-  color: #1e88e5;
-  background: #35414e48;
-  border-bottom: 1px solid #1e88e5;
-}
-
-.option {
-  display: flex;
-  align-items: center;
-  padding: 8px 15px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.option:hover {
-  background: #1e88e548;
-}
-
-.option.selected {
-  background: #1e88e5;
-}
-
-/* Scrollbar styles for the dropdown */
-.options-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.options-container::-webkit-scrollbar-track {
-  background: #1e88e528;
-}
-
-.options-container::-webkit-scrollbar-thumb {
-  background: #1e88e588;
-  border-radius: 4px;
-}
-
-.options-container::-webkit-scrollbar-thumb:hover {
-  background: #1e88e5;
-}
-
-/* Animation for the result */
-@keyframes highlight {
-  0% {
-    box-shadow: 0 0 0 0 #1e88e5;
+  .selected-option:hover {
+    border-color: #1e88e5;
   }
-  70% {
-    box-shadow: 0 0 0 10px #1e88e500;
+
+  .currency-logo {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 8px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.1);
   }
-  100% {
-    box-shadow: 0 0 0 0 #1e88e500;
+
+  .options-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(15, 15, 30, 0.95);
+    border: 1px solid #333;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   }
-}
 
-.crypto-result.highlight {
-  animation: highlight 1s ease-out;
-}
+  .options-container.show {
+    display: block;
+  }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+  .option-group {
+    padding: 8px 10px;
+    font-weight: bold;
+    color: #1e88e5;
+    background: #35414e48;
+    border-bottom: 1px solid #1e88e5;
+  }
 
-/* For Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+  .option {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .option:hover {
+    background: #1e88e548;
+  }
+
+  .option.selected {
+    background: #1e88e5;
+  }
+
+  .options-container::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .options-container::-webkit-scrollbar-track {
+    background: #1e88e528;
+  }
+
+  .options-container::-webkit-scrollbar-thumb {
+    background: #1e88e588;
+    border-radius: 4px;
+  }
+
+  .options-container::-webkit-scrollbar-thumb:hover {
+    background: #1e88e5;
+  }
+
+  @keyframes highlight {
+    0% {
+      box-shadow: 0 0 0 0 #1e88e5;
+    }
+    70% {
+      box-shadow: 0 0 0 10px #1e88e500;
+    }
+    100% {
+      box-shadow: 0 0 0 0 #1e88e500;
+    }
+  }
+
+  .crypto-result.highlight {
+    animation: highlight 1s ease-out;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 @media (max-width: 576px) {
-    .convert {
-  align-content: center;
-  /* width: 100%; */
-  height: 360px;
-  /* text-align: right; */
-position: relative;
-  > img {
-    width: 100%;
-    z-index: -1;
+  .convert {
+    align-content: center;
+
+    height: 360px;
+
+    position: relative;
+    > img {
+      width: 100%;
+      z-index: -1;
+      height: auto;
+
+      position: absolute;
+    }
+  }
+
+  .clogos {
+    white-space: nowrap;
+    animation: moves linear forwards;
+    animation-duration: 18s;
+    transition: 18s;
+    animation-iteration-count: infinite;
+    margin-top: 2.8%;
+  }
+
+  @keyframes moves {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-40%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .crypto-converter {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+
+    margin-left: auto;
+    margin-right: 4%;
+
+    padding: 8px;
+    background: #35414e48 !important;
+    border-radius: 8px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow-x: clip;
+  }
+
+  .crypto-converter h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+  }
+
+  .crypto-converter h3:after {
+    content: "";
     position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #1e88e5, #2a2b41);
+    border-radius: 3px;
   }
-}
 
-.clogos {
-  white-space: nowrap;
-  animation: moves linear forwards;
-  animation-duration: 18s;
-  transition: 18s;
-  animation-iteration-count: infinite;
-  margin-top: 2.8%;
-  /* margin-bottom: 2.8%; */
-}
-
-@keyframes moves {
-  0% {
-    transform: translateX(0);
+  .crypto-input-group {
+    margin-bottom: 15px;
+    position: relative;
   }
-  50% {
-    transform: translateX(-40%);
+
+  .crypto-input-group label {
+    display: inline-block;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 4%;
   }
-  100% {
-    transform: translateX(0);
+
+  .crypto-input-group input[type="number"],
+  .crypto-input-group input[type="text"] {
+    width: 82%;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #35414e48 !important;
+    color: #fff;
+    box-sizing: border-box;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    display: inline-block;
   }
-}
 
-/* Main container */
-.crypto-converter {
-  font-family: Arial, sans-serif;
-  max-width: 400px;
-  /* margin-bottom: 48px; */
-  margin-left: auto;
-  margin-right: 4%;
-  /* margin-top: 88px; */
-  padding:8px;
-  background: #35414e48 !important;
-  border-radius: 8px;
-  color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  overflow-x: clip;
-  
+  .crypto-input-group input:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
+  }
 
-}
+  .crypto-result {
+    background: #35414e !important;
+    border-color: #1e88e5 !important;
+    font-weight: bold;
+    font-size: 12px !important;
+  }
 
-/* Heading */
-.crypto-converter h3 {
-  margin-top: 0;
-  margin-bottom: 14px;
-  color: whitesmoke;
-  text-align: center;
-  font-size: 16px;
-  position: relative;
+  .crypto-equals {
+    text-align: center;
+    font-size: 8px;
+    margin: 0 0;
+    margin-top: 0%;
+    color: whitesmoke;
 
-}
+    > img {
+      height: 20px !important;
+    }
+  }
 
-.crypto-converter h3:after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, #1e88e5, #2a2b41);
-  border-radius: 3px;
-}
+  .crypto-error,
+  .crypto-notification {
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+  }
 
-/* Input groups */
-.crypto-input-group {
-  margin-bottom: 15px;
-  position: relative;
-}
+  .crypto-error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+  }
 
-.crypto-input-group label {
-  display: inline-block;
-  margin-bottom: 0px;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 4%;
-}
+  .crypto-notification {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+  }
 
-.crypto-input-group input[type="number"],
-.crypto-input-group input[type="text"] {
-  width: 82%;
-  padding: 12px 15px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background-color: #35414e48 !important;
-  color: #fff;
-  box-sizing: border-box;
-  font-size: 12px;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.crypto-input-group input:focus {
-  outline: none;
-  border-color: #1e88e5;
-  box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.25);
-}
-
-/* Result field */
-.crypto-result {
-  background: #35414e !important;
-  border-color: #1e88e5 !important;
-  font-weight: bold;
-  font-size: 12px !important;
-}
-
-/* Equals sign */
-.crypto-equals {
-  text-align: center;
-  font-size: 8px;
-  margin: 0 0;
-  margin-top: 0%;
-  color: whitesmoke;
-/* display: none; */
->img{
-  height: 20px !important;
-}
-}
-
-/* Error and notification messages */
-.crypto-error,
-.crypto-notification {
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 15px;
-  text-align: center;
-  display: none;
-}
-
-.crypto-error {
-  color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.1);
-  border: 1px solid rgba(255, 107, 107, 0.3);
-}
-
-.crypto-notification {
-  background: rgba(255, 193, 7, 0.1);
-  color: #ffc107;
-  border: 1px solid rgba(255, 193, 7, 0.3);
-}
-
-/* Crypto logos display */
-.crypto-input-group.clogos {
+  .crypto-input-group.clogos {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     gap: 10px;
     margin-bottom: 2px;
-}
-
-.crypto-input-group.clogos img {
-    transition: transform 0.3s ease;
-}
-
-.crypto-input-group.clogos img:hover {
-  transform: scale(1.2);
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Amount input styling */
-#crypto-amount {
-  font-size: 12px;
-  font-weight: 500;
-  text-align: center;
-  height: auto;
-  padding: 12px;
-}
-
-/* Mobile responsiveness */
-/* @media (max-width: 768px) {
-  .crypto-converter {
-    padding: 15px;
-    margin: 10px;
-  }
-
-  .crypto-input-group.clogos {
-    gap: 5px;
   }
 
   .crypto-input-group.clogos img {
-    width: 30px;
-    height: 30px;
+    transition: transform 0.3s ease;
   }
 
-  .selected-option {
-    padding: 10px 12px;
+  .crypto-input-group.clogos img:hover {
+    transform: scale(1.2);
   }
 
-  .currency-logo {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-  }
-
-  .option {
-    padding: 8px 12px;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   #crypto-amount {
-    font-size: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    height: auto;
     padding: 12px;
   }
-} */
 
-/* Dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-  .crypto-converter {
-    background: #1e1f35;
+  @media (prefers-color-scheme: dark) {
+    .crypto-converter {
+      background: #1e1f35;
+    }
+
+    .crypto-input-group input[type="number"],
+    .crypto-input-group input[type="text"],
+    .selected-option {
+      background: #0a0a14;
+    }
   }
 
-  .crypto-input-group input[type="number"],
-  .crypto-input-group input[type="text"],
+  .custom-select {
+    position: relative;
+    width: 84%;
+    user-select: none;
+    display: inline-block;
+  }
+
   .selected-option {
-    background: #0a0a14;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #35414e48;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .selected-option:hover {
+    border-color: #1e88e5;
+  }
+
+  .currency-logo {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 8px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .options-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(15, 15, 30, 0.95);
+    border: 1px solid #333;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .options-container.show {
+    display: block;
+  }
+
+  .option-group {
+    padding: 8px 10px;
+    font-weight: bold;
+    color: #1e88e5;
+    background: #35414e48;
+    border-bottom: 1px solid #1e88e5;
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .option:hover {
+    background: #1e88e548;
+  }
+
+  .option.selected {
+    background: #1e88e5;
+  }
+
+  .options-container::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .options-container::-webkit-scrollbar-track {
+    background: #1e88e528;
+  }
+
+  .options-container::-webkit-scrollbar-thumb {
+    background: #1e88e588;
+    border-radius: 4px;
+  }
+
+  .options-container::-webkit-scrollbar-thumb:hover {
+    background: #1e88e5;
+  }
+
+  @keyframes highlight {
+    0% {
+      box-shadow: 0 0 0 0 #1e88e5;
+    }
+    70% {
+      box-shadow: 0 0 0 10px #1e88e500;
+    }
+    100% {
+      box-shadow: 0 0 0 0 #1e88e500;
+    }
+  }
+
+  .crypto-result.highlight {
+    animation: highlight 1s ease-out;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 }
-/* Custom dropdown styles */
-.custom-select {
-  position: relative;
-  width: 84%;
-  user-select: none;
-  display: inline-block;
-}
-
-.selected-option {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background: #35414e48;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.selected-option:hover {
-  border-color: #1e88e5;
-}
-
-.currency-logo {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 8px;
-  color: #fff;
-  text-transform: uppercase;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.options-container {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 300px;
-  overflow-y: auto;
-  background: rgba(15, 15, 30, 0.95);
-  border: 1px solid #333;
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  z-index: 10;
-  display: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.options-container.show {
-  display: block;
-}
-
-.option-group {
-  padding: 8px 10px;
-  font-weight: bold;
-  color: #1e88e5;
-  background: #35414e48;
-  border-bottom: 1px solid #1e88e5;
-}
-
-.option {
-  display: flex;
-  align-items: center;
-  padding: 8px 15px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.option:hover {
-  background: #1e88e548;
-}
-
-.option.selected {
-  background: #1e88e5;
-}
-
-/* Scrollbar styles for the dropdown */
-.options-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.options-container::-webkit-scrollbar-track {
-  background: #1e88e528;
-}
-
-.options-container::-webkit-scrollbar-thumb {
-  background: #1e88e588;
-  border-radius: 4px;
-}
-
-.options-container::-webkit-scrollbar-thumb:hover {
-  background: #1e88e5;
-}
-
-/* Animation for the result */
-@keyframes highlight {
-  0% {
-    box-shadow: 0 0 0 0 #1e88e5;
-  }
-  70% {
-    box-shadow: 0 0 0 10px #1e88e500;
-  }
-  100% {
-    box-shadow: 0 0 0 0 #1e88e500;
-  }
-}
-
-.crypto-result.highlight {
-  animation: highlight 1s ease-out;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* For Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-}
-
-
-

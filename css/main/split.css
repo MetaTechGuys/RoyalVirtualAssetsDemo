@@ -5,7 +5,7 @@
     height: auto;
     border-radius: 20px !important;
     overflow: hidden !important;
-    /* background-color: #2a2b41 !important; */
+
     position: relative;
     justify-content: center;
     text-align: center;
@@ -13,15 +13,12 @@
     > img {
       position: absolute;
       width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
+
       z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
+
       left: 80%;
       top: 0%;
-      /* opacity: 0.8; */ 
+
       opacity: 0.8;
     }
   }
@@ -34,20 +31,19 @@
 
   .split1 {
     background-color: #2a2b41 !important;
-    /* padding-top: 80px; */
-    /* padding-left: 140px; */
+
     width: 1200px;
     height: 400px;
     z-index: 2;
     border-radius: 20px !important;
     overflow: clip !important;
     position: relative;
-    /* float: left; */
+
     > h4 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 48px;
-      /* text-align: center; */
+
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
@@ -64,14 +60,13 @@
       color: whitesmoke !important;
       opacity: 0.8;
       font-size: 48px;
-      /* margin-bottom: 1440px; */
+
       letter-spacing: 2px;
       white-space: nowrap;
-      /* left: -80px; */
+
       word-spacing: 48px !important;
       z-index: 1;
       left: 0;
-      /* top: ; */
     }
   }
   .sfirst {
@@ -126,7 +121,7 @@
     height: auto;
     border-radius: 20px !important;
     overflow: hidden !important;
-    /* background-color: #2a2b41 !important; */
+
     position: relative;
     justify-content: center;
     text-align: center;
@@ -134,15 +129,12 @@
     > img {
       position: absolute;
       width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
+
       z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
+
       left: 80%;
       top: 0%;
-      /* opacity: 0.8; */ 
+
       opacity: 0.8;
     }
   }
@@ -155,20 +147,19 @@
 
   .split1 {
     background-color: #2a2b41 !important;
-    /* padding-top: 80px; */
-    /* padding-left: 140px; */
+
     width: 1000px;
     height: 400px;
     z-index: 2;
     border-radius: 20px !important;
     overflow: clip !important;
     position: relative;
-    /* float: left; */
+
     > h4 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 36px;
-      /* text-align: center; */
+
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
@@ -185,14 +176,13 @@
       color: whitesmoke !important;
       opacity: 0.8;
       font-size: 36px;
-      /* margin-bottom: 1440px; */
+
       letter-spacing: 2px;
       white-space: nowrap;
-      /* left: -80px; */
+
       word-spacing: 40px !important;
       z-index: 1;
       left: 0;
-      /* top: ; */
     }
   }
   .sfirst {
@@ -247,7 +237,7 @@
     height: auto;
     border-radius: 20px !important;
     overflow: hidden !important;
-    /* background-color: #2a2b41 !important; */
+
     position: relative;
     justify-content: center;
     text-align: center;
@@ -255,15 +245,12 @@
     > img {
       position: absolute;
       width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
+
       z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
+
       left: 80%;
       top: 0%;
-      /* opacity: 0.8; */ 
+
       opacity: 0.8;
     }
   }
@@ -276,20 +263,19 @@
 
   .split1 {
     background-color: #2a2b41 !important;
-    /* padding-top: 80px; */
-    /* padding-left: 140px; */
+
     width: 800px;
     height: 280px;
     z-index: 2;
     border-radius: 20px !important;
     overflow: clip !important;
     position: relative;
-    /* float: left; */
+
     > h4 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 28px;
-      /* text-align: center; */
+
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
@@ -306,14 +292,13 @@
       color: whitesmoke !important;
       opacity: 0.8;
       font-size: 28px;
-      /* margin-bottom: 1440px; */
+
       letter-spacing: 2px;
       white-space: nowrap;
-      /* left: -80px; */
+
       word-spacing: 40px !important;
       z-index: 1;
       left: 0;
-      /* top: ; */
     }
   }
   .sfirst {
@@ -364,11 +349,11 @@
 @media (min-width: 993px) and (max-width: 1200px) {
   .split {
     width: 100%;
-    /* display: flex; */
+
     height: auto;
     border-radius: 20px !important;
     overflow: hidden !important;
-    /* background-color: #2a2b41 !important; */
+
     position: relative;
     justify-items: center;
     text-align: center;
@@ -376,15 +361,12 @@
     > img {
       position: absolute;
       width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
+
       z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
+
       left: 80%;
       top: 0%;
-      /* opacity: 0.8; */ 
+
       opacity: 0.8;
     }
   }
@@ -398,19 +380,19 @@
   .split1 {
     background-color: #2a2b41 !important;
     padding-top: 80px;
-    /* padding-left: 140px; */
+
     width: 680px;
     height: 240px;
     z-index: 2;
     border-radius: 20px !important;
     overflow: clip !important;
     position: relative;
-    /* float: left; */
+
     > h4 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 24px;
-      /* text-align: center; */
+
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
@@ -427,14 +409,13 @@
       color: whitesmoke !important;
       opacity: 0.8;
       font-size: 24px;
-      /* margin-bottom: 1440px; */
+
       letter-spacing: 2px;
       white-space: nowrap;
-      /* left: -80px; */
+
       word-spacing: 48px !important;
       z-index: 1;
       left: 0;
-      /* top: ; */
     }
   }
   .sfirst {
@@ -485,11 +466,11 @@
 @media (min-width: 769px) and (max-width: 992px) {
   .split {
     width: 100%;
-    /* display: flex; */
+
     height: auto;
     border-radius: 20px !important;
     overflow: hidden !important;
-    /* background-color: #2a2b41 !important; */
+
     position: relative;
     justify-items: center;
     text-align: center;
@@ -497,15 +478,12 @@
     > img {
       position: absolute;
       width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
+
       z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
+
       left: 80%;
       top: 0%;
-      /* opacity: 0.8; */ 
+
       opacity: 0.8;
     }
   }
@@ -519,19 +497,19 @@
   .split1 {
     background-color: #2a2b41 !important;
     padding-top: 80px;
-    /* padding-left: 140px; */
+
     width: 880px;
     height: 320px;
     z-index: 2;
     border-radius: 20px !important;
     overflow: clip !important;
     position: relative;
-    /* float: left; */
+
     > h4 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 36px;
-      /* text-align: center; */
+
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
@@ -548,14 +526,13 @@
       color: whitesmoke !important;
       opacity: 0.8;
       font-size: 36px;
-      /* margin-bottom: 1440px; */
+
       letter-spacing: 2px;
       white-space: nowrap;
-      /* left: -80px; */
+
       word-spacing: 48px !important;
       z-index: 1;
       left: 0;
-      /* top: ; */
     }
   }
   .sfirst {
@@ -606,11 +583,11 @@
 @media (min-width: 577px) and (max-width: 768px) {
   .split {
     width: 100%;
-    /* display: flex; */
+
     height: auto;
     border-radius: 20px !important;
     overflow: hidden !important;
-    /* background-color: #2a2b41 !important; */
+
     position: relative;
     justify-items: center;
     text-align: center;
@@ -618,15 +595,12 @@
     > img {
       position: absolute;
       width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
+
       z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
+
       left: 80%;
       top: 0%;
-      /* opacity: 0.8; */ 
+
       opacity: 0.8;
     }
   }
@@ -640,19 +614,19 @@
   .split1 {
     background-color: #2a2b41 !important;
     padding-top: 80px;
-    /* padding-left: 140px; */
+
     width: 680px;
     height: 240px;
     z-index: 2;
     border-radius: 20px !important;
     overflow: clip !important;
     position: relative;
-    /* float: left; */
+
     > h4 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 30px;
-      /* text-align: center; */
+
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
@@ -669,14 +643,13 @@
       color: whitesmoke !important;
       opacity: 0.8;
       font-size: 30px;
-      /* margin-bottom: 1440px; */
+
       letter-spacing: 2px;
       white-space: nowrap;
-      /* left: -80px; */
+
       word-spacing: 48px !important;
       z-index: 1;
       left: 0;
-      /* top: ; */
     }
   }
   .sfirst {
@@ -727,11 +700,11 @@
 @media (max-width: 576px) {
   .split {
     width: 100%;
-    /* display: flex; */
+
     height: auto;
     border-radius: 20px !important;
     overflow: hidden !important;
-    /* background-color: #2a2b41 !important; */
+
     position: relative;
     justify-items: center;
     text-align: center;
@@ -739,15 +712,12 @@
     > img {
       position: absolute;
       width: 20%;
-      /* height: 40%; */
-      /* filter: grayscale(100%); */
-      /* rotate: 0deg; */
+
       z-index: -1;
-      /* visibility: hidden !important; */
-      /* background-color: #000 !important; */
+
       left: 80%;
       top: 0%;
-      /* opacity: 0.8; */ 
+
       opacity: 0.8;
     }
   }
@@ -761,19 +731,19 @@
   .split1 {
     background-color: #2a2b41 !important;
     padding-top: 80px;
-    /* padding-left: 140px; */
+
     width: 360px;
     height: 140px;
     z-index: 2;
     border-radius: 20px !important;
     overflow: clip !important;
     position: relative;
-    /* float: left; */
+
     > h4 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 16px;
-      /* text-align: center; */
+
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
@@ -790,14 +760,13 @@
       color: whitesmoke !important;
       opacity: 0.8;
       font-size: 16px;
-      /* margin-bottom: 1440px; */
+
       letter-spacing: 1px;
       white-space: nowrap;
-      /* left: -80px; */
+
       word-spacing: 28px !important;
       z-index: 1;
       left: 0;
-      /* top: ; */
     }
   }
   .sfirst {
