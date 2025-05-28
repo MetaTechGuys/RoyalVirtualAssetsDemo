@@ -1,6 +1,6 @@
 /**
  * RoialVirtualAssets Cryptocurrency Price API
- * This module fetches and displays cryptocurrency prices
+ * This module fetches and displays cryptocurrency prices with caching and performance optimizations
  */
 
 class CryptoAPI {
@@ -13,8 +13,11 @@ class CryptoAPI {
             containerSelector: options.containerSelector || '#crypto-prices',
             limit: options.limit || 20,
             currency: options.currency || 'usd',
-            initialDisplay: options.initialDisplay || 8, // Default: initially show 10 items
-            maxRetries: options.maxRetries || 8 // Maximum number of retry attempts
+            initialDisplay: options.initialDisplay || 8, // Default: initially show 8 items
+            maxRetries: options.maxRetries || 8, // Maximum number of retry attempts
+            cacheKey: 'roial_crypto_cache', // LocalStorage key for caching
+            cacheExpiry: options.cacheExpiry || 300000, // Cache expiry: 5 minutes
+            eagerLoad: options.eagerLoad !== false // Enable eager loading by default
         };
         
         this.prices = [];
@@ -23,14 +26,145 @@ class CryptoAPI {
         this.errorMessage = '';
         this.intervalId = null;
         this.showingAll = false; // Track if we're showing all items
+        this.lastSuccessfulFetch = null; // Track last successful API call
+        this.isUsingCache = false; // Track if we're showing cached data
         
         // Add sorting state
         this.sortConfig = {
             key: 'market_cap', // Default sort by market cap
             direction: 'desc'  // Default direction descending
         };
+
+        // Initialize performance optimizations
+        this.initPerformanceOptimizations();
     }
-    
+
+    /**
+     * Initialize performance optimizations (preconnect, prefetch)
+     */
+    initPerformanceOptimizations() {
+        // Add preconnect for API domain
+        this.addPreconnect('https://api.coingecko.com');
+        
+        // Add DNS prefetch for image CDN (CoinGecko uses this for coin images)
+        this.addDnsPrefetch('https://assets.coingecko.com');
+        
+        // Prefetch the API endpoint if eager loading is enabled
+        if (this.config.eagerLoad) {
+            this.prefetchApiEndpoint();
+        }
+    }
+
+    /**
+     * Add preconnect link to head
+     */
+    addPreconnect(url) {
+        if (!document.querySelector(`link[rel="preconnect"][href="${url}"]`)) {
+            const link = document.createElement('link');
+            link.rel = 'preconnect';
+            link.href = url;
+            link.crossOrigin = 'anonymous';
+            document.head.appendChild(link);
+        }
+    }
+
+    /**
+     * Add DNS prefetch link to head
+     */
+    addDnsPrefetch(url) {
+        if (!document.querySelector(`link[rel="dns-prefetch"][href="${url}"]`)) {
+            const link = document.createElement('link');
+            link.rel = 'dns-prefetch';
+            link.href = url;
+            document.head.appendChild(link);
+        }
+    }
+
+    /**
+     * Prefetch the API endpoint for faster initial load
+     */
+    prefetchApiEndpoint() {
+        const url = `${this.config.baseUrl}/coins/markets?vs_currency=${this.config.currency}&order=market_cap_desc&per_page=${this.config.limit}&page=1&sparkline=false&price_change_percentage=24h`;
+        
+        // Use fetch with low priority for prefetching
+        if ('fetch' in window && 'Request' in window) {
+            try {
+                const request = new Request(url);
+                fetch(request, { 
+                    priority: 'low',
+                    mode: 'cors'
+                }).catch(() => {
+                    // Silently fail prefetch attempts
+                    console.log('Prefetch failed, will fetch normally when needed');
+                });
+            } catch (error) {
+                // Fallback for browsers that don't support priority
+                fetch(url, { mode: 'cors' }).catch(() => {});
+            }
+        }
+    }
+
+    /**
+     * Save data to cache
+     */
+    saveToCache(data) {
+        try {
+            const cacheData = {
+                data: data,
+                timestamp: Date.now(),
+                currency: this.config.currency
+            };
+            localStorage.setItem(this.config.cacheKey, JSON.stringify(cacheData));
+            console.log('Data cached successfully');
+        } catch (error) {
+            console.warn('Failed to save to cache:', error);
+        }
+    }
+
+    /**
+     * Load data from cache
+     */
+    loadFromCache() {
+        try {
+            const cached = localStorage.getItem(this.config.cacheKey);
+            if (!cached) return null;
+
+            const cacheData = JSON.parse(cached);
+            const now = Date.now();
+            
+            // Check if cache is expired
+            if (now - cacheData.timestamp > this.config.cacheExpiry) {
+                console.log('Cache expired, removing old data');
+                localStorage.removeItem(this.config.cacheKey);
+                return null;
+            }
+
+            // Check if currency matches
+            if (cacheData.currency !== this.config.currency) {
+                console.log('Currency changed, cache invalid');
+                return null;
+            }
+
+            console.log('Loading data from cache');
+            return cacheData.data;
+        } catch (error) {
+            console.warn('Failed to load from cache:', error);
+            return null;
+        }
+    }
+
+    /**
+     * Clear cache
+     */
+    clearCache() {
+        try {
+            localStorage.removeItem(this.config.cacheKey);
+            console.log('Cache cleared');
+        } catch (error) {
+            console.warn('Failed to clear cache:', error);
+        }
+    }
+
     /**
      * Initialize the crypto price tracker
      */
@@ -44,7 +178,17 @@ class CryptoAPI {
                 document.body.appendChild(container);
             }
             
-            // Initial data fetch
+            // Try to load from cache first for instant display
+            const cachedData = this.loadFromCache();
+            if (cachedData && cachedData.length > 0) {
+                this.prices = cachedData;
+                this.isUsingCache = true;
+                this.sortPrices();
+                this.renderPrices();
+                console.log('Displaying cached data while fetching fresh data');
+            }
+
+            // Fetch fresh data
             await this.fetchPrices();
             this.renderPrices();
             
@@ -71,7 +215,14 @@ class CryptoAPI {
             
             const url = `${this.config.baseUrl}/coins/markets?vs_currency=${this.config.currency}&order=market_cap_desc&per_page=${this.config.limit}&page=1&sparkline=false&price_change_percentage=24h`;
             
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                },
+                // Add cache control for better performance
+                cache: 'no-cache'
+            });
             
             if (!response.ok) {
                 throw new Error(`API request failed with status ${response.status}`);
@@ -87,15 +238,21 @@ class CryptoAPI {
                     this.updateLoadingState();
                     
                     // Wait 2 seconds before retrying
-                    await new Promise(resolve => setTimeout(resolve, 200));
+                    await new Promise(resolve => setTimeout(resolve, 2000));
                     return this.fetchPrices(retryAttempt + 1);
                 } else {
                     throw new Error('No cryptocurrency data available after multiple attempts');
                 }
             }
             
+            // Success! Update data and cache
             this.prices = data;
             this.hasError = false;
+            this.isUsingCache = false;
+            this.lastSuccessfulFetch = Date.now();
+            
+            // Save to cache
+            this.saveToCache(data);
             
             // Apply current sorting
             this.sortPrices();
@@ -111,8 +268,20 @@ class CryptoAPI {
                 await new Promise(resolve => setTimeout(resolve, 2000));
                 return this.fetchPrices(retryAttempt + 1);
             } else {
-                this.handleError(error);
-                return [];
+                // All retries failed, try to use cached data
+                const cachedData = this.loadFromCache();
+                if (cachedData && cachedData.length > 0) {
+                    console.log('API failed, using cached data as fallback');
+                    this.prices = cachedData;
+                    this.isUsingCache = true;
+                    this.hasError = false; // Don't show error if we have cached data
+                    this.sortPrices();
+                    return this.prices;
+                } else {
+                    // No cached data available, show error
+                    this.handleError(error);
+                    return [];
+                }
             }
         } finally {
             this.isLoading = false;
@@ -198,8 +367,14 @@ class CryptoAPI {
         // Create header
         const header = document.createElement('div');
         header.className = 'crypto-header';
+        
+        // Add cache indicator if using cached data
+        const cacheIndicator = this.isUsingCache ? 
+            '<div class="crypto-cache-indicator">📦 Showing cached data</div>' : '';
+        
         header.innerHTML = `
             <h2>Live Cryptocurrency Prices</h2>
+            ${cacheIndicator}
             <div class="crypto-controls">
                 <select id="crypto-currency-select">
                     <option value="usd" ${this.config.currency === 'usd' ? 'selected' : ''}>USD</option>
@@ -210,15 +385,16 @@ class CryptoAPI {
                 <div class="crypto-sort-dropdown">
                     <button id="crypto-sort-btn">Sort By</button>
                     <div class="crypto-sort-menu">
-                    <div class="crypto-sort-option" data-sort="price" data-direction="desc">Price (High-Low)</div>
-                    <div class="crypto-sort-option" data-sort="price" data-direction="asc">Price (Low-High)</div>
-                    <div class="crypto-sort-option" data-sort="change" data-direction="desc">24h Change (High-Low)</div>
-                    <div class="crypto-sort-option" data-sort="change" data-direction="asc">24h Change (Low-High)</div>
+                        <div class="crypto-sort-option" data-sort="price" data-direction="desc">Price (High-Low)</div>
+                        <div class="crypto-sort-option" data-sort="price" data-direction="asc">Price (Low-High)</div>
+                        <div class="crypto-sort-option" data-sort="change" data-direction="desc">24h Change (High-Low)</div>
+                        <div class="crypto-sort-option" data-sort="change" data-direction="asc">24h Change (Low-High)</div>
                         <div class="crypto-sort-option" data-sort="market_cap" data-direction="desc">Market Cap (High-Low)</div>
                         <div class="crypto-sort-option" data-sort="market_cap" data-direction="asc">Market Cap (Low-High)</div>
                     </div>
                 </div>
                 <button id="crypto-refresh-btn">Refresh</button>
+                <button id="crypto-clear-cache-btn" title="Clear cached data">Clear Cache</button>
             </div>
         `;
         container.appendChild(header);
@@ -236,7 +412,6 @@ class CryptoAPI {
                 <th class="sortable" data-sort="price">
                     Price
                     ${this.getSortIndicator('price')}
-                </th>
                 <th class="sortable" data-sort="change">
                     24h Change
                     ${this.getSortIndicator('change')}
@@ -252,8 +427,8 @@ class CryptoAPI {
         // Table body
         const tbody = document.createElement('tbody');
         
-        if (this.isLoading) {
-            // Show loading message
+        if (this.isLoading && !this.isUsingCache) {
+            // Show loading message only if not using cache
             const loadingRow = document.createElement('tr');
             loadingRow.innerHTML = `
                 <td colspan="5" class="crypto-loading-message">
@@ -261,8 +436,8 @@ class CryptoAPI {
                 </td>
             `;
             tbody.appendChild(loadingRow);
-        } else if (this.hasError) {
-            // Show error message with retry button
+        } else if (this.hasError && this.prices.length === 0) {
+            // Show error message with retry button only if no data available
             const errorRow = document.createElement('tr');
             errorRow.innerHTML = `
                 <td colspan="5" class="crypto-error">
@@ -304,7 +479,7 @@ class CryptoAPI {
                 row.innerHTML = `
                     <td>${i + 1}</td>
                     <td class="crypto-name">
-                        <img src="${coin.image}" alt="${coin.name}" width="24" height="24">
+                        <img src="${coin.image}" alt="${coin.name}" width="24" height="24" loading="lazy">
                         <span>${coin.name}</span>
                         <small>${coin.symbol.toUpperCase()}</small>
                     </td>
@@ -346,18 +521,84 @@ class CryptoAPI {
         // Add last updated info
         const footer = document.createElement('div');
         footer.className = 'crypto-footer';
+        
+        const lastUpdateText = this.isUsingCache ? 
+            `Last updated: ${this.getLastUpdateTime()} (cached)` : 
+            `Last updated: ${new Date().toLocaleTimeString()}`;
+            
         footer.innerHTML = `
-            <span>Last updated: ${new Date().toLocaleTimeString()}</span>
+            <span>${lastUpdateText}</span>
             <span>Data refreshed automatically every 2 minutes</span>
         `;
         container.appendChild(footer);
         
-
         // Add CSS for sortable columns and sort dropdown
         this.addSortStyles();
         
         // Add retry button styles
         this.addRetryButtonStyles();
+        
+        // Add cache indicator styles
+        this.addCacheStyles();
+    }
+
+    /**
+     * Get formatted last update time from cache
+     */
+    getLastUpdateTime() {
+        try {
+            const cached = localStorage.getItem(this.config.cacheKey);
+            if (cached) {
+                const cacheData = JSON.parse(cached);
+                return new Date(cacheData.timestamp).toLocaleTimeString();
+            }
+        } catch (error) {
+            console.warn('Failed to get cache timestamp:', error);
+        }
+        return 'Unknown';
+    }
+
+    /**
+     * Add styles for cache indicator
+     */
+    addCacheStyles() {
+        if (!document.getElementById('crypto-cache-styles')) {
+            const style = document.createElement('style');
+            style.id = 'crypto-cache-styles';
+            style.textContent = `
+                .crypto-cache-indicator {
+                    background-color: #fff3cd;
+                    color: #856404;
+                    padding: 8px 12px;
+                    border-radius: 4px;
+                    font-size: 12px;
+                    margin: 10px 0;
+                    border: 1px solid #ffeaa7;
+                    display: inline-block;
+                }
+                
+                #crypto-clear-cache-btn {
+                    margin-left: 10px;
+                    padding: 8px 12px;
+                    background-color: #dc3545;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 12px;
+                }
+                
+                #crypto-clear-cache-btn:hover {
+                    background-color: #c82333;
+                }
+                
+                .crypto-table img {
+                    border-radius: 50%;
+                    margin-right: 8px;
+                }
+            `;
+            document.head.appendChild(style);
+        }
     }
     
     /**
@@ -408,7 +649,7 @@ class CryptoAPI {
         }
         
         return this.sortConfig.direction === 'asc' 
-                        ? '<span class="sort-indicator">↑</span>' 
+            ? '<span class="sort-indicator">↑</span>' 
             : '<span class="sort-indicator">↓</span>';
     }
     
@@ -470,25 +711,26 @@ class CryptoAPI {
                 
                 .crypto-sort-option:hover {
                     background-color: #1e88e5;
+                    color: white;
                 }
                 
                 .crypto-sort-option.active {
-                    // background-color: #e6f7ff;
-                    // font-weight: bold;
+                    background-color: #e6f7ff;
+                    font-weight: bold;
                 }
                 
                 #crypto-sort-btn {
-                    // padding: 8px 12px;
-                    // background-color: #f0f0f0;
-                    // border: 1px solid #ddd;
-                    // border-radius: 4px;
-                    // cursor: pointer;
-                    // display: flex;
-                    // align-items: center;
+                    padding: 8px 12px;
+                    background-color: #2a2b41;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
                 }
                 
                 #crypto-sort-btn:hover {
-                    // background-color: #e0e0e0;
+                    background-color: #e0e0e0;
                 }
                 
                 #crypto-sort-btn::after {
@@ -622,6 +864,13 @@ class CryptoAPI {
                 this.fetchPrices().then(() => this.renderPrices());
             }
             
+            // Clear cache button
+            if (event.target.id === 'crypto-clear-cache-btn') {
+                this.clearCache();
+                this.isUsingCache = false;
+                this.fetchPrices().then(() => this.renderPrices());
+            }
+            
             // Retry button
             if (event.target.id === 'crypto-retry-btn') {
                 this.fetchPrices().then(() => this.renderPrices());
@@ -672,9 +921,61 @@ class CryptoAPI {
             // Currency select
             if (event.target.id === 'crypto-currency-select') {
                 this.config.currency = event.target.value;
+                // Clear cache when currency changes since cached data won't match
+                this.clearCache();
                 this.fetchPrices().then(() => this.renderPrices());
             }
         });
+    }
+
+    /**
+     * Get cache status information
+     */
+    getCacheStatus() {
+        const cached = localStorage.getItem(this.config.cacheKey);
+        if (!cached) return { hasCache: false };
+
+        try {
+            const cacheData = JSON.parse(cached);
+            const now = Date.now();
+            const age = now - cacheData.timestamp;
+            const isExpired = age > this.config.cacheExpiry;
+
+            return {
+                hasCache: true,
+                timestamp: cacheData.timestamp,
+                age: age,
+                isExpired: isExpired,
+                currency: cacheData.currency,
+                itemCount: cacheData.data ? cacheData.data.length : 0
+            };
+        } catch (error) {
+            return { hasCache: false, error: error.message };
+        }
+    }
+
+    /**
+     * Force refresh data (bypass cache)
+     */
+    async forceRefresh() {
+        this.isUsingCache = false;
+        await this.fetchPrices();
+        this.renderPrices();
+    }
+
+    /**
+     * Destroy the instance and clean up
+     */
+    destroy() {
+        // Stop auto-refresh
+        this.stopAutoRefresh();
+        
+        // Clear cache if needed
+        // this.clearCache();
+        
+        // Remove event listeners would need more specific cleanup
+        // For now, just stop the interval
+        console.log('CryptoAPI instance destroyed');
     }
 }
 
@@ -688,4 +989,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for external use
 window.cryptoApi = cryptoApi;
+
+// Add service worker registration for better caching (optional)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        // You can register a service worker here for even better caching
+        // navigator.serviceWorker.register('/sw.js');
+    });
+}
 
