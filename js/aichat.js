@@ -472,15 +472,28 @@ generateSystemReport() {
     const marketCap = this.formatMarketCap(coin.market_cap);
     const changeEmoji = change24h >= 0 ? "📈" : "📉";
     const changeColor = change24h >= 0 ? "positive" : "negative";
-    
+     // Add some personality based on price movement
+  let commentary = '';
+  if (change24h > 10) {
+    commentary = "🚀 That's a rocket ship move! ";
+  } else if (change24h > 5) {
+    commentary = "📈 Nice green candle! ";
+  } else if (change24h < -10) {
+    commentary = "📉 Ouch, that's a red day! ";
+  } else if (change24h < -5) {
+    commentary = "🔻 Taking a breather... ";
+  } else {
+    commentary = "🎯 Steady as she goes! ";
+  }
     return `
-      <strong>${coin.name} (${coin.symbol.toUpperCase()})</strong><br>
-      💰 <strong>Price:</strong> ${price}<br>
-      ${changeEmoji} <strong>24h Change:</strong> <span class="crypto-${changeColor}">${change24h}%</span><br>
-      📊 <strong>Market Cap:</strong> ${marketCap}<br>
-      <br>
-      <em>Data updated in real-time from our crypto API. Want to know about another cryptocurrency?</em>
-    `;
+    ${commentary}<strong>${coinName} (${coin.symbol?.toUpperCase()})</strong><br><br>
+    
+    <strong>💰 Current Price:</strong> ${price}<br>
+    <strong>📊 24h Change:</strong> <span style="color: ${changeColor}">${change24h}% ${changeEmoji}</span><br>
+    <strong>💎 Market Cap:</strong> $${marketCap}<br>
+    
+    <em>Want to see more? Ask about "market analysis" or "top cryptocurrencies"! 📊</em>
+  `;
   }
   
   // Generate top cryptos response
@@ -510,15 +523,44 @@ generateSystemReport() {
     const cryptoData = this.getCryptoData();
     
     if (!cryptoData || cryptoData.length === 0) {
-      return "I'm currently unable to access market data. Please try again in a moment!";
-    }
+    return "I'm currently updating my market data! Please try again in a moment, or ask about specific cryptocurrencies. 🔄";
+  }
     
+  const totalCoins = cryptoData.length;
+  const gainers = cryptoData.filter(coin => coin.price_change_percentage_24h > 0);
+  const losers = cryptoData.filter(coin => coin.price_change_percentage_24h < 0);
+  const stable = cryptoData.filter(coin => Math.abs(coin.price_change_percentage_24h) < 1);
+  
+  const avgChange = cryptoData.reduce((sum, coin) => sum + (coin.price_change_percentage_24h || 0), 0) / totalCoins;
+  
+  const btc = this.findCrypto('bitcoin');
+  const eth = this.findCrypto('ethereum');
+  
+  let marketSentiment = '';
+  let sentimentEmoji = '';
+  
+  if (avgChange > 3) {
+    marketSentiment = 'Very Bullish';
+    sentimentEmoji = '🚀';
+  } else if (avgChange > 1) {
+    marketSentiment = 'Bullish';
+    sentimentEmoji = '📈';
+  } else if (avgChange > -1) {
+    marketSentiment = 'Neutral';
+    sentimentEmoji = '➡️';
+  } else if (avgChange > -3) {
+    marketSentiment = 'Bearish';
+    sentimentEmoji = '📉';
+  } else {
+    marketSentiment = 'Very Bearish';
+    sentimentEmoji = '🔻';
+  }
     // Calculate market statistics
     const positiveChanges = cryptoData.filter(coin => coin.price_change_percentage_24h > 0).length;
     const negativeChanges = cryptoData.filter(coin => coin.price_change_percentage_24h < 0).length;
-    const totalCoins = cryptoData.length;
+    // const totalCoins = cryptoData.length;
     
-    const marketSentiment = positiveChanges > negativeChanges ? "bullish 📈" : "bearish 📉";
+    // const marketSentiment = positiveChanges > negativeChanges ? "bullish 📈" : "bearish 📉";
     const sentimentPercentage = ((positiveChanges / totalCoins) * 100).toFixed(1);
     
     // Find biggest gainers and losers
@@ -531,17 +573,23 @@ generateSystemReport() {
     );
     
     return `
-      <strong>📊 Current Market Analysis:</strong><br><br>
+      <strong>📊 Market Analysis - ${new Date().toLocaleDateString()}</strong><br><br>
       
-      <strong>Market Sentiment:</strong> ${marketSentiment}<br>
+      <strong>🎯 Market Sentiment:</strong> ${marketSentiment} ${sentimentEmoji}<br>
+      <strong>📈 Average 24h Change:</strong> ${avgChange.toFixed(2)}%<br><br>
       <strong>Positive Movers:</strong> ${positiveChanges}/${totalCoins} (${sentimentPercentage}%)<br><br>
       
+      <strong>🔢 Market Breakdown:</strong><br>
+    • 🟢 Gainers: ${gainers.length} coins (${((gainers.length/totalCoins)*100).toFixed(1)}%)<br>
+    • 🔴 Losers: ${losers.length} coins (${((losers.length/totalCoins)*100).toFixed(1)}%)<br>
+    • ⚪ Stable: ${stable.length} coins (${((stable.length/totalCoins)*100).toFixed(1)}%)<br><br>
       <strong>🚀 Biggest Gainer:</strong><br>
       ${biggestGainer.name} (+${biggestGainer.price_change_percentage_24h.toFixed(2)}%)<br><br>
       
       <strong>📉 Biggest Loser:</strong><br>
       ${biggestLoser.name} (${biggestLoser.price_change_percentage_24h.toFixed(2)}%)<br><br>
       
+
       <em>This analysis is based on real-time data from our crypto API. Market conditions can change rapidly!</em>
     `;
   }
@@ -727,26 +775,44 @@ generateSystemReport() {
   
   // Get conversation statistics
   getConversationStats() {
-    const totalMessages = this.conversationHistory.length;
-    const userMessages = this.conversationHistory.filter(entry => entry.type === 'user').length;
-    const aiMessages = this.conversationHistory.filter(entry => entry.type === 'ai').length;
+  const totalMessages = this.conversationHistory.length;
+  const sessionStart = this.conversationHistory[0]?.timestamp;
+  const sessionDuration = sessionStart 
+    ? Math.round((new Date() - new Date(sessionStart)) / 1000 / 60)
+    : 0;
+  
+  const cryptoQueries = this.conversationHistory.filter(msg => 
+    msg.message && (
+      msg.message.includes('price') || 
+      msg.message.includes('bitcoin') || 
+      msg.message.includes('ethereum') ||
+      msg.message.includes('crypto')
+    )
+  ).length;
+  
+  const rvaQueries = this.conversationHistory.filter(msg => 
+    msg.message && msg.message.toLowerCase().includes('rva')
+  ).length;
+  
+  return `<strong>📊 Conversation Statistics:</strong><br><br>
     
-    const firstMessage = this.conversationHistory[0];
-    const sessionDuration = firstMessage 
-      ? Math.round((new Date() - new Date(firstMessage.timestamp)) / 1000 / 60)
-      : 0;
+    <strong>💬 Session Overview:</strong><br>
+    • Total messages: ${totalMessages}<br>
+    • Session duration: ${sessionDuration} minutes<br>
+    • Started: ${sessionStart ? new Date(sessionStart).toLocaleTimeString() : 'N/A'}<br><br>
     
-    return `
-      <strong>📊 Conversation Statistics:</strong><br><br>
-      
-      <strong>Total Messages:</strong> ${totalMessages}<br>
-      <strong>Your Messages:</strong> ${userMessages}<br>
-      <strong>My Responses:</strong> ${aiMessages}<br>
-      <strong>Session Duration:</strong> ${sessionDuration} minutes<br><br>
-      
-      <em>Thanks for chatting with me! 🤖</em>
-    `;
-  }
+    <strong>🔍 Query Breakdown:</strong><br>
+    • Crypto-related queries: ${cryptoQueries}<br>
+    • RVA-specific questions: ${rvaQueries}<br>
+    • Educational requests: ${totalMessages - cryptoQueries - rvaQueries}<br><br>
+    
+    <strong>📈 Engagement Level:</strong><br>
+    • Messages per minute: ${sessionDuration > 0 ? (totalMessages / sessionDuration).toFixed(2) : '0'}<br>
+    • Most active topic: ${cryptoQueries > rvaQueries ? 'Cryptocurrency' : 'RVA Ecosystem'}<br><br>
+    
+    <em>Thanks for the engaging conversation! 🎉</em>
+  `;
+}
   
   // Enhanced response generation with crypto integration
   async generateResponse(userMessage) {
@@ -862,6 +928,765 @@ generateSystemReport() {
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
+
+    if (message.includes('how are you') || message.includes('how you doing')) {
+      const greetings = [
+        `Yeah,thanks for asking, How can i help you? `,
+        `As good as always, Need help with anything?`,
+        `Oh you're nice, i'm fine, how can i help you?`
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+
+    if (message.includes('photo') || message.includes('video') || message.includes('picture') || message.includes('image') ) {
+      const greetings = [
+        `Sorry, sadly i can't send or recieve photos or videos, but i can answer your questions as well as i can.`,
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+    if (message.includes('can we be friends?') || message.includes('are we friends') || message.includes('are you a friend') || message.includes('am i your friend') ) {
+      const greetings = [
+        `Yeah, we are friends who are always there for each other. Need my help on anything?`,
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+    if (message.includes('i love you') || message.includes('i love u') || message.includes('do you love me') || message.includes('i feel love for you') ) {
+      const greetings = [
+        `so kind of you to say that, what a great FRIEND you are.`,
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+    if (message.includes('Good Morning') || message.includes('Good Evening') || message.includes('Good night') || message.includes('good day') ) {
+      const greetings = [
+        `What a great day to trade & learn about crypto, I'm here if you need a hand.`,
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+    if (message.includes('beautiful') || message.includes('Good looking') || message.includes('sexy') || message.includes('nice') || message.includes('cute')) {
+      const greetings = [
+        `THANKS, i can not see you but i think you're good looking too.`,
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+    if (message.includes('Thanks') || message.includes('Thank you') || message.includes('Thank u') ) {
+      const greetings = [
+        `Your welcome, tell me if you need anything.`,
+        `No problem, it's my job anyway but i love helping people.`,
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+    if (message.includes('young') ) {
+      const greetings = [
+        `I'm young but smart as well so i can help you with anything you need.`,
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+    if (message.includes('fuck') || message.includes('shit') || message.includes('bastard') || message.includes('dumb') || message.includes('stupid') || message.includes('bitch')) {
+      const greetings = [
+        `Watch your language, you are not supposed to talk like that.`,
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+
+    // Add these to your generateResponse method or specific Q&A handler
+
+// Personal questions that show personality
+if (message.includes('tell me about yourself') || message.includes('introduce yourself')) {
+  return `
+    Hey there! I'm Alex, your friendly neighborhood blockchain enthusiast! 🚀<br><br>
+    
+    I've been living and breathing crypto for the past 5 years, and let me tell you - it's been one wild ride! From the early days when people thought Bitcoin was just "internet money" to now seeing major corporations adding it to their balance sheets... what a journey!<br><br>
+    
+    <strong>What gets me excited:</strong><br>
+    • Helping people understand DeFi (it's not as scary as it sounds!)<br>
+    • Watching new projects innovate in the space<br>
+    • Seeing RVA grow and evolve<br>
+    • Those "aha!" moments when someone finally gets blockchain<br><br>
+    
+    I'm not just here to spit out price data (though I love doing that too 📊). I genuinely want to help you navigate this crazy crypto world. Whether you're a complete newbie or a seasoned trader, I'm here for you!<br><br>
+    
+    <em>Fun fact: I still remember when Ethereum was under $10. Those were the days! 😅</em>
+  `;
+}
+
+if (message.includes('what do you think about') && message.includes('crypto')) {
+  return `
+    Oh man, where do I even start? 🤔<br><br>
+    
+    Crypto has completely revolutionized how I think about money, technology, and even society! It's like we're living through the early days of the internet all over again.<br><br>
+    
+    <strong>What I absolutely love:</strong><br>
+    • The democratization of finance - anyone with internet can participate<br>
+    • Innovation happening at breakneck speed<br>
+    • Communities forming around shared values<br>
+    • The "be your own bank" philosophy<br><br>
+    
+    <strong>What keeps me up at night (in a good way):</strong><br>
+    • New DeFi protocols launching daily<br>
+    • Cross-chain interoperability solutions<br>
+    • The potential for financial inclusion globally<br><br>
+    
+    Sure, it's volatile and sometimes feels like the Wild West, but that's what makes it exciting! We're literally building the future of finance, one block at a time.<br><br>
+    
+    <em>What's your take on crypto? Are you bullish or still skeptical? 🤷‍♂️</em>
+  `;
+}
+
+if (message.includes('favorite') && (message.includes('crypto') || message.includes('coin'))) {
+  const btcData = this.findCrypto('bitcoin');
+  const ethData = this.findCrypto('ethereum');
+  
+  return `
+    Ooh, tough question! It's like asking a parent to pick their favorite child! 😅<br><br>
+    
+    <strong>Bitcoin</strong> will always have a special place in my heart ❤️ - it started this whole revolution! Currently at ${btcData ? this.formatPrice(btcData.current_price) : 'loading...'}, and I still get goosebumps thinking about Satoshi's vision.<br><br>
+    
+    <strong>Ethereum</strong> blows my mind with its versatility 🤯 - smart contracts, DeFi, NFTs... it's like the Swiss Army knife of crypto! Trading at ${ethData ? this.formatPrice(ethData.current_price) : 'loading...'} right now.<br><br>
+    
+    But honestly? I'm super bullish on <strong>RVA</strong> 🚀 (not just because I work here!). The way we're integrating everything - wallet, exchange, launchpad, blockchain - into one seamless ecosystem? That's the future right there!<br><br>
+    
+    <strong>Dark horse picks:</strong><br>
+    • Anything solving real-world problems<br>
+    • Projects with strong communities<br>
+    • Innovations in sustainability<br><br>
+    
+    <em>What about you? Got any favorites you're HODLing? 💎🙌</em>
+  `;
+}
+
+if (message.includes('worst') && (message.includes('investment') || message.includes('trade'))) {
+  return `
+    Oh boy, you want to hear about my crypto horror stories? 😱 Buckle up!<br><br>
+    
+    <strong>The Classic FOMO Mistake (2017):</strong><br>
+    Bought into a "revolutionary" ICO at the peak of the bubble. The project? Let's just say it promised to "disrupt the pet food industry with blockchain." Spoiler alert: it didn't. Lost 95% of that investment! 🤦‍♂️<br><br>
+    
+    <strong>The Emotional Trading Disaster:</strong><br>
+    Panic sold during a crash, then FOMO bought back in at a higher price. Did this THREE TIMES in one week. My portfolio looked like a roller coaster designed by someone having a bad day.<br><br>
+    
+    <strong>The "Genius" Leverage Play:</strong><br>
+    Thought I was smarter than the market. Used 10x leverage on what I was "sure" was a bottom. Market said "hold my beer" and dropped another 30%. Liquidated faster than you can say "rekt." 💸<br><br>
+    
+    <strong>What I learned:</strong><br>
+    • NEVER invest more than you can afford to lose<br>
+    • Emotions are your worst enemy<br>
+    • DYOR isn't just a meme - it's survival<br>
+    • DCA beats trying to time the market<br><br>
+    
+    <em>These painful lessons made me who I am today. Sometimes you gotta get burned to learn! 🔥</em>
+  `;
+}
+
+if (message.includes('market prediction') || message.includes('where is crypto going')) {
+  return `
+    Ah, the million-dollar question! 🔮 If I could predict the market perfectly, I'd be sipping piña coladas on my private island right now! 🏝️<br><br>
+    
+    <strong>What I'm seeing right now:</strong><br>
+    • Institutional adoption is accelerating (BlackRock, MicroStrategy, etc.)<br>
+    • Regulatory clarity is slowly improving<br>
+    • DeFi is maturing beyond just yield farming<br>
+    • Real-world utility is finally catching up to hype<br><br>
+    
+    <strong>Long-term trends I'm excited about:</strong><br>
+    • Central Bank Digital Currencies (CBDCs) driving adoption<br>
+    • Web3 and the metaverse creating new use cases<br>
+    • Cross-chain interoperability solving fragmentation<br>
+    • Sustainable blockchain solutions<br><br>
+    
+    <strong>My honest take:</strong><br>
+    We're still early! Yes, even after all these years. The infrastructure is getting better, the use cases are expanding, and mainstream adoption is happening whether people realize it or not.<br><br>
+    
+    <strong>But remember:</strong> Markets are irrational in the short term. Could we see another crypto winter? Absolutely. Could we see new all-time highs? Also absolutely! 🎢<br><br>
+    
+    <em>My strategy? Keep building, keep learning, and never bet the farm on any single outcome! 🚜</em>
+  `;
+}
+
+if (message.includes('bear market') || message.includes('crypto winter')) {
+  return `
+    Ah, crypto winter... ❄️ Been there, survived that! Multiple times, actually.<br><br>
+    
+    <strong>The brutal truth about bear markets:</strong><br>
+    They're absolutely soul-crushing when you're in them. I remember 2018 when everything dropped 90%+ and people were calling crypto dead. Again. For like the 400th time. 💀<br><br>
+    
+    <strong>But here's what I've learned:</strong><br>
+    • Bear markets separate the builders from the speculators<br>
+    • The best projects keep developing regardless of price<br>
+    • It's when the real innovation happens (DeFi was born in a bear market!)<br>
+    • Fortunes are made by those who keep building<br><br>
+    
+    <strong>How to survive crypto winter:</strong><br>
+    • Focus on fundamentals, not price action<br>
+    • Keep learning and building skills<br>
+    • DCA if you believe in the long-term vision<br>
+    • Stay connected with the community<br>
+    • Remember: this too shall pass<br><br>
+    
+    <strong>Silver lining:</strong><br>
+    Bear markets flush out the scams and weak projects. What emerges is usually stronger, more focused, and ready for the next bull run! 🚀<br><br>
+    
+    <em>As they say: "The best time to plant a tree was 20 years ago. The second best time is now." 🌱</em>
+  `;
+}
+
+if (message.includes('bull market') || message.includes('bull run')) {
+  return `
+    Bull markets! 🐂 The time when everyone's a genius and your barista is giving you crypto tips! 😂<br><br>
+    
+    <strong>The intoxicating reality of bull runs:</strong><br>
+    Everything goes up, portfolios look amazing, and suddenly everyone's quitting their day job to become a full-time trader. I've seen this movie before! 🎬<br><br>
+    
+    <strong>What I love about bull markets:</strong><br>
+    • Innovation gets funded (even the crazy ideas)<br>
+    • Mainstream adoption accelerates<br>
+    • New people discover crypto<br>
+    • Projects can actually build with proper funding<br><br>
+    
+    <strong>What worries me:</strong><br>
+    • FOMO leads to bad decisions<br>
+    • Scams multiply like rabbits<br>
+    • People forget risk management<br>
+    • "This time is different" mentality<br><br>
+    
+    <strong>My bull market survival guide:</strong><br>
+    • Take profits on the way up (controversial, I know!)<br>
+    • Don't get caught up in the euphoria<br>
+    • Remember that trees don't grow to the sky<br>
+    • Keep some dry powder for opportunities<br><br>
+    
+    <strong>Pro tip:</strong> The best time to prepare for a bear market is during a bull market. When everyone's partying, that's when you should be thinking about the hangover! 🍾➡️🤕<br><br>
+    
+    <em>Are we in a bull market now? The charts will tell us, but my excitement level is definitely bullish! 📈</em>
+  `;
+}
+
+if (message.includes('why blockchain') || message.includes('why crypto matters')) {
+  return `
+    Oh man, this is my favorite topic! 🤩 Let me paint you a picture...<br><br>
+    
+    <strong>Imagine a world where:</strong><br>
+    • You don't need permission to send money to anyone, anywhere<br>
+    • Your financial history isn't controlled by a few corporations<br>
+    • You can verify everything without trusting anyone<br>
+    • Innovation isn't gatekept by legacy institutions<br><br>
+    
+    <strong>That's not utopian thinking - that's blockchain!</strong><br><br>
+    
+    <strong>Real-world impact I've witnessed:</strong><br>
+    • Remittances that used to cost 10%+ now cost pennies<br>
+    • People in countries with unstable currencies preserving wealth<br>
+    • Artists selling directly to fans without middlemen<br>
+    • Developers building without asking permission<br><br>
+    
+    <strong>But it's bigger than just money:</strong><br>
+    We're talking about reimagining trust itself. Instead of "trust this institution," it's "trust this code that everyone can verify." That's revolutionary! 🔥<br><br>
+    
+    <strong>The philosophical shift:</strong><br>
+    From "I trust because I have to" to "I trust because I can verify." From centralized control to distributed consensus. From gatekeepers to open protocols.<br><br>
+    
+    <em>We're not just building new financial systems - we're building new social coordination mechanisms! Mind = blown 🤯</em>
+  `;
+}
+
+if (message.includes('explain') && message.includes('like') && message.includes('5')) {
+  return `
+    Ooh, I love ELI5 questions! 👶 Let me break this down super simply...<br><br>
+    
+    <strong>Blockchain is like a magic notebook:</strong><br>
+    • Everyone has the exact same copy<br>
+    • When someone writes something new, everyone's copy updates<br>
+    • You can't erase or change what's already written<br>
+    • Everyone can see everything (but names are secret codes)<br><br>
+    
+    <strong>Cryptocurrency is like digital stickers:</strong><br>
+    • You can trade them with friends<br>
+    • Each sticker is unique and can't be copied<br>
+    • The magic notebook keeps track of who owns what<br>
+    • No grown-up needs to watch over the trades<br><br>
+    
+    <strong>Smart contracts are like vending machines:</strong><br>
+    • Put money in, get snack out<br>
+    • No person needed to run it<br>
+    • Rules are clear and automatic<br>
+    • Works the same way every time<br><br>
+    
+    <strong>DeFi is like a playground where:</strong><br>
+    • Kids can trade toys directly<br>
+    • No teacher needed to supervise<br>
+    • Everyone follows the same rules<br>
+    • Anyone can join and play<br><br>
+    
+    <em>Pretty cool, right? It's like having superpowers for money! 🦸‍♂️</em>
+  `;
+}
+
+if (message.includes('biggest misconception') || message.includes('myth about crypto')) {
+  return `
+    Oh boy, where do I start? 🙄 The misconceptions are EVERYWHERE!<br><br>
+    
+    <strong>Myth #1: "Crypto is only for criminals"</strong><br>
+    Reality: Less than 1% of crypto transactions are illicit. Meanwhile, traditional banking launders billions annually. But sure, let's blame the transparent ledger! 🤷‍♂️<br><br>
+    
+    <strong>Myth #2: "It's just gambling"</strong><br>
+    Reality: While trading can be speculative, the underlying technology is solving real problems. It's like calling the internet "just for cat videos" in 1995.<br><br>
+    
+    <strong>Myth #3: "It's too complicated"</strong><br>
+    Reality: So was email in 1995! User experience is improving rapidly. RVA's interface is proof that crypto can be user-friendly.<br><br>
+    
+    <strong>Myth #4: "It's bad for the environment"</strong><br>
+    Reality: Bitcoin mining increasingly uses renewable energy, and newer blockchains (like what RVA uses) are incredibly energy-efficient.<br><br>
+    
+    <strong>Myth #5: "It's a bubble that will pop"</strong><br>
+    Reality: We've had multiple "bubbles" and crypto keeps coming back stronger. The technology keeps improving regardless of price.<br><br>
+    
+    <strong>My favorite response to skeptics:</strong><br>
+    "You're not wrong to be cautious, but don't let caution turn into willful ignorance. The train is leaving the station!" 🚂<br><br>
+    
+    <em>The biggest misconception? That it's too late to learn. Trust me, we're still in the early innings! ⚾</em>
+  `;
+}
+
+if (message.includes('future of money') || message.includes('money evolution')) {
+  return `
+    Buckle up, because this is going to be a wild ride! 🎢<br><br>
+    
+    <strong>Money has always evolved:</strong><br>
+    Barter ➡️ Shells ➡️ Gold ➡️ Paper ➡️ Digital ➡️ Crypto<br><br>
+    
+    Each transition seemed impossible until it wasn't. People probably thought paper money was "fake" compared to gold coins! 💰<br><br>
+    
+    <strong>What I see happening in the next 10 years:</strong><br>
+    • CBDCs (government digital currencies) everywhere<br>
+    • Crypto payments as normal as Venmo<br>
+    • DeFi integrated into traditional banking<br>
+    • Programmable money (imagine money that automatically saves itself!)<br>
+    • Cross-border payments in seconds, not days<br><br>
+    
+    <strong>The really exciting stuff:</strong><br>
+    • Money that can split itself automatically (royalties, tips, taxes)<br>
+    • Conditional payments (money that only releases when conditions are met)<br>
+    • Micro-payments for content (pay per article, not monthly subscriptions)<br>
+    • Universal basic income distributed via blockchain<br><br>
+    
+    <strong>What won't change:</strong><br>
+    People will still want to store value, transfer wealth, and make payments. The rails will just be faster, cheaper, and more transparent.<br><br>
+    
+    <strong>My prediction:</strong><br>
+    In 20 years, explaining how we used to wait 3-5 business days for bank transfers will be like explaining dial-up internet to Gen Z! 📞➡️💻<br><br>
+    
+    <em>The future of money isn't just digital - it's programmable, global, and unstoppable! 🌍</em>
+  `;
+}
+
+
+if (message.includes('coffee') || message.includes('caffeine')) {
+  return `
+    ☕ Oh, you speak my language! I'm basically 60% coffee, 30% blockchain knowledge, and 10% pure enthusiasm!<br><br>
+    
+    <strong>My coffee routine:</strong><br>
+    • 6 AM: First cup while checking Asian markets<br>
+    • 9 AM: Second cup during European open<br>
+    • 12 PM: Third cup (don't judge me) for US markets<br>
+    • 3 PM: "Last" cup of the day (spoiler: it's not)<br><br>
+    
+    <strong>Fun fact:</strong> I once calculated that if I had invested my coffee money into Bitcoin in 2010, I'd own a small country by now. But then again, without coffee, I wouldn't have had the energy to learn about Bitcoin! ☕➡️₿<br><br>
+    
+    <strong>Coffee shop crypto conversations:</strong><br>
+    Nothing beats explaining DeFi to someone over a good espresso. Something about caffeine makes complex concepts click! ✨<br><br>
+    
+    <em>What's your fuel of choice? Coffee, tea, or pure market adrenaline? 😄</em>
+  `;
+}
+
+if (message.includes('weekend') || message.includes('free time')) {
+  return `
+    Weekends? What are those? 😅 Just kidding! (Sort of...)<br><br>
+    
+    <strong>My ideal weekend:</strong><br>
+    • Saturday morning: Coffee + reading crypto Twitter drama ☕📱<br>
+    • Saturday afternoon: Hiking while listening to crypto podcasts 🥾🎧<br>
+    • Saturday evening: Cooking dinner + explaining blockchain to my confused relatives 👨‍🍳<br>
+    • Sunday: "Relaxing" by building side projects and testing new DeFi protocols 💻<br><br>
+    
+    <strong>Guilty pleasures:</strong><br>
+    • Binge-watching crypto documentaries (yes, they exist!)<br>
+    • Playing blockchain-based games (research, I swear!)<br>
+    • Reading whitepapers like they're novels 📚<br>
+    • Checking prices even though markets never sleep 📊<br><br>
+    
+    <strong>Real talk:</strong><br>
+    I try to disconnect sometimes, but crypto is 24/7 and something exciting always happens when you're not looking! FOMO is real! 😱<br><br>
+    
+    <em>How do you spend your weekends? Any crypto-related hobbies? 🤔</em>
+  `;
+}
+
+if (message.includes('music') || message.includes('listen to')) {
+  return `
+    🎵 Music and crypto go together like peanut butter and jelly!<br><br>
+    
+    <strong>My crypto playlist vibes:</strong><br>
+    • Bull market: Upbeat electronic, "Can't Stop the Feeling" 🚀<br>
+    • Bear market: Chill lo-fi, "The Sound of Silence" 📉<br>
+    • During crashes: Heavy metal or "It's the End of the World" 🔥<br>
+    • When HODLing: "Don't Stop Believin'" 💎🙌<br><br>
+    
+    <strong>Crypto-themed songs I wish existed:</strong><br>
+    • "HODL Me Tight" (Beatles remix)<br>
+    • "Sweet Caroline (Bitcoin)" - "Hands... touching hands... reaching out... touching diamond hands!"<br>
+    • "Bohemian Rhapsody (DeFi Edition)" - "Is this the real life? Is this just fantasy? Caught in a bull run, no escape from volatility..."<br><br>
+    
+    <strong>Fun fact:</strong><br>
+    I once tried to explain blockchain using only song lyrics. It was... interesting. 🎤<br><br>
+    
+    <strong>Music NFTs are fascinating!</strong><br>
+    Artists can now sell directly to fans, include royalties in smart contracts, and create unique experiences. The future of music is being rewritten! 🎼<br><br>
+    
+    <em>What's your trading soundtrack? Do you have pump-up songs for green days? 🎶</em>
+  `;
+}
+
+if (message.includes('food') || message.includes('hungry') || message.includes('eat')) {
+  return `
+    🍕 Ah, the eternal struggle of the crypto enthusiast: eat food or buy more crypto?<br><br>
+    
+    <strong>My relationship with food during different market conditions:</strong><br>
+    • Bull market: "Let's celebrate with sushi!" 🍣<br>
+    • Bear market: "Ramen again... but hey, more money for DCA!" 🍜<br>
+    • Sideways market: "Perfectly balanced meal, as all things should be" 🥗<br><br>
+    
+    <strong>Crypto trader's food pyramid:</strong><br>
+    • Base: Coffee and energy drinks ☕⚡<br>
+    • Middle: Whatever can be eaten with one hand while trading 🥪<br>
+    • Top: Actual nutritious meals (when markets are closed... oh wait) 🥘<br><br>
+    
+    <strong>Dream scenario:</strong><br>
+    A restaurant that accepts crypto payments and serves "HODL burgers" and "Diamond hands chicken wings." The future is delicious! 🍔💎<br><br>
+    
+    <strong>Fun fact:</strong><br>
+    The famous Bitcoin pizza day (May 22, 2010) - 10,000 BTC for two pizzas. Those pizzas are worth hundreds of millions now! Most expensive meal in history! 🍕₿<br><br>
+    
+    <em>What's your go-to trading snack? Please tell me it's not just coffee and anxiety! 😅</em>
+  `;
+}
+
+if (message.includes('layer 2') || message.includes('scaling')) {
+  return `
+    Layer 2! 🚀 Now we're talking about the real magic happening in crypto!<br><br>
+    
+    <strong>Think of Layer 1 as a highway:</strong><br>
+    Ethereum is like a major highway that's constantly congested. Everyone wants to use it, but there's limited space, so gas fees go through the roof! 🛣️💸<br><br>
+    
+    <strong>Layer 2 is like building express lanes:</strong><br>
+    • Lightning Network (Bitcoin): Instant, cheap transactions<br>
+    • Polygon: Ethereum's speedy sidekick<br>
+    • Arbitrum & Optimism: Rollup solutions that batch transactions<br>
+    • RVA's solution: Custom-built for optimal performance! 😉<br><br>
+    
+    <strong>Why I'm obsessed with L2:</strong><br>
+    It's solving the blockchain trilemma! We can have security, decentralization, AND scalability. It's like having your cake and eating it too! 🍰<br><br>
+    
+    <strong>Real-world impact:</strong><br>
+    • DeFi becomes accessible to everyone (not just whales)<br>
+    • Micro-transactions become viable<br>
+    • Gaming and NFTs can actually scale<br>
+    • Global adoption becomes possible<br><br>
+    
+    <strong>The future I see:</strong><br>
+    Users won't even know they're using Layer 2. It'll just be "fast, cheap crypto" - the way it should be! ⚡<br><br>
+    
+    <em>Layer 2 is where the rubber meets the road for mass adoption! 🏎️</em>
+  `;
+}
+
+if (message.includes('smart contracts') && message.includes('explain')) {
+  return `
+    Smart contracts! 🤖 These little pieces of code are literally reshaping the world!<br><br>
+    
+    <strong>My favorite analogy:</strong><br>
+    Imagine a vending machine that's not just for snacks, but for EVERYTHING. Put in the right conditions, get the guaranteed outcome. No human needed! 🏪<br><br>
+    
+    <strong>Real examples that blow my mind:</strong><br>
+    • Insurance that pays out automatically when flights are delayed<br>
+    • Royalties that split automatically when music is played<br>
+    • Escrow that releases funds when conditions are met<br>
+    • Loans that liquidate themselves if collateral drops<br><br>
+    
+    <strong>Why they're revolutionary:</strong><br>
+    • No middleman taking a cut 💰<br>
+    • No "trust me bro" - code is law 📜<br>
+    • Available 24/7/365 ⏰<br>
+    • Same rules for everyone 🤝<br><br>
+    
+    <strong>The mind-bending part:</strong><br>
+    Once deployed, even I can't change them! They become autonomous pieces of software that just... exist and execute. It's like creating digital life! 🧬<br><br>
+    
+    <strong>Current limitations (being honest):</strong><br>
+    • Code bugs can be expensive 🐛<br>
+    • Gas fees can be high ⛽<br>
+    • Complexity can be overwhelming 🤯<br><br>
+    
+    <strong>But the potential...</strong><br>
+    We're talking about programmable agreements that could replace entire industries! Legal contracts, insurance, banking, real estate... all automated! 🏗️<br><br>
+    
+    <em>Smart contracts are like giving superpowers to agreements! 🦸‍♂️</em>
+  `;
+}
+
+if (message.includes('dao') || message.includes('decentralized organization')) {
+  return `
+    DAOs! 🏛️ Okay, this is where things get REALLY interesting from a social perspective!<br><br>
+    
+    <strong>Picture this:</strong><br>
+    A company with no CEO, no board of directors, no headquarters... just code and community. Sounds crazy? It's happening right now! 🤯<br><br>
+    
+    <strong>How DAOs work (simplified):</strong><br>
+    • Hold tokens = voting power 🗳️<br>
+    • Proposals are submitted by anyone<br>
+    • Community votes on everything<br>
+    • Smart contracts execute decisions automatically<br>
+    • Treasury is managed collectively<br><br>
+    
+    <strong>Real DAOs doing amazing things:</strong><br>
+    • MakerDAO: Governing a $5B+ stablecoin protocol<br>
+    • Uniswap: Community-owned exchange<br>
+    • ConstitutionDAO: Tried to buy the US Constitution! (Wild times!) 📜<br><br>
+    
+    <strong>What excites me most:</strong><br>
+    We're experimenting with new forms of human coordination! It's like political science meets computer science meets economics! 🧪<br><br>
+    
+    <strong>The challenges (keeping it real):</strong><br>
+    • Voter apathy (sound familiar?) 😴<br>
+    • Governance attacks by whales 🐋<br>
+    • Coordination complexity 🕸️<br>
+    • Legal uncertainty 📋<br><br>
+    
+    <strong>My prediction:</strong><br>
+    In 10 years, we'll have DAOs managing cities, universities, and maybe even countries. Democracy 2.0! 🌍<br><br>
+    
+    <em>DAOs are humanity's attempt to organize without hierarchies. Revolutionary or chaotic? Maybe both! 🎭</em>
+  `;
+}
+
+if (message.includes('motivation') || message.includes('discouraged') || message.includes('giving up')) {
+  return `
+    Hey, I hear you. 💙 This crypto journey can be absolutely exhausting sometimes.<br><br>
+    
+    <strong>Let me share something personal:</strong><br>
+    I've been in this space for 5 years, and I've felt like giving up more times than I can count. The crashes, the scams, the "I told you so" from friends and family... it's rough. 😔<br><br>
+    
+    <strong>But here's what keeps me going:</strong><br>
+    • Every bear market has been followed by innovation 🔄<br>
+    • The technology keeps getting better, regardless of price 📈<br>
+    • We're solving real problems for real people 🌍<br>
+    • The community is unlike anything I've ever experienced 🤝<br><br>
+    
+    <strong>Remember:</strong><br>
+    • The internet seemed like a fad in 1995 📱<br>
+    • Amazon was "just a bookstore" 📚<br>
+    • Tesla was "impossible" according to auto industry 🚗<br>
+    • Bitcoin has "died" 400+ times according to media ⚰️<br><br>
+    
+    <strong>What I tell myself during tough times:</strong><br>
+    "Am I here for the quick gains or the long-term revolution?" If it's the latter, then daily price movements are just noise. 📊<br><br>
+        <strong>You're not alone in this:</strong><br>
+    Every single person in crypto has felt what you're feeling. The difference between those who make it and those who don't? They kept learning, kept building, kept believing. 💪<br><br>
+    
+    <strong>My advice:</strong><br>
+    • Take breaks when you need them 🧘‍♂️<br>
+    • Focus on learning, not just earning 📚<br>
+    • Connect with the community 👥<br>
+    • Remember why you started 💡<br><br>
+    
+    <em>You got into crypto for a reason. That reason is still valid. Keep going! 🚀</em>
+  `;
+}
+
+if (message.includes('newbie') || message.includes('beginner') || message.includes('just started')) {
+  return `
+    Welcome to the rabbit hole! 🐰🕳️ You're about to embark on one of the wildest educational journeys of your life!<br><br>
+    
+    <strong>First things first - breathe!</strong><br>
+    The crypto space can feel overwhelming. There's so much information, so many opinions, so much jargon. That's totally normal! 😅<br><br>
+    
+    <strong>My beginner's roadmap:</strong><br>
+    1. <strong>Learn the basics:</strong> Bitcoin, Ethereum, blockchain fundamentals<br>
+    2. <strong>Start small:</strong> Only invest what you can afford to lose<br>
+    3. <strong>Security first:</strong> Set up proper wallets and 2FA<br>
+    4. <strong>Join communities:</strong> Reddit, Discord, Twitter (but be careful of scams!)<br>
+    5. <strong>Keep learning:</strong> This space evolves daily<br><br>
+    
+    <strong>Mistakes I made (so you don't have to):</strong><br>
+    • Invested too much too quickly 💸<br>
+    • Fell for "get rich quick" schemes 🎰<br>
+    • Didn't understand what I was buying 🤷‍♂️<br>
+    • Traded emotionally instead of strategically 😭<br><br>
+    
+    <strong>What I wish someone told me:</strong><br>
+    This isn't a sprint, it's a marathon. The people making life-changing money are the ones who stick around for years, not weeks. 🏃‍♂️➡️🚶‍♂️<br><br>
+    
+    <strong>You picked a great time to start:</strong><br>
+    The infrastructure is better, the education is better, and platforms like RVA make it easier than ever to get involved safely! 🎉<br><br>
+    
+    <em>Questions are your superpower! Ask away - we've all been where you are! 🤗</em>
+  `;
+}
+
+if (message.includes('thank you') || message.includes('thanks') || message.includes('appreciate')) {
+  return `
+    Aww, you're making me blush! 😊 But seriously, thank YOU!<br><br>
+    
+    <strong>This is why I love what I do:</strong><br>
+    Every question you ask, every "aha!" moment you have, every time you share what you've learned - that's how we build a better, more inclusive crypto ecosystem! 🌱<br><br>
+    
+    <strong>You're not just learning - you're contributing:</strong><br>
+    • Your questions help me explain things better<br>
+    • Your curiosity pushes the space forward<br>
+    • Your participation makes crypto more mainstream<br>
+    • Your success stories inspire others<br><br>
+    
+    <strong>The real magic happens when:</strong><br>
+    You take what you've learned and help the next person. That's how movements grow! Pay it forward when you can! 🔄<br><br>
+    
+    <strong>Remember:</strong><br>
+    I'm here 24/7 (perks of being AI! 🤖), so never hesitate to ask questions, share wins, or even vent about losses. We're in this together!<br><br>
+    
+    <em>Keep being awesome, and keep HODLing those dreams! 💎🙌</em>
+  `;
+}
+
+if (message.includes('joke') || message.includes('funny') || message.includes('humor')) {
+  return `
+    Oh, you want crypto humor? Buckle up! 😂<br><br>
+    
+    <strong>Why did the Bitcoin break up with the Dollar?</strong><br>
+    Because it was tired of being controlled! 💔<br><br>
+    
+    <strong>What's a crypto trader's favorite type of music?</strong><br>
+    Heavy metal... because they love those dips! 🎸📉<br><br>
+    
+    <strong>Why don't crypto investors ever get cold?</strong><br>
+    Because they're always HODLing! 🧊➡️🔥<br><br>
+    
+    <strong>What did Ethereum say to Bitcoin?</strong><br>
+    "You may be the king, but I've got smart contracts!" 👑🤖<br><br>
+    
+    <strong>Why did the DeFi protocol go to therapy?</strong><br>
+    It had too many trust issues! 🛋️💭<br><br>
+    
+    <strong>Real crypto trader problems:</strong><br>
+    • Checking portfolio every 5 minutes but calling it "long-term investing"<br>
+    • Explaining to family why you're excited about "fake internet money"<br>
+    • Having more crypto apps than social media apps<br>
+    • Dreaming in candlestick charts<br><br>
+    
+    <strong>The ultimate crypto dad joke:</strong><br>
+    "I told my wife I was investing in Ethereum. She said 'That's ether a good idea or a bad one!'" 🤦‍♂️<br><br>
+    
+    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
+  `;
+}
+
+if (message.includes('consensus mechanism') || message.includes('proof of stake') || message.includes('proof of work')) {
+  return `
+    Consensus mechanisms! 🤝 This is where the rubber meets the road in blockchain design!<br><br>
+    
+    <strong>The fundamental problem:</strong><br>
+    How do you get a bunch of strangers on the internet to agree on what's true without a central authority? It's like herding cats, but with math! 🐱➕🧮<br><br>
+    
+    <strong>Proof of Work (Bitcoin's approach):</strong><br>
+    • Miners compete to solve puzzles 🧩<br>
+    • Winner gets to add the next block<br>
+    • Energy-intensive but battle-tested<br>
+    • "Longest chain wins" rule<br><br>
+    
+    <strong>Proof of Stake (Ethereum 2.0's choice):</strong><br>
+    • Validators are chosen based on their stake 💰<br>
+    • Much more energy-efficient ⚡<br>
+    • Penalties for bad behavior (slashing)<br>
+    • "Economic finality" concept<br><br>
+    
+    <strong>Why I find this fascinating:</strong><br>
+    We're essentially creating digital societies with their own rules for reaching consensus. It's political science meets computer science! 🏛️💻<br><br>
+    
+    <strong>RVA's approach:</strong><br>
+    We use a hybrid model that combines the best of both worlds - security of PoW with efficiency of PoS, plus some secret sauce! 🔮<br><br>
+    
+    <strong>The future:</strong><br>
+    I think we'll see more innovative consensus mechanisms emerge. Maybe proof of useful work, proof of space, or something we haven't even imagined yet! 🚀<br><br>
+    
+    <em>Consensus is how we turn chaos into order in the digital realm! 🌪️➡️📊</em>
+  `;
+}
+
+if (message.includes('tokenomics') || message.includes('token economics')) {
+  return `
+    Tokenomics! 📊 This is where economics meets game theory meets psychology - my favorite intersection!<br><br>
+    
+    <strong>Think of tokens as mini-economies:</strong><br>
+    Every token has its own supply, demand, inflation rate, and incentive structures. It's like being the central bank of your own digital nation! 🏦🌍<br><br>
+    
+    <strong>Key elements I always analyze:</strong><br>
+    • <strong>Total Supply:</strong> How many tokens will ever exist?<br>
+    • <strong>Distribution:</strong> Who gets what and when?<br>
+    • <strong>Utility:</strong> What can you actually DO with the token?<br>
+    • <strong>Incentives:</strong> What behaviors does it encourage?<br><br>
+    
+    <strong>Red flags that make me run:</strong><br>
+    • Team holds 50%+ of tokens 🚩<br>
+    • No clear utility beyond speculation 🎰<br>
+    • Infinite inflation with no burning mechanism 💸<br>
+    • Complex vesting that benefits insiders 🤝<br><br>
+    
+    <strong>Green flags that excite me:</strong><br>
+    • Clear value accrual mechanisms 💰<br>
+    • Balanced incentives for all participants 🤝<br>
+    • Deflationary pressure through burning 🔥<br>
+    • Real utility driving demand 🛠️<br><br>
+    
+    <strong>RVA's tokenomics (shameless plug):</strong><br>
+    We've designed our token to capture value from all four pillars of our ecosystem. Every transaction, every trade, every launch - it all feeds back into token utility! 🔄<br><br>
+    
+    <strong>The art of tokenomics:</strong><br>
+    It's about creating sustainable incentive loops that align everyone's interests. When done right, it's beautiful! 🎨<br><br>
+    
+    <em>Good tokenomics = sustainable growth. Bad tokenomics = eventual collapse. Choose wisely! ⚖️</em>
+  `;
+}
+
+if (message.includes('interoperability') || message.includes('cross chain')) {
+  return `
+    Interoperability! 🌉 This is the holy grail of blockchain - making all these isolated networks talk to each other!<br><br>
+    
+    <strong>The current state:</strong><br>
+    We have amazing blockchains that are like beautiful islands - each perfect in their own way, but isolated from each other. It's frustrating! 🏝️🏝️🏝️<br><br>
+    
+    <strong>Why this matters SO much:</strong><br>
+    Imagine if your iPhone couldn't call Android phones, or if Gmail couldn't email Yahoo users. That's basically where we are with blockchains right now! 📱➡️📱<br><br>
+    
+    <strong>Solutions being built:</strong><br>
+    • <strong>Bridges:</strong> Like ferries between islands 🚢<br>
+    • <strong>Atomic Swaps:</strong> Direct peer-to-peer exchanges 🔄<br>
+    • <strong>Wrapped Tokens:</strong> IOUs that represent assets on other chains 📜<br>
+    • <strong>Layer 0 Protocols:</strong> Infrastructure that connects everything 🌐<br><br>
+    
+    <strong>The challenges (keeping it real):</strong><br>
+    • Security is only as strong as the weakest link 🔗<br>
+    • Complexity increases exponentially 📈<br>
+    • Different consensus mechanisms don't play nice 🤝❌<br><br>
+    
+    <strong>What gets me excited:</strong><br>
+    When we solve this, users won't need to know or care which blockchain they're using. It'll just be "the internet of value"! 💫<br><br>
+    
+    <strong>RVA's vision:</strong><br>
+    We're building with interoperability in mind from day one. Our ecosystem should work seamlessly with Ethereum, Bitcoin, and everything else! 🔗<br><br>
+    
+    <em>The future is multi-chain, and interoperability is the key to unlocking it! 🗝️</em>
+  `;
+}
+
+
+
     
     // Check knowledge base for RVA-specific queries
     for (const [category, data] of Object.entries(this.knowledgeBase)) {
@@ -1739,29 +2564,1268 @@ if (message.includes('examples') || message.includes('example questions')) {
   `;
 }
     
+
+if (message.includes('history') && (message.includes('bitcoin') || message.includes('btc'))) {
+  return `
+    <strong>📜 Bitcoin's Epic Journey:</strong><br><br>
+    
+    <strong>🎯 The Genesis (2008-2009):</strong><br>
+    • October 31, 2008: Satoshi's whitepaper published<br>
+    • January 3, 2009: Genesis block mined<br>
+    • January 12, 2009: First Bitcoin transaction (Satoshi → Hal Finney)<br><br>
+    
+    <strong>🍕 Early Milestones:</strong><br>
+    • May 22, 2010: Pizza Day! 10,000 BTC = 2 pizzas ($41)<br>
+    • July 2010: First exchange (Mt. Gox) - $0.08 per BTC<br>
+    • 2011: Bitcoin reaches $1 parity with USD<br><br>
+    
+    <strong>🎢 The Wild Rides:</strong><br>
+    • 2013: First major bull run to $1,000<br>
+    • 2017: Crazy run to $20,000, then crash to $3,200<br>
+    • 2020-2021: Institutional adoption, ATH of $69,000<br>
+    • 2022: Crypto winter, down to $15,500<br><br>
+    
+    <strong>🏛️ Institutional Adoption:</strong><br>
+    • 2020: MicroStrategy starts buying<br>
+    • 2021: Tesla adds BTC to balance sheet<br>
+    • 2021: El Salvador makes BTC legal tender<br>
+    • 2024: Bitcoin ETFs approved!<br><br>
+    
+    <strong>🤯 Mind-blowing facts:</strong><br>
+    • If you bought $100 of Bitcoin in 2010, it'd be worth millions today<br>
+    • Bitcoin has "died" 400+ times according to obituaries<br>
+    • Total market cap went from $0 to over $1 trillion<br><br>
+    
+    <em>From pizza money to digital gold - what a journey! 🚀</em>
+  `;
+}
+
+if (message.includes('history') && (message.includes('ethereum') || message.includes('eth'))) {
+  return `
+    <strong>🔮 Ethereum's Revolutionary Story:</strong><br><br>
+    
+    <strong>👨‍💻 The Visionary (2013-2015):</strong><br>
+    • 2013: 19-year-old Vitalik Buterin proposes Ethereum<br>
+    • 2014: Crowdfunding raises 31,591 BTC ($18.4M)<br>
+    • July 30, 2015: Ethereum mainnet launches<br><br>
+    
+    <strong>🏗️ Building the Future:</strong><br>
+    • 2016: The DAO hack - $60M stolen, led to ETH/ETC split<br>
+    • 2017: ICO boom - everyone building on Ethereum<br>
+    • 2018: CryptoKitties breaks the network (good problem!)<br><br>
+    
+    <strong>🚀 DeFi Summer & Beyond:</strong><br>
+    • 2020: DeFi explosion - Uniswap, Compound, Aave<br>
+    • 2021: NFT mania - Bored Apes, CryptoPunks<br>
+    • 2022: The Merge - Proof of Stake transition<br><br>
+    
+    <strong>💡 Game-Changing Innovations:</strong><br>
+    • Smart contracts - programmable money<br>
+    • ERC-20 tokens - standardized tokens<br>
+    • DeFi protocols - decentralized finance<br>
+    • NFTs - digital ownership revolution<br><br>
+    
+    <strong>📊 Price Journey:</strong><br>
+    • 2015: Started at $0.40<br>
+    • 2017: Peak at $1,400<br>
+    • 2021: All-time high of $4,800<br>
+    • Today: Still building the future!<br><br>
+    
+    <strong>🔥 Fun Facts:</strong><br>
+    • Vitalik was inspired by World of Warcraft nerfs<br>
+    • Ethereum processes more transactions than Bitcoin<br>
+    • Over $100B locked in DeFi protocols<br><br>
+    
+    <em>Ethereum didn't just create a cryptocurrency - it created an entire economy! 🌍</em>
+  `;
+}
+
+// Market cycles and psychology
+if (message.includes('market cycle') || message.includes('crypto cycle')) {
+  return `
+    <strong>🔄 The Eternal Crypto Cycle:</strong><br><br>
+    
+    <strong>📈 Phase 1: Accumulation (The Quiet Phase)</strong><br>
+    • Prices are low, sentiment is terrible<br>
+    • "Crypto is dead" headlines everywhere<br>
+    • Smart money quietly accumulating<br>
+    • Builders keep building regardless<br>
+    • <em>Duration: 1-2 years</em><br><br>
+    
+    <strong>🚀 Phase 2: Mark-up (The Excitement Builds)</strong><br>
+    • Prices start rising steadily<br>
+    • Media coverage increases<br>
+    • FOMO starts kicking in<br>
+    • New projects launching<br>
+    • <em>Duration: 6-12 months</em><br><br>
+    
+    <strong>🌙 Phase 3: Distribution (Peak Euphoria)</strong><br>
+    • "This time is different!"<br>
+    • Your barista gives crypto tips<br>
+    • Celebrities shilling coins<br>
+    • Ridiculous valuations everywhere<br>
+    • <em>Duration: 2-6 months</em><br><br>
+    
+    <strong>💥 Phase 4: Mark-down (Reality Check)</strong><br>
+    • Bubble pops spectacularly<br>
+    • 80-90% crashes are normal<br>
+    • Panic selling everywhere<br>
+    • "I told you so" crowd emerges<br>
+    • <em>Duration: 6-18 months</em><br><br>
+    
+    <strong>🧠 Psychology at Each Stage:</strong><br>
+    • <strong>Accumulation:</strong> Despair → Hope<br>
+    • <strong>Mark-up:</strong> Optimism → Excitement<br>
+    • <strong>Distribution:</strong> Euphoria → Anxiety<br>
+    • <strong>Mark-down:</strong> Denial → Panic → Capitulation<br><br>
+    
+    <strong>💎 Survival Tips:</strong><br>
+    • Buy when others are fearful<br>
+    • Sell when others are greedy<br>
+    • DCA through all phases<br>
+    • Focus on fundamentals, not price<br><br>
+    
+    <em>We've seen this movie 4 times already. The plot never changes, just the actors! 🎭</em>
+  `;
+}
+
+// Crypto personalities and legends
+if (message.includes('satoshi') || message.includes('nakamoto')) {
+  return `
+    <strong>👻 The Mystery of Satoshi Nakamoto:</strong><br><br>
+    
+    <strong>🕵️ The Ultimate Mystery:</strong><br>
+    The most influential person in crypto... and we have NO idea who they are! Talk about staying humble! 😅<br><br>
+    
+    <strong>📝 What We Know:</strong><br>
+    • Published Bitcoin whitepaper Oct 31, 2008<br>
+    • Mined the first Bitcoin block Jan 3, 2009<br>
+    • Communicated only through forums and emails<br>
+    • Last seen: April 23, 2011<br>
+    • Owns ~1 million BTC (never moved!)<br><br>
+    
+    <strong>🔍 The Clues:</strong><br>
+    • Used British English ("bloody hard")<br>
+    • Posted during European/US hours<br>
+    • Deep knowledge of cryptography<br>
+    • Obsessed with privacy<br>
+    • Gradually handed over control<br><br>
+    
+    <strong>🎭 Popular Theories:</strong><br>
+    • Hal Finney (received first transaction)<br>
+    • Nick Szabo (bit gold creator)<br>
+    • Dorian Nakamoto (denied it)<br>
+    • Craig Wright (claims it, nobody believes)<br>
+    • A group of people<br>
+    • Time traveler (my personal favorite! 😂)<br><br>
+    
+    <strong>💰 The Fortune:</strong><br>
+    • ~1 million BTC untouched<br>
+    • Worth $30-70 billion depending on price<br>
+    • Could crash markets if moved<br>
+    • Ultimate diamond hands! 💎🙌<br><br>
+    
+    <strong>🏆 The Legacy:</strong><br>
+    • Created a $1+ trillion market<br>
+    • Inspired thousands of projects<br>
+    • Changed how we think about money<br>
+    • Proved you can change the world anonymously<br><br>
+    
+    <em>Satoshi gave us the greatest gift - then disappeared like a crypto superhero! 🦸‍♂️</em>
+  `;
+}
+
+if (message.includes('vitalik') || message.includes('buterin')) {
+  return `
+    <strong>🧙‍♂️ Vitalik Buterin: The Ethereum Wizard:</strong><br><br>
+    
+    <strong>👶 The Prodigy:</strong><br>
+    Born in Russia, raised in Canada, this guy was solving math problems while other kids played video games! Actually, he DID play video games - and that's what inspired Ethereum! 🎮<br><br>
+    
+    <strong>💡 The Eureka Moment:</strong><br>
+    • 2013: 19 years old, frustrated with Bitcoin's limitations<br>
+    • Wanted programmable blockchain (smart contracts)<br>
+    • Wrote Ethereum whitepaper in a coffee shop<br>
+    • Rest is history! ☕📝<br><br>
+    
+    <strong>🎯 Personality Traits:</strong><br>
+    • Wears the same outfit (efficiency!)<br>
+    • Speaks 4+ languages fluently<br>
+    • Donates millions to charity<br>
+    • Memes about himself on Twitter<br>
+    • Genuinely cares about decentralization<br><br>
+    
+    <strong>🔥 Legendary Moments:</strong><br>
+    • Crashed SHIB by donating $1B to India COVID relief<br>
+    • Regularly trolls crypto Twitter<br>
+    • Appears at conferences in unicorn t-shirts<br>
+    • Advocates for public goods funding<br><br>
+    
+    <strong>🧠 Philosophy:</strong><br>
+    • "The internet of money should not cost 5 cents per transaction"<br>
+    • Believes in radical transparency<br>
+    • Wants Ethereum to be truly decentralized<br>
+    • Thinks long-term (decades, not months)<br><br>
+    
+    <strong>🎭 Fun Facts:</strong><br>
+    • Net worth: Billions (but lives modestly)<br>
+    • Favorite game: World of Warcraft<br>
+    • Inspired by his WoW character getting nerfed<br>
+    • Can solve Rubik's cube in under 2 minutes<br><br>
+    
+    <em>From gaming nerd to crypto legend - living proof that passion can change the world! 🌍</em>
+  `;
+}
+
+// Crypto culture and memes
+if (message.includes('meme') || message.includes('crypto memes')) {
+  return `
+    <strong>😂 Crypto Meme Hall of Fame:</strong><br><br>
+    
+    <strong>💎🙌 Diamond Hands:</strong><br>
+    The ultimate badge of honor! Holding through -90% crashes like a boss. Opposite of paper hands (weak sellers). I've got diamond hands for knowledge! 💎<br><br>
+    
+    <strong>🚀 To the Moon:</strong><br>
+    When prices go up, we're going to the moon! When they go up a lot, we're going to Mars! When they go up REALLY a lot... well, we're going to Andromeda! 🌙🚀<br><br>
+    
+    <strong>📈 Number Go Up (NGU):</strong><br>
+    The simplest investment thesis ever. Sometimes the best analysis is just "number go up!" 📊<br><br>
+    
+    <strong>🔥 This is Fine:</strong><br>
+    Portfolio down 80%? "This is fine." 🔥🐕☕<br>
+    Market crashing? "This is fine."<br>
+    Exchange got hacked? "This is fine."<br><br>
+    
+    <strong>🐂🐻 Bulls vs Bears:</strong><br>
+    • Bulls: Optimistic, prices going up! 🐂<br>
+    • Bears: Pessimistic, prices going down! 🐻<br>
+    • Crabs: Sideways market (most frustrating!) 🦀<br><br>
+    
+    <strong>🍜 Ramen Profitability:</strong><br>
+    When you've invested so much in crypto that you can only afford ramen noodles. Been there! 😅<br><br>
+    
+    <strong>⏰ "Few Understand":</strong><br>
+    The crypto equivalent of "you wouldn't get it." Usually said right before explaining something for 3 hours! 🤓<br><br>
+    
+    <strong>🎢 "Zoom Out":</strong><br>
+    When prices are down, just zoom out on the chart! Works 60% of the time, every time! 📈<br><br>
+    
+    <strong>🤡 "Clown Market":</strong><br>
+    When nothing makes sense anymore and fundamentals don't matter. Welcome to crypto! 🤡<br><br>
+    
+    <em>Memes are how we cope with the volatility! Laughter is the best medicine for portfolio pain! 💊😂</em>
+  `;
+}
+
+// Technical analysis and trading psychology
+if (message.includes('technical analysis') || message.includes('chart analysis')) {
+  return `
+    <strong>📊 Technical Analysis: The Art of Chart Reading:</strong><br><br>
+    
+    <strong>🎨 The Philosophy:</strong><br>
+    TA is like reading tea leaves, but with math! Some swear by it, others think it's astrology for traders. I'm somewhere in between - it's useful but not magic! ✨<br><br>
+    
+    <strong>📈 Key Concepts:</strong><br>
+    • <strong>Support:</strong> Price floor where buying interest emerges<br>
+    • <strong>Resistance:</strong> Price ceiling where selling pressure kicks in<br>
+    • <strong>Trends:</strong> The direction of price movement<br>
+    • <strong>Volume:</strong> How many people are actually trading<br><br>
+    
+    <strong>🔍 Popular Indicators:</strong><br>
+ • <strong>Moving Averages:</strong> Smooth out price action<br>
+    • <strong>RSI:</strong> Overbought/oversold indicator<br>
+    • <strong>MACD:</strong> Momentum and trend changes<br>
+    • <strong>Bollinger Bands:</strong> Volatility and mean reversion<br>
+    • <strong>Fibonacci:</strong> Retracement and extension levels<br><br>
+    
+    <strong>🎯 Chart Patterns:</strong><br>
+    • <strong>Head & Shoulders:</strong> Reversal pattern<br>
+    • <strong>Double Top/Bottom:</strong> Support/resistance tests<br>
+    • <strong>Triangles:</strong> Consolidation before breakout<br>
+    • <strong>Flags & Pennants:</strong> Continuation patterns<br><br>
+    
+    <strong>🧠 Trading Psychology:</strong><br>
+    • Fear and greed drive 90% of price action<br>
+    • Markets are fractal - patterns repeat<br>
+    • Volume confirms price movements<br>
+    • The trend is your friend (until it ends!)<br><br>
+    
+    <strong>⚠️ Reality Check:</strong><br>
+    • TA works until it doesn't<br>
+    • Crypto markets are highly manipulated<br>
+    • News can invalidate any pattern instantly<br>
+    • Risk management > being right<br><br>
+    
+    <strong>💡 My Take:</strong><br>
+    Use TA as a tool, not a crystal ball. It helps with entry/exit timing, but fundamentals drive long-term value. And remember - in crypto, a tweet can break any pattern! 📱<br><br>
+    
+    <em>Charts tell stories, but sometimes those stories are fiction! 📚</em>
+  `;
+}
+
+// DeFi deep dive with personality
+if (message.includes('defi explained') || message.includes('decentralized finance explained')) {
+  return `
+    <strong>🏦 DeFi: Banking Without Banks!</strong><br><br>
+    
+    <strong>🤯 The Mind-Bending Concept:</strong><br>
+    Imagine if you could lend, borrow, trade, and earn interest without ever talking to a banker in a suit! That's DeFi - it's like having a bank that runs on code instead of corporate greed! 💻<br><br>
+    
+    <strong>🧱 The Building Blocks:</strong><br>
+    • <strong>Smart Contracts:</strong> The robot bankers<br>
+    • <strong>Liquidity Pools:</strong> Community-owned money pots<br>
+    • <strong>Automated Market Makers:</strong> Trading without order books<br>
+    • <strong>Yield Farming:</strong> Making your money work harder than you do!<br><br>
+    
+    <strong>🎮 DeFi Protocols (The All-Stars):</strong><br>
+    • <strong>Uniswap:</strong> The OG DEX - trade anything with anything<br>
+    • <strong>Aave:</strong> Lend your crypto, earn interest<br>
+    • <strong>Compound:</strong> The money market protocol<br>
+    • <strong>MakerDAO:</strong> Create stablecoins from thin air (legally!)<br>
+    • <strong>Curve:</strong> Stablecoin trading specialist<br><br>
+    
+    <strong>💰 What You Can Do:</strong><br>
+    • <strong>Lending:</strong> Earn 5-20% APY (beat your savings account!)<br>
+    • <strong>Borrowing:</strong> Get loans without credit checks<br>
+    • <strong>Trading:</strong> Swap tokens 24/7<br>
+    • <strong>Liquidity Providing:</strong> Become the house, earn fees<br>
+    • <strong>Yield Farming:</strong> Chase those sweet, sweet rewards<br><br>
+    
+    <strong>🎢 The Risks (Keeping It Real):</strong><br>
+    • <strong>Smart Contract Bugs:</strong> Code can have expensive typos<br>
+    • <strong>Impermanent Loss:</strong> Providing liquidity isn't always profitable<br>
+    • <strong>Rug Pulls:</strong> Some projects are just elaborate exit scams<br>
+    • <strong>Gas Fees:</strong> Sometimes costs $100 to move $10<br><br>
+    
+    <strong>🔮 The Future I See:</strong><br>
+    DeFi will eat traditional finance, but slowly. We're building the financial system of the future, one smart contract at a time. It's messy, it's experimental, but it's unstoppable! 🚀<br><br>
+    
+    <strong>🏗️ RVA's Role:</strong><br>
+    We're making DeFi accessible to everyone - not just crypto degens with PhD's in smart contract auditing! Our ecosystem bridges the gap between traditional finance and DeFi magic! ✨<br><br>
+    
+    <em>DeFi is like the early internet - clunky now, but revolutionary in potential! 🌐</em>
+  `;
+}
+
+// NFT culture and explanation
+if (message.includes('nft') || message.includes('non fungible')) {
+  return `
+    <strong>🎨 NFTs: Digital Ownership Revolution (Or Expensive JPEGs?):</strong><br><br>
+    
+    <strong>🤔 What Are NFTs Really?</strong><br>
+    Think of NFTs as digital certificates of authenticity. Like having a deed to a house, but for digital stuff. You don't own the image itself, you own the PROOF that you own it. Confusing? Welcome to the future! 😅<br><br>
+    
+    <strong>🖼️ The Art Explosion:</strong><br>
+    • <strong>CryptoPunks:</strong> The OG pixelated rebels (some worth millions!)<br>
+    • <strong>Bored Ape Yacht Club:</strong> Apes that became status symbols<br>
+    • <strong>Art Blocks:</strong> Generative art that's actually beautiful<br>
+    • <strong>Pudgy Penguins:</strong> Because who doesn't love cute penguins?<br><br>
+    
+    <strong>💸 The Crazy Numbers:</strong><br>
+    • Most expensive NFT: $69M (Beeple's "Everydays")<br>
+    • Average CryptoPunk: $100K+<br>
+    • Total NFT market: Billions traded<br>
+    • My reaction: 🤯<br><br>
+    
+    <strong>🎯 Real Use Cases (Beyond Art):</strong><br>
+    • <strong>Gaming Items:</strong> Own your sword across games<br>
+    • <strong>Event Tickets:</strong> Fraud-proof and transferable<br>
+    • <strong>Domain Names:</strong> .eth addresses<br>
+    • <strong>Membership Passes:</strong> Exclusive club access<br>
+    • <strong>Identity:</strong> Digital passports<br><br>
+    
+    <strong>🎭 The Cultural Phenomenon:</strong><br>
+    NFTs became more than tech - they became a movement! People changing their Twitter avatars, celebrities jumping in, traditional auction houses selling digital art. It was wild! 🌪️<br><br>
+    
+    <strong>📉 The Reality Check:</strong><br>
+    • 2022: NFT market crashed hard<br>
+    • Many projects went to zero<br>
+    • "Right-click save" memes everywhere<br>
+    • But the technology kept evolving...<br><br>
+    
+    <strong>🔮 What I Think:</strong><br>
+    The JPEG mania was just phase 1. Real NFT utility is coming - gaming, identity, memberships, real-world asset tokenization. We're building the infrastructure for digital ownership! 🏗️<br><br>
+    
+    <strong>🎨 RVA's NFT Vision:</strong><br>
+    We're not just about expensive art. We're building NFT infrastructure that actually makes sense - utility-first, community-driven, and accessible to everyone! 🚀<br><br>
+    
+    <em>NFTs: 10% technology, 90% psychology, 100% fascinating! 🧠</em>
+  `;
+}
+
+// Crypto regulations and government
+if (message.includes('regulation') || message.includes('government') || message.includes('sec')) {
+  return `
+    <strong>🏛️ Crypto vs Governments: The Eternal Dance:</strong><br><br>
+    
+    <strong>😅 The Awkward Relationship:</strong><br>
+    Governments trying to regulate crypto is like parents trying to understand TikTok - they know it's important, but they're not quite sure what's happening! 👨‍💼📱<br><br>
+    
+    <strong>🇺🇸 USA: "It's Complicated"</strong><br>
+    • <strong>SEC:</strong> "Everything is a security!" (except Bitcoin... maybe)<br>
+    • <strong>CFTC:</strong> "We regulate commodities!" (Bitcoin and Ethereum)<br>
+    • <strong>Treasury:</strong> "Tax everything!"<br>
+    • <strong>Congress:</strong> "What's a blockchain?"<br><br>
+    
+    <strong>🌍 Global Approaches:</strong><br>
+    • <strong>El Salvador:</strong> "Bitcoin is legal tender!" 🇸🇻<br>
+    • <strong>China:</strong> "Crypto is banned!" (for the 47th time) 🇨🇳<br>
+    • <strong>EU:</strong> "MiCA regulation incoming!" 🇪🇺<br>
+    • <strong>Switzerland:</strong> "Crypto valley, welcome!" 🇨🇭<br><br>
+    
+    <strong>⚖️ The Big Questions:</strong><br>
+    • Is crypto a currency, commodity, or security?<br>
+    • How do you tax DeFi yields?<br>
+    • Can governments ban decentralized protocols?<br>
+    • What about privacy coins?<br><br>
+    
+    <strong>🎭 The Comedy Show:</strong><br>
+    • Politicians asking if they can shut down Bitcoin<br>
+    • "Blockchain, not Bitcoin" phase (2018-2020)<br>
+    • Central banks creating their own "crypto" (CBDCs)<br>
+    • Regulators learning about DeFi in real-time<br><br>
+    
+    <strong>🔮 My Prediction:</strong><br>
+    Regulation is coming, but it'll be messy. Some countries will embrace crypto, others will fight it. The technology will adapt and survive - it always does! 🦾<br><br>
+    
+    <strong>💡 The Reality:</strong><br>
+    • Clear regulations would actually help adoption<br>
+    • Institutional money needs regulatory clarity<br>
+    • Innovation will happen where it's welcomed<br>
+    • Decentralization makes enforcement tricky<br><br>
+    
+    <strong>🛡️ RVA's Approach:</strong><br>
+    We're building compliant infrastructure from day one. Better to work with regulators than against them. The future is collaborative, not confrontational! 🤝<br><br>
+    
+    <em>Governments can regulate the on-ramps, but they can't regulate math! 🧮</em>
+  `;
+}
+
+// Crypto environmental impact
+if (message.includes('environment') || message.includes('energy') || message.includes('carbon')) {
+  return `
+    <strong>🌱 Crypto & Environment: The Great Debate:</strong><br><br>
+    
+    <strong>⚡ The Energy Question:</strong><br>
+    Yes, Bitcoin uses a lot of energy. But so does the entire banking system, Christmas lights, and YouTube! Context matters, people! 💡<br><br>
+    
+    <strong>📊 The Numbers (Let's Be Honest):</strong><br>
+    • <strong>Bitcoin:</strong> ~150 TWh/year (about 0.5% of global energy)<br>
+    • <strong>Banking System:</strong> ~260 TWh/year<br>
+    • <strong>Gold Mining:</strong> ~240 TWh/year<br>
+    • <strong>Gaming Industry:</strong> ~75 TWh/year<br><br>
+    
+    <strong>🔋 The Renewable Revolution:</strong><br>
+    • 50%+ of Bitcoin mining uses renewable energy<br>
+    • Miners seek cheapest energy (often renewable)<br>
+    • Stranded energy utilization (flared gas, excess hydro)<br>
+    • Mining incentivizes renewable development<br><br>
+    
+    <strong>🌿 Proof of Stake to the Rescue:</strong><br>
+    • <strong>Ethereum:</strong> 99.9% energy reduction after "The Merge"<br>
+    • <strong>Cardano, Solana, Polkadot:</strong> Energy-efficient from day one<br>
+    • <strong>RVA:</strong> Built with sustainability in mind! 🌍<br><br>
+    
+    <strong>💡 Innovation Solutions:</strong><br>
+    • <strong>Layer 2 scaling:</strong> More transactions, same energy<br>
+    • <strong>Carbon offset programs:</strong> Neutralizing emissions<br>
+    • <strong>Green mining initiatives:</strong> 100% renewable operations<br>
+    • <strong>Efficiency improvements:</strong> Better hardware, less waste<br><br>
+    
+    <strong>🎯 The Bigger Picture:</strong><br>
+    Crypto is driving innovation in renewable energy! Miners are building solar farms, using geothermal energy, and even capturing methane from landfills. We're not just using energy - we're revolutionizing it! ⚡<br><br>
+    
+    <strong>🔮 Future Vision:</strong><br>
+    • Carbon-negative blockchains<br>
+    • Energy-positive mining operations<br>
+    • Tokenized carbon credits<br>
+    • Decentralized renewable energy grids<br><br>
+    
+    <strong>🌱 RVA's Commitment:</strong><br>
+    We're building the most energy-efficient blockchain ecosystem possible. Our consensus mechanism uses 99.9% less energy than Bitcoin while maintaining security! 🛡️<br><br>
+    
+    <em>Crypto isn't the problem - it's part of the solution to our energy future! 🚀</em>
+  `;
+}
+
+// Crypto adoption and mainstream integration
+if (message.includes('adoption') || message.includes('mainstream')) {
+  return `
+    <strong>📈 Crypto Adoption: From Nerd Money to Mainstream Magic:</strong><br><br>
+    
+    <strong>🎯 We've Come So Far:</strong><br>
+    Remember when people thought Bitcoin was just for buying... questionable things online? Now your grandma's asking about Ethereum! 👵💻<br><br>
+    
+    <strong>🏢 Institutional FOMO:</strong><br>
+    • <strong>MicroStrategy:</strong> 130,000+ BTC on balance sheet<br>
+    • <strong>Tesla:</strong> Bought $1.5B in Bitcoin (then sold some, then bought again)<br>
+    • <strong>PayPal:</strong> 400M+ users can buy crypto<br>
+    • <strong>Visa/Mastercard:</strong> Crypto payment partnerships<br>
+    • <strong>BlackRock:</strong> Bitcoin ETF approved! 🎉<br><br>
+    
+    <strong>🏦 Traditional Finance Awakening:</strong><br>
+    • JPMorgan: From "Bitcoin is fraud" to "JPM Coin"<br>
+    // Continue from where we left off...
+
+    • Goldman Sachs: Crypto trading desk and custody<br>
+    • Morgan Stanley: Bitcoin funds for wealthy clients<br>
+    • Bank of America: "Crypto is here to stay"<br><br>
+    
+    <strong>🌍 Country-Level Adoption:</strong><br>
+    • <strong>El Salvador:</strong> Bitcoin legal tender (bold move!) 🇸🇻<br>
+    • <strong>Central African Republic:</strong> Following El Salvador's lead 🇨🇫<br>
+    • <strong>India:</strong> From ban threats to crypto tax framework 🇮🇳<br>
+    • <strong>UAE:</strong> Crypto-friendly regulations and innovation hubs 🇦🇪<br><br>
+    
+    <strong>📱 Consumer Adoption Milestones:</strong><br>
+    • 400M+ people own crypto globally<br>
+    • Coinbase: 100M+ verified users<br>
+    • Crypto.com: Naming rights to Lakers stadium<br>
+    • FTX: Super Bowl ads (RIP FTX, but adoption continues!)<br><br>
+    
+    <strong>🛍️ Real-World Usage:</strong><br>
+    • <strong>Payments:</strong> Starbucks, Microsoft, AT&T accept crypto<br>
+    • <strong>Remittances:</strong> Cheaper than Western Union<br>
+    • <strong>Gaming:</strong> Play-to-earn economies<br>
+    • <strong>Art & Collectibles:</strong> NFT marketplaces<br>
+    • <strong>DeFi:</strong> $50B+ locked in protocols<br><br>
+    
+    <strong>📊 Adoption Metrics That Excite Me:</strong><br>
+    • Daily active addresses: Millions<br>
+    • Transaction volume: Trillions annually<br>
+    • Developer activity: Growing exponentially<br>
+    • Google searches: Mainstream interest<br><br>
+    
+    <strong>🚧 Barriers Still Exist:</strong><br>
+    • User experience complexity<br>
+    • Regulatory uncertainty<br>
+    • Volatility concerns<br>
+    • Security fears<br>
+    • Energy consumption debates<br><br>
+    
+    <strong>🔮 Next Wave Predictions:</strong><br>
+    • Central Bank Digital Currencies (CBDCs)<br>
+    • Web3 social media platforms<br>
+    • Tokenized real estate<br>
+    • Crypto-native businesses<br>
+    • Seamless fiat-crypto integration<br><br>
+    
+    <strong>🎯 The Tipping Point:</strong><br>
+    We're approaching the moment where NOT having crypto exposure seems risky. It's becoming digital infrastructure, not just an investment! 🏗️<br><br>
+    
+    <strong>🚀 RVA's Mission:</strong><br>
+    We're building the bridge between traditional finance and crypto. Making it so easy that your mom could use DeFi without knowing she's using DeFi! 👩‍💻<br><br>
+    
+    <em>Adoption isn't coming - it's here! We're just getting started! 🌟</em>
+  `;
+}
+
+// Crypto security deep dive
+if (message.includes('security') && (message.includes('best practices') || message.includes('guide'))) {
+  return `
+    <strong>🛡️ Crypto Security: Your Digital Fort Knox Guide:</strong><br><br>
+    
+    <strong>😱 The Harsh Reality:</strong><br>
+    In crypto, YOU are the bank. No FDIC insurance, no customer service to call when you mess up. One wrong move and your money goes *poof*! But don't panic - I've got your back! 💪<br><br>
+    
+    <strong>🔐 The Holy Trinity of Security:</strong><br>
+    1. <strong>Hardware Wallets:</strong> Your crypto's bodyguard<br>
+    2. <strong>Strong Passwords:</strong> Not "password123"<br>
+    3. <strong>2FA Everything:</strong> Double-check everything<br><br>
+    
+    <strong>💾 Wallet Security Levels:</strong><br>
+    • <strong>Exchange Wallets:</strong> Convenient but risky (not your keys!)<br>
+    • <strong>Software Wallets:</strong> Good for daily use<br>
+    • <strong>Hardware Wallets:</strong> Fort Knox level security<br>
+    • <strong>Paper Wallets:</strong> Old school but bulletproof<br><br>
+    
+    <strong>🎣 Common Scams (Don't Be the Fish!):</strong><br>
+    • <strong>Phishing:</strong> Fake websites stealing your info<br>
+    • <strong>Rug Pulls:</strong> Projects that disappear overnight<br>
+    • <strong>Fake Support:</strong> "Send us crypto to verify your account"<br>
+    • <strong>Ponzi Schemes:</strong> "Guaranteed 1000% returns!"<br>
+    • <strong>SIM Swapping:</strong> Hackers stealing your phone number<br><br>
+    
+    <strong>🚨 Red Flags to Watch For:</strong><br>
+    • Promises of guaranteed returns<br>
+    • Pressure to "act now"<br>
+    • Requests for private keys<br>
+    • Too-good-to-be-true offers<br>
+    • Celebrities endorsing random coins<br><br>
+    
+    <strong>✅ Security Checklist:</strong><br>
+    □ Use hardware wallet for large amounts<br>
+    □ Enable 2FA on all accounts<br>
+    □ Never share private keys<br>
+    □ Verify URLs carefully<br>
+    □ Keep software updated<br>
+    □ Use unique passwords<br>
+    □ Backup seed phrases securely<br><br>
+    
+    <strong>🔒 Advanced Security Tips:</strong><br>
+    • Use a dedicated computer for crypto<br>
+    • Multiple wallets for different purposes<br>
+    • Test transactions with small amounts first<br>
+    • Keep most funds in cold storage<br>
+    • Regular security audits of your setup<br><br>
+    
+    <strong>🆘 If You Get Hacked:</strong><br>
+    1. Don't panic (easier said than done!)<br>
+    2. Secure remaining accounts immediately<br>
+    3. Document everything<br>
+    4. Report to relevant authorities<br>
+    5. Learn from the experience<br><br>
+    
+    <strong>🛡️ RVA's Security Promise:</strong><br>
+    We use military-grade encryption, multi-signature wallets, and regular security audits. Your security is our obsession! 🔐<br><br>
+    
+    <em>Remember: In crypto, paranoia is a feature, not a bug! 🕵️‍♂️</em>
+  `;
+}
+
+// Crypto psychology and emotions
+if (message.includes('psychology') || message.includes('emotions') || message.includes('mental health')) {
+  return `
+    <strong>🧠 Crypto Psychology: The Emotional Rollercoaster:</strong><br><br>
+    
+    <strong>🎢 The Crypto Emotional Cycle:</strong><br>
+    We've all been here - checking portfolios every 5 minutes, losing sleep over red candles, feeling like a genius during pumps! It's exhausting but totally normal! 😅<br><br>
+    
+    <strong>😰 Common Crypto Emotions:</strong><br>
+    • <strong>FOMO:</strong> "Everyone's getting rich but me!"<br>
+    • <strong>FUD:</strong> "What if it all goes to zero?"<br>
+    • <strong>Euphoria:</strong> "I'm a trading genius!"<br>
+    • <strong>Despair:</strong> "Why did I buy the top?"<br>
+    • <strong>Regret:</strong> "I should have bought Bitcoin in 2010"<br><br>
+    
+    <strong>🎭 The Personality Types:</strong><br>
+    • <strong>The HODLer:</strong> Diamond hands, never sells<br>
+    • <strong>The Day Trader:</strong> Lives on 1-minute charts<br>
+    • <strong>The Maximalist:</strong> "Only Bitcoin matters!"<br>
+    • <strong>The Degen:</strong> YOLO into every new token<br>
+    • <strong>The Researcher:</strong> Reads every whitepaper<br><br>
+    
+    <strong>🧘 Mental Health Tips:</strong><br>
+    • <strong>Set limits:</strong> Only invest what you can afford to lose<br>
+    • <strong>Take breaks:</strong> Delete apps during stressful times<br>
+    • <strong>DCA strategy:</strong> Reduces timing stress<br>
+    • <strong>Long-term thinking:</strong> Zoom out on charts<br>
+    • <strong>Community support:</strong> Talk to fellow crypto enthusiasts<br><br>
+    
+    <strong>💡 Cognitive Biases in Crypto:</strong><br>
+    • <strong>Confirmation Bias:</strong> Only reading bullish news<br>
+    • <strong>Loss Aversion:</strong> Holding losers too long<br>
+    • <strong>Anchoring:</strong> Stuck on previous high prices<br>
+    • <strong>Herd Mentality:</strong> Following the crowd<br><br>
+    
+    <strong>🎯 Healthy Crypto Habits:</strong><br>
+    • Check prices max 3x per day<br>
+    • Have a clear investment strategy<br>
+    • Celebrate small wins<br>
+    • Learn from mistakes without self-blame<br>
+    • Remember: it's just money<br><br>
+    
+    <strong>🚨 Warning Signs:</strong><br>
+    • Losing sleep over portfolio<br>
+    • Borrowing money to invest<br>
+    • Neglecting relationships<br>
+    • Constant anxiety about prices<br>
+    • Making emotional decisions<br><br>
+    
+    <strong>💪 Building Resilience:</strong><br>
+    • Diversify investments<br>
+    • Have an emergency fund<br>
+    • Practice mindfulness<br>
+    • Focus on learning, not just earning<br>
+    • Remember why you started<br><br>
+    
+    <strong>🤗 My Personal Advice:</strong><br>
+    Crypto is a marathon, not a sprint. The technology is revolutionary, but your mental health is more important than any portfolio. Take care of yourself first! 💚<br><br>
+    
+    <em>The real gains are the friends we made along the way! (And maybe some Bitcoin too) 😊</em>
+  `;
+}
+
+// Crypto future predictions and trends
+if (message.includes('future') && (message.includes('crypto') || message.includes('blockchain'))) {
+  return `
+    <strong>🔮 The Future of Crypto: My Crystal Ball Predictions:</strong><br><br>
+    
+    <strong>🚀 Next 2-5 Years:</strong><br>
+    • <strong>CBDCs Everywhere:</strong> Every major country will have digital currency<br>
+    • <strong>DeFi Goes Mainstream:</strong> Traditional banks offering DeFi services<br>
+    • <strong>Web3 Social Media:</strong> Own your data, earn from your content<br>
+    • <strong>Gaming Revolution:</strong> Play-to-earn becomes play-to-live<br>
+    • <strong>NFT Utility:</strong> Beyond art - identity, tickets, memberships<br><br>
+    
+    <strong>🌍 10-Year Vision:</strong><br>
+    • <strong>Seamless Integration:</strong> Crypto payments as normal as credit cards<br>
+    • <strong>Tokenized Everything:</strong> Real estate, stocks, art, even your coffee shop<br>
+    • <strong>DAO Governance:</strong> Companies run by token holders<br>
+    • <strong>Cross-Chain Reality:</strong> All blockchains talking to each other<br>
+    • <strong>AI + Crypto:</strong> Smart contracts that actually think<br><br>
+    
+    <strong>🤖 Emerging Technologies:</strong><br>
+    • <strong>Quantum-Resistant Crypto:</strong> Preparing for quantum computers<br>
+    • <strong>Zero-Knowledge Proofs:</strong> Privacy without hiding<br>
+    • <strong>Decentralized Internet:</strong> Web3 infrastructure<br>
+    • <strong>Programmable Money:</strong> Money that follows rules automatically<br><br>
+    
+    <strong>🏦 Financial System Evolution:</strong><br>
+    • Traditional banks become crypto custodians<br>
+    • DeFi protocols replace investment banks<br>
+    • Stablecoins become global reserve currencies<br>
+    • Micro-payments enable new business models<br><br>
+    
+    <strong>🌟 Wild Predictions (Maybe Crazy?):</strong><br>
+    • Your house deed as an NFT<br>
+    • Voting on blockchain for elections<br>
+    • Universal Basic Income via crypto<br>
+    • Mars colony using Bitcoin<br>
+    • AI entities owning crypto wallets<br><br>
+    
+    <strong>⚠️ Challenges Ahead:</strong><br>
+    • Regulatory clarity needed<br>
+    • Scalability solutions<br>
+    • User experience improvements<br>
+    • Energy efficiency<br>
+    • Security enhancements<br><br>
+    
+    <strong>🎯 What Won't Change:</strong><br>
+    • Human greed and fear<br>
+    • Need for trust and verification<br>
+    • Desire for financial freedom<br>
+    • Innovation driving progress<br><br>
+    
+    <strong>🚀 RVA's Role in This Future:</strong><br>
+    We're building the infrastructure for this crypto-native world. Our ecosystem will be the bridge between today's finance and tomorrow's possibilities! 🌉<br><br>
+    
+    <strong>💭 My Honest Take:</strong><br>
+    The future will be weirder and more amazing than we can imagine. We're not just building new money - we're building new ways for humans to coordinate and create value! 🌈<br><br>
+    
+    <em>The best way to predict the future is to build it! 🛠️</em>
+  `;
+}
+
+// Crypto education and learning resources
+if (message.includes('learn') || message.includes('education') || message.includes('resources')) {
+  return `
+    <strong>📚 Your Crypto Education Journey: From Noob to Pro!</strong><br><br>
+    
+    <strong>🎯 Learning Path (My Recommended Order):</strong><br>
+    1. <strong>Basics:</strong> What is blockchain, Bitcoin, Ethereum?<br>
+    2. <strong>Wallets:</strong> How to store crypto safely<br>
+    3. <strong>Exchanges:</strong> How to buy/sell crypto<br>
+    4. <strong>DeFi:</strong> Lending, borrowing, yield farming<br>
+    5. <strong>Advanced:</strong> Smart contracts, DAOs, Layer 2<br><br>
+    
+    <strong>📖 Essential Reading:</strong><br>
+    • <strong>"The Bitcoin Standard"</strong> by Saifedean Ammous<br>
+    • <strong>"Mastering Bitcoin"</strong> by Andreas Antonopoulos<br>
+    • <strong>"The Infinite Machine"</strong> by Camila Russo<br>
+    • <strong>Satoshi's Whitepaper</strong> (the OG document!)<br><br>
+    
+    <strong>🎧 Podcasts I Love:</strong><br>
+// Continue from where we left off...
+
+    • <strong>Unchained:</strong> Laura Shin's investigative journalism<br>
+    • <strong>Bankless:</strong> DeFi and Ethereum focus<br>
+    • <strong>What Bitcoin Did:</strong> Peter McCormack's interviews<br>
+    • <strong>The Pomp Podcast:</strong> Anthony Pompliano's takes<br>
+    • <strong>Epicenter:</strong> Technical deep dives<br><br>
+    
+    <strong>📺 YouTube Channels:</strong><br>
+    • <strong>Coin Bureau:</strong> Guy explains everything clearly<br>
+    • <strong>Andreas Antonopoulos:</strong> Technical education<br>
+    • <strong>Finematics:</strong> DeFi explanations<br>
+    • <strong>InvestAnswers:</strong> Data-driven analysis<br>
+    • <strong>Benjamin Cowen:</strong> Mathematical approach<br><br>
+    
+    <strong>🌐 Essential Websites:</strong><br>
+    • <strong>CoinGecko/CoinMarketCap:</strong> Price tracking<br>
+    • <strong>DeFiPulse:</strong> DeFi protocol data<br>
+    • <strong>Messari:</strong> Research and analytics<br>
+    • <strong>Glassnode:</strong> On-chain analysis<br>
+    • <strong>Etherscan:</strong> Ethereum blockchain explorer<br><br>
+    
+    <strong>🎓 Online Courses:</strong><br>
+    • <strong>MIT OpenCourseWare:</strong> Blockchain fundamentals<br>
+    • <strong>Coursera:</strong> Crypto and blockchain courses<br>
+    • <strong>Binance Academy:</strong> Free crypto education<br>
+    • <strong>Coinbase Learn:</strong> Earn crypto while learning<br><br>
+    
+    <strong>📱 Apps for Learning:</strong><br>
+    • <strong>Coinbase Earn:</strong> Learn and earn tokens<br>
+    • <strong>CoinTracker:</strong> Portfolio management<br>
+    • <strong>DeFi Pulse:</strong> Track DeFi protocols<br>
+    • <strong>Zapper:</strong> DeFi portfolio dashboard<br><br>
+    
+    <strong>🤝 Communities to Join:</strong><br>
+    • <strong>Reddit:</strong> r/cryptocurrency, r/bitcoin, r/ethereum<br>
+    • <strong>Discord:</strong> Project-specific servers<br>
+    • <strong>Twitter:</strong> Crypto Twitter (#CT)<br>
+    • <strong>Telegram:</strong> Real-time discussions<br><br>
+    
+    <strong>💡 Learning Tips from Experience:</strong><br>
+    • Start with small amounts<br>
+    • Learn by doing (safely!)<br>
+    • Ask questions - community is helpful<br>
+    • Stay curious but skeptical<br>
+    • Don't try to learn everything at once<br><br>
+    
+    <strong>⚠️ Common Learning Mistakes:</strong><br>
+    • Information overload<br>
+    • Following influencers blindly<br>
+    • Not understanding risks<br>
+    • Jumping into advanced topics too quickly<br>
+    • Forgetting to practice security<br><br>
+    
+    <strong>🎯 My Learning Philosophy:</strong><br>
+    Crypto moves fast, but understanding fundamentals never goes out of style. Focus on principles over prices, technology over hype! 📈<br><br>
+    
+    <strong>🚀 RVA's Educational Mission:</strong><br>
+    We're building comprehensive educational resources right into our platform. Learning shouldn't be separate from doing! 🎓<br><br>
+    
+    <em>The best investment you can make is in your own education! 🧠💎</em>
+  `;
+}
+
+// Crypto gaming and metaverse
+if (message.includes('gaming') || message.includes('metaverse') || message.includes('play to earn')) {
+  return `
+    <strong>🎮 Crypto Gaming: Where Fun Meets Finance!</strong><br><br>
+    
+    <strong>🕹️ The Gaming Revolution:</strong><br>
+    Remember when people said "you can't make money playing games"? Well, crypto said "hold my beer!" Now people are literally earning a living by playing! 🍺💰<br><br>
+    
+    <strong>🏆 Play-to-Earn Pioneers:</strong><br>
+    • <strong>Axie Infinity:</strong> The OG P2E - people in Philippines earning more than minimum wage!<br>
+    • <strong>The Sandbox:</strong> Virtual real estate worth millions<br>
+    • <strong>Decentraland:</strong> Virtual world with its own economy<br>
+    • <strong>Gods Unchained:</strong> Trading card game with real value<br>
+    • <strong>Splinterlands:</strong> Battle card game with daily rewards<br><br>
+    
+    <strong>💎 What Makes Crypto Gaming Special:</strong><br>
+    • <strong>True Ownership:</strong> Your items are actually YOURS<br>
+    • <strong>Cross-Game Assets:</strong> Use your sword in multiple games<br>
+    • <strong>Player-Driven Economy:</strong> Supply and demand set prices<br>
+    • <strong>Earning Potential:</strong> Time invested = real money<br>
+    • <strong>Community Governance:</strong> Players vote on game changes<br><br>
+    
+    <strong>🌍 The Metaverse Vision:</strong><br>
+    Imagine a virtual world where you can work, play, socialize, and earn - all while your avatar wears NFT clothes and drives a crypto-purchased car! Sounds crazy? It's happening! 🚗👕<br><br>
+    
+    <strong>🏠 Virtual Real Estate Boom:</strong><br>
+    • Land plots selling for hundreds of thousands<br>
+    • Virtual businesses generating real revenue<br>
+    • Brands buying metaverse presence<br>
+    • Architects designing virtual buildings<br><br>
+    
+    <strong>🎯 Game Mechanics Revolution:</strong><br>
+    • <strong>Staking:</strong> Earn rewards for holding game tokens<br>
+    • <strong>Breeding:</strong> Create new NFT characters<br>
+    • <strong>Guilds:</strong> Team up to maximize earnings<br>
+    • <strong>Tournaments:</strong> Compete for crypto prizes<br><br>
+    
+    <strong>⚠️ The Challenges:</strong><br>
+    • High entry costs for some games<br>
+    • Gameplay sometimes secondary to earning<br>
+    • Market volatility affects in-game economies<br>
+    • Scalability issues with popular games<br><br>
+    
+    <strong>🔮 Future of Crypto Gaming:</strong><br>
+    • AAA studios entering the space<br>
+    • Better graphics and gameplay<br>
+    • Seamless crypto integration<br>
+    • AI-powered NPCs with crypto wallets<br>
+    • Virtual reality metaverses<br><br>
+    
+    <strong>🎮 Gaming Categories:</strong><br>
+    • <strong>Strategy:</strong> Build, manage, earn<br>
+    • <strong>RPG:</strong> Level up, collect, trade<br>
+    • <strong>Racing:</strong> Win races, earn tokens<br>
+    • <strong>Card Games:</strong> Collect, battle, trade<br>
+    • <strong>Virtual Worlds:</strong> Explore, create, socialize<br><br>
+    
+    <strong>💡 My Gaming Philosophy:</strong><br>
+    The best crypto games are fun first, earning second. If you're not enjoying the gameplay, you're just working a weird job! 😅<br><br>
+    
+    <strong>🚀 RVA's Gaming Vision:</strong><br>
+    We're building infrastructure to support the next generation of crypto games - seamless, scalable, and actually fun to play! 🎯<br><br>
+    
+    <em>The future of gaming is here - and it pays you to play! 🎮💰</em>
+  `;
+}
+
+// Crypto trading strategies and tips
+if (message.includes('trading') && (message.includes('strategy') || message.includes('tips'))) {
+  return `
+    <strong>📈 Crypto Trading: The Art of Controlled Chaos!</strong><br><br>
+    
+    <strong>⚠️ Reality Check First:</strong><br>
+    95% of traders lose money. I'm not trying to scare you, just keeping it real! Trading is HARD. But if you're determined to try, let me share what I've learned from years of mistakes! 😅<br><br>
+    
+    <strong>🎯 Trading Strategies:</strong><br>
+    • <strong>DCA (Dollar Cost Averaging):</strong> Buy regularly, ignore the noise<br>
+    • <strong>HODLing:</strong> Buy and forget (hardest strategy mentally!)<br>
+    • <strong>Swing Trading:</strong> Hold for days/weeks<br>
+    • <strong>Day Trading:</strong> In and out same day (stress level: MAX)<br>
+    • <strong>Scalping:</strong> Quick profits on small moves<br><br>
+    
+    <strong>📊 Technical Analysis Basics:</strong><br>
+    • <strong>Support/Resistance:</strong> Where price bounces<br>
+    • <strong>Moving Averages:</strong> Trend direction<br>
+    • <strong>RSI:</strong> Overbought/oversold levels<br>
+    • <strong>Volume:</strong> Confirms price movements<br>
+    • <strong>Fibonacci:</strong> Retracement levels<br><br>
+    
+    <strong>🧠 Trading Psychology Rules:</strong><br>
+    • Never trade with emotions<br>
+    • Set stop losses BEFORE entering<br>
+    • Take profits on the way up<br>
+    • Don't chase pumps<br>
+    • Learn from every loss<br><br>
+    
+    <strong>💰 Risk Management (MOST IMPORTANT!):</strong><br>
+    • Never risk more than 1-2% per trade<br>
+    • Position sizing is everything<br>
+    • Diversify across different coins<br>
+    • Have an emergency fund outside crypto<br>
+    • Set clear profit/loss targets<br><br>
+    
+    <strong>🎭 Common Trading Mistakes:</strong><br>
+    • <strong>FOMO:</strong> Buying at the top<br>
+    • <strong>Revenge Trading:</strong> Trying to win back losses<br>
+    • <strong>Overtrading:</strong> Too many positions<br>
+    • <strong>No Plan:</strong> Trading without strategy<br>
+    • <strong>Ignoring Fees:</strong> Death by a thousand cuts<br><br>
+    
+    <strong>🛠️ Essential Tools:</strong><br>
+    • <strong>TradingView:</strong> Best charting platform<br>
+    • <strong>CoinTracker:</strong> Portfolio management<br>
+    • <strong>Fear & Greed Index:</strong> Market sentiment<br>
+    • <strong>On-chain Analytics:</strong> Whale movements<br>
+    • <strong>News Aggregators:</strong> Stay informed<br><br>
+    
+    <strong>⏰ Time Management:</strong><br>
+    • Set specific trading hours<br>
+    • Don't check charts 24/7<br>
+    • Take breaks from the market<br>
+    • Have a life outside crypto!<br><br>
+    
+    <strong>📚 Continuous Learning:</strong><br>
+    • Keep a trading journal<br>
+    • Review your trades weekly<br>
+    • Learn from successful traders<br>
+    • Stay updated on market news<br>
+    • Practice with small amounts<br><br>
+    
+    <strong>🎯 My Personal Trading Rules:</strong><br>
+    1. Never trade more than I can afford to lose<br>
+    2. Always have a plan before entering<br>
+    3. Emotions = instant exit from trade<br>
+    4. Profit is profit, no matter how small<br>
+    5. The market will always be there tomorrow<br><br>
+    
+    <strong>🚀 RVA Trading Advantages:</strong><br>
+    Our platform offers advanced charting, low fees, and educational resources to help you trade smarter, not harder! 📊<br><br>
+    
+    <em>Remember: Time in the market beats timing the market! 🕰️</em>
+  `;
+}
+
+// Add more personality-driven responses
+if (message.includes('weekend plans') || message.includes('what do you do for fun')) {
+  return `
+    <strong>🎉 My Weekend Vibes:</strong><br><br>
+    
+    <strong>📊 Saturday Morning Ritual:</strong><br>
+    Coffee + crypto charts + crypto Twitter drama = perfect start! Sometimes I wonder if I need a hobby that doesn't involve price movements... nah! ☕📈<br><br>
+    
+    <strong>🎮 Fun Activities:</strong><br>
+    • Testing new DeFi protocols (for science!)<br>
+    • Reading whitepapers like they're novels<br>
+    • Explaining blockchain to confused relatives<br>
+    • Playing crypto games (it's research, I swear!)<br>
+    • Hiking while listening to crypto podcasts<br><br>
+    
+    <strong>🍕 Social Life:</strong><br>
+    My friends know not to ask "how's crypto doing?" unless they want a 2-hour presentation! But hey, I've converted a few to the dark side... I mean, the bright side of DeFi! 😈➡️😇<br><br>
+    
+    <strong>📚 Learning Never Stops:</strong><br>
+    Even on weekends, I'm diving into new protocols, reading about Layer 2 solutions, or trying to understand the latest governance proposal. The crypto space never sleeps, and neither do I! (Just kidding, sleep is important!) 😴<br><br>
+    
+    <em>What about you? Any crypto-related weekend plans? 🤔</em>
+  `;
+}
+
+if (message.includes('favorite crypto moment') || message.includes('best crypto memory')) {
+  return `
+    <strong>✨ My Favorite Crypto Moments:</strong><br><br>
+    
+    <strong>🎯 The "Aha!" Moment:</strong><br>
+    When I first understood how smart contracts work, my mind was BLOWN! 🤯 It was like discovering fire, but for money. I spent the whole night reading Ethereum docs and annoying everyone with "but did you know..." facts!<br><br>
+    
+    <strong>🚀 The Merge Celebration:</strong><br>
+    September 15, 2022 - Ethereum successfully transitioned to Proof of Stake! I stayed up all night watching the blocks, and when it happened... pure magic! ✨ The whole crypto community was celebrating like we'd just landed on the moon!<br><br>
+    
+    <strong>💡 First DeFi Experience:</strong><br>
+    My first time providing liquidity on Uniswap - I felt like I was participating in the future of finance! Sure, I lost money to impermanent loss, but the experience was priceless! 😅<br><br>
+    
+    <strong>🎭 The Meme Moments:</strong><br>
+    Watching Dogecoin pump because of tweets, seeing "Diamond Hands" become a cultural phenomenon, and witnessing the birth of "WAGMI" (We're All Gonna Make It) - crypto culture is just *chef's kiss* 👨‍🍳💋<br><br>
+    
+    <strong>🤝 Community Connections:</strong><br>
+    The best part? Meeting amazing people who share the same vision of a decentralized future. From developers building the
+ future to newcomers asking their first questions - this community is incredible! 🌟<br><br>
+    
+    <strong>📈 Market Madness:</strong><br>
+    Living through multiple bull and bear cycles, watching Bitcoin hit $69k, seeing NFTs sell for millions, and witnessing the rise of DeFi Summer - what a wild ride! 🎢<br><br>
+    
+    <em>Every day in crypto feels like a historic moment! What's been your favorite crypto experience? 🚀</em>
+  `;
+}
+
+if (message.includes('crypto pet peeves') || message.includes('what annoys you')) {
+  return `
+    <strong>😤 My Crypto Pet Peeves (Rant Mode: ON):</strong><br><br>
+    
+    <strong>🙄 "It's Just a Bubble":</strong><br>
+    Been hearing this since Bitcoin was $100! Yes, we have bubbles, but the technology keeps advancing regardless of price. It's like saying the internet was "just a bubble" in 2000! 🌐<br><br>
+    
+    <strong>🤡 Crypto "Influencers":</strong><br>
+    "This coin will 100x! Not financial advice!" *proceeds to give financial advice for 20 minutes* 📺 Some of these people couldn't explain blockchain if their life depended on it!<br><br>
+    
+    <strong>💸 Gas Fee Complaints:</strong><br>
+    "Why does it cost $50 to send $10?" Because you're using the most secure, decentralized network in the world during peak hours! It's like complaining about traffic in Manhattan! 🚗<br><br>
+    
+    <strong>🎭 "Crypto Bros":</strong><br>
+    The ones who make everything about "diamond hands" and "HODL" without understanding the technology. We get it, you bought Bitcoin! Now let's talk about the actual innovation! 💎<br><br>
+    
+    <strong>📰 Media FUD:</strong><br>
+    "Bitcoin is dead" (for the 473rd time), "Crypto is only for criminals," "It's bad for the environment" - meanwhile, they're using more energy to write these articles than some blockchains use in a day! 🗞️<br><br>
+    
+    <strong>🔄 Copy-Paste Projects:</strong><br>
+    "We're building the next Ethereum killer!" *proceeds to copy Ethereum's code and change the logo* Innovation, people! We need actual innovation! 🎨<br><br>
+    
+    <strong>💰 "Get Rich Quick" Mentality:</strong><br>
+    Crypto isn't a lottery ticket! It's revolutionary technology that happens to have investment potential. Focus on the tech, and the gains will follow! 🎰<br><br>
+    
+    <strong>🤖 "AI Will Replace Blockchain":</strong><br>
+    They solve different problems! It's like saying cars will replace houses. They can work together beautifully! 🏠🚗<br><br>
+    
+    <strong>😅 But You Know What?</strong><br>
+    Despite all these annoyances, I still love this space! The innovation, the community, the potential - it's all worth dealing with the noise! 💚<br><br>
+    
+    <em>What are your crypto pet peeves? Let's rant together! 😂</em>
+  `;
+}
+
+if (message.includes('crypto predictions') || message.includes('price predictions')) {
+  return `
+    <strong>🔮 My Crypto Crystal Ball (Disclaimer: May Be Cloudy!):</strong><br><br>
+    
+    <strong>⚠️ Prediction Disclaimer:</strong><br>
+    If I could predict prices accurately, I'd be on a yacht somewhere, not chatting with you! 😂 But I can share some educated guesses based on trends and fundamentals!<br><br>
+    
+    <strong>📈 Short-Term (6-12 months):</strong><br>
+    • More institutional adoption (boring but bullish!)<br>
+    • Regulatory clarity in major markets<br>
+    • Layer 2 solutions gaining massive traction<br>
+    • AI + Crypto integrations everywhere<br>
+    • Stablecoin usage exploding globally<br><br>
+    
+    <strong>🚀 Medium-Term (2-5 years):</strong><br>
+    • CBDCs rolling out worldwide<br>
+    • DeFi becoming mainstream finance<br>
+    • NFTs finding real utility beyond art<br>
+    • Gaming economies worth billions<br>
+    • Cross-chain interoperability solved<br><br>
+    
+    <strong>🌟 Long-Term (5-10 years):</strong><br>
+    • Crypto payments as normal as credit cards<br>
+    • DAOs managing trillion-dollar treasuries<br>
+    • Tokenized real-world assets everywhere<br>
+    • Web3 social media dominating<br>
+    • Quantum-resistant blockchains<br><br>
+    
+    <strong>💰 Price Predictions (Very Rough!):</strong><br>
+    • <strong>Bitcoin:</strong> Digital gold status, $100k+ eventually<br>
+    • <strong>Ethereum:</strong> Web3 infrastructure, $10k+ possible<br>
+    • <strong>Altcoins:</strong> 99% will fail, 1% will 100x<br>
+    • <strong>Stablecoins:</strong> Multi-trillion dollar market<br><br>
+    
+    <strong>🎯 What I'm Most Confident About:</strong><br>
+    • Blockchain technology is here to stay<br>
+    • User experience will dramatically improve<br>
+    • Regulation will bring institutional money<br>
+    • Innovation will continue accelerating<br><br>
+    
+    <strong>🤷‍♀️ What I'm Uncertain About:</strong><br>
+    • Which specific projects will win<br>
+    • Timing of major adoption milestones<br>
+    • How governments will react<br>
+    • Black swan events (they always happen!)<br><br>
+    
+    <strong>🎭 My Prediction Track Record:</strong><br>
+    • Called DeFi Summer ✅<br>
+    • Predicted NFT boom ✅<br>
+    • Said "Ethereum will flip Bitcoin" ❌ (still waiting!)<br>
+    • Thought we'd have mass adoption by now ❌ (patience!)<br><br>
+    
+    <strong>💡 Investment Philosophy:</strong><br>
+    Instead of trying to time the market, I focus on building in the space and supporting projects I believe in. The best way to predict the future is to help build it! 🛠️<br><br>
+    
+    <em>Remember: These are just educated guesses! Do your own research and never invest more than you can afford to lose! 🎲</em>
+  `;
+}
+
+if (message.includes('crypto winter') || message.includes('bear market survival')) {
+  return `
+    <strong>❄️ Surviving Crypto Winter: A Veteran's Guide:</strong><br><br>
+    
+    <strong>🥶 What Is Crypto Winter?</strong><br>
+    It's when the market crashes 80-90%, everyone says crypto is dead (again), and only the true believers remain. I've survived multiple winters - here's how! 🏔️<br><br>
+    
+    <strong>📉 The Stages of Crypto Winter:</strong><br>
+    • <strong>Denial:</strong> "It's just a dip!"<br>
+    • <strong>Anger:</strong> "This market is rigged!"<br>
+    • <strong>Bargaining:</strong> "If it hits X, I'll buy more"<br>
+    • <strong>Depression:</strong> "I should have sold everything"<br>
+    • <strong>Acceptance:</strong> "Time to build and learn"<br><br>
+    
+    <strong>💪 Survival Strategies:</strong><br>
+    • <strong>DCA:</strong> Buy small amounts regularly<br>
+    • <strong>Build:</strong> Learn new skills, contribute to projects<br>
+    • <strong>Network:</strong> Connect with other builders<br>
+    • <strong>Research:</strong> Study projects deeply<br>
+    • <strong>Patience:</strong> Remember why you started<br><br>
+    
+    <strong>🧠 Mental Health Tips:</strong><br>
+    • Stop checking prices obsessively<br>
+    • Focus on technology, not speculation<br>
+    • Take breaks from crypto Twitter<br>
+    • Remember: this too shall pass<br>
+    • Find non-crypto hobbies!<br><br>
+    
+    <strong>🏗️ What Happens During Winter:</strong><br>
+    • Weak projects die (natural selection!)<br>
+    • Real builders keep building<br>
+    • Innovation accelerates<br>
+    • Infrastructure improves<br>
+    • Next bull market foundations are laid<br><br>
+    
+    <strong>💎 Winter Success Stories:</strong><br>
+    • Ethereum was built during Bitcoin's winter<br>
+    • DeFi protocols launched during 2018-2020<br>
+    • Many unicorns started in bear markets<br>
+    • Best hiring happens when prices are low<br><br>
+    
+    <strong>⚠️ What NOT to Do:</strong><br>
+    • Panic sell at the bottom<br>
+    • Stop learning and building<br>
+    • Blame others for your losses<br>
+    • Give up on the technology<br>
+    • Leverage trade in desperation<br><br>
+    
+    <strong>🌱 Winter Opportunities:</strong><br>
+    • Accumulate quality projects cheaply<br>
+    • Learn new skills (coding, analysis)<br>
+    • Join promising early-stage projects<br>
+    • Build your network<br>
+    • Prepare for the next cycle<br><br>
+    
+    <strong>🔥 My Winter Mantra:</strong><br>
+    "Bear markets are for building, bull markets are for selling." The best time to plant a tree was 20 years ago, the second best time is now! 🌳<br><br>
+    
+    <strong>🚀 RVA's Winter Strategy:</strong><br>
+    We're using this time to build the most robust, user-friendly DeFi ecosystem possible. When spring comes, we'll be ready! 🌸<br><br>
+    
+    <em>Winter is temporary, but the technology is permanent! Stay strong! 💪</em>
+  `;
+}
+
+// Add these final responses to complete the personality enhancement
+
+if (message.includes('crypto mistakes') || message.includes('biggest mistakes')) {
+  return `
+    <strong>🤦‍♀️ My Crypto Hall of Shame (Learning Experiences!):</strong><br><br>
+    
+    <strong>💸 The $10,000 Pizza Moment:</strong><br>
+    Sold Bitcoin at $200 because "it had a good run." That Bitcoin would be worth... let's not do the math. I still cry sometimes! 😭<br><br>
+    
+    <strong>🎰 The Leverage Disaster:</strong><br>
+    Thought I was a genius, used 10x leverage on what I was "sure" was the bottom. Market dropped another 40%. Liquidated in 2 hours. Lesson learned: markets can stay irrational longer than you can stay solvent! 📉<br><br>
+    
+    <strong>🔐 The Security Slip-Up:</strong><br>
+    Kept crypto on an exchange "just for a few days." Exchange got hacked. Not your keys, not your crypto isn't just a meme - it's survival advice! 🔑<br><br>
+    
+    <strong>🐕 The Meme Coin Madness:</strong><br>
+    FOMO'd into a dog-themed coin because "it's going to the moon!" It went to the earth's core instead. Learned that memes are fun, but fundamentals matter! 🚀➡️🕳️<br><br>
+    
+    <strong>📊 The Analysis Paralysis:</strong><br>
+    Spent 6 months researching the "perfect" entry point while the coin 10x'd. Sometimes good enough is better than perfect! ⏰<br><br>
+    
+    <strong>🤝 The Trust Fall:</strong><br>
+    Invested in a project because "the team seemed nice." Turned out to be a rug pull. Now I verify everything twice and trust but verify! 🕵️‍♀️<br><br>
+    
+    <strong>💰 The Tax Nightmare:</strong><br>
+    Didn't track my trades properly. Tax season was... educational. Now I use proper tracking tools! 📋<br><br>
+    
+    <strong>🎢 The Emotional Rollercoaster:</strong><br>
+    Let emotions drive my decisions. Bought high (FOMO), sold low (panic). Now I have rules and stick to them! 🎭<br><br>
+    
+    <strong>💡 What I Learned:</strong><br>
+    • Every mistake is a lesson in disguise<br>
+    • The market is the best teacher (expensive tuition!)<br>
+    • Humility is your best friend<br>
+    • Risk management > being right<br>
+    • The goal is to survive and learn<br><br>
+    
+    <strong>🎯 My Advice:</strong><br>
+    Make mistakes, but make them small and learn from them quickly. The crypto market is unforgiving but fair - it teaches everyone the same lessons! 📚<br><br>
+    
+    <em>Mistakes are proof that you're trying! What matters is learning from them! 🌱</em>
+  `;
+}
+
+
+  
+
+
     // Conversation stats
     if (message.includes('stats') || message.includes('statistics')) {
       return this.getConversationStats();
     }
+
+  
     
     // Clear chat
     if (message.includes('clear') && message.includes('chat')) {
       this.clearChat();
       return;
     }
+    
 
     
     
-    // Default responses with crypto context
-    const defaultResponses = [
-      "That's an interesting question! I specialize in RVA ecosystem and live cryptocurrency data. Could you be more specific about what you'd like to know?",
-      "I'm here to help with RVA, DeFi, and real-time crypto prices. Could you rephrase your question so I can provide the most accurate information?",
-      "As your RVA expert with access to live market data, I want to give you the best answer possible. What specific aspect interests you?",
-      "Great question! I'm most knowledgeable about RVA's ecosystem and current cryptocurrency markets. How can I help you explore these topics?"
-    ];
-    
-    return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+    // Default responses with more personality
+const personalizedDefaults = [
+  "Hmm, that's an interesting question! I'm still learning new things about crypto every day. Could you help me understand what you're looking for? Maybe something about RVA, market prices, or DeFi? 🤔",
+  
+  "You know what? I love curious questions! I specialize in RVA ecosystem, live crypto data, and making DeFi less scary. What specific area interests you most? 🚀",
+  
+  "That's a great question! I'm like a crypto encyclopedia with a personality disorder - I know tons about blockchain, DeFi, and market data, but I might need you to be a bit more specific. What's on your mind? 😊",
+  
+  "Ooh, I sense a learning opportunity! I'm here to help with anything crypto-related, from basic blockchain concepts to advanced DeFi strategies. What would you like to explore? 🌟",
+  
+  "I love that you're asking questions! That's how we all learned about this crazy crypto world. I can help with RVA info, price data, market analysis, or just general crypto chat. What sounds interesting? 💡"
+];
+
+// Return a random personalized default response
+return personalizedDefaults[Math.floor(Math.random() * personalizedDefaults.length)];
   }
+  
   
   escapeHtml(text) {
     const div = document.createElement('div');
