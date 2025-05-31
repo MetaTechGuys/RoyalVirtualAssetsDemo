@@ -39,7 +39,7 @@
     overflow: clip !important;
     position: relative;
 
-    > h4 {
+    > h2 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 48px;
@@ -155,11 +155,10 @@
     overflow: clip !important;
     position: relative;
 
-    > h4 {
+    > h2 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 36px;
-
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
@@ -271,7 +270,7 @@
     overflow: clip !important;
     position: relative;
 
-    > h4 {
+    > h2 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 28px;
@@ -388,7 +387,7 @@
     overflow: clip !important;
     position: relative;
 
-    > h4 {
+    > h2 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 24px;
@@ -505,7 +504,7 @@
     overflow: clip !important;
     position: relative;
 
-    > h4 {
+    > h2 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 36px;
@@ -622,7 +621,7 @@
     overflow: clip !important;
     position: relative;
 
-    > h4 {
+    > h2 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 30px;
@@ -739,7 +738,7 @@
     overflow: clip !important;
     position: relative;
 
-    > h4 {
+    > h2 {
       color: whitesmoke !important;
       position: absolute;
       font-size: 16px;

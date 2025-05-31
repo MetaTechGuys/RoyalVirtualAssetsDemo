@@ -189,6 +189,68 @@
       </nav>
     </header>
     <div class="wrapper">
+
+      <!-- AI Chat Component -->
+<div id="ai-chat-container" class="ai-chat-hidden">
+  <div class="ai-chat-header">
+    <div class="ai-avatar">
+      <img src="./media/img/ai-avatar.webp" alt="RVA AI Assistant" />
+    </div>
+    <div class="ai-info">
+      <h4>Sarah</h4>
+      <span class="ai-status">Online • RVA Expert</span>
+    </div>
+    <button id="ai-chat-close" class="ai-chat-close" data-cursor="pointer2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  
+  <div class="ai-chat-messages" id="ai-chat-messages">
+    <div class="ai-message">
+  <div class="ai-message-avatar">
+    <img src="./media/img/ai-avatar.webp" alt="Alex" />
+  </div>
+  <div class="ai-message-content">
+    <p>Hi! I'm Sarah, your RVA blockchain expert. I'm 24 years old and have been working in DeFi for 4 years. I can help you with our ecosystem and provide real-time cryptocurrency prices! Try asking "What's the price of Bitcoin?" or "Show me top 5 cryptos"</p>
+    <span class="ai-message-time">Just now</span>
+  </div>
+</div>
+
+  </div>
+  
+  <div class="ai-chat-input-container">
+    <div class="ai-typing-indicator" id="ai-typing-indicator" style="display: none;">
+      <div class="ai-typing-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span>Sarah is typing...</span>
+    </div>
+    <div class="ai-chat-input">
+      <input type="text" id="ai-chat-input" placeholder="Ask me about RVA, blockchain, or DeFi..." />
+      <button id="ai-chat-send" data-cursor="pointer2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- AI Chat Toggle Button -->
+<button id="ai-chat-toggle" class="ai-chat-toggle" data-cursor="pointer2">
+      <img src="./media/img/ai-avatar.webp" style="width: 100%; border-radius: 40px;" alt="Alex" />
+
+  <span class="ai-chat-notification">1</span>
+</button>
+
+
+
          <section class="obj">
 
 
@@ -388,7 +450,7 @@
                 </div>
             </section>
 
-      <sction class="cards"></sction>      
+      <section class="cards">   
 <div class="container">
         <div class="card">
             <div class="card-inner">
@@ -506,7 +568,7 @@
         
         
     </div>
-        </sction>
+        </section>
 
           <section class="splithelp">
             <div class="container-fluid split">
@@ -715,5 +777,9 @@ window.addEventListener('pageshow', function(event) {
   }
 });
 </script>
+
+
+<script defer src="./js/aichat.js"></script>
+
   </body>
 </html>
