@@ -1,5 +1,5 @@
 /**
- * RoialVirtualAssets Cryptocurrency Price API
+ * RoyalVirtualAssets Cryptocurrency Price API
  * This module fetches and displays cryptocurrency prices with caching and performance optimizations
  */
 
@@ -15,7 +15,7 @@ class CryptoAPI {
       currency: options.currency || "usd",
       initialDisplay: options.initialDisplay || 8, // Default: initially show 8 items
       maxRetries: options.maxRetries || 8, // Maximum number of retry attempts
-      cacheKey: "roial_crypto_cache", // LocalStorage key for caching
+      cacheKey: "Royal_crypto_cache", // LocalStorage key for caching
       cacheExpiry: options.cacheExpiry || 480000, // Cache expiry: 8 minutes
       eagerLoad: options.eagerLoad !== false, // Enable eager loading by default
     };
@@ -1709,8 +1709,8 @@ if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     // Create service worker as a blob URL instead of separate file
     const swCode = `
-            const CACHE_NAME = 'roial-crypto-cache-v1';
-            const API_CACHE_NAME = 'roial-crypto-api-cache-v1';
+            const CACHE_NAME = 'Royal-crypto-cache-v1';
+            const API_CACHE_NAME = 'Royal-crypto-api-cache-v1';
             
             // Install event - cache static resources
             self.addEventListener('install', (event) => {

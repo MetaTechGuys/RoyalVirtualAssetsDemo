@@ -1,5 +1,5 @@
 /**
- * RoialVirtualAssets 3D Cryptocurrency Visualizer
+ * RoyalVirtualAssets 3D Cryptocurrency Visualizer
  * This module creates interactive 3D cryptocurrency models using Three.js
  */
 

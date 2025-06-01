@@ -1,5 +1,5 @@
 /**
- * RoialVirtualAssets Cryptocurrency Converter
+ * RoyalVirtualAssets Cryptocurrency Converter
  * Converter with custom dropdowns showing currency logos
  */
 
