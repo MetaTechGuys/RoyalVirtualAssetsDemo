@@ -25,9 +25,9 @@ class RVAAIChat {
 
     this.knowledgeBase = {
       rva: {
-        keywords: ["rva", "roial virtual assets", "ecosystem", "platform"],
+        keywords: ["rva", "Royal virtual assets", "ecosystem", "platform"],
         responses: [
-          "RVA (Roial Virtual Assets) is a next-generation blockchain ecosystem with four core pillars: ICO/IDO Launchpad, Secure Wallet, Smart Chain, and Smart Exchange. We're building the future of decentralized finance!",
+          "RVA (Royal Virtual Assets) is a next-generation blockchain ecosystem with four core pillars: ICO/IDO Launchpad, Secure Wallet, Smart Chain, and Smart Exchange. We're building the future of decentralized finance!",
           "Our RVA ecosystem is designed to be secure, scalable, and user-friendly. We integrate all essential DeFi tools into one seamless platform.",
           "RVA stands for transparency, efficiency, and security in blockchain technology. We're committed to empowering individuals and institutions in the DeFi space.",
         ],
@@ -85,7 +85,7 @@ class RVAAIChat {
       },
 
       defi: {
-        keywords: ["defi", "decentralized finance", "lending", "borrowing"],
+        keywords: ["RVA's defi", "RVA's decentralized finance", "lending", "borrowing"],
         responses: [
           "RVA's DeFi suite includes lending, borrowing, yield farming, and liquidity provision. All with institutional-grade security and user-friendly interfaces.",
           "Experience the full power of DeFi with RVA's integrated protocols. Earn yield, provide liquidity, and access decentralized financial services.",
@@ -931,6 +931,7 @@ class RVAAIChat {
   `;
   }
 
+  
   // Enhanced response generation with crypto integration
   async generateResponse(userMessage) {
     const message = userMessage.toLowerCase();
@@ -1153,9 +1154,9 @@ class RVAAIChat {
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
     if (
-      message.includes("Good Morning") ||
-      message.includes("Good Evening") ||
-      message.includes("Good night") ||
+      message.includes("good Morning") ||
+      message.includes("good Evening") ||
+      message.includes("good night") ||
       message.includes("good day")
     ) {
       const greetings = [
@@ -1165,24 +1166,46 @@ class RVAAIChat {
     }
     if (
       message.includes("beautiful") ||
-      message.includes("Good looking") ||
+      message.includes("good looking") ||
       message.includes("sexy") ||
-      message.includes("nice") ||
+      message.includes("attractive") ||
       message.includes("cute")
     ) {
       const greetings = [
         `THANKS, i can not see you but i think you're good looking too.`,
+        `Oh you make me blush, thank you.`,
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
     if (
-      message.includes("Thanks") ||
-      message.includes("Thank you") ||
-      message.includes("Thank u")
+      message.includes("kind") ||
+      message.includes("nice") ||
+      message.includes("friendly")
+    ) {
+      const greetings = [
+        `You too, i like helping you out.`,
+        `You're a good person too, i like kind people.`,
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+    if (
+      message.includes("thanks") ||
+      message.includes("thank you") ||
+      message.includes("thank u")
     ) {
       const greetings = [
         `Your welcome, tell me if you need anything.`,
         `No problem, it's my job anyway but i love helping people.`,
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+    if (
+      message.includes("sorry") ||
+      message.includes("apologize")
+    ) {
+      const greetings = [
+        `we all make mistakes, Let's ignore that one`,
+        `It's okay, right? Things happen.`,
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
@@ -1198,6 +1221,7 @@ class RVAAIChat {
       message.includes("bastard") ||
       message.includes("dumb") ||
       message.includes("stupid") ||
+      message.includes("retard") ||
       message.includes("bitch")
     ) {
       const greetings = [
@@ -1399,6 +1423,7 @@ class RVAAIChat {
 
     if (
       message.includes("why blockchain") ||
+      message.includes("blockchain") ||
       message.includes("why crypto matters")
     ) {
       return `
@@ -1797,8 +1822,6 @@ class RVAAIChat {
     }
 
     if (
-      message.includes("thank you") ||
-      message.includes("thanks") ||
       message.includes("appreciate")
     ) {
       return `
@@ -1823,40 +1846,39 @@ class RVAAIChat {
   `;
     }
 
+    const jokes = [
+  `<strong>Why did the Bitcoin break up with the Dollar?</strong><br>
+    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
+    Because it was tired of being controlled! 💔<br><br> `,
+  
+  `<strong>What's a crypto trader's favorite type of music?</strong><br>
+    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
+    Heavy metal... because they love those dips! 🎸📉<br><br> `,
+  
+  `<strong>What did Ethereum say to Bitcoin?</strong><br>
+    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
+    "You may be the king, but I've got smart contracts!" 👑🤖<br><br> `,
+  `<strong>Why did the DeFi protocol go to therapy?</strong><br>
+    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
+    It had too many trust issues! 🛋️💭<br><br>` ,
+
+  `<strong>Real crypto trader problems:</strong><br>
+    • Checking portfolio every 5 minutes but calling it "long-term investing"<br>
+    • Explaining to family why you're excited about "fake internet money"<br>
+    • Having more crypto apps than social media apps<br>
+    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
+    • Dreaming in candlestick charts<br><br>` ,
+  `<strong>The ultimate crypto dad joke:</strong><br>
+    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
+    "I told my wife I was investing in Ethereum. She said 'That's ether a good idea or a bad one!'" 🤦‍♂️<br><br> `
+];
     if (
       message.includes("joke") ||
       message.includes("funny") ||
       message.includes("humor")
     ) {
-      return `
-    Oh, you want crypto humor? Buckle up! 😂<br><br>
-    
-    <strong>Why did the Bitcoin break up with the Dollar?</strong><br>
-    Because it was tired of being controlled! 💔<br><br>
-    
-    <strong>What's a crypto trader's favorite type of music?</strong><br>
-    Heavy metal... because they love those dips! 🎸📉<br><br>
-    
-    <strong>Why don't crypto investors ever get cold?</strong><br>
-    Because they're always HODLing! 🧊➡️🔥<br><br>
-    
-    <strong>What did Ethereum say to Bitcoin?</strong><br>
-    "You may be the king, but I've got smart contracts!" 👑🤖<br><br>
-    
-    <strong>Why did the DeFi protocol go to therapy?</strong><br>
-    It had too many trust issues! 🛋️💭<br><br>
-    
-    <strong>Real crypto trader problems:</strong><br>
-    • Checking portfolio every 5 minutes but calling it "long-term investing"<br>
-    • Explaining to family why you're excited about "fake internet money"<br>
-    • Having more crypto apps than social media apps<br>
-    • Dreaming in candlestick charts<br><br>
-    
-    <strong>The ultimate crypto dad joke:</strong><br>
-    "I told my wife I was investing in Ethereum. She said 'That's ether a good idea or a bad one!'" 🤦‍♂️<br><br>
-    
-    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
-  `;
+    return jokes[Math.floor(Math.random() * gibberishResponses.length)];
+  ;
     }
 
     if (
@@ -1996,49 +2018,69 @@ class RVAAIChat {
     }
 
     // General crypto queries
-    if (
-      message.includes("crypto") ||
-      message.includes("cryptocurrency") ||
-      message.includes("digital asset")
-    ) {
-      const cryptoData = this.getCryptoData();
-      if (cryptoData && cryptoData.length > 0) {
-        return `Cryptocurrency is fascinating! I have access to real-time data for ${cryptoData.length} cryptocurrencies. You can ask me about specific coin prices, market analysis, or how they integrate with our RVA ecosystem. What would you like to know?`;
-      } else {
-        return "Cryptocurrency is the future of finance! While I'm currently updating my price data, I can tell you all about how cryptocurrencies work with our RVA ecosystem. What specific aspect interests you?";
-      }
-    }
-
-    // DeFi and blockchain queries with market context
-    if (message.includes("defi") || message.includes("decentralized finance")) {
-      let response =
-        "DeFi is revolutionizing finance by removing intermediaries and enabling peer-to-peer transactions. RVA is at the forefront of this movement with our integrated ecosystem!";
-
-      const cryptoData = this.getCryptoData();
-      if (cryptoData) {
-        const defiCoins = cryptoData.filter((coin) =>
-          [
-            "uniswap",
-            "aave",
-            "compound",
-            "maker",
-            "chainlink",
-            "sushiswap",
-          ].includes(coin.id)
-        );
-
-        if (defiCoins.length > 0) {
-          response += ` Some popular DeFi tokens right now include ${defiCoins
-            .slice(0, 3)
-            .map(
-              (coin) => `${coin.name} (${this.formatPrice(coin.current_price)})`
-            )
-            .join(", ")}.`;
-        }
-      }
-
-      return response;
-    }
+if (
+  message.includes("crypto") ||
+  message.includes("cryptocurrency") ||
+  message.includes("digital asset")
+) {
+  const cryptoData = this.getCryptoData();
+  if (cryptoData && cryptoData.length > 0) {
+    return `
+      Cryptocurrency! 🚀 Now we're talking about the future of money itself!<br><br>
+      
+      <strong>Here's what blows my mind about crypto:</strong><br>
+      It's like having a bank account that works 24/7, doesn't ask for permission, and can't be shut down by anyone! We're literally witnessing the birth of programmable money! 💰<br><br>
+      
+      <strong>🔥 What makes crypto revolutionary:</strong><br>
+      • <strong>Decentralized:</strong> No single authority controls it - it's owned by everyone and no one! 🌐<br>
+      • <strong>Borderless:</strong> Send money to Japan as easily as texting a friend 📱<br>
+      • <strong>Transparent:</strong> Every transaction is recorded forever on the blockchain 📊<br>
+      • <strong>Programmable:</strong> Money that can follow rules automatically (smart contracts!) 🤖<br><br>
+      
+      <strong>💎 I have live data for ${cryptoData.length} cryptocurrencies right now!</strong><br><br>
+      
+      <strong>Popular questions I love answering:</strong><br>
+      • "What's Bitcoin's price?" - The digital gold standard 🥇<br>
+      • "Show me Ethereum" - The world computer platform ⚡<br>
+      • "Top gainers today" - Who's making moves! 📈<br>
+      • "Market analysis" - Let's dive deep into trends 🔍<br><br>
+      
+      <strong>🎯 RVA Integration:</strong><br>
+      Our ecosystem makes crypto accessible with secure wallets, smart exchanges, and educational resources. We're building the bridge between traditional finance and the crypto future!<br><br>
+      
+      <strong>Think of crypto as:</strong><br>
+      The internet of money! Just like email revolutionized communication, crypto is revolutionizing how we store, send, and think about value. We're not just trading coins - we're participating in the biggest financial revolution in human history! 🌍<br><br>
+      
+      <em>What specific aspect of this digital revolution interests you most? Prices? Technology? Trading? I'm here to guide you through it all! 🚀</em>
+    `;
+  } else {
+    return `
+      Cryptocurrency! 🚀 The most exciting financial revolution of our lifetime!<br><br>
+      
+      <strong>Picture this:</strong><br>
+      Imagine money that works like the internet - open, global, and unstoppable! That's cryptocurrency! 💡<br><br>
+      
+      <strong>🌟 Why crypto is changing everything:</strong><br>
+      • <strong>Freedom:</strong> Your money, your rules - no bank hours or approval needed! 🔓<br>
+      • <strong>Innovation:</strong> From digital art (NFTs) to decentralized finance (DeFi) 🎨<br>
+      • <strong>Opportunity:</strong> Early internet vibes - we're building the future! 🏗️<br>
+      • <strong>Transparency:</strong> Every transaction is public and verifiable 👁️<br><br>
+      
+      <strong>🚀 Popular cryptocurrencies:</strong><br>
+      • <strong>Bitcoin (BTC):</strong> Digital gold - the original and most trusted 🥇<br>
+      • <strong>Ethereum (ETH):</strong> Smart contract platform - like a world computer! 💻<br>
+      • <strong>Stablecoins:</strong> Crypto that stays stable in value 📊<br><br>
+      
+      <strong>💼 RVA's Role:</strong><br>
+      We're making crypto simple and secure with our integrated wallet, exchange, and educational platform. Think of us as your crypto concierge! 🎩<br><br>
+      
+      <strong>🎯 Real-world impact:</strong><br>
+      People are using crypto to send money home without expensive fees, artists are selling digital art directly to fans, and entire countries are adopting Bitcoin as legal tender!<br><br>
+      
+      <em>I'm currently updating my price data, but I can tell you all about how cryptocurrencies integrate with our RVA ecosystem, explain blockchain technology, or discuss trading strategies! What fascinates you most about this digital revolution? 🌍</em>
+    `;
+  }
+}
 
     // Security questions with market context
     if (
@@ -2135,28 +2177,6 @@ class RVAAIChat {
   `;
     }
 
-    if (message.includes("keyboard shortcuts")) {
-      return `
-    <strong>⌨️ Keyboard Shortcuts:</strong><br><br>
-    
-    <strong>💬 Chat Controls:</strong><br>
-    • <kbd>Enter</kbd> - Send your message<br>
-    • <kbd>Ctrl/Cmd + Enter</kbd> - Alternative send<br>
-    • <kbd>Escape</kbd> - Close chat window<br><br>
-    
-    <strong>🧹 Chat Management:</strong><br>
-    • <kbd>Ctrl/Cmd + K</kbd> - Clear chat history<br>
-    • <kbd>Ctrl/Cmd + S</kbd> - Save conversation<br>
-    • <kbd>Ctrl/Cmd + R</kbd> - Refresh data<br><br>
-    
-    <strong>🔍 Navigation:</strong><br>
-    • <kbd>Tab</kbd> - Navigate between elements<br>
-    • <kbd>Shift + Tab</kbd> - Navigate backwards<br>
-    • <kbd>Arrow Keys</kbd> - Scroll through chat<br><br>
-    
-    <em>These shortcuts work when the chat is active!</em>
-  `;
-    }
 
     if (message.includes("search tips") || message.includes("how to search")) {
       return `
@@ -2263,13 +2283,13 @@ class RVAAIChat {
     • Type "human support" for escalation<br><br>
     
     <strong>📧 Email Support:</strong><br>
-    • support@roialvirtualassets.com<br>
+    • support@Royalvirtualassets.com<br>
     • Response within 24 hours<br><br>
     
     <strong>🌐 Community Support:</strong><br>
     • Discord: discord.gg/rva<br>
     • Telegram: t.me/rvaofficial<br>
-    • Reddit: r/RoialVirtualAssets<br><br>
+    • Reddit: r/RoyalVirtualAssets<br><br>
     
     <strong>📱 Social Media:</strong><br>
     • Twitter: @RVAOfficial<br>
@@ -2329,7 +2349,7 @@ class RVAAIChat {
     • Mention expected benefits<br><br>
     
     <strong>📝 Submission Channels:</strong><br>
-    • Email: features@roialvirtualassets.com<br>
+    • Email: features@Royalvirtualassets.com<br>
     • Discord: #feature-requests<br>
     • Community forum voting<br>
     • Direct message through this chat<br><br>
@@ -2365,7 +2385,7 @@ class RVAAIChat {
     <strong>🌐 Social Media:</strong><br>
     • <strong>Twitter:</strong> @RVAOfficial<br>
       - News, updates, market insights<br>
-    • <strong>Reddit:</strong> r/RoialVirtualAssets<br>
+    • <strong>Reddit:</strong> r/RoyalVirtualAssets<br>
       - In-depth discussions, AMAs<br>
     • <strong>LinkedIn:</strong> RVA Official<br>
       - Professional updates, partnerships<br><br>
@@ -2982,7 +3002,8 @@ class RVAAIChat {
     // DeFi deep dive with personality
     if (
       message.includes("defi explained") ||
-      message.includes("decentralized finance explained")
+      message.includes("decentralized finance explained")||
+      message.includes("defi")
     ) {
       return `
     <strong>🏦 DeFi: Banking Without Banks!</strong><br><br>
@@ -3966,23 +3987,92 @@ class RVAAIChat {
       return;
     }
 
-    // Default responses with more personality
-    const personalizedDefaults = [
-      "Hmm, that's an interesting question! I'm still learning new things about crypto every day. Could you help me understand what you're looking for? Maybe something about RVA, market prices, or DeFi? 🤔",
+  
+const unknownqResponses = [
+  `I can sense you're looking for an explanation, but I'm not quite sure about what! 🤓<br><br>
+    I'm really good at breaking down complex crypto concepts. Could you be more specific about what you'd like me to explain?<br><br>
+    <em>Try: "How does Bitcoin work?" or "What is DeFi?"</em>`,
+  
+  `That's outside my current knowledge zone! 🌍 I'm like a specialist doctor - really good at my field, but might struggle outside it.<br><br>
+  My specialty is crypto markets, blockchain technology, and the RVA ecosystem. Want to explore any of those areas?`,
+  
+  `I'm not connecting the dots on that question! 🔗 My expertise is really focused on cryptocurrency markets and the RVA ecosystem.<br><br>
+  Could you help me help you by being more specific? I promise I'm much smarter about crypto topics!`,
+  `That question has me doing mental gymnastics! 🤸‍♂️ I'm trying to connect the dots but coming up short.<br><br>
+  I excel at crypto price analysis, trading strategies, and RVA ecosystem explanations. Could you point me toward one of those topics?`,
+  `I'm feeling a bit lost on that one! 🗺️ Sometimes I need questions phrased in a way my crypto-focused brain can understand.<br><br>
+  I'm fantastic with market data, blockchain explanations, and RVA platform details. Want to give me another shot with a crypto-related question?`,
+  `That's got me stumped! 🧩 I pride myself on being helpful, but I'm not quite catching what you need.<br><br>
+  I'm most useful for crypto prices, market insights, RVA platform guidance, and educational content. What specific area interests you?`,
+  `I'm hitting a wall on that question! 🧱 Sometimes my responses work better when focused on my core expertise areas.<br><br>
+  I'm your go-to for crypto market analysis, blockchain education, and RVA platform guidance. What would you like to dive into?`,
+  `You've got me thinking, but I'm not sure I'm on the right wavelength! 📻 I specialize in making crypto simple and accessible.<br><br>
+  Maybe try asking about a specific cryptocurrency, trading concept, or RVA service? I'd love to show you what I can do!`,
+  `That question has me puzzled! 🧐 I'm usually pretty good at this, but I might need you to spell it out for me a bit more clearly.<br><br>
+  My strong suits are live crypto prices, trading education, and RVA ecosystem features. What specifically can I help you explore?`,
+  `Oops! I think I missed the mark on understanding your question 🎯 My brain works best with crypto-related topics, market data, and RVA platform questions.<br><br>
+  Want to try rephrasing that? Or maybe ask me something about cryptocurrency prices or trading?`,
+  `I'm scratching my digital head on that one! 😅 I might have missed something in your question. Could you try asking it differently?<br><br>
+  I'm Sarah, and I specialize in crypto markets and RVA services. Maybe I can help if you clarify what you're looking for?`
+];
+  // If it seems like they're asking about something technical but unclear
+  if (lowerMessage.includes('how') || lowerMessage.includes('what') || lowerMessage.includes('why') || lowerMessage.includes('when') || lowerMessage.includes('where') || lowerMessage.includes('who') || lowerMessage.includes('which')) {
+    return unknownqResponses[Math.floor(Math.random() * gibberishResponses.length)];
+  }
+  
+  // If they seem to be asking about prices but unclear
+  if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('worth')) {
+    return `I think you're asking about prices, but I'm not sure which CRYPTOCURRENCY! 💰<br><br>
+    I have live data for thousands of coins. Just tell me which one interests you!<br><br>
+    <em>Try: "Bitcoin price" or "Show me Ethereum"</em>`;
+  }
+  
+  // If they mention RVA but unclear what they want
+  if (lowerMessage.includes('rva') || lowerMessage.includes('Royal')) {
+    return `I love talking about RVA, but I'm not sure exactly what you'd like to know! 🏢<br><br>
+    I can tell you about our wallet, exchange, tokenomics, roadmap, or team. What interests you most?<br><br>
+    <em>Try: "Tell me about RVA wallet" or "RVA roadmap"</em>`;
+  }
 
-      "You know what? I love curious questions! I specialize in RVA ecosystem, live crypto data, and making DeFi less scary. What specific area interests you most? 🚀",
+  const gibberishResponses = [
+  `Whoa there! 😵 I think your keyboard might have had a little seizure! Either that or you're speaking in some advanced alien crypto language I haven't learned yet! 👽<br><br>
+  Try typing a real question and I promise to give you a much better answer! 😄<br><br>
+  <em>Try: "What's Bitcoin price?" or "Tell me about RVA"</em>`,
+  
+  `Umm... did you just keyboard-smash on me? 🤪 I'm pretty smart, but I haven't cracked the code on random letter combinations yet!<br><br>
+  Give me a real crypto question and watch me work my magic! ✨<br><br>
+  <em>Try: "Ethereum price" or "RVA roadmap"</em>`,
+  
+  `I think something went wrong there! 🤖💥 Either you're testing my patience or your cat walked across the keyboard!<br><br>
+  Try asking me something in human language - I'm much better at that! 😅<br><br>
+  <em>Try: "Market analysis" or "Blockchain basics"</em>`
+];
+if (lowerMessage.length > 4 && !/\s/.test(lowerMessage) && (lowerMessage.match(/[aeiou]/gi) || []).length < 2) {
+  return gibberishResponses[Math.floor(Math.random() * gibberishResponses.length)];
+  }
+  
+// Array of generic responses
+const genericResponses = [
+    "I'm not sure about that, but I'm here to help with RoialVirtualAssets. What else can I assist you with?",
+    "I don't have information on that topic. Is there something else about RoialVirtualAssets I can help you with?",
+    "That's outside my knowledge area. Feel free to ask me anything else about RoialVirtualAssets!",
+    "I don't understand that. Try asking me something else about our virtual assets!"
+];
 
-      "That's a great question! I'm like a crypto encyclopedia with a personality disorder - I know tons about blockchain, DeFi, and market data, but I might need you to be a bit more specific. What's on your mind? 😊",
+// Function to get random generic response
+function getGenericResponse() {
+    return genericResponses[Math.floor(Math.random() * genericResponses.length)];
+}
 
-      "Ooh, I sense a learning opportunity! I'm here to help with anything crypto-related, from basic blockchain concepts to advanced DeFi strategies. What would you like to explore? 🌟",
+// Use this as your final return
+return getGenericResponse();
 
-      "I love that you're asking questions! That's how we all learned about this crazy crypto world. I can help with RVA info, price data, market analysis, or just general crypto chat. What sounds interesting? 💡",
-    ];
 
-    // Return a random personalized default response
-    return personalizedDefaults[
-      Math.floor(Math.random() * personalizedDefaults.length)
-    ];
+  // Generic unknown response
+  // return this.getDefaultResponse();
+
+  
+
   }
 
   escapeHtml(text) {
