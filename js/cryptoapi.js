@@ -166,6 +166,709 @@ class CryptoAPI {
   }
 
   /**
+   * Calculate market analysis data
+   */
+  calculateMarketAnalysis() {
+    if (!this.prices || this.prices.length === 0) {
+      return {
+        totalMarketCap: 0,
+        totalVolume: 0,
+        gainers: [],
+        losers: [],
+        averageChange: 0,
+        bullishCount: 0,
+        bearishCount: 0,
+        topPerformers: [],
+        worstPerformers: [],
+        marketSentiment: 'neutral'
+      };
+    }
+
+    const totalMarketCap = this.prices.reduce((sum, coin) => sum + (coin.market_cap || 0), 0);
+    const totalVolume = this.prices.reduce((sum, coin) => sum + (coin.total_volume || 0), 0);
+    
+    // Filter valid price changes
+    const validChanges = this.prices
+      .filter(coin => coin.price_change_percentage_24h !== null && coin.price_change_percentage_24h !== undefined)
+      .map(coin => coin.price_change_percentage_24h);
+    
+    const averageChange = validChanges.length > 0 
+      ? validChanges.reduce((sum, change) => sum + change, 0) / validChanges.length 
+      : 0;
+
+    const bullishCount = this.prices.filter(coin => (coin.price_change_percentage_24h || 0) > 0).length;
+    const bearishCount = this.prices.filter(coin => (coin.price_change_percentage_24h || 0) < 0).length;
+
+    // Top gainers and losers
+    const sortedByChange = [...this.prices]
+      .filter(coin => coin.price_change_percentage_24h !== null)
+      .sort((a, b) => (b.price_change_percentage_24h || 0) - (a.price_change_percentage_24h || 0));
+
+    const gainers = sortedByChange.slice(0, 3);
+    const losers = sortedByChange.slice(-3).reverse();
+
+    // Market sentiment
+    let marketSentiment = 'neutral';
+    if (averageChange > 2) marketSentiment = 'very bullish';
+    else if (averageChange > 0.5) marketSentiment = 'bullish';
+    else if (averageChange < -2) marketSentiment = 'very bearish';
+    else if (averageChange < -0.5) marketSentiment = 'bearish';
+
+    return {
+      totalMarketCap,
+      totalVolume,
+      gainers,
+      losers,
+      averageChange,
+      bullishCount,
+      bearishCount,
+      topPerformers: gainers,
+      worstPerformers: losers,
+      marketSentiment
+    };
+  }
+
+  /**
+   * Calculate price range analysis
+   */
+  calculatePriceRangeAnalysis() {
+    if (!this.prices || this.prices.length === 0) return {};
+
+    const prices = this.prices.map(coin => coin.current_price).filter(price => price > 0);
+    
+    return {
+      highestPrice: Math.max(...prices),
+      lowestPrice: Math.min(...prices),
+      averagePrice: prices.reduce((sum, price) => sum + price, 0) / prices.length,
+      priceRanges: {
+        under1: this.prices.filter(coin => coin.current_price < 1).length,
+        range1to10: this.prices.filter(coin => coin.current_price >= 1 && coin.current_price < 10).length,
+        range10to100: this.prices.filter(coin => coin.current_price >= 10 && coin.current_price < 100).length,
+        range100to1000: this.prices.filter(coin => coin.current_price >= 100 && coin.current_price < 1000).length,
+        over1000: this.prices.filter(coin => coin.current_price >= 1000).length
+      }
+    };
+  }
+
+  /**
+   * Render market overview analysis table
+   */
+  renderMarketOverview(analysis) {
+    const overviewDiv = document.createElement("div");
+    overviewDiv.className = "crypto-analysis-section";
+    overviewDiv.innerHTML = `
+      <h3>📊 Market Overview</h3>
+      <div class="crypto-overview-grid">
+        <div class="crypto-stat-card">
+          <div class="stat-label">Total Market Cap</div>
+          <div class="stat-value">${this.formatMarketCap(analysis.totalMarketCap, this.config.currency)}</div>
+        </div>
+        <div class="crypto-stat-card">
+          <div class="stat-label">24h Volume</div>
+          <div class="stat-value">${this.formatMarketCap(analysis.totalVolume, this.config.currency)}</div>
+        </div>
+        <div class="crypto-stat-card">
+          <div class="stat-label">Average Change</div>
+          <div class="stat-value ${analysis.averageChange >= 0 ? 'crypto-positive' : 'crypto-negative'}">
+            ${analysis.averageChange.toFixed(2)}%
+          </div>
+        </div>
+        <div class="crypto-stat-card">
+          <div class="stat-label">Market Sentiment</div>
+          <div class="stat-value sentiment-${analysis.marketSentiment.replace(' ', '-')}">${analysis.marketSentiment.toUpperCase()}</div>
+        </div>
+      </div>
+    `;
+    return overviewDiv;
+  }
+
+  /**
+   * Render top performers table
+   */
+  renderTopPerformers(analysis) {
+    const performersDiv = document.createElement("div");
+    performersDiv.className = "crypto-analysis-section";
+    
+    const gainersHtml = analysis.gainers.map((coin, index) => `
+      <tr>
+        <td>${index + 1}</td>
+        <td class="crypto-name">
+          <img src="${coin.image}" alt="${coin.name}" width="20" height="20" loading="lazy">
+          ${coin.symbol.toUpperCase()}
+        </td>
+        <td class="crypto-positive" style="color: #27ae60;">+${coin.price_change_percentage_24h.toFixed(2)}%</td>
+        <td>${this.formatPrice(coin.current_price, this.config.currency)}</td>
+      </tr>
+    `).join('');
+
+    const losersHtml = analysis.losers.map((coin, index) => `
+      <tr>
+        <td>${index + 1}</td>
+        <td class="crypto-name">
+          <img src="${coin.image}" alt="${coin.name}" width="20" height="20" loading="lazy">
+          ${coin.symbol.toUpperCase()}
+        </td>
+        <td class="crypto-negative" style="color: #c0392b;">${coin.price_change_percentage_24h.toFixed(2)}%</td>
+        <td>${this.formatPrice(coin.current_price, this.config.currency)}</td>
+      </tr>
+    `).join('');
+
+    performersDiv.innerHTML = `
+      <h3>🚀 Top Performers & Losers</h3>
+      <div class="crypto-performers-grid">
+        <div class="crypto-performers-table">
+          <h4>Top Gainers (24h)</h4>
+          <table class="crypto-mini-table">
+            <thead>
+              <tr><th>#</th><th>Coin</th><th>Change</th><th>Price</th></tr>
+            </thead>
+            <tbody>${gainersHtml}</tbody>
+          </table>
+        </div>
+        <div class="crypto-performers-table">
+          <h4>Top Losers (24h)</h4>
+          <table class="crypto-mini-table">
+            <thead>
+              <tr><th>#</th><th>Coin</th><th>Change</th><th>Price</th></tr>
+            </thead>
+            <tbody>${losersHtml}</tbody>
+          </table>
+        </div>
+      </div>
+    `;
+    return performersDiv;
+  }
+
+  /**
+   * Render market sentiment analysis
+   */
+  renderMarketSentiment(analysis) {
+    const sentimentDiv = document.createElement("div");
+    sentimentDiv.className = "crypto-analysis-section";
+    
+    const bullishPercentage = ((analysis.bullishCount / this.prices.length) * 100).toFixed(1);
+    const bearishPercentage = ((analysis.bearishCount / this.prices.length) * 100).toFixed(1);
+    
+    sentimentDiv.innerHTML = `
+      <h3>📈 Market Sentiment Analysis</h3>
+      <div class="crypto-sentiment-grid">
+        <div class="crypto-sentiment-card bullish">
+          <div class="sentiment-icon">📈</div>
+          <div class="sentiment-data">
+            <div class="sentiment-count">${analysis.bullishCount}</div>
+            <div class="sentiment-label">Bullish Coins</div>
+            <div class="sentiment-percentage">${bullishPercentage}%</div>
+          </div>
+        </div>
+        <div class="crypto-sentiment-card bearish">
+          <div class="sentiment-icon">📉</div>
+          <div class="sentiment-data">
+            <div class="sentiment-count">${analysis.bearishCount}</div>
+            <div class="sentiment-label">Bearish Coins</div>
+            <div class="sentiment-percentage">${bearishPercentage}%</div>
+          </div>
+        </div>
+        <div class="crypto-sentiment-card neutral">
+          <div class="sentiment-icon">⚖️</div>
+          <div class="sentiment-data">
+            <div class="sentiment-count">${this.prices.length - analysis.bullishCount - analysis.bearishCount}</div>
+            <div class="sentiment-label">Neutral Coins</div>
+            <div class="sentiment-percentage">${(100 - parseFloat(bullishPercentage) - parseFloat(bearishPercentage)).toFixed(1)}%</div>
+          </div>
+        </div>
+      </div>
+      <div class="crypto-sentiment-bar">
+        <div class="sentiment-bar-fill bullish" style="width: ${bullishPercentage}%"></div>
+        <div class="sentiment-bar-fill bearish" style="width: ${bearishPercentage}%"></div>
+      </div>
+    `;
+    return sentimentDiv;
+  }
+
+  /**
+   * Render price range distribution analysis
+   */
+  renderPriceRangeAnalysis(priceAnalysis) {
+    const rangeDiv = document.createElement("div");
+    rangeDiv.className = "crypto-analysis-section";
+    
+    const currencySymbol = this.getCurrencySymbol();
+    
+    rangeDiv.innerHTML = `
+      <h3>💰 Price Range Distribution</h3>
+      <div class="crypto-price-range-grid">
+        <div class="price-range-item">
+          <div class="range-label">Under ${currencySymbol}1</div>
+          <div class="range-count">${priceAnalysis.priceRanges.under1}</div>
+          <div class="range-bar">
+            <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.under1 / this.prices.length) * 100}%"></div>
+          </div>
+        </div>
+        <div class="price-range-item">
+          <div class="range-label">${currencySymbol}1 - ${currencySymbol}10</div>
+          <div class="range-count">${priceAnalysis.priceRanges.range1to10}</div>
+          <div class="range-bar">
+            <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.range1to10 / this.prices.length) * 100}%"></div>
+          </div>
+        </div>
+        <div class="price-range-item">
+          <div class="range-label">${currencySymbol}10 - ${currencySymbol}100</div>
+          <div class="range-count">${priceAnalysis.priceRanges.range10to100}</div>
+          <div class="range-bar">
+            <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.range10to100 / this.prices.length) * 100}%"></div>
+          </div>
+        </div>
+        <div class="price-range-item">
+          <div class="range-label">${currencySymbol}100 - ${currencySymbol}1K</div>
+          <div class="range-count">${priceAnalysis.priceRanges.range100to1000}</div>
+          <div class="range-bar">
+            <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.range100to1000 / this.prices.length) * 100}%"></div>
+          </div>
+        </div>
+        <div class="price-range-item">
+          <div class="range-label">Over ${currencySymbol}1K</div>
+          <div class="range-count">${priceAnalysis.priceRanges.over1000}</div>
+          <div class="range-bar">
+            <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.over1000 / this.prices.length) * 100}%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="crypto-price-stats">
+        <div class="price-stat">
+          <span class="stat-label">Highest:</span>
+          <span class="stat-value">${this.formatPrice(priceAnalysis.highestPrice, this.config.currency)}</span>
+        </div>
+        <div class="price-stat">
+          <span class="stat-label">Lowest:</span>
+          <span class="stat-value">${this.formatPrice(priceAnalysis.lowestPrice, this.config.currency)}</span>
+        </div>
+        <div class="price-stat">
+          <span class="stat-label">Average:</span>
+          <span class="stat-value">${this.formatPrice(priceAnalysis.averagePrice, this.config.currency)}</span>
+        </div>
+      </div>
+    `;
+    return rangeDiv;
+  }
+
+  /**
+   * Render market cap analysis
+   */
+  renderMarketCapAnalysis() {
+    const marketCapDiv = document.createElement("div");
+    marketCapDiv.className = "crypto-analysis-section";
+    
+    // Calculate market cap distribution
+    const totalMarketCap = this.prices.reduce((sum, coin) => sum + (coin.market_cap || 0), 0);
+    const top5MarketCap = this.prices.slice(0, 5).reduce((sum, coin) => sum + (coin.market_cap || 0), 0);
+    const top10MarketCap = this.prices.slice(0, 10).reduce((sum, coin) => sum + (coin.market_cap || 0), 0);
+    
+    const dominanceData = this.prices.slice(0, 5).map(coin => ({
+      name: coin.symbol.toUpperCase(),
+      marketCap: coin.market_cap || 0,
+      dominance: ((coin.market_cap || 0) / totalMarketCap * 100).toFixed(2)
+    }));
+
+    const dominanceHtml = dominanceData.map((coin, index) => `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${coin.name}</td>
+        <td>${this.formatMarketCap(coin.marketCap, this.config.currency)}</td>
+        <td>${coin.dominance}%</td>
+        <td>
+          <div class="dominance-bar">
+            <div class="dominance-fill" style="width: ${coin.dominance}%"></div>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+
+    marketCapDiv.innerHTML = `
+      <h3>🏆 Market Cap Analysis</h3>
+      <div class="crypto-marketcap-overview">
+        <div class="marketcap-stat">
+          <div class="stat-label">Total Market Cap</div>
+          <div class="stat-value">${this.formatMarketCap(totalMarketCap, this.config.currency)}</div>
+        </div>
+        <div class="marketcap-stat">
+          <div class="stat-label">Top 5 Dominance</div>
+          <div class="stat-value">${((top5MarketCap / totalMarketCap) * 100).toFixed(1)}%</div>
+        </div>
+        <div class="marketcap-stat">
+          <div class="stat-label">Top 10 Dominance</div>
+          <div class="stat-value">${((top10MarketCap / totalMarketCap) * 100).toFixed(1)}%</div>
+        </div>
+      </div>
+      <table class="crypto-dominance-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Coin</th>
+            <th>Market Cap</th>
+            <th>Dominance</th>
+            <th>Visual</th>
+          </tr>
+        </thead>
+        <tbody>${dominanceHtml}</tbody>
+      </table>
+    `;
+    return marketCapDiv;
+  }
+
+  /**
+   * Get currency symbol
+   */
+  getCurrencySymbol() {
+    const symbols = {
+      usd: "$",
+      eur: "€",
+      gbp: "£",
+      jpy: "¥"
+    };
+    return symbols[this.config.currency] || "$";
+  }
+
+  /**
+   * Add analysis styles
+   */
+  addAnalysisStyles() {
+    if (!document.getElementById("crypto-analysis-styles")) {
+      const style = document.createElement("style");
+      style.id = "crypto-analysis-styles";
+      style.textContent = `
+        .crypto-analysis-section {
+          margin-bottom: 30px;
+          background: #2a2b41;
+          border-radius: 12px;
+          padding: 20px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .crypto-analysis-section h3 {
+          margin: 0 0 20px 0;
+          color: whitesmoke;
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        /* Market Overview Styles */
+        .crypto-overview-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 15px;
+        }
+
+        .crypto-stat-card {
+          background:rgba(30, 136, 229, 0.48);
+          padding: 15px;
+          border-radius: 8px;
+          text-align: center;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+          color: whitesmoke;
+
+        }
+
+        .stat-label {
+          font-size: 12px;
+          color: whitesmoke;
+          margin-bottom: 5px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+          font-size: 18px;
+          font-weight: bold;
+          color: whitesmoke;
+
+        }
+
+        .sentiment-very-bullish { color: #27ae60; }
+        .sentiment-bullish { color: #2ecc71; }
+        .sentiment-neutral { color: #95a5a6; }
+        .sentiment-bearish { color: #e74c3c; }
+        .sentiment-very-bearish { color: #c0392b; }
+
+        /* Performers Styles */
+        .crypto-performers-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+        }
+
+        .crypto-performers-table h4 {
+          margin: 0 0 10px 0;
+          color: whitesmoke;
+          font-size: 14px;
+        }
+
+        .crypto-mini-table {
+          width: 100%;
+          border-collapse: collapse;
+          background: whitesmoke;
+          border-radius: 6px;
+          overflow: hidden;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .crypto-mini-table th {
+          background:rgba(30, 136, 229, 0.88);
+          color: white;
+          padding: 8px;
+          font-size: 12px;
+          text-align: left;
+        }
+
+        .crypto-mini-table td {
+          padding: 8px;
+          border-bottom: 0px solid #1e88e5;
+          font-size: 12px;
+          color: #333;
+        }
+
+        .crypto-mini-table .crypto-name {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+
+        .crypto-mini-table img {
+          border-radius: 50%;
+        }
+
+        /* Sentiment Styles */
+        .crypto-sentiment-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 15px;
+          margin-bottom: 20px;
+        }
+
+        .crypto-sentiment-card {
+          background:rgba(30, 136, 229, 0.48);
+          padding: 15px;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .sentiment-icon {
+          font-size: 24px;
+        }
+
+        .sentiment-count {
+          font-size: 20px;
+          font-weight: bold;
+          color: whitesmoke;
+        }
+
+        .sentiment-label {
+          font-size: 12px;
+          color: whitesmoke;
+          margin: 2px 0;
+        }
+
+        .sentiment-percentage {
+          font-size: 14px;
+          font-weight: 600;
+        }
+
+        .crypto-sentiment-card.bullish .sentiment-percentage { color: #27ae60; }
+        .crypto-sentiment-card.bearish .sentiment-percentage { color: #e74c3c; }
+        .crypto-sentiment-card.neutral .sentiment-percentage { color: #95a5a6; }
+
+        .crypto-sentiment-bar {
+          height: 8px;
+          background: #ecf0f1;
+          border-radius: 4px;
+          overflow: hidden;
+          display: flex;
+        }
+
+        .sentiment-bar-fill.bullish { background: #27ae60; }
+        .sentiment-bar-fill.bearish { background: #e74c3c; }
+
+        /* Price Range Styles */
+        .crypto-price-range-grid {
+          display: grid;
+          gap: 10px;
+          margin-bottom: 20px;
+        }
+
+        .price-range-item {
+          background: #2a2b41;
+          padding: 12px;
+          border-radius: 6px;
+          display: grid;
+          grid-template-columns: 1fr auto 2fr;
+          align-items: center;
+          gap: 10px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .range-label {
+          font-size: 13px;
+          color: whitesmoke;
+          font-weight: 500;
+        }
+
+        .range-count {
+          font-size: 14px;
+          font-weight: bold;
+          color: #3498db;
+          min-width: 30px;
+          text-align: center;
+        }
+
+        .range-bar {
+          height: 6px;
+          background: gray;
+          border-radius: 0px;
+          overflow: hidden;
+        }
+
+        .range-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #2a2b41, #2980b9);
+          transition: width 0.3s ease;
+        }
+
+        .crypto-price-stats {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 15px;
+          background: #2a2b41;
+          padding: 15px;
+          border-radius: 6px;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .price-stat {
+          text-align: center;
+        }
+
+        .price-stat .stat-label {
+          display: block;
+          font-size: 11px;
+          color: whitesmoke;
+          margin-bottom: 5px;
+          text-transform: uppercase;
+        }
+
+        .price-stat .stat-value {
+          font-size: 14px;
+          font-weight: bold;
+          color: #1e88e5;
+        }
+
+        /* Market Cap Analysis Styles */
+        .crypto-marketcap-overview {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 15px;
+          margin-bottom: 20px;
+        }
+
+        .marketcap-stat {
+          background: #2a2b41;
+          padding: 15px;
+          border-radius: 8px;
+          text-align: center;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .crypto-dominance-table {
+          width: 100%;
+          border-collapse: collapse;
+          background: #2a2b41;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .crypto-dominance-table th {
+          background:rgba(30, 136, 229, 0.88);
+          color: white;
+          padding: 12px;
+          font-size: 13px;
+          text-align: left;
+        }
+
+        .crypto-dominance-table td {
+          padding: 12px;
+          border-bottom: 1px solid #ecf0f1;
+          font-size: 13px;
+        }
+
+        .dominance-bar {
+          height: 6px;
+          background: gray;
+          border-radius: 3px;
+          overflow: hidden;
+          min-width: 100px;
+        }
+
+        .dominance-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #2a2b41, #1e88e5);
+          transition: width 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .crypto-performers-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .crypto-sentiment-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .crypto-overview-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          
+          .crypto-marketcap-overview {
+            grid-template-columns: 1fr;
+          }
+          
+          .price-range-item {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 5px;
+          }
+          
+          .crypto-price-stats {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        /* Animation for loading */
+        .crypto-analysis-section.loading {
+          opacity: 0.7;
+          pointer-events: none;
+        }
+
+        .crypto-analysis-section.loading::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(255,255,255,0.8);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
+  /**
    * Initialize the crypto price tracker
    */
   async init() {
@@ -178,19 +881,22 @@ class CryptoAPI {
         document.body.appendChild(container);
       }
 
+      // Add analysis styles
+      this.addAnalysisStyles();
+
       // Try to load from cache first for instant display
       const cachedData = this.loadFromCache();
       if (cachedData && cachedData.length > 0) {
         this.prices = cachedData;
         this.isUsingCache = true;
         this.sortPrices();
-        this.renderPrices();
+        this.renderAnalysisAndPrices();
         //console.log('Displaying cached data while fetching fresh data');
       }
 
       // Fetch fresh data
       await this.fetchPrices();
-      this.renderPrices();
+      this.renderAnalysisAndPrices();
 
       // Set up auto-refresh
       this.startAutoRefresh();
@@ -350,7 +1056,50 @@ class CryptoAPI {
     }
 
     this.sortPrices();
+    this.renderAnalysisAndPrices();
+  }
+
+  /**
+   * Render both analysis tables and price table
+   */
+  renderAnalysisAndPrices() {
+    if (this.prices && this.prices.length > 0) {
+      // Calculate analysis data
+      const marketAnalysis = this.calculateMarketAnalysis();
+      const priceAnalysis = this.calculatePriceRangeAnalysis();
+
+      // Render analysis tables first
+      this.renderAnalysisTables(marketAnalysis, priceAnalysis);
+    }
+    
+    // Then render the main price table
     this.renderPrices();
+  }
+
+  /**
+   * Render all analysis tables
+   */
+  renderAnalysisTables(marketAnalysis, priceAnalysis) {
+    const container = document.querySelector(this.config.containerSelector);
+    if (!container) return;
+
+    // Remove existing analysis sections
+    const existingAnalysis = container.querySelectorAll('.crypto-analysis-section');
+    existingAnalysis.forEach(section => section.remove());
+
+    // Create analysis container
+    const analysisContainer = document.createElement('div');
+    analysisContainer.className = 'crypto-analysis-container';
+
+    // Add all analysis sections
+    analysisContainer.appendChild(this.renderMarketOverview(marketAnalysis));
+    analysisContainer.appendChild(this.renderTopPerformers(marketAnalysis));
+    analysisContainer.appendChild(this.renderMarketSentiment(marketAnalysis));
+    analysisContainer.appendChild(this.renderPriceRangeAnalysis(priceAnalysis));
+    analysisContainer.appendChild(this.renderMarketCapAnalysis());
+
+    // Insert at the beginning of the container
+    container.insertBefore(analysisContainer, container.firstChild);
   }
 
   /**
@@ -364,8 +1113,9 @@ class CryptoAPI {
       return;
     }
 
-    // Clear previous content
-    container.innerHTML = "";
+    // Remove existing price content (but keep analysis)
+    const existingPriceContent = container.querySelectorAll('.crypto-header, .crypto-table, .crypto-toggle-container, .crypto-footer');
+    existingPriceContent.forEach(element => element.remove());
 
     // Create header
     const header = document.createElement("div");
@@ -541,6 +1291,7 @@ class CryptoAPI {
     footer.innerHTML = `
             <span>Last updated: ${new Date().toLocaleTimeString()}</span>
             <span>Data refreshed automatically every 2 minutes</span>
+            ${this.isUsingCache ? '<span style="color: #f39c12;">📦 Showing cached data</span>' : ''}
         `;
     container.appendChild(footer);
 
@@ -774,7 +1525,7 @@ class CryptoAPI {
     //console.error('Crypto API Error:', error);
     this.hasError = true;
     this.errorMessage = error.message || "Failed to fetch cryptocurrency data";
-    this.renderPrices();
+    this.renderAnalysisAndPrices();
   }
 
   /**
@@ -803,7 +1554,7 @@ class CryptoAPI {
     // Set up new interval
     this.intervalId = setInterval(async () => {
       await this.fetchPrices();
-      this.renderPrices();
+      this.renderAnalysisAndPrices();
     }, this.config.updateInterval);
   }
 
@@ -822,7 +1573,7 @@ class CryptoAPI {
    */
   toggleItemsDisplay() {
     this.showingAll = !this.showingAll;
-    this.renderPrices();
+    this.renderAnalysisAndPrices();
   }
 
   /**
@@ -832,12 +1583,12 @@ class CryptoAPI {
     document.addEventListener("click", (event) => {
       // Refresh button
       if (event.target.id === "crypto-refresh-btn") {
-        this.fetchPrices().then(() => this.renderPrices());
+        this.fetchPrices().then(() => this.renderAnalysisAndPrices());
       }
 
       // Retry button
       if (event.target.id === "crypto-retry-btn") {
-        this.fetchPrices().then(() => this.renderPrices());
+        this.fetchPrices().then(() => this.renderAnalysisAndPrices());
       }
 
       // Show More button
@@ -867,7 +1618,7 @@ class CryptoAPI {
 
         // Apply sorting and update UI
         this.sortPrices();
-        this.renderPrices();
+        this.renderAnalysisAndPrices();
 
         // Close dropdown
         const dropdown = event.target.closest(".crypto-sort-dropdown");
@@ -887,7 +1638,7 @@ class CryptoAPI {
         this.config.currency = event.target.value;
         // Clear cache when currency changes since cached data won't match
         this.clearCache();
-        this.fetchPrices().then(() => this.renderPrices());
+        this.fetchPrices().then(() => this.renderAnalysisAndPrices());
       }
     });
   }
@@ -923,7 +1674,7 @@ class CryptoAPI {
   async forceRefresh() {
     this.isUsingCache = false;
     await this.fetchPrices();
-    this.renderPrices();
+    this.renderAnalysisAndPrices();
   }
 
   /**
@@ -1054,3 +1805,5 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
+
+

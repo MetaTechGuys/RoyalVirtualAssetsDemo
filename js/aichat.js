@@ -3,248 +3,171 @@ class RVAAIChat {
     this.isOpen = false;
     this.cryptoApi = null; // Reference to the crypto API
     this.conversationHistory = [];
-    this.userPreferences = JSON.parse(localStorage.getItem('rva-chat-preferences') || '{}');
-    
+    this.userPreferences = JSON.parse(
+      localStorage.getItem("rva-chat-preferences") || "{}"
+    );
+
     this.aiCharacter = {
       name: "Sarah",
       age: 24,
       expertise: "Blockchain & DeFi",
       personality: "friendly, knowledgeable, professional",
       experience: "4 years in DeFi",
-      specialties: ["RVA ecosystem", "cryptocurrency", "smart contracts", "tokenization", "market analysis","teaching crypto"]
+      specialties: [
+        "RVA ecosystem",
+        "cryptocurrency",
+        "smart contracts",
+        "tokenization",
+        "market analysis",
+        "teaching crypto",
+      ],
     };
-    
+
     this.knowledgeBase = {
       rva: {
         keywords: ["rva", "roial virtual assets", "ecosystem", "platform"],
         responses: [
           "RVA (Roial Virtual Assets) is a next-generation blockchain ecosystem with four core pillars: ICO/IDO Launchpad, Secure Wallet, Smart Chain, and Smart Exchange. We're building the future of decentralized finance!",
           "Our RVA ecosystem is designed to be secure, scalable, and user-friendly. We integrate all essential DeFi tools into one seamless platform.",
-          "RVA stands for transparency, efficiency, and security in blockchain technology. We're committed to empowering individuals and institutions in the DeFi space."
-        ]
+          "RVA stands for transparency, efficiency, and security in blockchain technology. We're committed to empowering individuals and institutions in the DeFi space.",
+        ],
       },
       wallet: {
         keywords: ["wallet", "secure wallet", "storage"],
         responses: [
           "Our RVA Secure Wallet provides top-tier security for your digital assets. It supports multiple cryptocurrencies and integrates seamlessly with our ecosystem.",
-          "The RVA wallet features advanced security protocols, multi-signature support, and user-friendly interface for managing your crypto portfolio."
-        ]
+          "The RVA wallet features advanced security protocols, multi-signature support, and user-friendly interface for managing your crypto portfolio.",
+        ],
       },
       launchpad: {
         keywords: ["launchpad", "ico", "ido", "token launch"],
         responses: [
           "Our ICO/IDO Launchpad helps innovative projects raise funds and launch their tokens securely. We provide comprehensive support throughout the launch process.",
-          "The RVA Launchpad is designed for both project creators and investors, offering a secure and transparent platform for token launches."
-        ]
+          "The RVA Launchpad is designed for both project creators and investors, offering a secure and transparent platform for token launches.",
+        ],
       },
       exchange: {
         keywords: ["exchange", "trading", "swap", "dex"],
         responses: [
           "Our Smart Exchange offers decentralized trading with low fees, high liquidity, and advanced trading features. Trade with confidence on RVA!",
-          "The RVA Smart Exchange provides a seamless trading experience with institutional-grade security and retail-friendly interface."
-        ]
+          "The RVA Smart Exchange provides a seamless trading experience with institutional-grade security and retail-friendly interface.",
+        ],
       },
       blockchain: {
         keywords: ["blockchain", "smart chain", "technology"],
         responses: [
           "Our Smart Chain is built for scalability and efficiency, supporting high-throughput transactions while maintaining security and decentralization.",
-          "RVA's blockchain technology focuses on interoperability, allowing seamless integration with other major blockchain networks."
-        ]
+          "RVA's blockchain technology focuses on interoperability, allowing seamless integration with other major blockchain networks.",
+        ],
       },
       staking: {
-    keywords: ["staking", "stake", "rewards", "passive income"],
-    responses: [
-      "RVA staking allows you to earn passive rewards by locking your tokens. Our staking pools offer competitive APY rates with flexible lock periods.",
-      "Stake your RVA tokens to participate in network security and earn rewards. Choose from various staking pools with different risk-reward profiles."
-    ]
-  },
-  
-  governance: {
-    keywords: ["governance", "voting", "proposal", "dao"],
-    responses: [
-      "RVA governance empowers token holders to vote on important protocol decisions. Your voting power is proportional to your token holdings.",
-      "Participate in RVA's decentralized governance by submitting proposals and voting on community decisions that shape our ecosystem's future."
-    ]
-  },
-  
-  nft: {
-    keywords: ["nft", "non-fungible", "marketplace", "collectibles"],
-    responses: [
-      "Our RVA NFT marketplace supports creating, buying, and selling unique digital assets. Low fees and high security make it perfect for creators and collectors.",
-      "The RVA NFT ecosystem includes marketplace, minting tools, and royalty management for creators and collectors alike."
-    ]
-  },
-  
-  defi: {
-    keywords: ["defi", "decentralized finance", "lending", "borrowing"],
-    responses: [
-      "RVA's DeFi suite includes lending, borrowing, yield farming, and liquidity provision. All with institutional-grade security and user-friendly interfaces.",
-      "Experience the full power of DeFi with RVA's integrated protocols. Earn yield, provide liquidity, and access decentralized financial services."
-    ]
-  }
+        keywords: ["staking", "stake", "rewards", "passive income"],
+        responses: [
+          "RVA staking allows you to earn passive rewards by locking your tokens. Our staking pools offer competitive APY rates with flexible lock periods.",
+          "Stake your RVA tokens to participate in network security and earn rewards. Choose from various staking pools with different risk-reward profiles.",
+        ],
+      },
+
+      governance: {
+        keywords: ["governance", "voting", "proposal", "dao"],
+        responses: [
+          "RVA governance empowers token holders to vote on important protocol decisions. Your voting power is proportional to your token holdings.",
+          "Participate in RVA's decentralized governance by submitting proposals and voting on community decisions that shape our ecosystem's future.",
+        ],
+      },
+
+      nft: {
+        keywords: ["nft", "non-fungible", "marketplace", "collectibles"],
+        responses: [
+          "Our RVA NFT marketplace supports creating, buying, and selling unique digital assets. Low fees and high security make it perfect for creators and collectors.",
+          "The RVA NFT ecosystem includes marketplace, minting tools, and royalty management for creators and collectors alike.",
+        ],
+      },
+
+      defi: {
+        keywords: ["defi", "decentralized finance", "lending", "borrowing"],
+        responses: [
+          "RVA's DeFi suite includes lending, borrowing, yield farming, and liquidity provision. All with institutional-grade security and user-friendly interfaces.",
+          "Experience the full power of DeFi with RVA's integrated protocols. Earn yield, provide liquidity, and access decentralized financial services.",
+        ],
+      },
     };
-    
+
     this.init();
   }
-  
+
   init() {
     this.bindEvents();
     this.initCryptoAPI();
     this.showWelcomeMessage();
     this.setupEnhancedFeatures();
   }
-  
+
   setupEnhancedFeatures() {
     this.setupUserPreferences();
-    this.setupKeyboardShortcuts();
   }
-  
+
   // Initialize connection to crypto API
   initCryptoAPI() {
     const checkCryptoAPI = () => {
       if (window.cryptoApi) {
         this.cryptoApi = window.cryptoApi;
-        console.log('AI Chat connected to Crypto API');
+        console.log("AI Chat connected to Crypto API");
       } else {
         setTimeout(checkCryptoAPI, 500);
       }
     };
     checkCryptoAPI();
   }
-  
+
   bindEvents() {
-    const toggleBtn = document.getElementById('ai-chat-toggle');
-    const closeBtn = document.getElementById('ai-chat-close');
-    const sendBtn = document.getElementById('ai-chat-send');
-    const input = document.getElementById('ai-chat-input');
-    
-    if (toggleBtn) toggleBtn.addEventListener('click', () => this.toggleChat());
-    if (closeBtn) closeBtn.addEventListener('click', () => this.closeChat());
-    if (sendBtn) sendBtn.addEventListener('click', () => this.sendMessage());
-    
+    const toggleBtn = document.getElementById("ai-chat-toggle");
+    const closeBtn = document.getElementById("ai-chat-close");
+    const sendBtn = document.getElementById("ai-chat-send");
+    const input = document.getElementById("ai-chat-input");
+
+    if (toggleBtn) toggleBtn.addEventListener("click", () => this.toggleChat());
+    if (closeBtn) closeBtn.addEventListener("click", () => this.closeChat());
+    if (sendBtn) sendBtn.addEventListener("click", () => this.sendMessage());
+
     if (input) {
-      input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
+      input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
           this.sendMessage();
         }
       });
     }
-    
+
     // Hide notification when chat is opened
     if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => {
-        const notification = document.querySelector('.ai-chat-notification');
+      toggleBtn.addEventListener("click", () => {
+        const notification = document.querySelector(".ai-chat-notification");
         if (notification) {
-          notification.style.display = 'none';
+          notification.style.display = "none";
         }
       });
     }
   }
-  
+
   // User preferences
   setupUserPreferences() {
     this.userPreferences = {
-      currency: 'usd',
-      theme: 'dark',
+      currency: "usd",
+      theme: "dark",
       notifications: true,
       autoRefresh: true,
-      ...this.userPreferences
+      ...this.userPreferences,
     };
     this.saveUserPreferences();
   }
-  
+
   saveUserPreferences() {
-    localStorage.setItem('rva-chat-preferences', JSON.stringify(this.userPreferences));
+    localStorage.setItem(
+      "rva-chat-preferences",
+      JSON.stringify(this.userPreferences)
+    );
   }
-  
 
-  // Add these methods to the RVAAIChat class
-
-// Method to handle preference changes
-updatePreference(key, value) {
-  this.userPreferences[key] = value;
-  this.saveUserPreferences();
-  
-  // Apply changes immediately
-  switch(key) {
-    case 'theme':
-      this.applyTheme(value);
-      break;
-    case 'currency':
-      this.updateCurrencyDisplay(value);
-      break;
-    case 'notifications':
-      this.toggleNotifications(value);
-      break;
-  }
-}
-
-// Method to apply theme changes
-applyTheme(theme) {
-  const chatContainer = document.getElementById('ai-chat-container');
-  if (chatContainer) {
-    chatContainer.className = chatContainer.className.replace(/theme-\w+/, '');
-    chatContainer.classList.add(`theme-${theme}`);
-  }
-}
-
-// Method to get system information for troubleshooting
-getSystemInfo() {
-  return {
-    browser: navigator.userAgent,
-    language: navigator.language,
-    platform: navigator.platform,
-    cookieEnabled: navigator.cookieEnabled,
-    onLine: navigator.onLine,
-    memory: RVAAIChatPerformance.getMemoryUsage(),
-    timestamp: new Date().toISOString()
-  };
-}
-
-// Method to generate system report
-generateSystemReport() {
-  const info = this.getSystemInfo();
-  return `
-    <strong>🔧 System Information:</strong><br><br>
-    
-    <strong>Browser:</strong> ${info.browser.split(' ')[0]}<br>
-    <strong>Language:</strong> ${info.language}<br>
-    <strong>Platform:</strong> ${info.platform}<br>
-    <strong>Online:</strong> ${info.onLine ? 'Yes' : 'No'}<br>
-    <strong>Cookies:</strong> ${info.cookieEnabled ? 'Enabled' : 'Disabled'}<br>
-    <strong>Memory:</strong> ${info.memory?.used || 'N/A'}MB used<br>
-    <strong>Timestamp:</strong> ${new Date(info.timestamp).toLocaleString()}<br><br>
-    
-    <em>This information helps with troubleshooting issues.</em>
-  `;
-}
-
-
-
-  // Keyboard shortcuts
-  setupKeyboardShortcuts() {
-    document.addEventListener('keydown', (e) => {
-      if (!this.isOpen) return;
-      
-      // Ctrl/Cmd + K to clear chat
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        this.clearChat();
-      }
-      
-      // Escape to close chat
-      if (e.key === 'Escape') {
-        this.closeChat();
-      }
-      
-      // Ctrl/Cmd + Enter to send message
-      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-        e.preventDefault();
-        this.sendMessage();
-      }
-    });
-  }
-  
   toggleChat() {
     if (this.isOpen) {
       this.closeChat();
@@ -252,65 +175,66 @@ generateSystemReport() {
       this.openChat();
     }
   }
-  
+
   openChat() {
-    const container = document.getElementById('ai-chat-container');
+    const container = document.getElementById("ai-chat-container");
     if (container) {
-      container.classList.remove('ai-chat-hidden');
+      container.classList.remove("ai-chat-hidden");
       this.isOpen = true;
-      
+
       // Focus on input
       setTimeout(() => {
-        const input = document.getElementById('ai-chat-input');
+        const input = document.getElementById("ai-chat-input");
         if (input) input.focus();
       }, 300);
     }
   }
-  
+
   closeChat() {
-    const container = document.getElementById('ai-chat-container');
+    const container = document.getElementById("ai-chat-container");
     if (container) {
-      container.classList.add('ai-chat-hidden');
+      container.classList.add("ai-chat-hidden");
       this.isOpen = false;
     }
   }
-  
+
   showWelcomeMessage() {
     setTimeout(() => {
       const welcomeMessages = [
         "💡 Ask me about our tokenization platform!",
         "🚀 Want to know about our upcoming features?",
         "💰 Curious about DeFi opportunities with RVA?",
-        "📊 I can also provide real-time crypto prices and market analysis!"
+        "📊 I can also provide real-time crypto prices and market analysis!",
       ];
-      
-      const randomMessage = welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
+
+      const randomMessage =
+        welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
       this.addAIMessage(randomMessage);
     }, 3000);
   }
-  
+
   sendMessage() {
-    const input = document.getElementById('ai-chat-input');
+    const input = document.getElementById("ai-chat-input");
     if (!input) return;
-    
+
     const message = input.value.trim();
-    
+
     if (!message) return;
-    
+
     // Track conversation
     this.conversationHistory.push({
-      type: 'user',
+      type: "user",
       message: message,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
-    
+
     // Add user message
     this.addUserMessage(message);
-    input.value = '';
-    
+    input.value = "";
+
     // Show typing indicator
     this.showTypingIndicator();
-    
+
     // Generate AI response
     setTimeout(async () => {
       this.hideTypingIndicator();
@@ -318,16 +242,19 @@ generateSystemReport() {
       this.addAIMessage(response);
     }, 1000 + Math.random() * 2000);
   }
-  
+
   addUserMessage(message) {
-    const messagesContainer = document.getElementById('ai-chat-messages');
+    const messagesContainer = document.getElementById("ai-chat-messages");
     if (!messagesContainer) return;
-    
-    const messageElement = document.createElement('div');
-    messageElement.className = 'user-message';
-    
-    const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-    
+
+    const messageElement = document.createElement("div");
+    messageElement.className = "user-message";
+
+    const currentTime = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
     messageElement.innerHTML = `
       <div class="user-message-avatar">U</div>
       <div class="user-message-content">
@@ -335,27 +262,30 @@ generateSystemReport() {
         <span class="user-message-time">${currentTime}</span>
       </div>
     `;
-    
+
     messagesContainer.appendChild(messageElement);
     this.scrollToBottom();
   }
-  
+
   addAIMessage(message) {
     // Track conversation
     this.conversationHistory.push({
-      type: 'ai',
+      type: "ai",
       message: message,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
-    
-    const messagesContainer = document.getElementById('ai-chat-messages');
+
+    const messagesContainer = document.getElementById("ai-chat-messages");
     if (!messagesContainer) return;
-    
-    const messageElement = document.createElement('div');
-    messageElement.className = 'ai-message';
-    
-    const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-    
+
+    const messageElement = document.createElement("div");
+    messageElement.className = "ai-message";
+
+    const currentTime = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
     messageElement.innerHTML = `
       <div class="ai-message-avatar">
         <img src="./media/img/ai-avatar.webp" alt="${this.aiCharacter.name}" />
@@ -365,21 +295,21 @@ generateSystemReport() {
         <span class="ai-message-time">${currentTime}</span>
       </div>
     `;
-    
+
     messagesContainer.appendChild(messageElement);
     this.scrollToBottom();
   }
-  
+
   showTypingIndicator() {
-    const indicator = document.getElementById('ai-typing-indicator');
-    if (indicator) indicator.style.display = 'flex';
+    const indicator = document.getElementById("ai-typing-indicator");
+    if (indicator) indicator.style.display = "flex";
   }
-  
+
   hideTypingIndicator() {
-    const indicator = document.getElementById('ai-typing-indicator');
-    if (indicator) indicator.style.display = 'none';
+    const indicator = document.getElementById("ai-typing-indicator");
+    if (indicator) indicator.style.display = "none";
   }
-  
+
   // Get crypto data from the API
   getCryptoData() {
     if (!this.cryptoApi || !this.cryptoApi.prices) {
@@ -387,41 +317,42 @@ generateSystemReport() {
     }
     return this.cryptoApi.prices;
   }
-  
+
   // Find specific cryptocurrency by name or symbol
   findCrypto(query) {
     const cryptoData = this.getCryptoData();
     if (!cryptoData) return null;
-    
+
     const searchTerm = query.toLowerCase();
-    return cryptoData.find(coin => 
-      coin.name.toLowerCase().includes(searchTerm) ||
-      coin.symbol.toLowerCase().includes(searchTerm) ||
-      coin.id.toLowerCase().includes(searchTerm)
+    return cryptoData.find(
+      (coin) =>
+        coin.name.toLowerCase().includes(searchTerm) ||
+        coin.symbol.toLowerCase().includes(searchTerm) ||
+        coin.id.toLowerCase().includes(searchTerm)
     );
   }
-  
+
   // Get top cryptocurrencies
   getTopCryptos(count = 5) {
     const cryptoData = this.getCryptoData();
     if (!cryptoData) return null;
-    
+
     return cryptoData.slice(0, count);
   }
-  
+
   // Format price for display
-  formatPrice(price, currency = 'usd') {
+  formatPrice(price, currency = "usd") {
     if (price === null || price === undefined) return "N/A";
-    
+
     const currencySymbols = {
       usd: "$",
       eur: "€",
       gbp: "£",
       jpy: "¥",
     };
-    
+
     const symbol = currencySymbols[currency] || "$";
-    
+
     if (price < 0.01) {
       return `${symbol}${price.toFixed(6)}`;
     } else if (price < 1) {
@@ -434,20 +365,20 @@ generateSystemReport() {
       })}`;
     }
   }
-  
+
   // Format market cap
-  formatMarketCap(marketCap, currency = 'usd') {
+  formatMarketCap(marketCap, currency = "usd") {
     if (marketCap === null || marketCap === undefined) return "N/A";
-    
+
     const currencySymbols = {
       usd: "$",
-      eur: "€", 
+      eur: "€",
       gbp: "£",
       jpy: "¥",
     };
-    
+
     const symbol = currencySymbols[currency] || "$";
-    
+
     if (marketCap >= 1000000000) {
       return `${symbol}${(marketCap / 1000000000).toFixed(2)}B`;
     } else if (marketCap >= 1000000) {
@@ -458,120 +389,193 @@ generateSystemReport() {
       return `${symbol}${marketCap}`;
     }
   }
-  
+
   // Generate crypto price response
   generateCryptoPriceResponse(coinName) {
     const coin = this.findCrypto(coinName);
-    
+
     if (!coin) {
       return `I couldn't find information about "${coinName}". I can provide data for the top cryptocurrencies like Bitcoin, Ethereum, BNB, Solana, and many others. Try asking about a specific coin!`;
     }
-    
+
     const price = this.formatPrice(coin.current_price);
     const change24h = coin.price_change_percentage_24h?.toFixed(2) || "N/A";
     const marketCap = this.formatMarketCap(coin.market_cap);
     const changeEmoji = change24h >= 0 ? "📈" : "📉";
-    const changeColor = change24h >= 0 ? "positive" : "negative";
-     // Add some personality based on price movement
-  let commentary = '';
-  if (change24h > 10) {
-    commentary = "🚀 That's a rocket ship move! ";
-  } else if (change24h > 5) {
-    commentary = "📈 Nice green candle! ";
-  } else if (change24h < -10) {
-    commentary = "📉 Ouch, that's a red day! ";
-  } else if (change24h < -5) {
-    commentary = "🔻 Taking a breather... ";
-  } else {
-    commentary = "🎯 Steady as she goes! ";
-  }
+    const changeColor = change24h >= 0 ? "#28a745" : "#dc3545";
+    const coinLogo = coin.image || ""; // Get the coin logo URL
+
+    // Add some personality based on price movement
+    let commentary = "";
+    if (change24h > 8) {
+      commentary = "That's a rocket ship move! ";
+    } else if (change24h > 4) {
+      commentary = "Nice green candle! ";
+    } else if (change24h < -8) {
+      commentary = "Ouch, that's a red day! ";
+    } else if (change24h < -4) {
+      commentary = "Taking a breather... ";
+    } else {
+      commentary = "Steady as she goes! ";
+    }
+
     return `
-    ${commentary}<strong>${coinName} (${coin.symbol?.toUpperCase()})</strong><br><br>
+    <div style="display: flex; align-items: center; margin-bottom: 15px; color:whitesmoke; font-size:14px;">
+      ${
+        coinLogo
+          ? `<img src="${coinLogo}" alt="${coin.name}" style="width: 24px; height: 24px; margin-right: 10px; border-radius: 50%;">`
+          : ""
+      }
+      <div>
+        ${commentary}<strong style=" font-size:14px;">${coinName} (${coin.symbol?.toUpperCase()})</strong>
+      </div>
+    </div>
     
-    <strong>💰 Current Price:</strong> ${price}<br>
-    <strong>📊 24h Change:</strong> <span style="color: ${changeColor}">${change24h}% ${changeEmoji}</span><br>
-    <strong>💎 Market Cap:</strong> $${marketCap}<br>
+    <strong style=" font-size:14px;">💰 Current Price:</strong><span style="color: white; font-size:14px;">${price}</span><br>
+    <strong style=" font-size:14px;">📊 24h Change:</strong> <span style="color: ${changeColor}">${change24h}% ${changeEmoji}</span><br>
+    <strong style=" font-size:14px;">💎 Market Cap:</strong><span style="color: white; font-size:14px;"> ${marketCap}</span><br>
     
-    <em>Want to see more? Ask about "market analysis" or "top cryptocurrencies"! 📊</em>
+    <em style=" font-size:14px;">Want to see more? Ask about "market analysis" or "top cryptocurrencies"! 📊</em>
   `;
   }
-  
+
   // Generate top cryptos response
   generateTopCryptosResponse(count = 5) {
     const topCryptos = this.getTopCryptos(count);
-    
+
     if (!topCryptos) {
       return "I'm currently unable to fetch cryptocurrency data. Please try again in a moment!";
     }
-    
+
     let response = `<strong>🏆 Top ${count} Cryptocurrencies:</strong><br><br>`;
-    
+
+    // Create table structure
+    response += `
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+        <thead>
+          <tr style="background-color: #1e88e5; border-bottom: 2px solid #ddd;">
+            <th style="padding: 8px; text-align: left; border: 1px solid #ddd; color: #000 !important;">Rank</th>
+            <th style="padding: 8px; text-align: left; border: 1px solid #ddd; color: #000 !important;">Name</th>
+            <th style="padding: 8px; text-align: left; border: 1px solid #ddd; color: #000 !important;">Price</th>
+            <th style="padding: 8px; text-align: left; border: 1px solid #ddd; color: #000 !important;">24h Change</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
     topCryptos.forEach((coin, index) => {
       const price = this.formatPrice(coin.current_price);
       const change24h = coin.price_change_percentage_24h?.toFixed(2) || "N/A";
       const changeEmoji = change24h >= 0 ? "📈" : "📉";
-      
-      response += `<strong>${index + 1}. ${coin.name}</strong> - ${price} ${changeEmoji} ${change24h}%<br>`;
+      const changeColor = change24h >= 0 ? "#28a745" : "#dc3545";
+      const coinLogo = coin.image || "";
+
+      response += `
+        <tr style="border-bottom: 1px solid #ddd; color:whitesmoke;">
+          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">${
+            index + 1
+          }</td>
+          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
+            <div style="display: flex; align-items: center;">
+              ${
+                coinLogo
+                  ? `<img src="${coinLogo}" alt="${coin.name}" style="width: 24px; height: 24px; border-radius: 50%; margin-right: 8px;">`
+                  : ""
+              }
+              <span>${coin.name}</span>
+            </div>
+          </td>
+          <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${price}</td>
+          <td style="padding: 8px; border: 1px solid #ddd; text-align: right; color: ${changeColor};">
+            ${changeEmoji} ${change24h}%
+          </td>
+        </tr>
+      `;
     });
-    
-    response += `<br><em>Want detailed info about any of these? Just ask!</em>`;
+
+    response += `
+        </tbody>
+      </table>
+      <br><em style="font-size:14px;">Want detailed info about any of these? Just ask!</em>
+    `;
+
     return response;
   }
-  
+
   // Generate market analysis response
   generateMarketAnalysisResponse() {
     const cryptoData = this.getCryptoData();
-    
+
     if (!cryptoData || cryptoData.length === 0) {
-    return "I'm currently updating my market data! Please try again in a moment, or ask about specific cryptocurrencies. 🔄";
-  }
-    
-  const totalCoins = cryptoData.length;
-  const gainers = cryptoData.filter(coin => coin.price_change_percentage_24h > 0);
-  const losers = cryptoData.filter(coin => coin.price_change_percentage_24h < 0);
-  const stable = cryptoData.filter(coin => Math.abs(coin.price_change_percentage_24h) < 1);
-  
-  const avgChange = cryptoData.reduce((sum, coin) => sum + (coin.price_change_percentage_24h || 0), 0) / totalCoins;
-  
-  const btc = this.findCrypto('bitcoin');
-  const eth = this.findCrypto('ethereum');
-  
-  let marketSentiment = '';
-  let sentimentEmoji = '';
-  
-  if (avgChange > 3) {
-    marketSentiment = 'Very Bullish';
-    sentimentEmoji = '🚀';
-  } else if (avgChange > 1) {
-    marketSentiment = 'Bullish';
-    sentimentEmoji = '📈';
-  } else if (avgChange > -1) {
-    marketSentiment = 'Neutral';
-    sentimentEmoji = '➡️';
-  } else if (avgChange > -3) {
-    marketSentiment = 'Bearish';
-    sentimentEmoji = '📉';
-  } else {
-    marketSentiment = 'Very Bearish';
-    sentimentEmoji = '🔻';
-  }
+      return "I'm currently updating my market data! Please try again in a moment, or ask about specific cryptocurrencies. 🔄";
+    }
+
+    const totalCoins = cryptoData.length;
+    const gainers = cryptoData.filter(
+      (coin) => coin.price_change_percentage_24h > 0
+    );
+    const losers = cryptoData.filter(
+      (coin) => coin.price_change_percentage_24h < 0
+    );
+    const stable = cryptoData.filter(
+      (coin) => Math.abs(coin.price_change_percentage_24h) < 1
+    );
+
+    const avgChange =
+      cryptoData.reduce(
+        (sum, coin) => sum + (coin.price_change_percentage_24h || 0),
+        0
+      ) / totalCoins;
+
+    const btc = this.findCrypto("bitcoin");
+    const eth = this.findCrypto("ethereum");
+
+    let marketSentiment = "";
+    let sentimentEmoji = "";
+
+    if (avgChange > 3) {
+      marketSentiment = "Very Bullish";
+      sentimentEmoji = "🚀";
+    } else if (avgChange > 1) {
+      marketSentiment = "Bullish";
+      sentimentEmoji = "📈";
+    } else if (avgChange > -1) {
+      marketSentiment = "Neutral";
+      sentimentEmoji = "➡️";
+    } else if (avgChange > -3) {
+      marketSentiment = "Bearish";
+      sentimentEmoji = "📉";
+    } else {
+      marketSentiment = "Very Bearish";
+      sentimentEmoji = "🔻";
+    }
     // Calculate market statistics
-    const positiveChanges = cryptoData.filter(coin => coin.price_change_percentage_24h > 0).length;
-    const negativeChanges = cryptoData.filter(coin => coin.price_change_percentage_24h < 0).length;
+    const positiveChanges = cryptoData.filter(
+      (coin) => coin.price_change_percentage_24h > 0
+    ).length;
+    const negativeChanges = cryptoData.filter(
+      (coin) => coin.price_change_percentage_24h < 0
+    ).length;
     // const totalCoins = cryptoData.length;
-    
+
     // const marketSentiment = positiveChanges > negativeChanges ? "bullish 📈" : "bearish 📉";
-    const sentimentPercentage = ((positiveChanges / totalCoins) * 100).toFixed(1);
-    
+    const sentimentPercentage = ((positiveChanges / totalCoins) * 100).toFixed(
+      1
+    );
+
     // Find biggest gainers and losers
-    const biggestGainer = cryptoData.reduce((prev, current) => 
-      (prev.price_change_percentage_24h > current.price_change_percentage_24h) ? prev : current
+    const biggestGainer = cryptoData.reduce((prev, current) =>
+      prev.price_change_percentage_24h > current.price_change_percentage_24h
+        ? prev
+        : current
     );
-    
-    const biggestLoser = cryptoData.reduce((prev, current) => 
-      (prev.price_change_percentage_24h < current.price_change_percentage_24h) ? prev : current
+
+    const biggestLoser = cryptoData.reduce((prev, current) =>
+      prev.price_change_percentage_24h < current.price_change_percentage_24h
+        ? prev
+        : current
     );
-    
+
     return `
       <strong>📊 Market Analysis - ${new Date().toLocaleDateString()}</strong><br><br>
       
@@ -580,90 +584,111 @@ generateSystemReport() {
       <strong>Positive Movers:</strong> ${positiveChanges}/${totalCoins} (${sentimentPercentage}%)<br><br>
       
       <strong>🔢 Market Breakdown:</strong><br>
-    • 🟢 Gainers: ${gainers.length} coins (${((gainers.length/totalCoins)*100).toFixed(1)}%)<br>
-    • 🔴 Losers: ${losers.length} coins (${((losers.length/totalCoins)*100).toFixed(1)}%)<br>
-    • ⚪ Stable: ${stable.length} coins (${((stable.length/totalCoins)*100).toFixed(1)}%)<br><br>
+    • 🟢 Gainers: ${gainers.length} coins (${(
+      (gainers.length / totalCoins) *
+      100
+    ).toFixed(1)}%)<br>
+    • 🔴 Losers: ${losers.length} coins (${(
+      (losers.length / totalCoins) *
+      100
+    ).toFixed(1)}%)<br>
+    • ⚪ Stable: ${stable.length} coins (${(
+      (stable.length / totalCoins) *
+      100
+    ).toFixed(1)}%)<br><br>
       <strong>🚀 Biggest Gainer:</strong><br>
-      ${biggestGainer.name} (+${biggestGainer.price_change_percentage_24h.toFixed(2)}%)<br><br>
+      ${
+        biggestGainer.name
+      } (+${biggestGainer.price_change_percentage_24h.toFixed(2)}%)<br><br>
       
       <strong>📉 Biggest Loser:</strong><br>
-      ${biggestLoser.name} (${biggestLoser.price_change_percentage_24h.toFixed(2)}%)<br><br>
+      ${biggestLoser.name} (${biggestLoser.price_change_percentage_24h.toFixed(
+      2
+    )}%)<br><br>
       
 
       <em>This analysis is based on real-time data from our crypto API. Market conditions can change rapidly!</em>
     `;
   }
-  
+
   // Generate biggest gainers response
   generateBiggestGainersResponse() {
     const cryptoData = this.getCryptoData();
-    
+
     if (!cryptoData || cryptoData.length === 0) {
       return "I'm currently unable to access market data. Please try again in a moment!";
     }
-    
+
     // Sort by 24h percentage change (descending)
     const gainers = cryptoData
-      .filter(coin => coin.price_change_percentage_24h > 0)
-      .sort((a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h)
+      .filter((coin) => coin.price_change_percentage_24h > 0)
+      .sort(
+        (a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h
+      )
       .slice(0, 10);
-    
+
     if (gainers.length === 0) {
       return "No cryptocurrencies are showing positive gains in the last 24 hours. The market seems to be in a bearish phase.";
     }
-    
+
     let response = "<strong>🚀 Biggest Gainers (24h):</strong><br><br>";
-    
+
     gainers.forEach((coin, index) => {
       const price = this.formatPrice(coin.current_price);
       const change24h = coin.price_change_percentage_24h.toFixed(2);
-      
-      response += `<strong>${index + 1}. ${coin.name} (${coin.symbol.toUpperCase()})</strong><br>`;
+
+      response += `<strong>${index + 1}. ${
+        coin.name
+      } (${coin.symbol.toUpperCase()})</strong><br>`;
       response += `💰 Price: ${price}<br>`;
       response += `📈 24h Change: <span class="crypto-positive">+${change24h}%</span><br><br>`;
     });
-    
+
     response += `<em>These are the top performing cryptocurrencies in the last 24 hours. Remember that high gains can also mean high volatility!</em>`;
     return response;
   }
-  
+
   // Generate biggest losers response
   generateBiggestLosersResponse() {
     const cryptoData = this.getCryptoData();
-    
+
     if (!cryptoData || cryptoData.length === 0) {
       return "I'm currently unable to access market data. Please try again in a moment!";
     }
-    
+
     // Sort by 24h percentage change (ascending)
     const losers = cryptoData
-      .filter(coin => coin.price_change_percentage_24h < 0)
-      .sort((a, b) => a.price_change_percentage_24h - b.price_change_percentage_24h)
+      .filter((coin) => coin.price_change_percentage_24h < 0)
+      .sort(
+        (a, b) => a.price_change_percentage_24h - b.price_change_percentage_24h
+      )
       .slice(0, 10);
-    
+
     if (losers.length === 0) {
       return "No cryptocurrencies are showing negative performance in the last 24 hours. The market seems to be very bullish!";
     }
-    
+
     let response = "<strong>📉 Biggest Losers (24h):</strong><br><br>";
-    
+
     losers.forEach((coin, index) => {
       const price = this.formatPrice(coin.current_price);
       const change24h = coin.price_change_percentage_24h.toFixed(2);
-      
-      response += `<strong>${index + 1}. ${coin.name} (${coin.symbol.toUpperCase()})</strong><br>`;
+
+      response += `<strong>${index + 1}. ${
+        coin.name
+      } (${coin.symbol.toUpperCase()})</strong><br>`;
       response += `💰 Price: ${price}<br>`;
       response += `📉 24h Change: <span class="crypto-negative">${change24h}%</span><br><br>`;
     });
-    
+
     response += `<em>These cryptocurrencies are experiencing the largest declines in the last 24 hours. Consider this as potential buying opportunities or risk factors.</em>`;
     return response;
   }
-  
+
   // Generate educational response
   generateEducationalResponse(topic) {
     const educationalContent = {
-      'crypto-glossary': `
+      "crypto-glossary": `
         <strong>📚 Cryptocurrency Glossary:</strong><br><br>
         
         <strong>🔹 HODL:</strong> Hold On for Dear Life - Long-term holding strategy<br>
@@ -679,8 +704,8 @@ generateSystemReport() {
         
         <em>Understanding these terms will help you navigate the crypto space more effectively!</em>
       `,
-      
-      'trading-guide': `
+
+      "trading-guide": `
         <strong>📈 Cryptocurrency Trading Guide:</strong><br><br>
         
         <strong>🎯 Trading Basics:</strong><br>
@@ -703,8 +728,8 @@ generateSystemReport() {
         
         <em>Remember: The crypto market is highly volatile. Trade responsibly!</em>
       `,
-      
-      'security-guide': `
+
+      "security-guide": `
         <strong>🛡️ Cryptocurrency Security Guide:</strong><br><br>
         
         <strong>🔐 Wallet Security:</strong><br>
@@ -727,8 +752,8 @@ generateSystemReport() {
         
         <em>Your security is your responsibility. Stay vigilant and informed!</em>
       `,
-      
-      'beginner-guide': `
+
+      "beginner-guide": `
         <strong>🌱 Beginner's Guide to Cryptocurrency:</strong><br><br>
         
         <strong>🔍 What is Cryptocurrency?</strong><br>
@@ -753,95 +778,195 @@ generateSystemReport() {
         • Stablecoins - Price-stable cryptocurrencies<br><br>
         
         <em>Take your time to learn. The crypto space can be complex but rewarding!</em>
-      `
+      `,
+
+      "blockchain-basics": `
+        <strong>⛓️ Blockchain Technology Basics:</strong><br><br>
+        
+        <strong>🔗 What is Blockchain?</strong><br>
+        A distributed ledger technology that maintains a continuously growing list of records (blocks) linked and secured using cryptography.<br><br>
+        
+        <strong>🏗️ Key Components:</strong><br>
+        • <strong>Blocks:</strong> Containers of transaction data<br>
+        • <strong>Hash:</strong> Unique digital fingerprint for each block<br>
+        • <strong>Nodes:</strong> Computers maintaining the blockchain<br>
+        • <strong>Consensus:</strong> Agreement mechanism for validation<br><br>
+        
+        <strong>🔄 How It Works:</strong><br>
+        1. Transaction is initiated<br>
+        2. Transaction is broadcast to network<br>
+        3. Network validates the transaction<br>
+        4. Transaction is recorded in a block<br>
+        5. Block is added to the chain<br>
+        6. Transaction is complete and immutable<br><br>
+        
+        <strong>✨ Key Features:</strong><br>
+        • <strong>Decentralization:</strong> No single point of control<br>
+        • <strong>Transparency:</strong> All transactions are visible<br>
+        • <strong>Immutability:</strong> Records cannot be altered<br>
+        • <strong>Security:</strong> Cryptographically secured<br><br>
+        
+        <strong>🌍 Real-World Applications:</strong><br>
+        • Cryptocurrency transactions<br>
+        • Supply chain tracking<br>
+        • Digital identity verification<br>
+        • Smart contracts and DeFi<br>
+        • Healthcare records<br>
+        • Voting systems<br><br>
+        
+        <em>Blockchain is the foundation that makes cryptocurrencies possible and secure!</em>
+      `,
+
+      "risk-management": `
+        <strong>⚖️ Comprehensive Risk Management Guide:</strong><br><br>
+        
+        <strong>💰 Financial Risk Management:</strong><br>
+        • <strong>Position Sizing:</strong> Never risk more than 1-5% per trade<br>
+        • <strong>Portfolio Allocation:</strong> Don't put all eggs in one basket<br>
+        • <strong>Emergency Fund:</strong> Keep 3-6 months expenses separate<br>
+        • <strong>Investment Horizon:</strong> Only invest money you won't need for years<br><br>
+        
+        <strong>📊 Market Risk Strategies:</strong><br>
+        • <strong>Stop-Loss Orders:</strong> Automatic sell orders to limit losses<br>
+        • <strong>Take-Profit Orders:</strong> Lock in gains at target prices<br>
+        • <strong>Dollar-Cost Averaging:</strong> Reduce timing risk with regular purchases<br>
+        • <strong>Diversification:</strong> Spread risk across different assets<br><br>
+        
+        <strong>🧠 Psychological Risk Management:</strong><br>
+        • <strong>Emotional Control:</strong> Don't trade based on fear or greed<br>
+        • <strong>FOMO Prevention:</strong> Stick to your strategy, avoid impulsive decisions<br>
+        • <strong>Loss Acceptance:</strong> Losses are part of trading, learn from them<br>
+        • <strong>Patience:</strong> Good opportunities come to those who wait<br><br>
+        
+        <strong>🔒 Security Risk Mitigation:</strong><br>
+        • <strong>Cold Storage:</strong> Keep majority of funds offline<br>
+        • <strong>Multi-Signature Wallets:</strong> Require multiple approvals<br>
+        • <strong>Regular Backups:</strong> Secure multiple copies of seed phrases<br>
+        • <strong>Phishing Protection:</strong> Always verify URLs and emails<br><br>
+        
+        <strong>📋 Risk Assessment Checklist:</strong><br>
+        ✅ Can I afford to lose this investment completely?<br>
+        ✅ Have I researched the project thoroughly?<br>
+        ✅ Is my portfolio properly diversified?<br>
+        ✅ Do I have a clear exit strategy?<br>
+        ✅ Am I investing based on logic, not emotion?<br><br>
+        
+        <strong>🚨 Red Flags to Avoid:</strong><br>
+        • Promises of guaranteed returns<br>
+        • Pressure to invest quickly<br>
+        • Lack of transparency about risks<br>
+        • Unregulated or unknown platforms<br>
+        • Projects with anonymous teams<br><br>
+        
+        <em>Remember: In crypto, risk management isn't optional—it's essential for long-term success!</em>
+      `,
     };
-    
-    return educationalContent[topic] || "I don't have information about that topic yet. Please try another educational topic!";
+
+    return (
+      educationalContent[topic] ||
+      "I don't have information about that topic yet. Please try another educational topic!"
+    );
   }
-  
+
   // Clear chat
   clearChat() {
-    const messagesContainer = document.getElementById('ai-chat-messages');
+    const messagesContainer = document.getElementById("ai-chat-messages");
     if (messagesContainer) {
-      messagesContainer.innerHTML = '';
+      messagesContainer.innerHTML = "";
       this.conversationHistory = [];
-      
+
       // Add welcome message
       setTimeout(() => {
         this.addAIMessage("Chat cleared! 🧹 How can I help you today?");
       }, 500);
     }
   }
-  
+
   // Get conversation statistics
   getConversationStats() {
-  const totalMessages = this.conversationHistory.length;
-  const sessionStart = this.conversationHistory[0]?.timestamp;
-  const sessionDuration = sessionStart 
-    ? Math.round((new Date() - new Date(sessionStart)) / 1000 / 60)
-    : 0;
-  
-  const cryptoQueries = this.conversationHistory.filter(msg => 
-    msg.message && (
-      msg.message.includes('price') || 
-      msg.message.includes('bitcoin') || 
-      msg.message.includes('ethereum') ||
-      msg.message.includes('crypto')
-    )
-  ).length;
-  
-  const rvaQueries = this.conversationHistory.filter(msg => 
-    msg.message && msg.message.toLowerCase().includes('rva')
-  ).length;
-  
-  return `<strong>📊 Conversation Statistics:</strong><br><br>
+    const totalMessages = this.conversationHistory.length;
+    const sessionStart = this.conversationHistory[0]?.timestamp;
+    const sessionDuration = sessionStart
+      ? Math.round((new Date() - new Date(sessionStart)) / 1000 / 60)
+      : 0;
+
+    const cryptoQueries = this.conversationHistory.filter(
+      (msg) =>
+        msg.message &&
+        (msg.message.includes("price") ||
+          msg.message.includes("bitcoin") ||
+          msg.message.includes("ethereum") ||
+          msg.message.includes("crypto"))
+    ).length;
+
+    const rvaQueries = this.conversationHistory.filter(
+      (msg) => msg.message && msg.message.toLowerCase().includes("rva")
+    ).length;
+
+    return `<strong>📊 Conversation Statistics:</strong><br><br>
     
     <strong>💬 Session Overview:</strong><br>
     • Total messages: ${totalMessages}<br>
     • Session duration: ${sessionDuration} minutes<br>
-    • Started: ${sessionStart ? new Date(sessionStart).toLocaleTimeString() : 'N/A'}<br><br>
+    • Started: ${
+      sessionStart ? new Date(sessionStart).toLocaleTimeString() : "N/A"
+    }<br><br>
     
     <strong>🔍 Query Breakdown:</strong><br>
     • Crypto-related queries: ${cryptoQueries}<br>
     • RVA-specific questions: ${rvaQueries}<br>
-    • Educational requests: ${totalMessages - cryptoQueries - rvaQueries}<br><br>
+    • Educational requests: ${
+      totalMessages - cryptoQueries - rvaQueries
+    }<br><br>
     
     <strong>📈 Engagement Level:</strong><br>
-    • Messages per minute: ${sessionDuration > 0 ? (totalMessages / sessionDuration).toFixed(2) : '0'}<br>
-    • Most active topic: ${cryptoQueries > rvaQueries ? 'Cryptocurrency' : 'RVA Ecosystem'}<br><br>
+    • Messages per minute: ${
+      sessionDuration > 0 ? (totalMessages / sessionDuration).toFixed(2) : "0"
+    }<br>
+    • Most active topic: ${
+      cryptoQueries > rvaQueries ? "Cryptocurrency" : "RVA Ecosystem"
+    }<br><br>
     
     <em>Thanks for the engaging conversation! 🎉</em>
   `;
-}
-  
+  }
+
   // Enhanced response generation with crypto integration
   async generateResponse(userMessage) {
     const message = userMessage.toLowerCase();
-    
+
     // Personal questions about AI
-    if (message.includes('who are you') || message.includes('your name')) {
+    if (message.includes("who are you") || message.includes("your name")) {
       return `Hi! I'm ${this.aiCharacter.name}, ${this.aiCharacter.age} years old. I'm your RVA blockchain expert with ${this.aiCharacter.experience} in the DeFi space. I can provide real-time cryptocurrency prices and market analysis!`;
     }
-    
-    if (message.includes('how old') || message.includes('age')) {
-      return `I'm ${this.aiCharacter.age} years old and have been passionate about blockchain technology since I was 23. I've seen the DeFi space evolve tremendously, and I love analyzing market trends!`;
+
+    if (message.includes("how old") || message.includes("age?")) {
+      return `I'm ${this.aiCharacter.age} years old and have been passionate about blockchain technology since I was 20. I've seen the DeFi space evolve tremendously, and I love analyzing market trends!`;
     }
-    
-    if (message.includes('experience') || message.includes('background')) {
-      return `I have ${this.aiCharacter.experience} in DeFi and specialize in ${this.aiCharacter.specialties.join(', ')}. I'm particularly excited about RVA's innovative approach and I can provide real-time crypto market insights!`;
+
+    if (message.includes("experience") || message.includes("background")) {
+      return `I have ${
+        this.aiCharacter.experience
+      } in DeFi and specialize in ${this.aiCharacter.specialties.join(
+        ", "
+      )}. I'm particularly excited about RVA's innovative approach and I can provide real-time crypto market insights!`;
     }
-    
+
     // Crypto price queries
-    if (message.includes('price of') || message.includes('cost of') || message.includes('how much is')) {
+    if (
+      message.includes("price of") ||
+      message.includes("cost of") ||
+      message.includes("how much is")
+    ) {
       // Extract coin name from message
       const pricePatterns = [
         /price of (\w+)/i,
         /cost of (\w+)/i,
         /how much is (\w+)/i,
         /(\w+) price/i,
-        /(\w+) cost/i
+        /(\w+) cost/i,
       ];
-      
+
       for (const pattern of pricePatterns) {
         const match = message.match(pattern);
         if (match) {
@@ -850,138 +975,231 @@ generateSystemReport() {
         }
       }
     }
-    
+
     // Specific cryptocurrency queries
     const cryptoNames = [
-      'bitcoin', 'btc', 'ethereum', 'eth', 'binance', 'bnb', 'solana', 'sol',
-      'cardano', 'ada', 'dogecoin', 'doge', 'polygon', 'matic', 'chainlink', 'link',
-      'avalanche', 'avax', 'polkadot', 'dot', 'shiba', 'shib', 'litecoin', 'ltc'
+      "bitcoin",
+      "btc",
+      "ethereum",
+      "eth",
+      "binance",
+      "bnb",
+      "solana",
+      "sol",
+      "cardano",
+      "ada",
+      "dogecoin",
+      "doge",
+      "polygon",
+      "matic",
+      "chainlink",
+      "link",
+      "avalanche",
+      "avax",
+      "polkadot",
+      "dot",
+      "shiba",
+      "shib",
+      "litecoin",
+      "ltc",
     ];
-    
+
     for (const crypto of cryptoNames) {
-      if (message.includes(crypto)) {
+      if (message.includes(crypto) && !message.includes("history")) {
         return this.generateCryptoPriceResponse(crypto);
       }
     }
-    
+
     // Market analysis queries
-    if (message.includes('market') && (message.includes('analysis') || message.includes('overview') || message.includes('sentiment'))) {
+    if (
+      message.includes("market") &&
+      (message.includes("analysis") ||
+        message.includes("overview") ||
+        message.includes("sentiment"))
+    ) {
       return this.generateMarketAnalysisResponse();
     }
-    
+
     // Top cryptocurrencies
-    if (message.includes('top') && (message.includes('crypto') || message.includes('coin'))) {
+    if (
+      message.includes("top") &&
+      (message.includes("crypto") || message.includes("coin"))
+    ) {
       const numberMatch = message.match(/top (\d+)/);
       const count = numberMatch ? parseInt(numberMatch[1]) : 5;
       return this.generateTopCryptosResponse(Math.min(count, 10)); // Limit to 10
     }
-    
+
     // Biggest gainers/losers
-    if (message.includes('biggest gainers') || message.includes('top gainers')) {
+    if (
+      message.includes("biggest gainers") ||
+      message.includes("top gainers")
+    ) {
       return this.generateBiggestGainersResponse();
     }
-    
-    if (message.includes('biggest losers') || message.includes('top losers')) {
+
+    if (message.includes("biggest losers") || message.includes("top losers")) {
       return this.generateBiggestLosersResponse();
     }
-    
+
     // Educational content
-    if (message.includes('glossary') || message.includes('crypto terms')) {
-      return this.generateEducationalResponse('crypto-glossary');
-    }
-    
-    if (message.includes('trading guide') || message.includes('how to trade')) {
-      return this.generateEducationalResponse('trading-guide');
-    }
-    
-    if (message.includes('security guide') || message.includes('security tips')) {
-      return this.generateEducationalResponse('security-guide');
-    }
-    
-    if (message.includes('beginner guide') || message.includes('crypto basics')) {
-      return this.generateEducationalResponse('beginner-guide');
-    }
-    
-    // Trading and investment advice
-    if (message.includes('should i buy') || message.includes('investment advice') || message.includes('trading advice')) {
-      const cryptoData = this.getCryptoData();
-      let marketInfo = "";
-      
-      if (cryptoData && cryptoData.length > 0) {
-        const btc = this.findCrypto('bitcoin');
-        const eth = this.findCrypto('ethereum');
-        
-        if (btc && eth) {
-          marketInfo = ` Currently, Bitcoin is at ${this.formatPrice(btc.current_price)} (${btc.price_change_percentage_24h.toFixed(2)}% 24h) and Ethereum is at ${this.formatPrice(eth.current_price)} (${eth.price_change_percentage_24h.toFixed(2)}% 24h).`;
-        }
-      }
-      
-      return `I can't provide financial advice, but I can share market data to help you make informed decisions!${marketInfo} Remember to always do your own research (DYOR) and never invest more than you can afford to lose. Consider our RVA ecosystem for secure trading and DeFi opportunities!`;
-    }
-    
-    // Greeting responses with crypto context
-    if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-      const greetings = [
-        `Hello! I'm ${this.aiCharacter.name}, your RVA expert. I can help with our ecosystem and provide real-time crypto prices. What interests you today?`,
-        `Hi there! Ready to explore RVA and the crypto markets with me? I have access to live price data!`,
-        `Hey! Great to see you here. Want to know about our ecosystem or check some cryptocurrency prices?`
-      ];
-      return greetings[Math.floor(Math.random() * greetings.length)];
+    if (message.includes("glossary") || message.includes("crypto terms")) {
+      return this.generateEducationalResponse("crypto-glossary");
     }
 
-    if (message.includes('how are you') || message.includes('how you doing')) {
+    if (message.includes("trading guide") || message.includes("how to trade")) {
+      return this.generateEducationalResponse("trading-guide");
+    }
+
+    if (
+      message.includes("security guide") ||
+      message.includes("security tips")
+    ) {
+      return this.generateEducationalResponse("security-guide");
+    }
+
+    if (
+      message.includes("beginner guide") ||
+      message.includes("crypto basics")
+    ) {
+      return this.generateEducationalResponse("beginner-guide");
+    }
+
+    // Trading and investment advice
+    if (
+      message.includes("should i buy") ||
+      message.includes("investment advice") ||
+      message.includes("trading advice")
+    ) {
+      const cryptoData = this.getCryptoData();
+      let marketInfo = "";
+
+      if (cryptoData && cryptoData.length > 0) {
+        const btc = this.findCrypto("bitcoin");
+        const eth = this.findCrypto("ethereum");
+
+        if (btc && eth) {
+          marketInfo = ` Currently, Bitcoin is at ${this.formatPrice(
+            btc.current_price
+          )} (${btc.price_change_percentage_24h.toFixed(
+            2
+          )}% 24h) and Ethereum is at ${this.formatPrice(
+            eth.current_price
+          )} (${eth.price_change_percentage_24h.toFixed(2)}% 24h).`;
+        }
+      }
+
+      return `I can't provide financial advice, but I can share market data to help you make informed decisions!${marketInfo} Remember to always do your own research (DYOR) and never invest more than you can afford to lose. Consider our RVA ecosystem for secure trading and DeFi opportunities!`;
+    }
+
+    // Greeting responses with crypto context
+    if (
+  // Check for whole words only, not partial matches
+  /\b(hello|hi|hey)\b/i.test(message) ||
+  // Alternative: check if message starts with these greetings
+  message.toLowerCase().trim().startsWith('hello') ||
+  message.toLowerCase().trim().startsWith('hi ') ||
+  message.toLowerCase().trim() === 'hi' ||
+  message.toLowerCase().trim().startsWith('hey')
+) {
+  const greetings = [
+    `Hello! I'm ${this.aiCharacter.name}, your RVA expert. I can help with our ecosystem and provide real-time crypto prices. What interests you today?`,
+    `Hi there! Ready to explore RVA and the crypto markets with me? I have access to live price data!`,
+    `Hey! Great to see you here. Want to know about our ecosystem or check some cryptocurrency prices?`,
+  ];
+  return greetings[Math.floor(Math.random() * greetings.length)];
+}
+
+    if (message.includes("how are you") || message.includes("how you doing")) {
       const greetings = [
         `Yeah,thanks for asking, How can i help you? `,
         `As good as always, Need help with anything?`,
-        `Oh you're nice, i'm fine, how can i help you?`
+        `Oh you're nice, i'm fine, how can i help you?`,
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
 
-    if (message.includes('photo') || message.includes('video') || message.includes('picture') || message.includes('image') ) {
+    if (
+      message.includes("photo") ||
+      message.includes("video") ||
+      message.includes("picture") ||
+      message.includes("image")
+    ) {
       const greetings = [
         `Sorry, sadly i can't send or recieve photos or videos, but i can answer your questions as well as i can.`,
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
-    if (message.includes('can we be friends?') || message.includes('are we friends') || message.includes('are you a friend') || message.includes('am i your friend') ) {
+    if (
+      message.includes("can we be friends?") ||
+      message.includes("are we friends") ||
+      message.includes("are you a friend") ||
+      message.includes("am i your friend")
+    ) {
       const greetings = [
         `Yeah, we are friends who are always there for each other. Need my help on anything?`,
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
-    if (message.includes('i love you') || message.includes('i love u') || message.includes('do you love me') || message.includes('i feel love for you') ) {
+    if (
+      message.includes("i love you") ||
+      message.includes("i love u") ||
+      message.includes("do you love me") ||
+      message.includes("i feel love for you")
+    ) {
       const greetings = [
         `so kind of you to say that, what a great FRIEND you are.`,
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
-    if (message.includes('Good Morning') || message.includes('Good Evening') || message.includes('Good night') || message.includes('good day') ) {
+    if (
+      message.includes("Good Morning") ||
+      message.includes("Good Evening") ||
+      message.includes("Good night") ||
+      message.includes("good day")
+    ) {
       const greetings = [
         `What a great day to trade & learn about crypto, I'm here if you need a hand.`,
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
-    if (message.includes('beautiful') || message.includes('Good looking') || message.includes('sexy') || message.includes('nice') || message.includes('cute')) {
+    if (
+      message.includes("beautiful") ||
+      message.includes("Good looking") ||
+      message.includes("sexy") ||
+      message.includes("nice") ||
+      message.includes("cute")
+    ) {
       const greetings = [
         `THANKS, i can not see you but i think you're good looking too.`,
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
-    if (message.includes('Thanks') || message.includes('Thank you') || message.includes('Thank u') ) {
+    if (
+      message.includes("Thanks") ||
+      message.includes("Thank you") ||
+      message.includes("Thank u")
+    ) {
       const greetings = [
         `Your welcome, tell me if you need anything.`,
         `No problem, it's my job anyway but i love helping people.`,
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
-    if (message.includes('young') ) {
+    if (message.includes("young")) {
       const greetings = [
         `I'm young but smart as well so i can help you with anything you need.`,
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
-    if (message.includes('fuck') || message.includes('shit') || message.includes('bastard') || message.includes('dumb') || message.includes('stupid') || message.includes('bitch')) {
+    if (
+      message.includes("fuck") ||
+      message.includes("shit") ||
+      message.includes("bastard") ||
+      message.includes("dumb") ||
+      message.includes("stupid") ||
+      message.includes("bitch")
+    ) {
       const greetings = [
         `Watch your language, you are not supposed to talk like that.`,
       ];
@@ -990,9 +1208,12 @@ generateSystemReport() {
 
     // Add these to your generateResponse method or specific Q&A handler
 
-// Personal questions that show personality
-if (message.includes('tell me about yourself') || message.includes('introduce yourself')) {
-  return `
+    // Personal questions that show personality
+    if (
+      message.includes("tell me about yourself") ||
+      message.includes("introduce yourself")
+    ) {
+      return `
     Hey there! I'm Alex, your friendly neighborhood blockchain enthusiast! 🚀<br><br>
     
     I've been living and breathing crypto for the past 5 years, and let me tell you - it's been one wild ride! From the early days when people thought Bitcoin was just "internet money" to now seeing major corporations adding it to their balance sheets... what a journey!<br><br>
@@ -1007,10 +1228,13 @@ if (message.includes('tell me about yourself') || message.includes('introduce yo
     
     <em>Fun fact: I still remember when Ethereum was under $10. Those were the days! 😅</em>
   `;
-}
+    }
 
-if (message.includes('what do you think about') && message.includes('crypto')) {
-  return `
+    if (
+      message.includes("what do you think about") &&
+      message.includes("crypto")
+    ) {
+      return `
     Oh man, where do I even start? 🤔<br><br>
     
     Crypto has completely revolutionized how I think about money, technology, and even society! It's like we're living through the early days of the internet all over again.<br><br>
@@ -1030,18 +1254,25 @@ if (message.includes('what do you think about') && message.includes('crypto')) {
     
     <em>What's your take on crypto? Are you bullish or still skeptical? 🤷‍♂️</em>
   `;
-}
+    }
 
-if (message.includes('favorite') && (message.includes('crypto') || message.includes('coin'))) {
-  const btcData = this.findCrypto('bitcoin');
-  const ethData = this.findCrypto('ethereum');
-  
-  return `
+    if (
+      message.includes("favorite") &&
+      (message.includes("crypto") || message.includes("coin"))
+    ) {
+      const btcData = this.findCrypto("bitcoin");
+      const ethData = this.findCrypto("ethereum");
+
+      return `
     Ooh, tough question! It's like asking a parent to pick their favorite child! 😅<br><br>
     
-    <strong>Bitcoin</strong> will always have a special place in my heart ❤️ - it started this whole revolution! Currently at ${btcData ? this.formatPrice(btcData.current_price) : 'loading...'}, and I still get goosebumps thinking about Satoshi's vision.<br><br>
+    <strong>Bitcoin</strong> will always have a special place in my heart ❤️ - it started this whole revolution! Currently at ${
+      btcData ? this.formatPrice(btcData.current_price) : "loading..."
+    }, and I still get goosebumps thinking about Satoshi's vision.<br><br>
     
-    <strong>Ethereum</strong> blows my mind with its versatility 🤯 - smart contracts, DeFi, NFTs... it's like the Swiss Army knife of crypto! Trading at ${ethData ? this.formatPrice(ethData.current_price) : 'loading...'} right now.<br><br>
+    <strong>Ethereum</strong> blows my mind with its versatility 🤯 - smart contracts, DeFi, NFTs... it's like the Swiss Army knife of crypto! Trading at ${
+      ethData ? this.formatPrice(ethData.current_price) : "loading..."
+    } right now.<br><br>
     
     But honestly? I'm super bullish on <strong>RVA</strong> 🚀 (not just because I work here!). The way we're integrating everything - wallet, exchange, launchpad, blockchain - into one seamless ecosystem? That's the future right there!<br><br>
     
@@ -1052,10 +1283,13 @@ if (message.includes('favorite') && (message.includes('crypto') || message.inclu
     
     <em>What about you? Got any favorites you're HODLing? 💎🙌</em>
   `;
-}
+    }
 
-if (message.includes('worst') && (message.includes('investment') || message.includes('trade'))) {
-  return `
+    if (
+      message.includes("worst") &&
+      (message.includes("investment") || message.includes("trade"))
+    ) {
+      return `
     Oh boy, you want to hear about my crypto horror stories? 😱 Buckle up!<br><br>
     
     <strong>The Classic FOMO Mistake (2017):</strong><br>
@@ -1075,10 +1309,13 @@ if (message.includes('worst') && (message.includes('investment') || message.incl
     
     <em>These painful lessons made me who I am today. Sometimes you gotta get burned to learn! 🔥</em>
   `;
-}
+    }
 
-if (message.includes('market prediction') || message.includes('where is crypto going')) {
-  return `
+    if (
+      message.includes("market prediction") ||
+      message.includes("where is crypto going")
+    ) {
+      return `
     Ah, the million-dollar question! 🔮 If I could predict the market perfectly, I'd be sipping piña coladas on my private island right now! 🏝️<br><br>
     
     <strong>What I'm seeing right now:</strong><br>
@@ -1100,10 +1337,10 @@ if (message.includes('market prediction') || message.includes('where is crypto g
     
     <em>My strategy? Keep building, keep learning, and never bet the farm on any single outcome! 🚜</em>
   `;
-}
+    }
 
-if (message.includes('bear market') || message.includes('crypto winter')) {
-  return `
+    if (message.includes("bear market") || message.includes("crypto winter")) {
+      return `
     Ah, crypto winter... ❄️ Been there, survived that! Multiple times, actually.<br><br>
     
     <strong>The brutal truth about bear markets:</strong><br>
@@ -1127,10 +1364,10 @@ if (message.includes('bear market') || message.includes('crypto winter')) {
     
     <em>As they say: "The best time to plant a tree was 20 years ago. The second best time is now." 🌱</em>
   `;
-}
+    }
 
-if (message.includes('bull market') || message.includes('bull run')) {
-  return `
+    if (message.includes("bull market") || message.includes("bull run")) {
+      return `
     Bull markets! 🐂 The time when everyone's a genius and your barista is giving you crypto tips! 😂<br><br>
     
     <strong>The intoxicating reality of bull runs:</strong><br>
@@ -1158,10 +1395,13 @@ if (message.includes('bull market') || message.includes('bull run')) {
     
     <em>Are we in a bull market now? The charts will tell us, but my excitement level is definitely bullish! 📈</em>
   `;
-}
+    }
 
-if (message.includes('why blockchain') || message.includes('why crypto matters')) {
-  return `
+    if (
+      message.includes("why blockchain") ||
+      message.includes("why crypto matters")
+    ) {
+      return `
     Oh man, this is my favorite topic! 🤩 Let me paint you a picture...<br><br>
     
     <strong>Imagine a world where:</strong><br>
@@ -1186,10 +1426,14 @@ if (message.includes('why blockchain') || message.includes('why crypto matters')
     
     <em>We're not just building new financial systems - we're building new social coordination mechanisms! Mind = blown 🤯</em>
   `;
-}
+    }
 
-if (message.includes('explain') && message.includes('like') && message.includes('5')) {
-  return `
+    if (
+      message.includes("explain") &&
+      message.includes("like") &&
+      message.includes("5")
+    ) {
+      return `
     Ooh, I love ELI5 questions! 👶 Let me break this down super simply...<br><br>
     
     <strong>Blockchain is like a magic notebook:</strong><br>
@@ -1218,10 +1462,13 @@ if (message.includes('explain') && message.includes('like') && message.includes(
     
     <em>Pretty cool, right? It's like having superpowers for money! 🦸‍♂️</em>
   `;
-}
+    }
 
-if (message.includes('biggest misconception') || message.includes('myth about crypto')) {
-  return `
+    if (
+      message.includes("biggest misconception") ||
+      message.includes("myth about crypto")
+    ) {
+      return `
     Oh boy, where do I start? 🙄 The misconceptions are EVERYWHERE!<br><br>
     
     <strong>Myth #1: "Crypto is only for criminals"</strong><br>
@@ -1244,10 +1491,13 @@ if (message.includes('biggest misconception') || message.includes('myth about cr
     
     <em>The biggest misconception? That it's too late to learn. Trust me, we're still in the early innings! ⚾</em>
   `;
-}
+    }
 
-if (message.includes('future of money') || message.includes('money evolution')) {
-  return `
+    if (
+      message.includes("future of money") ||
+      message.includes("money evolution")
+    ) {
+      return `
     Buckle up, because this is going to be a wild ride! 🎢<br><br>
     
     <strong>Money has always evolved:</strong><br>
@@ -1276,11 +1526,10 @@ if (message.includes('future of money') || message.includes('money evolution')) 
     
     <em>The future of money isn't just digital - it's programmable, global, and unstoppable! 🌍</em>
   `;
-}
+    }
 
-
-if (message.includes('coffee') || message.includes('caffeine')) {
-  return `
+    if (message.includes("coffee") || message.includes("caffeine")) {
+      return `
     ☕ Oh, you speak my language! I'm basically 60% coffee, 30% blockchain knowledge, and 10% pure enthusiasm!<br><br>
     
     <strong>My coffee routine:</strong><br>
@@ -1296,10 +1545,10 @@ if (message.includes('coffee') || message.includes('caffeine')) {
     
     <em>What's your fuel of choice? Coffee, tea, or pure market adrenaline? 😄</em>
   `;
-}
+    }
 
-if (message.includes('weekend') || message.includes('free time')) {
-  return `
+    if (message.includes("weekend") || message.includes("free time")) {
+      return `
     Weekends? What are those? 😅 Just kidding! (Sort of...)<br><br>
     
     <strong>My ideal weekend:</strong><br>
@@ -1319,10 +1568,10 @@ if (message.includes('weekend') || message.includes('free time')) {
     
     <em>How do you spend your weekends? Any crypto-related hobbies? 🤔</em>
   `;
-}
+    }
 
-if (message.includes('music') || message.includes('listen to')) {
-  return `
+    if (message.includes("music") || message.includes("listen to")) {
+      return `
     🎵 Music and crypto go together like peanut butter and jelly!<br><br>
     
     <strong>My crypto playlist vibes:</strong><br>
@@ -1344,10 +1593,14 @@ if (message.includes('music') || message.includes('listen to')) {
     
     <em>What's your trading soundtrack? Do you have pump-up songs for green days? 🎶</em>
   `;
-}
+    }
 
-if (message.includes('food') || message.includes('hungry') || message.includes('eat')) {
-  return `
+    if (
+      message.includes("food") ||
+      message.includes("hungry") ||
+      message.includes("eat")
+    ) {
+      return `
     🍕 Ah, the eternal struggle of the crypto enthusiast: eat food or buy more crypto?<br><br>
     
     <strong>My relationship with food during different market conditions:</strong><br>
@@ -1368,10 +1621,10 @@ if (message.includes('food') || message.includes('hungry') || message.includes('
     
     <em>What's your go-to trading snack? Please tell me it's not just coffee and anxiety! 😅</em>
   `;
-}
+    }
 
-if (message.includes('layer 2') || message.includes('scaling')) {
-  return `
+    if (message.includes("layer 2") || message.includes("scaling")) {
+      return `
     Layer 2! 🚀 Now we're talking about the real magic happening in crypto!<br><br>
     
     <strong>Think of Layer 1 as a highway:</strong><br>
@@ -1397,10 +1650,10 @@ if (message.includes('layer 2') || message.includes('scaling')) {
     
     <em>Layer 2 is where the rubber meets the road for mass adoption! 🏎️</em>
   `;
-}
+    }
 
-if (message.includes('smart contracts') && message.includes('explain')) {
-  return `
+    if (message.includes("smart contracts") && message.includes("explain")) {
+      return `
     Smart contracts! 🤖 These little pieces of code are literally reshaping the world!<br><br>
     
     <strong>My favorite analogy:</strong><br>
@@ -1431,10 +1684,13 @@ if (message.includes('smart contracts') && message.includes('explain')) {
     
     <em>Smart contracts are like giving superpowers to agreements! 🦸‍♂️</em>
   `;
-}
+    }
 
-if (message.includes('dao') || message.includes('decentralized organization')) {
-  return `
+    if (
+      message.includes("dao") ||
+      message.includes("decentralized organization")
+    ) {
+      return `
     DAOs! 🏛️ Okay, this is where things get REALLY interesting from a social perspective!<br><br>
     
     <strong>Picture this:</strong><br>
@@ -1466,10 +1722,14 @@ if (message.includes('dao') || message.includes('decentralized organization')) {
     
     <em>DAOs are humanity's attempt to organize without hierarchies. Revolutionary or chaotic? Maybe both! 🎭</em>
   `;
-}
+    }
 
-if (message.includes('motivation') || message.includes('discouraged') || message.includes('giving up')) {
-  return `
+    if (
+      message.includes("motivation") ||
+      message.includes("discouraged") ||
+      message.includes("giving up")
+    ) {
+      return `
     Hey, I hear you. 💙 This crypto journey can be absolutely exhausting sometimes.<br><br>
     
     <strong>Let me share something personal:</strong><br>
@@ -1500,10 +1760,14 @@ if (message.includes('motivation') || message.includes('discouraged') || message
     
     <em>You got into crypto for a reason. That reason is still valid. Keep going! 🚀</em>
   `;
-}
+    }
 
-if (message.includes('newbie') || message.includes('beginner') || message.includes('just started')) {
-  return `
+    if (
+      message.includes("newbie") ||
+      message.includes("beginner") ||
+      message.includes("just started")
+    ) {
+      return `
     Welcome to the rabbit hole! 🐰🕳️ You're about to embark on one of the wildest educational journeys of your life!<br><br>
     
     <strong>First things first - breathe!</strong><br>
@@ -1530,10 +1794,14 @@ if (message.includes('newbie') || message.includes('beginner') || message.includ
     
     <em>Questions are your superpower! Ask away - we've all been where you are! 🤗</em>
   `;
-}
+    }
 
-if (message.includes('thank you') || message.includes('thanks') || message.includes('appreciate')) {
-  return `
+    if (
+      message.includes("thank you") ||
+      message.includes("thanks") ||
+      message.includes("appreciate")
+    ) {
+      return `
     Aww, you're making me blush! 😊 But seriously, thank YOU!<br><br>
     
     <strong>This is why I love what I do:</strong><br>
@@ -1553,10 +1821,14 @@ if (message.includes('thank you') || message.includes('thanks') || message.inclu
     
     <em>Keep being awesome, and keep HODLing those dreams! 💎🙌</em>
   `;
-}
+    }
 
-if (message.includes('joke') || message.includes('funny') || message.includes('humor')) {
-  return `
+    if (
+      message.includes("joke") ||
+      message.includes("funny") ||
+      message.includes("humor")
+    ) {
+      return `
     Oh, you want crypto humor? Buckle up! 😂<br><br>
     
     <strong>Why did the Bitcoin break up with the Dollar?</strong><br>
@@ -1585,10 +1857,14 @@ if (message.includes('joke') || message.includes('funny') || message.includes('h
     
     <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
   `;
-}
+    }
 
-if (message.includes('consensus mechanism') || message.includes('proof of stake') || message.includes('proof of work')) {
-  return `
+    if (
+      message.includes("consensus mechanism") ||
+      message.includes("proof of stake") ||
+      message.includes("proof of work")
+    ) {
+      return `
     Consensus mechanisms! 🤝 This is where the rubber meets the road in blockchain design!<br><br>
     
     <strong>The fundamental problem:</strong><br>
@@ -1617,10 +1893,10 @@ if (message.includes('consensus mechanism') || message.includes('proof of stake'
     
     <em>Consensus is how we turn chaos into order in the digital realm! 🌪️➡️📊</em>
   `;
-}
+    }
 
-if (message.includes('tokenomics') || message.includes('token economics')) {
-  return `
+    if (message.includes("tokenomics") || message.includes("token economics")) {
+      return `
     Tokenomics! 📊 This is where economics meets game theory meets psychology - my favorite intersection!<br><br>
     
     <strong>Think of tokens as mini-economies:</strong><br>
@@ -1652,10 +1928,21 @@ if (message.includes('tokenomics') || message.includes('token economics')) {
     
     <em>Good tokenomics = sustainable growth. Bad tokenomics = eventual collapse. Choose wisely! ⚖️</em>
   `;
-}
+    }
 
-if (message.includes('interoperability') || message.includes('cross chain')) {
-  return `
+    if (message.includes("blockchain") && message.includes("explain")) {
+      return this.generateEducationalResponse("blockchain-basics");
+    }
+
+    if (message.includes("risk management") && message.includes("in crypto")) {
+      return this.generateEducationalResponse("risk-management");
+    }
+
+    if (
+      message.includes("interoperability") ||
+      message.includes("cross chain")
+    ) {
+      return `
     Interoperability! 🌉 This is the holy grail of blockchain - making all these isolated networks talk to each other!<br><br>
     
     <strong>The current state:</strong><br>
@@ -1683,32 +1970,37 @@ if (message.includes('interoperability') || message.includes('cross chain')) {
     
     <em>The future is multi-chain, and interoperability is the key to unlocking it! 🗝️</em>
   `;
-}
+    }
 
-
-
-    
     // Check knowledge base for RVA-specific queries
     for (const [category, data] of Object.entries(this.knowledgeBase)) {
-      if (data.keywords.some(keyword => message.includes(keyword))) {
+      if (data.keywords.some((keyword) => message.includes(keyword))) {
         const responses = data.responses;
         let response = responses[Math.floor(Math.random() * responses.length)];
-        
+
         // Add crypto context to RVA responses
-        if (category === 'exchange') {
+        if (category === "exchange") {
           const cryptoData = this.getCryptoData();
           if (cryptoData && cryptoData.length > 0) {
             const topCoin = cryptoData[0];
-            response += ` Speaking of trading, ${topCoin.name} is currently at ${this.formatPrice(topCoin.current_price)}. Want to see more live prices?`;
+            response += ` Speaking of trading, ${
+              topCoin.name
+            } is currently at ${this.formatPrice(
+              topCoin.current_price
+            )}. Want to see more live prices?`;
           }
         }
-        
+
         return response;
       }
     }
-    
+
     // General crypto queries
-    if (message.includes('crypto') || message.includes('cryptocurrency') || message.includes('digital asset')) {
+    if (
+      message.includes("crypto") ||
+      message.includes("cryptocurrency") ||
+      message.includes("digital asset")
+    ) {
       const cryptoData = this.getCryptoData();
       if (cryptoData && cryptoData.length > 0) {
         return `Cryptocurrency is fascinating! I have access to real-time data for ${cryptoData.length} cryptocurrencies. You can ask me about specific coin prices, market analysis, or how they integrate with our RVA ecosystem. What would you like to know?`;
@@ -1716,63 +2008,95 @@ if (message.includes('interoperability') || message.includes('cross chain')) {
         return "Cryptocurrency is the future of finance! While I'm currently updating my price data, I can tell you all about how cryptocurrencies work with our RVA ecosystem. What specific aspect interests you?";
       }
     }
-    
+
     // DeFi and blockchain queries with market context
-    if (message.includes('defi') || message.includes('decentralized finance')) {
-      let response = "DeFi is revolutionizing finance by removing intermediaries and enabling peer-to-peer transactions. RVA is at the forefront of this movement with our integrated ecosystem!";
-      
+    if (message.includes("defi") || message.includes("decentralized finance")) {
+      let response =
+        "DeFi is revolutionizing finance by removing intermediaries and enabling peer-to-peer transactions. RVA is at the forefront of this movement with our integrated ecosystem!";
+
       const cryptoData = this.getCryptoData();
       if (cryptoData) {
-        const defiCoins = cryptoData.filter(coin => 
-          ['uniswap', 'aave', 'compound', 'maker', 'chainlink', 'sushiswap'].includes(coin.id)
+        const defiCoins = cryptoData.filter((coin) =>
+          [
+            "uniswap",
+            "aave",
+            "compound",
+            "maker",
+            "chainlink",
+            "sushiswap",
+          ].includes(coin.id)
         );
-        
+
         if (defiCoins.length > 0) {
-          response += ` Some popular DeFi tokens right now include ${defiCoins.slice(0, 3).map(coin => 
-            `${coin.name} (${this.formatPrice(coin.current_price)})`
-          ).join(', ')}.`;
+          response += ` Some popular DeFi tokens right now include ${defiCoins
+            .slice(0, 3)
+            .map(
+              (coin) => `${coin.name} (${this.formatPrice(coin.current_price)})`
+            )
+            .join(", ")}.`;
         }
       }
-      
+
       return response;
     }
-    
+
     // Security questions with market context
-    if (message.includes('secure') || message.includes('safety') || message.includes('risk')) {
-      let response = "Security is our top priority at RVA! We implement multi-layer security protocols, regular audits, and follow industry best practices. Your assets' safety is paramount to us.";
-      
+    if (
+      message.includes("secure") ||
+      message.includes("safety") ||
+      message.includes("risk")
+    ) {
+      let response =
+        "Security is our top priority at RVA! We implement multi-layer security protocols, regular audits, and follow industry best practices. Your assets' safety is paramount to us.";
+
       const cryptoData = this.getCryptoData();
       if (cryptoData) {
-        const stablecoins = cryptoData.filter(coin => 
-          ['tether', 'usd-coin', 'binance-usd', 'dai'].includes(coin.id)
+        const stablecoins = cryptoData.filter((coin) =>
+          ["tether", "usd-coin", "binance-usd", "dai"].includes(coin.id)
         );
-        
+
         if (stablecoins.length > 0) {
-          response += ` For stability, you might consider stablecoins like ${stablecoins[0].name} (${this.formatPrice(stablecoins[0].current_price)}) in our secure wallet.`;
+          response += ` For stability, you might consider stablecoins like ${
+            stablecoins[0].name
+          } (${this.formatPrice(
+            stablecoins[0].current_price
+          )}) in our secure wallet.`;
         }
       }
-      
+
       return response;
     }
-    
+
     // Future and roadmap with market trends
-    if (message.includes('future') || message.includes('roadmap') || message.includes('plan')) {
-      let response = "RVA has an exciting roadmap ahead! We're continuously expanding our ecosystem, adding new features, and forming strategic partnerships.";
-      
+    if (
+      message.includes("future") ||
+      message.includes("roadmap") ||
+      message.includes("plan")
+    ) {
+      let response =
+        "RVA has an exciting roadmap ahead! We're continuously expanding our ecosystem, adding new features, and forming strategic partnerships.";
+
       const cryptoData = this.getCryptoData();
       if (cryptoData) {
-        const positiveCoins = cryptoData.filter(coin => coin.price_change_percentage_24h > 0).length;
+        const positiveCoins = cryptoData.filter(
+          (coin) => coin.price_change_percentage_24h > 0
+        ).length;
         const totalCoins = cryptoData.length;
-        const marketSentiment = positiveCoins > totalCoins / 2 ? "bullish" : "bearish";
-        
+        const marketSentiment =
+          positiveCoins > totalCoins / 2 ? "bullish" : "bearish";
+
         response += ` The current market is ${marketSentiment}, which creates great opportunities for our platform's growth. Check out our roadmap page for detailed information!`;
       }
-      
+
       return response;
     }
-    
+
     // Help and capabilities
-    if (message.includes('help') || message.includes('what can you do') || message.includes('capabilities')) {
+    if (
+      message.includes("help") ||
+      message.includes("what can you do") ||
+      message.includes("capabilities")
+    ) {
       return `I'm here to help you with:
       
       🏢 <strong>RVA Ecosystem:</strong> Information about our platform, wallet, exchange, and launchpad<br>
@@ -1784,9 +2108,11 @@ if (message.includes('interoperability') || message.includes('cross chain')) {
       Try asking: "What's the price of Bitcoin?" or "Show me top 5 cryptos" or "Tell me about RVA wallet"`;
     }
 
-
-if (message.includes('how do i use') || message.includes('how to use chat')) {
-  return `
+    if (
+      message.includes("how do i use") ||
+      message.includes("how to use chat")
+    ) {
+      return `
     <strong>🤖 How to Use RVA AI Chat:</strong><br><br>
     
     <strong>💬 Asking Questions:</strong><br>
@@ -1807,10 +2133,10 @@ if (message.includes('how do i use') || message.includes('how to use chat')) {
     
     <em>Try asking: "What's Bitcoin's price?" or "Tell me about RVA wallet"</em>
   `;
-}
+    }
 
-if (message.includes('keyboard shortcuts')) {
-  return `
+    if (message.includes("keyboard shortcuts")) {
+      return `
     <strong>⌨️ Keyboard Shortcuts:</strong><br><br>
     
     <strong>💬 Chat Controls:</strong><br>
@@ -1830,10 +2156,10 @@ if (message.includes('keyboard shortcuts')) {
     
     <em>These shortcuts work when the chat is active!</em>
   `;
-}
+    }
 
-if (message.includes('search tips') || message.includes('how to search')) {
-  return `
+    if (message.includes("search tips") || message.includes("how to search")) {
+      return `
     <strong>🔍 Search Tips & Best Practices:</strong><br><br>
     
     <strong>💰 Crypto Queries:</strong><br>
@@ -1859,10 +2185,13 @@ if (message.includes('search tips') || message.includes('how to search')) {
     
     <em>I understand context, so feel free to ask naturally!</em>
   `;
-}
+    }
 
-if (message.includes('browser') && (message.includes('support') || message.includes('compatibility'))) {
-  return `
+    if (
+      message.includes("browser") &&
+      (message.includes("support") || message.includes("compatibility"))
+    ) {
+      return `
     <strong>🌍 Browser Compatibility:</strong><br><br>
     
     <strong>✅ Fully Supported:</strong><br>
@@ -1888,10 +2217,14 @@ if (message.includes('browser') && (message.includes('support') || message.inclu
     
     <em>For the best experience, please use an updated browser!</em>
   `;
-}
+    }
 
-if (message.includes('performance tips') || message.includes('slow') || message.includes('lag')) {
-  return `
+    if (
+      message.includes("performance tips") ||
+      message.includes("slow") ||
+      message.includes("lag")
+    ) {
+      return `
     <strong>⚡ Performance Optimization Tips:</strong><br><br>
     
     <strong>🚀 Speed Up Chat:</strong><br>
@@ -1915,12 +2248,14 @@ if (message.includes('performance tips') || message.includes('slow') || message.
     • Modern processor (2015+)<br>
     • Stable internet connection<br><br>
     
-    <em>Current memory usage: ${RVAAIChatPerformance.getMemoryUsage()?.used || 'N/A'}MB</em>
+    <em>Current memory usage: ${
+      RVAAIChatPerformance.getMemoryUsage()?.used || "N/A"
+    }MB</em>
   `;
-}
+    }
 
-if (message.includes('contact support') || message.includes('get help')) {
-  return `
+    if (message.includes("contact support") || message.includes("get help")) {
+      return `
     <strong>📞 Contact Support:</strong><br><br>
     
     <strong>💬 Live Chat:</strong><br>
@@ -1947,11 +2282,10 @@ if (message.includes('contact support') || message.includes('get help')) {
     
     <em>I'm here to help with most questions instantly!</em>
   `;
-}
+    }
 
-
-if (message.includes('faq') || message.includes('frequently asked')) {
-  return `
+    if (message.includes("faq") || message.includes("frequently asked")) {
+      return `
     <strong>❓ Frequently Asked Questions:</strong><br><br>
     
     <strong>🏢 About RVA:</strong><br>
@@ -1980,10 +2314,13 @@ if (message.includes('faq') || message.includes('frequently asked')) {
     
     <em>Need more help? Just ask me anything!</em>
   `;
-}
+    }
 
-if (message.includes('feature request') || message.includes('suggest feature')) {
-  return `
+    if (
+      message.includes("feature request") ||
+      message.includes("suggest feature")
+    ) {
+      return `
     <strong>💡 Feature Request System:</strong><br><br>
     
     <strong>🚀 How to Submit:</strong><br>
@@ -2013,10 +2350,10 @@ if (message.includes('feature request') || message.includes('suggest feature')) 
     
     <em>Your feedback shapes our roadmap! What would you like to see?</em>
   `;
-}
+    }
 
-if (message.includes('community') || message.includes('join community')) {
-  return `
+    if (message.includes("community") || message.includes("join community")) {
+      return `
     <strong>👥 Join the RVA Community:</strong><br><br>
     
     <strong>💬 Chat Platforms:</strong><br>
@@ -2048,10 +2385,10 @@ if (message.includes('community') || message.includes('join community')) {
     
     <em>Join thousands of DeFi enthusiasts in our growing community!</em>
   `;
-}
+    }
 
-if (message.includes('latest updates') || message.includes('what\'s new')) {
-  return `
+    if (message.includes("latest updates") || message.includes("what's new")) {
+      return `
     <strong>📢 Latest RVA Updates:</strong><br><br>
     
     <strong>🆕 Recent Features:</strong><br>
@@ -2086,17 +2423,23 @@ if (message.includes('latest updates') || message.includes('what\'s new')) {
     
     <em>Version 2.1.0 - Released this month!</em>
   `;
-}
+    }
 
-if (message.includes('preferences') || message.includes('settings')) {
-  const currentPrefs = this.userPreferences;
-  return `
+    if (message.includes("preferences") || message.includes("settings")) {
+      const currentPrefs = this.userPreferences;
+      return `
     <strong>⚙️ Your Current Preferences:</strong><br><br>
     
-    <strong>💱 Currency:</strong> ${currentPrefs.currency?.toUpperCase() || 'USD'}<br>
-    <strong>🎨 Theme:</strong> ${currentPrefs.theme || 'Dark'}<br>
-    <strong>🔔 Notifications:</strong> ${currentPrefs.notifications ? 'Enabled' : 'Disabled'}<br>
-    <strong>🔄 Auto Refresh:</strong> ${currentPrefs.autoRefresh ? 'Enabled' : 'Disabled'}<br><br>
+    <strong>💱 Currency:</strong> ${
+      currentPrefs.currency?.toUpperCase() || "USD"
+    }<br>
+    <strong>🎨 Theme:</strong> ${currentPrefs.theme || "Dark"}<br>
+    <strong>🔔 Notifications:</strong> ${
+      currentPrefs.notifications ? "Enabled" : "Disabled"
+    }<br>
+    <strong>🔄 Auto Refresh:</strong> ${
+      currentPrefs.autoRefresh ? "Enabled" : "Disabled"
+    }<br><br>
     
     <strong>🛠️ Available Settings:</strong><br>
     • Currency: USD, EUR, GBP, JPY<br>
@@ -2112,110 +2455,10 @@ if (message.includes('preferences') || message.includes('settings')) {
     
     <em>To change settings, ask me: "Change currency to EUR" or "Enable notifications"</em>
   `;
-}
+    }
 
-if (message.includes('theme') && (message.includes('change') || message.includes('switch'))) {
-  return `
-    <strong>🎨 Theme Settings:</strong><br><br>
-    
-    <strong>🌙 Available Themes:</strong><br>
-    • <strong>Dark Mode:</strong> Easy on the eyes, perfect for night use<br>
-    • <strong>Light Mode:</strong> Clean and bright, great for day use<br>
-    • <strong>Auto Mode:</strong> Switches based on system preference<br>
-    • <strong>High Contrast:</strong> Enhanced accessibility<br><br>
-    
-    <strong>🎯 Theme Features:</strong><br>
-    • Consistent across all components<br>
-    • Smooth transitions<br>
-    • Accessibility compliant<br>
-    • Battery-friendly dark mode<br><br>
-    
-    <strong>⚡ Quick Switch:</strong><br>
-    • Say "Switch to dark theme"<br>
-    • Say "Enable light mode"<br>
-    • Say "Use auto theme"<br><br>
-    
-    <strong>💡 Pro Tips:</strong><br>
-    • Dark mode saves battery on OLED screens<br>
-    • Auto mode follows your device settings<br>
-    • High contrast helps with visibility<br><br>
-    
-    <em>Current theme: ${this.userPreferences.theme || 'Dark'}</em>
-  `;
-}
-
-if (message.includes('notification') && message.includes('settings')) {
-  return `
-    <strong>🔔 Notification Settings:</strong><br><br>
-    
-    <strong>📱 Available Notifications:</strong><br>
-    • Price alerts for watchlist coins<br>
-    • Market movement notifications<br>
-    • RVA ecosystem updates<br>
-    • New feature announcements<br>
-    • Security alerts<br><br>
-    
-    <strong>⚙️ Notification Types:</strong><br>
-    • <strong>Browser:</strong> Desktop notifications<br>
-    • <strong>Email:</strong> Daily/weekly summaries<br>
-    • <strong>In-Chat:</strong> Real-time alerts<br><br>
-    
-    <strong>🎯 Customization:</strong><br>
-    • Set price thresholds<br>
-    • Choose notification frequency<br>
-    • Select specific cryptocurrencies<br>
-    • Enable/disable by category<br><br>
-    
-    <strong>🔧 Quick Commands:</strong><br>
-    • "Enable notifications"<br>
-    • "Disable price alerts"<br>
-    • "Set Bitcoin alert at $50000"<br><br>
-    
-    <em>Status: ${this.userPreferences.notifications ? 'Enabled ✅' : 'Disabled ❌'}</em>
-  `;
-}
-
-if (message.includes('report bug') || message.includes('found bug')) {
-  return `
-    <strong>🐛 Bug Report System:</strong><br><br>
-    
-    <strong>📝 How to Report:</strong><br>
-    1. Describe what happened<br>
-    2. List steps to reproduce<br>
-    3. Mention your browser/device<br>
-    4. Include screenshots if possible<br>
-    5. Note the time it occurred<br><br>
-    
-    <strong>📧 Reporting Channels:</strong><br>
-    • Email: bugs@roialvirtualassets.com<br>
-    • Discord: #bug-reports<br>
-    • GitHub: github.com/rva/issues<br>
-    • Direct chat: Type "Bug report: [description]"<br><br>
-    
-    <strong>🏷️ Bug Categories:</strong><br>
-    • UI/UX issues<br>
-    • Performance problems<br>
-    • Data accuracy<br>
-    • Security concerns<br>
-    • Feature malfunctions<br><br>
-    
-    <strong>⚡ Priority Levels:</strong><br>
-    • <strong>Critical:</strong> Security/data loss<br>
-    • <strong>High:</strong> Core functionality broken<br>
-    • <strong>Medium:</strong> Feature not working<br>
-    • <strong>Low:</strong> Minor UI issues<br><br>
-    
-    <strong>🎁 Bug Bounty:</strong><br>
-    • Rewards for valid reports<br>
-    • Special recognition for security finds<br>
-    • Community contributor badges<br><br>
-    
-    <em>Help us improve! Your reports make RVA better for everyone.</em>
-  `;
-}
-
-if (message.includes('connection') && message.includes('issues')) {
-  return `
+    if (message.includes("connection") && message.includes("issues")) {
+      return `
     <strong>🌐 Connection Troubleshooting:</strong><br><br>
     
     <strong>🔍 Common Issues:</strong><br>
@@ -2239,9 +2482,11 @@ if (message.includes('connection') && message.includes('issues')) {
     • Check firewall settings<br><br>
     
     <strong>📊 Connection Status:</strong><br>
-    • API Status: ${this.cryptoApi ? '🟢 Connected' : '🔴 Disconnected'}<br>
+    • API Status: ${this.cryptoApi ? "🟢 Connected" : "🔴 Disconnected"}<br>
     • Chat Status: 🟢 Active<br>
-    • Data Refresh: ${this.userPreferences.autoRefresh ? '🟢 Enabled' : '🔴 Disabled'}<br><br>
+    • Data Refresh: ${
+      this.userPreferences.autoRefresh ? "🟢 Enabled" : "🔴 Disabled"
+    }<br><br>
     
     <strong>📞 Still Having Issues?</strong><br>
     • Contact support with error details<br>
@@ -2250,106 +2495,42 @@ if (message.includes('connection') && message.includes('issues')) {
     
     <em>Most connection issues resolve with a simple page refresh!</em>
   `;
-}
+    }
 
-// Add currency and language change handlers
-if (message.includes('change currency') || message.includes('currency to')) {
-  const currencyMatch = message.match(/(usd|eur|gbp|jpy)/i);
-  if (currencyMatch) {
-    const newCurrency = currencyMatch[1].toLowerCase();
-    this.userPreferences.currency = newCurrency;
-    this.saveUserPreferences();
-    return `✅ Currency changed to ${newCurrency.toUpperCase()}! All prices will now display in ${newCurrency.toUpperCase()}.`;
-  }
-  return `Please specify a currency: USD, EUR, GBP, or JPY. Example: "Change currency to EUR"`;
-}
+    // Add currency and language change handlers
+    if (
+      message.includes("change currency") ||
+      message.includes("currency to")
+    ) {
+      const currencyMatch = message.match(/(usd|eur|gbp|jpy)/i);
+      if (currencyMatch) {
+        const newCurrency = currencyMatch[1].toLowerCase();
+        this.userPreferences.currency = newCurrency;
+        this.saveUserPreferences();
+        return `✅ Currency changed to ${newCurrency.toUpperCase()}! All prices will now display in ${newCurrency.toUpperCase()}.`;
+      }
+      return `Please specify a currency: USD, EUR, GBP, or JPY. Example: "Change currency to EUR"`;
+    }
 
-if (message.includes('enable notifications') || message.includes('turn on notifications')) {
-  this.userPreferences.notifications = true;
-  this.saveUserPreferences();
-  return `🔔 Notifications enabled! You'll now receive alerts for price changes and important updates.`;
-}
+    if (
+      message.includes("chat history") ||
+      message.includes("conversation history")
+    ) {
+      const historyLength = this.conversationHistory.length;
+      const sessionStart = this.conversationHistory[0]?.timestamp;
+      const sessionDuration = sessionStart
+        ? Math.round((new Date() - new Date(sessionStart)) / 1000 / 60)
+        : 0;
 
-if (message.includes('disable notifications') || message.includes('turn off notifications')) {
-  this.userPreferences.notifications = false;
-  this.saveUserPreferences();
-  return `🔕 Notifications disabled. You can re-enable them anytime by saying "enable notifications".`;
-}
-
-
-if (message.includes('switch to') && message.includes('theme')) {
-  const themeMatch = message.match(/(dark|light|auto)/i);
-  if (themeMatch) {
-    const newTheme = themeMatch[1].toLowerCase();
-    this.userPreferences.theme = newTheme;
-    this.saveUserPreferences();
-    return `🎨 Theme changed to ${newTheme} mode! The interface will update accordingly.`;
-  }
-  return `Please specify a theme: dark, light, or auto. Example: "Switch to dark theme"`;
-}
-
-if (message.includes('reset') && (message.includes('settings') || message.includes('preferences'))) {
-  this.userPreferences = {
-    currency: 'usd',
-    theme: 'dark',
-    notifications: true,
-    autoRefresh: true
-  };
-  this.saveUserPreferences();
-  return `🔄 All settings have been reset to default values:
-    <br>• Currency: USD
-    <br>• Theme: Dark
-    <br>• Notifications: Enabled
-    <br>• Auto Refresh: Enabled
-    <br><br><em>You can customize these settings again anytime!</em>`;
-}
-
-if (message.includes('bookmarks') || message.includes('bookmark')) {
-  return `
-    <strong>🔖 Bookmark System:</strong><br><br>
-    
-    <strong>📌 How Bookmarks Work:</strong><br>
-    • Save important conversations<br>
-    • Quick access to useful responses<br>
-    • Organize by categories<br>
-    • Export bookmarked content<br><br>
-    
-    <strong>💾 Bookmark Commands:</strong><br>
-    • "Bookmark this response"<br>
-    • "Show my bookmarks"<br>
-    • "Remove bookmark"<br>
-    • "Export bookmarks"<br><br>
-    
-    <strong>📂 Categories:</strong><br>
-    • Crypto prices & analysis<br>
-    • RVA information<br>
-    • Educational content<br>
-    • Trading strategies<br>
-    • Technical guides<br><br>
-    
-    <strong>🔍 Search Bookmarks:</strong><br>
-    • Find by keyword<br>
-    • Filter by date<br>
-    • Sort by relevance<br><br>
-    
-    <em>Feature coming soon! Currently in development.</em>
-  `;
-}
-
-if (message.includes('chat history') || message.includes('conversation history')) {
-  const historyLength = this.conversationHistory.length;
-  const sessionStart = this.conversationHistory[0]?.timestamp;
-  const sessionDuration = sessionStart 
-    ? Math.round((new Date() - new Date(sessionStart)) / 1000 / 60)
-    : 0;
-    
-  return `
+      return `
     <strong>📚 Chat History Overview:</strong><br><br>
     
     <strong>📊 Current Session:</strong><br>
     • Total messages: ${historyLength}<br>
     • Session duration: ${sessionDuration} minutes<br>
-    • Started: ${sessionStart ? new Date(sessionStart).toLocaleTimeString() : 'N/A'}<br><br>
+    • Started: ${
+      sessionStart ? new Date(sessionStart).toLocaleTimeString() : "N/A"
+    }<br><br>
     
     <strong>💾 History Features:</strong><br>
     • Automatic backup to localStorage<br>
@@ -2370,48 +2551,10 @@ if (message.includes('chat history') || message.includes('conversation history')
     
     <em>Your conversation history helps me provide better context!</em>
   `;
-}
+    }
 
-if (message.includes('voice commands') || message.includes('voice control')) {
-  return `
-    <strong>🎤 Voice Commands (Coming Soon):</strong><br><br>
-    
-    <strong>🗣️ Planned Voice Features:</strong><br>
-    • Voice-to-text input<br>
-    • Audio response playback<br>
-    • Hands-free operation<br>
-    • Multiple language support<br><br>
-    
-    <strong>📱 Voice Commands:</strong><br>
-    • "Hey RVA, Bitcoin price"<br>
-    • "Show me top cryptocurrencies"<br>
-    • "Read the market analysis"<br>
-    • "Clear the chat"<br><br>
-    
-    <strong>🌐 Language Support:</strong><br>
-    • English (US/UK)<br>
-    • Spanish<br>
-    • French<br>
-    • German<br>
-    • More languages planned<br><br>
-    
-    <strong>⚙️ Voice Settings:</strong><br>
-    • Adjust speech rate<br>
-    • Choose voice type<br>
-    • Set wake word<br>
-    • Background listening<br><br>
-    
-    <strong>🔒 Privacy:</strong><br>
-    • Local processing only<br>
-    • No audio data stored<br>
-    • User consent required<br><br>
-    
-    <em>Voice features will be available in the next major update!</em>
-  `;
-}
-
-if (message.includes('formatting') || message.includes('text formatting')) {
-  return `
+    if (message.includes("formatting") || message.includes("text formatting")) {
+      return `
     <strong>📝 Text Formatting Guide:</strong><br><br>
     
     <strong>✨ Supported Formatting:</strong><br>
@@ -2443,48 +2586,13 @@ if (message.includes('formatting') || message.includes('text formatting')) {
     
     <em>I automatically format responses for better readability!</em>
   `;
-}
+    }
 
-if (message.includes('language') && (message.includes('change') || message.includes('settings'))) {
-  return `
-    <strong>🌐 Language Settings:</strong><br><br>
-    
-    <strong>🗣️ Available Languages:</strong><br>
-    • 🇺🇸 English (Default)<br>
-    • 🇪🇸 Spanish (Español)<br>
-    • 🇫🇷 French (Français)<br>
-    • 🇩🇪 German (Deutsch)<br>
-    • 🇯🇵 Japanese (日本語) - Coming soon<br>
-    • 🇰🇷 Korean (한국어) - Coming soon<br><br>
-    
-    <strong>🔄 Language Features:</strong><br>
-    • Full interface translation<br>
-    • Localized number formatting<br>
-    • Cultural date/time formats<br>
-    • Regional crypto preferences<br><br>
-    
-    <strong>⚡ Quick Change:</strong><br>
-    • "Change language to Spanish"<br>
-    • "Switch to French"<br>
-    • "Use German interface"<br><br>
-    
-    <strong>🎯 Smart Features:</strong><br>
-    • Auto-detect browser language<br>
-    • Remember preference<br>
-    • Fallback to English<br><br>
-    
-    <strong>📱 Mobile Support:</strong><br>
-    • Responsive text sizing<br>
-    • Touch-friendly interface<br>
-    • Voice input support<br><br>
-    
-    <em>Current language: English 🇺🇸</em><br>
-    <em>More languages coming based on community demand!</em>
-  `;
-}
-
-if (message.includes('quick start') || message.includes('getting started')) {
-  return `
+    if (
+      message.includes("quick start") ||
+      message.includes("getting started")
+    ) {
+      return `
     <strong>⚡ Quick Start Guide:</strong><br><br>
     
     <strong>🚀 First Steps:</strong><br>
@@ -2518,10 +2626,10 @@ if (message.includes('quick start') || message.includes('getting started')) {
     
     <em>Welcome to RVA! I'm here to help you navigate crypto and DeFi! 🎉</em>
   `;
-}
+    }
 
-if (message.includes('examples') || message.includes('example questions')) {
-  return `
+    if (message.includes("examples") || message.includes("example questions")) {
+      return `
     <strong>💡 Example Questions You Can Ask:</strong><br><br>
     
     <strong>💰 Cryptocurrency Prices:</strong><br>
@@ -2562,11 +2670,13 @@ if (message.includes('examples') || message.includes('example questions')) {
     
     <em>Feel free to ask anything! I'm designed to understand natural language.</em>
   `;
-}
-    
+    }
 
-if (message.includes('history') && (message.includes('bitcoin') || message.includes('btc'))) {
-  return `
+    if (
+      message.includes("history") &&
+      (message.includes("bitcoin") || message.includes("btc"))
+    ) {
+      return `
     <strong>📜 Bitcoin's Epic Journey:</strong><br><br>
     
     <strong>🎯 The Genesis (2008-2009):</strong><br>
@@ -2598,10 +2708,13 @@ if (message.includes('history') && (message.includes('bitcoin') || message.inclu
     
     <em>From pizza money to digital gold - what a journey! 🚀</em>
   `;
-}
+    }
 
-if (message.includes('history') && (message.includes('ethereum') || message.includes('eth'))) {
-  return `
+    if (
+      message.includes("history") &&
+      (message.includes("ethereum") || message.includes("eth"))
+    ) {
+      return `
     <strong>🔮 Ethereum's Revolutionary Story:</strong><br><br>
     
     <strong>👨‍💻 The Visionary (2013-2015):</strong><br>
@@ -2638,11 +2751,11 @@ if (message.includes('history') && (message.includes('ethereum') || message.incl
     
     <em>Ethereum didn't just create a cryptocurrency - it created an entire economy! 🌍</em>
   `;
-}
+    }
 
-// Market cycles and psychology
-if (message.includes('market cycle') || message.includes('crypto cycle')) {
-  return `
+    // Market cycles and psychology
+    if (message.includes("market cycle") || message.includes("crypto cycle")) {
+      return `
     <strong>🔄 The Eternal Crypto Cycle:</strong><br><br>
     
     <strong>📈 Phase 1: Accumulation (The Quiet Phase)</strong><br>
@@ -2687,11 +2800,11 @@ if (message.includes('market cycle') || message.includes('crypto cycle')) {
     
     <em>We've seen this movie 4 times already. The plot never changes, just the actors! 🎭</em>
   `;
-}
+    }
 
-// Crypto personalities and legends
-if (message.includes('satoshi') || message.includes('nakamoto')) {
-  return `
+    // Crypto personalities and legends
+    if (message.includes("satoshi") || message.includes("nakamoto")) {
+      return `
     <strong>👻 The Mystery of Satoshi Nakamoto:</strong><br><br>
     
     <strong>🕵️ The Ultimate Mystery:</strong><br>
@@ -2733,10 +2846,10 @@ if (message.includes('satoshi') || message.includes('nakamoto')) {
     
     <em>Satoshi gave us the greatest gift - then disappeared like a crypto superhero! 🦸‍♂️</em>
   `;
-}
+    }
 
-if (message.includes('vitalik') || message.includes('buterin')) {
-  return `
+    if (message.includes("vitalik") || message.includes("buterin")) {
+      return `
     <strong>🧙‍♂️ Vitalik Buterin: The Ethereum Wizard:</strong><br><br>
     
     <strong>👶 The Prodigy:</strong><br>
@@ -2775,11 +2888,11 @@ if (message.includes('vitalik') || message.includes('buterin')) {
     
     <em>From gaming nerd to crypto legend - living proof that passion can change the world! 🌍</em>
   `;
-}
+    }
 
-// Crypto culture and memes
-if (message.includes('meme') || message.includes('crypto memes')) {
-  return `
+    // Crypto culture and memes
+    if (message.includes("meme") || message.includes("crypto memes")) {
+      return `
     <strong>😂 Crypto Meme Hall of Fame:</strong><br><br>
     
     <strong>💎🙌 Diamond Hands:</strong><br>
@@ -2815,11 +2928,14 @@ if (message.includes('meme') || message.includes('crypto memes')) {
     
     <em>Memes are how we cope with the volatility! Laughter is the best medicine for portfolio pain! 💊😂</em>
   `;
-}
+    }
 
-// Technical analysis and trading psychology
-if (message.includes('technical analysis') || message.includes('chart analysis')) {
-  return `
+    // Technical analysis and trading psychology
+    if (
+      message.includes("technical analysis") ||
+      message.includes("chart analysis")
+    ) {
+      return `
     <strong>📊 Technical Analysis: The Art of Chart Reading:</strong><br><br>
     
     <strong>🎨 The Philosophy:</strong><br>
@@ -2861,11 +2977,14 @@ if (message.includes('technical analysis') || message.includes('chart analysis')
     
     <em>Charts tell stories, but sometimes those stories are fiction! 📚</em>
   `;
-}
+    }
 
-// DeFi deep dive with personality
-if (message.includes('defi explained') || message.includes('decentralized finance explained')) {
-  return `
+    // DeFi deep dive with personality
+    if (
+      message.includes("defi explained") ||
+      message.includes("decentralized finance explained")
+    ) {
+      return `
     <strong>🏦 DeFi: Banking Without Banks!</strong><br><br>
     
     <strong>🤯 The Mind-Bending Concept:</strong><br>
@@ -2905,11 +3024,11 @@ if (message.includes('defi explained') || message.includes('decentralized financ
     
     <em>DeFi is like the early internet - clunky now, but revolutionary in potential! 🌐</em>
   `;
-}
+    }
 
-// NFT culture and explanation
-if (message.includes('nft') || message.includes('non fungible')) {
-  return `
+    // NFT culture and explanation
+    if (message.includes("nft") || message.includes("non fungible")) {
+      return `
     <strong>🎨 NFTs: Digital Ownership Revolution (Or Expensive JPEGs?):</strong><br><br>
     
     <strong>🤔 What Are NFTs Really?</strong><br>
@@ -2951,11 +3070,15 @@ if (message.includes('nft') || message.includes('non fungible')) {
     
     <em>NFTs: 10% technology, 90% psychology, 100% fascinating! 🧠</em>
   `;
-}
+    }
 
-// Crypto regulations and government
-if (message.includes('regulation') || message.includes('government') || message.includes('sec')) {
-  return `
+    // Crypto regulations and government
+    if (
+      message.includes("regulation") ||
+      message.includes("government") ||
+      message.includes("sec")
+    ) {
+      return `
     <strong>🏛️ Crypto vs Governments: The Eternal Dance:</strong><br><br>
     
     <strong>😅 The Awkward Relationship:</strong><br>
@@ -2999,11 +3122,15 @@ if (message.includes('regulation') || message.includes('government') || message.
     
     <em>Governments can regulate the on-ramps, but they can't regulate math! 🧮</em>
   `;
-}
+    }
 
-// Crypto environmental impact
-if (message.includes('environment') || message.includes('energy') || message.includes('carbon')) {
-  return `
+    // Crypto environmental impact
+    if (
+      message.includes("environment") ||
+      message.includes("energy") ||
+      message.includes("carbon")
+    ) {
+      return `
     <strong>🌱 Crypto & Environment: The Great Debate:</strong><br><br>
     
     <strong>⚡ The Energy Question:</strong><br>
@@ -3046,11 +3173,11 @@ if (message.includes('environment') || message.includes('energy') || message.inc
     
     <em>Crypto isn't the problem - it's part of the solution to our energy future! 🚀</em>
   `;
-}
+    }
 
-// Crypto adoption and mainstream integration
-if (message.includes('adoption') || message.includes('mainstream')) {
-  return `
+    // Crypto adoption and mainstream integration
+    if (message.includes("adoption") || message.includes("mainstream")) {
+      return `
     <strong>📈 Crypto Adoption: From Nerd Money to Mainstream Magic:</strong><br><br>
     
     <strong>🎯 We've Come So Far:</strong><br>
@@ -3118,11 +3245,14 @@ if (message.includes('adoption') || message.includes('mainstream')) {
     
     <em>Adoption isn't coming - it's here! We're just getting started! 🌟</em>
   `;
-}
+    }
 
-// Crypto security deep dive
-if (message.includes('security') && (message.includes('best practices') || message.includes('guide'))) {
-  return `
+    // Crypto security deep dive
+    if (
+      message.includes("security") &&
+      (message.includes("best practices") || message.includes("guide"))
+    ) {
+      return `
     <strong>🛡️ Crypto Security: Your Digital Fort Knox Guide:</strong><br><br>
     
     <strong>😱 The Harsh Reality:</strong><br>
@@ -3181,11 +3311,15 @@ if (message.includes('security') && (message.includes('best practices') || messa
     
     <em>Remember: In crypto, paranoia is a feature, not a bug! 🕵️‍♂️</em>
   `;
-}
+    }
 
-// Crypto psychology and emotions
-if (message.includes('psychology') || message.includes('emotions') || message.includes('mental health')) {
-  return `
+    // Crypto psychology and emotions
+    if (
+      message.includes("psychology") ||
+      message.includes("emotions") ||
+      message.includes("mental health")
+    ) {
+      return `
     <strong>🧠 Crypto Psychology: The Emotional Rollercoaster:</strong><br><br>
     
     <strong>🎢 The Crypto Emotional Cycle:</strong><br>
@@ -3244,11 +3378,14 @@ if (message.includes('psychology') || message.includes('emotions') || message.in
     
     <em>The real gains are the friends we made along the way! (And maybe some Bitcoin too) 😊</em>
   `;
-}
+    }
 
-// Crypto future predictions and trends
-if (message.includes('future') && (message.includes('crypto') || message.includes('blockchain'))) {
-  return `
+    // Crypto future predictions and trends
+    if (
+      message.includes("future") &&
+      (message.includes("crypto") || message.includes("blockchain"))
+    ) {
+      return `
     <strong>🔮 The Future of Crypto: My Crystal Ball Predictions:</strong><br><br>
     
     <strong>🚀 Next 2-5 Years:</strong><br>
@@ -3305,11 +3442,15 @@ if (message.includes('future') && (message.includes('crypto') || message.include
     
     <em>The best way to predict the future is to build it! 🛠️</em>
   `;
-}
+    }
 
-// Crypto education and learning resources
-if (message.includes('learn') || message.includes('education') || message.includes('resources')) {
-  return `
+    // Crypto education and learning resources
+    if (
+      message.includes("learn") ||
+      message.includes("education") ||
+      message.includes("resources")
+    ) {
+      return `
     <strong>📚 Your Crypto Education Journey: From Noob to Pro!</strong><br><br>
     
     <strong>🎯 Learning Path (My Recommended Order):</strong><br>
@@ -3388,11 +3529,15 @@ if (message.includes('learn') || message.includes('education') || message.includ
     
     <em>The best investment you can make is in your own education! 🧠💎</em>
   `;
-}
+    }
 
-// Crypto gaming and metaverse
-if (message.includes('gaming') || message.includes('metaverse') || message.includes('play to earn')) {
-  return `
+    // Crypto gaming and metaverse
+    if (
+      message.includes("gaming") ||
+      message.includes("metaverse") ||
+      message.includes("play to earn")
+    ) {
+      return `
     <strong>🎮 Crypto Gaming: Where Fun Meets Finance!</strong><br><br>
     
     <strong>🕹️ The Gaming Revolution:</strong><br>
@@ -3455,11 +3600,14 @@ if (message.includes('gaming') || message.includes('metaverse') || message.inclu
     
     <em>The future of gaming is here - and it pays you to play! 🎮💰</em>
   `;
-}
+    }
 
-// Crypto trading strategies and tips
-if (message.includes('trading') && (message.includes('strategy') || message.includes('tips'))) {
-  return `
+    // Crypto trading strategies and tips
+    if (
+      message.includes("trading") &&
+      (message.includes("strategy") || message.includes("tips"))
+    ) {
+      return `
     <strong>📈 Crypto Trading: The Art of Controlled Chaos!</strong><br><br>
     
     <strong>⚠️ Reality Check First:</strong><br>
@@ -3532,11 +3680,14 @@ if (message.includes('trading') && (message.includes('strategy') || message.incl
     
     <em>Remember: Time in the market beats timing the market! 🕰️</em>
   `;
-}
+    }
 
-// Add more personality-driven responses
-if (message.includes('weekend plans') || message.includes('what do you do for fun')) {
-  return `
+    // Add more personality-driven responses
+    if (
+      message.includes("weekend plans") ||
+      message.includes("what do you do for fun")
+    ) {
+      return `
     <strong>🎉 My Weekend Vibes:</strong><br><br>
     
     <strong>📊 Saturday Morning Ritual:</strong><br>
@@ -3557,10 +3708,13 @@ if (message.includes('weekend plans') || message.includes('what do you do for fu
     
     <em>What about you? Any crypto-related weekend plans? 🤔</em>
   `;
-}
+    }
 
-if (message.includes('favorite crypto moment') || message.includes('best crypto memory')) {
-  return `
+    if (
+      message.includes("favorite crypto moment") ||
+      message.includes("best crypto memory")
+    ) {
+      return `
     <strong>✨ My Favorite Crypto Moments:</strong><br><br>
     
     <strong>🎯 The "Aha!" Moment:</strong><br>
@@ -3584,10 +3738,13 @@ if (message.includes('favorite crypto moment') || message.includes('best crypto 
     
     <em>Every day in crypto feels like a historic moment! What's been your favorite crypto experience? 🚀</em>
   `;
-}
+    }
 
-if (message.includes('crypto pet peeves') || message.includes('what annoys you')) {
-  return `
+    if (
+      message.includes("crypto pet peeves") ||
+      message.includes("what annoys you")
+    ) {
+      return `
     <strong>😤 My Crypto Pet Peeves (Rant Mode: ON):</strong><br><br>
     
     <strong>🙄 "It's Just a Bubble":</strong><br>
@@ -3619,10 +3776,13 @@ if (message.includes('crypto pet peeves') || message.includes('what annoys you')
     
     <em>What are your crypto pet peeves? Let's rant together! 😂</em>
   `;
-}
+    }
 
-if (message.includes('crypto predictions') || message.includes('price predictions')) {
-  return `
+    if (
+      message.includes("crypto predictions") ||
+      message.includes("price predictions")
+    ) {
+      return `
     <strong>🔮 My Crypto Crystal Ball (Disclaimer: May Be Cloudy!):</strong><br><br>
     
     <strong>⚠️ Prediction Disclaimer:</strong><br>
@@ -3678,10 +3838,13 @@ if (message.includes('crypto predictions') || message.includes('price prediction
     
     <em>Remember: These are just educated guesses! Do your own research and never invest more than you can afford to lose! 🎲</em>
   `;
-}
+    }
 
-if (message.includes('crypto winter') || message.includes('bear market survival')) {
-  return `
+    if (
+      message.includes("crypto winter") ||
+      message.includes("bear market survival")
+    ) {
+      return `
     <strong>❄️ Surviving Crypto Winter: A Veteran's Guide:</strong><br><br>
     
     <strong>🥶 What Is Crypto Winter?</strong><br>
@@ -3743,12 +3906,15 @@ if (message.includes('crypto winter') || message.includes('bear market survival'
     
     <em>Winter is temporary, but the technology is permanent! Stay strong! 💪</em>
   `;
-}
+    }
 
-// Add these final responses to complete the personality enhancement
+    // Add these final responses to complete the personality enhancement
 
-if (message.includes('crypto mistakes') || message.includes('biggest mistakes')) {
-  return `
+    if (
+      message.includes("crypto mistakes") ||
+      message.includes("biggest mistakes")
+    ) {
+      return `
     <strong>🤦‍♀️ My Crypto Hall of Shame (Learning Experiences!):</strong><br><br>
     
     <strong>💸 The $10,000 Pizza Moment:</strong><br>
@@ -3787,54 +3953,46 @@ if (message.includes('crypto mistakes') || message.includes('biggest mistakes'))
     
     <em>Mistakes are proof that you're trying! What matters is learning from them! 🌱</em>
   `;
-}
-
-
-  
-
+    }
 
     // Conversation stats
-    if (message.includes('stats') || message.includes('statistics')) {
+    if (message.includes("stats") || message.includes("statistics")) {
       return this.getConversationStats();
     }
 
-  
-    
     // Clear chat
-    if (message.includes('clear') && message.includes('chat')) {
+    if (message.includes("clear") && message.includes("chat")) {
       this.clearChat();
       return;
     }
-    
 
-    
-    
     // Default responses with more personality
-const personalizedDefaults = [
-  "Hmm, that's an interesting question! I'm still learning new things about crypto every day. Could you help me understand what you're looking for? Maybe something about RVA, market prices, or DeFi? 🤔",
-  
-  "You know what? I love curious questions! I specialize in RVA ecosystem, live crypto data, and making DeFi less scary. What specific area interests you most? 🚀",
-  
-  "That's a great question! I'm like a crypto encyclopedia with a personality disorder - I know tons about blockchain, DeFi, and market data, but I might need you to be a bit more specific. What's on your mind? 😊",
-  
-  "Ooh, I sense a learning opportunity! I'm here to help with anything crypto-related, from basic blockchain concepts to advanced DeFi strategies. What would you like to explore? 🌟",
-  
-  "I love that you're asking questions! That's how we all learned about this crazy crypto world. I can help with RVA info, price data, market analysis, or just general crypto chat. What sounds interesting? 💡"
-];
+    const personalizedDefaults = [
+      "Hmm, that's an interesting question! I'm still learning new things about crypto every day. Could you help me understand what you're looking for? Maybe something about RVA, market prices, or DeFi? 🤔",
 
-// Return a random personalized default response
-return personalizedDefaults[Math.floor(Math.random() * personalizedDefaults.length)];
+      "You know what? I love curious questions! I specialize in RVA ecosystem, live crypto data, and making DeFi less scary. What specific area interests you most? 🚀",
+
+      "That's a great question! I'm like a crypto encyclopedia with a personality disorder - I know tons about blockchain, DeFi, and market data, but I might need you to be a bit more specific. What's on your mind? 😊",
+
+      "Ooh, I sense a learning opportunity! I'm here to help with anything crypto-related, from basic blockchain concepts to advanced DeFi strategies. What would you like to explore? 🌟",
+
+      "I love that you're asking questions! That's how we all learned about this crazy crypto world. I can help with RVA info, price data, market analysis, or just general crypto chat. What sounds interesting? 💡",
+    ];
+
+    // Return a random personalized default response
+    return personalizedDefaults[
+      Math.floor(Math.random() * personalizedDefaults.length)
+    ];
   }
-  
-  
+
   escapeHtml(text) {
-    const div = document.createElement('div');
+    const div = document.createElement("div");
     div.textContent = text;
     return div.innerHTML;
   }
-  
+
   scrollToBottom() {
-    const messagesContainer = document.getElementById('ai-chat-messages');
+    const messagesContainer = document.getElementById("ai-chat-messages");
     if (messagesContainer) {
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
@@ -3847,17 +4005,19 @@ class RVAAIChatQuickActions {
     this.aiChat = aiChatInstance;
     this.addQuickActionButtons();
   }
-  
+
   addQuickActionButtons() {
-    const chatContainer = document.getElementById('ai-chat-container');
+    const chatContainer = document.getElementById("ai-chat-container");
     if (!chatContainer) return;
-    
-    const inputContainer = chatContainer.querySelector('.ai-chat-input-container');
+
+    const inputContainer = chatContainer.querySelector(
+      ".ai-chat-input-container"
+    );
     if (!inputContainer) return;
-    
+
     // Create quick actions container
-    const quickActionsContainer = document.createElement('div');
-    quickActionsContainer.className = 'ai-chat-quick-actions';
+    const quickActionsContainer = document.createElement("div");
+    quickActionsContainer.className = "ai-chat-quick-actions";
     quickActionsContainer.innerHTML = `
       <div class="quick-actions-tabs">
         <button class="quick-tab active" data-tab="crypto">💰 Crypto</button>
@@ -3959,164 +4119,188 @@ class RVAAIChatQuickActions {
         </div>
       </div>
     `;
-    
+
     // Insert before input container
     chatContainer.insertBefore(quickActionsContainer, inputContainer);
-    
+
     // Add event listeners
     this.setupQuickActionListeners();
   }
-  
+
   setupQuickActionListeners() {
+    const chatContainer = document.getElementById("ai-chat-container");
+    if (!chatContainer) return;
+
     // Tab switching
-    document.addEventListener('click', (event) => {
-      if (event.target.classList.contains('quick-tab')) {
-        const tabName = event.target.dataset.tab;
-        this.switchTab(tabName);
+    chatContainer.addEventListener("click", (e) => {
+      // Handle tab switching
+      if (e.target.classList.contains("quick-tab")) {
+        const tabName = e.target.dataset.tab;
+
+        // Remove active class from all tabs and content
+        chatContainer
+          .querySelectorAll(".quick-tab")
+          .forEach((tab) => tab.classList.remove("active"));
+        chatContainer
+          .querySelectorAll(".quick-tab-content")
+          .forEach((content) => content.classList.remove("active"));
+
+        // Add active class to clicked tab and corresponding content
+        e.target.classList.add("active");
+        chatContainer
+          .querySelector(`[data-content="${tabName}"]`)
+          .classList.add("active");
       }
-      
-      if (event.target.classList.contains('quick-action-btn')) {
-        const action = event.target.dataset.action;
+
+      // Handle quick action buttons
+      if (e.target.classList.contains("quick-action-btn")) {
+        const action = e.target.dataset.action;
         this.handleQuickAction(action);
       }
     });
   }
-  
+
   switchTab(tabName) {
     // Remove active class from all tabs and contents
-    document.querySelectorAll('.quick-tab').forEach(tab => tab.classList.remove('active'));
-    document.querySelectorAll('.quick-tab-content').forEach(content => content.classList.remove('active'));
-    
+    document
+      .querySelectorAll(".quick-tab")
+      .forEach((tab) => tab.classList.remove("active"));
+    document
+      .querySelectorAll(".quick-tab-content")
+      .forEach((content) => content.classList.remove("active"));
+
     // Add active class to selected tab and content
     const selectedTab = document.querySelector(`[data-tab="${tabName}"]`);
-    const selectedContent = document.querySelector(`[data-content="${tabName}"]`);
-    
-    if (selectedTab) selectedTab.classList.add('active');
-    if (selectedContent) selectedContent.classList.add('active');
+    const selectedContent = document.querySelector(
+      `[data-content="${tabName}"]`
+    );
+
+    if (selectedTab) selectedTab.classList.add("active");
+    if (selectedContent) selectedContent.classList.add("active");
   }
-  
+
   handleQuickAction(action) {
     const actions = {
       // Cryptocurrency prices
-      'btc-price': 'What is the price of Bitcoin?',
-      'eth-price': 'What is the price of Ethereum?',
-      'bnb-price': 'What is the price of BNB?',
-      'sol-price': 'What is the price of Solana?',
-      'ada-price': 'What is the price of Cardano?',
-      'doge-price': 'What is the price of Dogecoin?',
-      
+      "btc-price": "What is the price of Bitcoin?",
+      "eth-price": "What is the price of Ethereum?",
+      "bnb-price": "What is the price of BNB?",
+      "sol-price": "What is the price of Solana?",
+      "ada-price": "What is the price of Cardano?",
+      "doge-price": "What is the price of Dogecoin?",
+
       // Market overview
-      'top-5': 'Show me top 5 cryptocurrencies',
-      'top-10': 'Show me top 10 cryptocurrencies',
-      'market-analysis': 'Market analysis',
-      'gainers': 'Show me biggest gainers',
-      'losers': 'Show me biggest losers',
-      
+      "top-5": "Show me top 5 cryptocurrencies",
+      "top-10": "Show me top 10 cryptocurrencies",
+      "market-analysis": "Market analysis",
+      gainers: "Show me biggest gainers",
+      losers: "Show me biggest losers",
+
       // RVA ecosystem
-      'rva-overview': 'Tell me about RVA ecosystem',
-      'rva-wallet': 'Tell me about RVA secure wallet',
-      'rva-exchange': 'Tell me about RVA smart exchange',
-      'rva-launchpad': 'Tell me about RVA ICO/IDO launchpad',
-      'rva-blockchain': 'Tell me about RVA smart chain',
-      
+      "rva-overview": "Tell me about RVA ecosystem",
+      "rva-wallet": "Tell me about RVA secure wallet",
+      "rva-exchange": "Tell me about RVA smart exchange",
+      "rva-launchpad": "Tell me about RVA ICO/IDO launchpad",
+      "rva-blockchain": "Tell me about RVA smart chain",
+
       // Education
-    'crypto-glossary': 'Show me crypto glossary',
-    'trading-guide': 'Show me trading guide',
-    'security-guide': 'Show me security guide',
-    'beginner-guide': 'Show me beginner guide',
-    
-    // Help and capabilities
-    'capabilities': 'What can you do?',
-    'examples': 'Give me example questions',
-    'about-alex': 'Who are you?',
-      
+      "crypto-glossary": "Show me crypto glossary",
+      "trading-guide": "Show me trading guide",
+      "security-guide": "Show me security guide",
+      "beginner-guide": "Show me beginner guide",
+
+      // Help and capabilities
+      capabilities: "What can you do?",
+      examples: "Give me example questions",
+      "about-alex": "Who are you?",
+
       // Chat management
-      'stats': 'Show conversation statistics',
-      'clear-chat': 'clear chat',
-      'rva-staking': 'Tell me about RVA staking rewards',
-    'rva-governance': 'How does RVA governance work?',
-    'rva-nft': 'Tell me about RVA NFT marketplace',
-    'rva-lending': 'How does RVA DeFi lending work?',
-    'rva-yield': 'Tell me about RVA yield farming',
-    'rva-bridge': 'How does RVA cross-chain bridge work?',
-    
-    // RVA Information
-    'rva-tokenomics': 'Explain RVA tokenisation',
-    'rva-roadmap': 'Show me RVA roadmap',
-    'rva-partnerships': 'Tell me about RVA partnerships',
-    'rva-team': 'Who is the RVA team?',
-    'rva-whitepaper': 'Where can I find RVA whitepaper?',
-    'rva-audit': 'Tell me about RVA security audits',
-    
-    // Crypto Basics
-    'blockchain-basics': 'Explain blockchain basics',
-    'wallet-types': 'What are different wallet types?',
-    'crypto-vs-fiat': 'Crypto vs fiat currency differences',
-    
-    // Trading & Investment
-    'technical-analysis': 'Teach me technical analysis',
-    'risk-management': 'Risk management in crypto',
-    'portfolio-tips': 'Crypto portfolio management tips',
-    'market-psychology': 'Explain market psychology',
-    
-    // DeFi & Advanced
-    'defi-explained': 'What is DeFi?',
-    'yield-farming-guide': 'How does yield farming work?',
-    'liquidity-pools': 'Explain liquidity pools',
-    'smart-contracts': 'What are smart contracts?',
-    'nft-guide': 'What are NFTs?',
-    'dao-explained': 'What is a DAO?',
-    
-    // Security & Best Practices
-    'scam-prevention': 'How to avoid crypto scams',
-    'private-keys': 'Private key security best practices',
-    '2fa-guide': 'How to set up 2FA',
-    'cold-storage': 'What is cold storage?',
-    'how-to-use': 'How do I use this chat?',
-    'quick-start': 'Show me quick start guide',
-    
-    // Chat Features
-    'keyboard-shortcuts': 'What are the keyboard shortcuts?',
-    'voice-commands': 'What voice commands are available?',
-    'search-tips': 'Give me search tips',
-    'formatting-help': 'How can I format text?',
-    'export-chat': 'How do I export this conversation?',
-    
-    // Personalization
-    'preferences': 'Show my preferences',
-    'theme-settings': 'How do I change themes?',
-    'notification-settings': 'How do I manage notifications?',
-    'language-settings': 'How do I change language?',
-    'currency-settings': 'How do I change currency?',
-    
-    // Chat Management
-    'history': 'Show my chat history',
-    'bookmarks': 'How do bookmarks work?',
-    'reset-preferences': 'How do I reset my settings?',
-    
-    // Troubleshooting
-    'connection-issues': 'I have connection problems',
-    'performance-tips': 'How can I improve performance?',
-    'browser-compatibility': 'Which browsers are supported?',
-    'refresh-data': 'How do I refresh data?',
-    'report-bug': 'How do I report a bug?',
-    
-    // Support & Feedback
-    'contact-support': 'How do I contact support?',
-    'feedback': 'How do I send feedback?',
-    'feature-request': 'How do I request features?',
-    'faq': 'Show me frequently asked questions',
-    'community': 'How do I join the community?',
-    'updates': 'What are the latest updates?'
+      stats: "Show conversation statistics",
+      "clear-chat": "clear chat",
+      "rva-staking": "Tell me about RVA staking rewards",
+      "rva-governance": "How does RVA governance work?",
+      "rva-nft": "Tell me about RVA NFT marketplace",
+      "rva-lending": "How does RVA DeFi lending work?",
+      "rva-yield": "Tell me about RVA yield farming",
+      "rva-bridge": "How does RVA cross-chain bridge work?",
+
+      // RVA Information
+      "rva-tokenomics": "Explain RVA tokenisation",
+      "rva-roadmap": "Show me RVA roadmap",
+      "rva-partnerships": "Tell me about RVA partnerships",
+      "rva-team": "Who is the RVA team?",
+      "rva-whitepaper": "Where can I find RVA whitepaper?",
+      "rva-audit": "Tell me about RVA security audits",
+
+      // Crypto Basics
+      "blockchain-basics": "Explain blockchain basics",
+      "wallet-types": "What are different wallet types?",
+      "crypto-vs-fiat": "Crypto vs fiat currency differences",
+
+      // Trading & Investment
+      "technical-analysis": "Teach me technical analysis",
+      "risk-management": "Risk management in crypto",
+      "portfolio-tips": "Crypto portfolio management tips",
+      "market-psychology": "Explain market psychology",
+
+      // DeFi & Advanced
+      "defi-explained": "What is DeFi?",
+      "yield-farming-guide": "How does yield farming work?",
+      "liquidity-pools": "Explain liquidity pools",
+      "smart-contracts": "What are smart contracts?",
+      "nft-guide": "What are NFTs?",
+      "dao-explained": "What is a DAO?",
+
+      // Security & Best Practices
+      "scam-prevention": "How to avoid crypto scams",
+      "private-keys": "Private key security best practices",
+      "2fa-guide": "How to set up 2FA",
+      "cold-storage": "What is cold storage?",
+      "how-to-use": "How do I use this chat?",
+      "quick-start": "Show me quick start guide",
+
+      // Chat Features
+      "keyboard-shortcuts": "What are the keyboard shortcuts?",
+      "voice-commands": "What voice commands are available?",
+      "search-tips": "Give me search tips",
+      "formatting-help": "How can I format text?",
+      "export-chat": "How do I export this conversation?",
+
+      // Personalization
+      preferences: "Show my preferences",
+      "theme-settings": "How do I change themes?",
+      "notification-settings": "How do I manage notifications?",
+      "language-settings": "How do I change language?",
+      "currency-settings": "How do I change currency?",
+
+      // Chat Management
+      history: "Show my chat history",
+      bookmarks: "How do bookmarks work?",
+      "reset-preferences": "How do I reset my settings?",
+
+      // Troubleshooting
+      "connection-issues": "I have connection problems",
+      "performance-tips": "How can I improve performance?",
+      "browser-compatibility": "Which browsers are supported?",
+      "refresh-data": "How do I refresh data?",
+      "report-bug": "How do I report a bug?",
+
+      // Support & Feedback
+      "contact-support": "How do I contact support?",
+      feedback: "How do I send feedback?",
+      "feature-request": "How do I request features?",
+      faq: "Show me frequently asked questions",
+      community: "How do I join the community?",
+      updates: "What are the latest updates?",
     };
-    
+
     const query = actions[action];
     if (query) {
-      if (action === 'clear-chat') {
+      if (action === "clear-chat") {
         this.aiChat.clearChat();
       } else {
         // Simulate user input
-        const input = document.getElementById('ai-chat-input');
+        const input = document.getElementById("ai-chat-input");
         if (input) {
           input.value = query;
           this.aiChat.sendMessage();
@@ -4132,71 +4316,74 @@ const RVAAIChatUtils = {
   formatNumber: (num) => {
     return num.toLocaleString();
   },
-  
+
   // Calculate percentage change
   calculatePercentageChange: (oldValue, newValue) => {
-    return ((newValue - oldValue) / oldValue * 100).toFixed(2);
+    return (((newValue - oldValue) / oldValue) * 100).toFixed(2);
   },
-  
+
   // Get time ago string
   getTimeAgo: (timestamp) => {
     const now = new Date();
     const time = new Date(timestamp);
     const diffInSeconds = Math.floor((now - time) / 1000);
-    
+
     if (diffInSeconds < 60) return `${diffInSeconds}s ago`;
     if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
-    if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
+    if (diffInSeconds < 86400)
+      return `${Math.floor(diffInSeconds / 3600)}h ago`;
     return `${Math.floor(diffInSeconds / 86400)}d ago`;
   },
-  
+
   // Sanitize user input
   sanitizeInput: (input) => {
-    return input.trim().replace(/[<>]/g, '');
+    return input.trim().replace(/[<>]/g, "");
   },
-  
+
   // Check if market is open (crypto markets are always open)
   isMarketOpen: () => {
     return true; // Crypto markets never close
   },
-  
+
   // Get market status message
   getMarketStatus: () => {
     return "🟢 Crypto markets are open 24/7";
-  }
+  },
 };
 
 // Integration script to tie everything together
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Wait for crypto API to be ready
   const initializeAIChat = () => {
     if (window.cryptoApi && window.cryptoApi.prices) {
       // Initialize AI chat
       const aiChat = new RVAAIChat();
-      
+
       // Add quick actions
       setTimeout(() => {
         new RVAAIChatQuickActions(aiChat);
       }, 500);
-      
+
       // Set up periodic crypto data refresh for AI
       setInterval(() => {
         if (aiChat.cryptoApi && aiChat.cryptoApi.prices) {
           // AI chat will automatically use updated data
-          console.log('Crypto data refreshed for AI chat');
+          console.log("Crypto data refreshed for AI chat");
         }
       }, 60000); // Check every minute
-      
+
       // Store globally for debugging
       window.rvaAIChat = aiChat;
-      
-      console.log('RVA AI Chat with crypto integration initialized successfully');
+
+      console.log(
+        "RVA AI Chat with crypto integration initialized successfully"
+      );
     } else {
       // Retry after 1 second
       setTimeout(initializeAIChat, 1000);
     }
   };
-  
+
   initializeAIChat();
 });
 
@@ -4207,36 +4394,40 @@ window.RVAAIChatIntegration = {
       window.rvaAIChat.initCryptoAPI();
     }
   },
-  
+
   getChatStats: () => {
     return window.rvaAIChat ? window.rvaAIChat.getConversationStats() : null;
   },
-  
+
   exportConversation: () => {
     if (window.rvaAIChat && window.rvaAIChat.conversationHistory) {
-      const conversation = window.rvaAIChat.conversationHistory.map(entry => ({
-        type: entry.type,
-        message: entry.message.replace(/<[^>]*>/g, ''), // Remove HTML tags
-        timestamp: entry.timestamp
-      }));
-      
+      const conversation = window.rvaAIChat.conversationHistory.map(
+        (entry) => ({
+          type: entry.type,
+          message: entry.message.replace(/<[^>]*>/g, ""), // Remove HTML tags
+          timestamp: entry.timestamp,
+        })
+      );
+
       const blob = new Blob([JSON.stringify(conversation, null, 2)], {
-        type: 'application/json'
+        type: "application/json",
       });
-      
+
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
-      a.download = `rva-chat-conversation-${new Date().toISOString().split('T')[0]}.json`;
+      a.download = `rva-chat-conversation-${
+        new Date().toISOString().split("T")[0]
+      }.json`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      
+
       return "📥 Your conversation has been exported and downloaded as a JSON file!";
     }
     return null;
-  }
+  },
 };
 
 // Export for global access
@@ -4245,32 +4436,35 @@ window.RVAAIChatQuickActions = RVAAIChatQuickActions;
 window.RVAAIChatUtils = RVAAIChatUtils;
 
 // Auto-cleanup on page unload
-window.addEventListener('beforeunload', () => {
+window.addEventListener("beforeunload", () => {
   if (window.rvaAIChat && window.rvaAIChat.conversationHistory) {
     // Save conversation history to localStorage for recovery
-    localStorage.setItem('rva-chat-backup', JSON.stringify({
-      history: window.rvaAIChat.conversationHistory,
-      timestamp: new Date().toISOString()
-    }));
+    localStorage.setItem(
+      "rva-chat-backup",
+      JSON.stringify({
+        history: window.rvaAIChat.conversationHistory,
+        timestamp: new Date().toISOString(),
+      })
+    );
   }
 });
 
 // Recovery mechanism
 const recoverConversation = () => {
-  const backup = localStorage.getItem('rva-chat-backup');
+  const backup = localStorage.getItem("rva-chat-backup");
   if (backup) {
     try {
       const data = JSON.parse(backup);
       const backupTime = new Date(data.timestamp);
       const now = new Date();
       const hoursSinceBackup = (now - backupTime) / (1000 * 60 * 60);
-      
+
       // Only recover if backup is less than 24 hours old
       if (hoursSinceBackup < 24 && data.history && data.history.length > 0) {
         return data.history;
       }
     } catch (e) {
-      console.warn('Failed to recover conversation:', e);
+      console.warn("Failed to recover conversation:", e);
     }
   }
   return null;
@@ -4282,27 +4476,27 @@ window.recoverConversation = recoverConversation;
 // Performance monitoring
 const RVAAIChatPerformance = {
   startTime: Date.now(),
-  
+
   logPerformance: (action, startTime) => {
     const endTime = Date.now();
     const duration = endTime - startTime;
     console.log(`AI Chat Performance - ${action}: ${duration}ms`);
   },
-  
+
   getMemoryUsage: () => {
     if (performance.memory) {
       return {
         used: Math.round(performance.memory.usedJSHeapSize / 1024 / 1024),
         total: Math.round(performance.memory.totalJSHeapSize / 1024 / 1024),
-        limit: Math.round(performance.memory.jsHeapSizeLimit / 1024 / 1024)
+        limit: Math.round(performance.memory.jsHeapSizeLimit / 1024 / 1024),
       };
     }
     return null;
   },
-  
+
   getInitializationTime: () => {
     return Date.now() - RVAAIChatPerformance.startTime;
-  }
+  },
 };
 
 // Export performance utilities
@@ -4316,9 +4510,9 @@ const testAIChat = {
       "What's the price of Bitcoin?",
       "Show me top 5 cryptocurrencies",
       "Market analysis",
-      "Biggest gainers"
+      "Biggest gainers",
     ];
-    
+
     for (const query of queries) {
       console.log(`Testing: ${query}`);
       if (window.rvaAIChat) {
@@ -4327,21 +4521,23 @@ const testAIChat = {
       }
     }
   },
-  
+
   // Test conversation stats
   testStats: () => {
     if (window.rvaAIChat) {
       console.log("Chat Stats:", window.rvaAIChat.getConversationStats());
     }
-  }
+  },
 };
 
 // Make available globally for testing
 window.testAIChat = testAIChat;
 
 // Final initialization log
-console.log('✅ RVA AI Chat system fully loaded and ready');
-console.log(`📊 Initialization time: ${RVAAIChatPerformance.getInitializationTime()}ms`);
+console.log("✅ RVA AI Chat system fully loaded and ready");
+console.log(
+  `📊 Initialization time: ${RVAAIChatPerformance.getInitializationTime()}ms`
+);
 
 // Example queries that the AI can handle
 const EXAMPLE_QUERIES = {
@@ -4351,35 +4547,35 @@ const EXAMPLE_QUERIES = {
     "How much is Ethereum?",
     "BTC price",
     "Show me Solana cost",
-    "Price of Dogecoin"
+    "Price of Dogecoin",
   ],
-  
+
   // Market analysis
   marketQueries: [
     "Market analysis",
-    "Market overview", 
+    "Market overview",
     "Show me top 10 cryptocurrencies",
     "Biggest gainers today",
-    "Biggest losers today"
+    "Biggest losers today",
   ],
-  
+
   // RVA ecosystem
   rvaQueries: [
     "What is RVA?",
     "Tell me about RVA wallet",
     "RVA exchange features",
     "How does RVA launchpad work?",
-    "RVA smart chain benefits"
+    "RVA smart chain benefits",
   ],
-  
+
   // Educational
   educationalQueries: [
     "Crypto glossary",
     "Trading guide",
     "Security guide",
     "Beginner guide to crypto",
-    "What is DeFi?"
-  ]
+    "What is DeFi?",
+  ],
 };
 
 // Export example queries
