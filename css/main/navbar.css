@@ -201,6 +201,9 @@
     .dropdown-item:hover {
       a {
         color: #2a2b41 !important;
+        >img{
+          filter: invert(1);
+        }
       }
     }
   }

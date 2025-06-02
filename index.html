@@ -8,7 +8,7 @@
     rel="stylesheet"
     href="bootstrap/bootstrap-5.3.5-dist/css/bootstrap.min.css"
     />
-  <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link defer rel="stylesheet" href="swiper/swiper@11/css/swiper-bundle.min.css"/>
 
     <link rel="stylesheet"  href="./css/main/main.css" />
     <link rel="icon" type="image/webp" href="/media/icon/Artboard 19.webp">
@@ -20,9 +20,12 @@
     @font-face {
       font-family: 'sora-b';
       src: url('./Fonts/sora/Sora-Bold.woff') format('woff');
-      font-display: swap;
+      /* font-display: swap; */
     }
-  </style>
+    .hero-title{
+      font-family: 'sora-b';
+    }
+    </style>
   </head>
   <body>
     <div id="cursor"></div>
@@ -32,7 +35,7 @@
       class="navbar navbar-expand-lg bg-body-tertiary p-0"
       >
       <div class="container-fluid">
-        <nav class="navbar navhelp col-7 p-0">
+        <nav class="navbar navhelp col-11 p-0">
 
             <div class="btn-group dropstart">
                     <button
@@ -132,8 +135,8 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav col-5">
-              <li class="nav-item">
+            <ul class="navbar-nav col-1">
+              <!-- <li class="nav-item">
                 <a
                 aria-label="about"
                 class="nav-link active"
@@ -168,8 +171,8 @@
                   href="./ourroadmap.html"
                   >Our Roadmap</a
                   >
-                </li>
-              <li class="nav-item">
+                </li> -->
+              <li class="nav-item" style="margin-left: auto;">
                   <a
                   aria-label="search"
                   class="nav-link active"
@@ -671,7 +674,7 @@ document.querySelectorAll("[data-cursor]").forEach((item) => {
 </script>
 
     <script src="./js/cryptoapi.js"></script>
-    <script defer src="./js/cryptoconvert.js"></script>
+    <script src="./js/cryptoconvert.js"></script>
     <script src="./js/obj.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
@@ -738,7 +741,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     </script>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="swiper/swiper@11/js/swiper-bundle.min.js"></script>
 
   <script>
     var swiper = new Swiper(".mySwiper", {
