@@ -47,8 +47,8 @@
       margin-bottom: 6%;
       background-color: #1e88e5;
       z-index: 2;
-      top: 38%;
-      left: 30%;
+      top: 39%;
+      left: 28%;
       border-radius: 48px;
       padding-top: 14px;
       padding-left: 28px;
@@ -77,7 +77,7 @@
     animation-iteration-count: infinite;
   }
   .ssecond {
-    top: 40%;
+    top: 42%;
     animation: move2 linear forwards;
     animation-duration: 20s;
     transition: 20s;
@@ -85,7 +85,7 @@
     left: -48% !important;
   }
   .sthird {
-    top: 60%;
+    top: 64%;
     animation: move linear forwards;
     animation-duration: 20s;
     transition: 20s;
@@ -630,7 +630,7 @@
       background-color: #1e88e5;
       z-index: 2;
       top: 40%;
-      left: 28%;
+      left: 27%;
       border-radius: 48px;
       padding-top: 4px;
       padding-left: 8px;

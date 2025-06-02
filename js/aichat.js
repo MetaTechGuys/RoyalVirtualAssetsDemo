@@ -1623,7 +1623,7 @@ class RVAAIChat {
     if (
       message.includes("food") ||
       message.includes("hungry") ||
-      message.includes("eat")
+      message.includes("eat?")
     ) {
       return `
     🍕 Ah, the eternal struggle of the crypto enthusiast: eat food or buy more crypto?<br><br>
@@ -4016,19 +4016,19 @@ const unknownqResponses = [
   I'm Sarah, and I specialize in crypto markets and RVA services. Maybe I can help if you clarify what you're looking for?`
 ];
   // If it seems like they're asking about something technical but unclear
-  if (lowerMessage.includes('how') || lowerMessage.includes('what') || lowerMessage.includes('why') || lowerMessage.includes('when') || lowerMessage.includes('where') || lowerMessage.includes('who') || lowerMessage.includes('which')) {
-    return unknownqResponses[Math.floor(Math.random() * gibberishResponses.length)];
+  if (message.includes('how') || message.includes('what') || message.includes('why') || message.includes('when') || message.includes('where') || message.includes('who') || message.includes('which')) {
+    return unknownqResponses[Math.floor(Math.random() * unknownqResponses.length)];
   }
   
   // If they seem to be asking about prices but unclear
-  if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('worth')) {
+  if (message.includes('price') || message.includes('cost') || message.includes('worth')) {
     return `I think you're asking about prices, but I'm not sure which CRYPTOCURRENCY! 💰<br><br>
     I have live data for thousands of coins. Just tell me which one interests you!<br><br>
     <em>Try: "Bitcoin price" or "Show me Ethereum"</em>`;
   }
   
   // If they mention RVA but unclear what they want
-  if (lowerMessage.includes('rva') || lowerMessage.includes('Royal')) {
+  if (message.includes('rva') || message.includes('Royal')) {
     return `I love talking about RVA, but I'm not sure exactly what you'd like to know! 🏢<br><br>
     I can tell you about our wallet, exchange, tokenomics, roadmap, or team. What interests you most?<br><br>
     <em>Try: "Tell me about RVA wallet" or "RVA roadmap"</em>`;
@@ -4047,7 +4047,7 @@ const unknownqResponses = [
   Try asking me something in human language - I'm much better at that! 😅<br><br>
   <em>Try: "Market analysis" or "Blockchain basics"</em>`
 ];
-if (lowerMessage.length > 4 && !/\s/.test(lowerMessage) && (lowerMessage.match(/[aeiou]/gi) || []).length < 2) {
+if (message.length > 4 && !/\s/.test(message) && (message.match(/[aeiou]/gi) || []).length < 2) {
   return gibberishResponses[Math.floor(Math.random() * gibberishResponses.length)];
   }
   
@@ -4059,13 +4059,8 @@ const genericResponses = [
     "I don't understand that. Try asking me something else about our virtual assets!"
 ];
 
-// Function to get random generic response
-function getGenericResponse() {
-    return genericResponses[Math.floor(Math.random() * genericResponses.length)];
-}
-
 // Use this as your final return
-return getGenericResponse();
+return genericResponses[Math.floor(Math.random() * genericResponses.length)];
 
 
   // Generic unknown response

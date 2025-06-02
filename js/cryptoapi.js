@@ -11,13 +11,13 @@ class CryptoAPI {
       baseUrl: "https://api.coingecko.com/api/v3",
       updateInterval: options.updateInterval || 240000, // Default: update every 2 minutes
       containerSelector: options.containerSelector || "#crypto-prices",
-      limit: options.limit || 20,
+      limit: options.limit || 40,
       currency: options.currency || "usd",
       initialDisplay: options.initialDisplay || 8, // Default: initially show 8 items
       maxRetries: options.maxRetries || 8, // Maximum number of retry attempts
       cacheKey: "Royal_crypto_cache", // LocalStorage key for caching
       cacheExpiry: options.cacheExpiry || 480000, // Cache expiry: 8 minutes
-      eagerLoad: options.eagerLoad !== false, // Enable eager loading by default
+      eagerLoad: options.eagerLoad !== true, // Enable eager loading by default
     };
 
     this.prices = [];

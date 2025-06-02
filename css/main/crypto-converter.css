@@ -2,11 +2,11 @@
   .convert {
     align-content: center;
 
-    height: 1100px;
+    height: 1200px;
 
     position: relative;
     > img {
-      width: 100%;
+      width: 102%;
       height: auto;
       z-index: -1;
       position: absolute;
@@ -36,14 +36,14 @@
 
   .crypto-converter {
     font-family: Arial, sans-serif;
-    max-width: 800px;
+    max-width: 1000px;
 
     margin-bottom: 48px;
     margin-left: auto;
-    margin-right: 8%;
+    margin-right: 4%;
     margin-top: 8.8%;
-    padding: 40px;
-    background: #35414e48 !important;
+    padding: 48px;
+    background: #35414e80 !important;
     border-radius: 8px;
     color: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -55,7 +55,7 @@
     margin-bottom: 28px;
     color: whitesmoke;
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
     position: relative;
   }
 
@@ -65,8 +65,8 @@
     bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
+    width: 140px;
+    height: 8px;
     background: linear-gradient(90deg, #1e88e5, #2a2b41);
     border-radius: 3px;
   }
@@ -349,11 +349,11 @@
   .convert {
     align-content: center;
 
-    height: 800px;
+    height: 880px;
 
     position: relative;
     > img {
-      width: 100%;
+      width: 102%;
       z-index: -1;
       height: auto;
 
@@ -388,9 +388,9 @@
     margin-bottom: 48px;
     margin-left: auto;
     margin-right: 8%;
-    margin-top: 88px;
+    margin-top: 128px;
     padding: 40px;
-    background: #35414e48 !important;
+    background: #35414e80 !important;
     border-radius: 8px;
     color: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -696,11 +696,11 @@
   .convert {
     align-content: center;
 
-    height: 600px;
+    height: 640px;
 
     position: relative;
     > img {
-      width: 100%;
+      width: 102%;
       z-index: -1;
       height: auto;
 
@@ -736,9 +736,10 @@
     margin-bottom: 48px;
     margin-left: auto;
     margin-right: 8%;
+    margin-top: 4%;
 
     padding: 40px;
-    background: #35414e48 !important;
+    background: #35414e80 !important;
     border-radius: 8px;
     color: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -1044,11 +1045,11 @@
   .convert {
     align-content: center;
 
-    height: 480px;
+    height: 600px;
 
     position: relative;
     > img {
-      width: 100%;
+      width: 102%;
       z-index: -1;
       height: auto;
 
@@ -1083,9 +1084,10 @@
 
     margin-left: auto;
     margin-right: 4%;
+    margin-top: 4%;
 
     padding: 14px;
-    background: #35414e48 !important;
+    background: #35414e80 !important;
     border-radius: 8px;
     color: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -1391,11 +1393,11 @@
   .convert {
     align-content: center;
 
-    height: 420px;
+    height: 440px;
 
     position: relative;
     > img {
-      width: 100%;
+      width: 102%;
       z-index: -1;
       height: auto;
 
@@ -1430,9 +1432,10 @@
 
     margin-left: auto;
     margin-right: 4%;
+    margin-top: 4%;
 
     padding: 8px;
-    background: #35414e48 !important;
+    background: #35414e80 !important;
     border-radius: 8px;
     color: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -1742,7 +1745,7 @@
 
     position: relative;
     > img {
-      width: 100%;
+      width: 102%;
       z-index: -1;
       height: auto;
 
@@ -1777,9 +1780,10 @@
 
     margin-left: auto;
     margin-right: 4%;
+    margin-top: 4%;
 
     padding: 8px;
-    background: #35414e48 !important;
+    background: #35414e80 !important;
     border-radius: 8px;
     color: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -2056,11 +2060,11 @@
   .convert {
     align-content: center;
 
-    height: 360px;
+    height: 480px;
 
     position: relative;
     > img {
-      width: 100%;
+      width: 180%;
       z-index: -1;
       height: auto;
 
@@ -2094,10 +2098,11 @@
     max-width: 400px;
 
     margin-left: auto;
-    margin-right: 4%;
+    margin-right: auto;
+    margin-top: 4%;
 
     padding: 8px;
-    background: #35414e48 !important;
+    background: #35414e80 !important;
     border-radius: 8px;
     color: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -2136,6 +2141,7 @@
     font-weight: bold;
     color: rgba(255, 255, 255, 0.9);
     margin-top: 4%;
+    font-size: 14px;
   }
 
   .crypto-input-group input[type="number"],

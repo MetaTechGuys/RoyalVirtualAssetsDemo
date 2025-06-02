@@ -1101,8 +1101,8 @@
   #crypto-prices {
     font-family: "Arial", sans-serif;
     max-width: 1200px;
-    margin: 2% auto;
-    padding: 20px;
+    margin: 0% auto;
+    padding: 0px;
     background-color: #2a2b41;
     color: #fff;
     border-radius: 10px;
@@ -1111,6 +1111,9 @@
     margin-top: 14%;
   }
 
+  .crypto-dominance-table{
+    font-size: 10px !important;
+  }
   #crypto-prices.crypto-loading::before {
     content: "";
     position: absolute;
@@ -1148,7 +1151,7 @@
 
   .crypto-header h2 {
     margin: 0;
-    font-size: 10px;
+    font-size: 8px;
     color: #fff;
   }
 

@@ -19,8 +19,8 @@
 .crypto-3d-info {
   position: absolute;
   bottom: 20px;
-  right: 20px;
-  width: 300px;
+  left: 20px;
+  width: 280px;
   background-color: rgba(20, 20, 30, 0.85);
   border-radius: 12px;
   padding: 20px;

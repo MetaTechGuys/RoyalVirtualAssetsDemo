@@ -12,7 +12,7 @@ class Crypto3DVisualizer {
       height: options.height || window.innerHeight, // Increased height to 900px
       backgroundColor: options.backgroundColor || 0x0a0a14,
       apiInstance: options.apiInstance || window.cryptoApi,
-      cryptoCount: options.cryptoCount || 0, // 0 means include all available cryptos
+      cryptoCount: options.cryptoCount || 20, // 0 means include all available cryptos
       logoSize: options.logoSize || 3.5,
       hoverDuration: options.hoverDuration || 8000, // Duration in ms to maintain hover effect after click
     };
