@@ -25,6 +25,7 @@
   background-color: transparent !important;
   border: 48px solid transparent;
   border-bottom: 24px solid transparent;
+  border-top: 0;
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -146,7 +147,7 @@
   }
 
   .robo {
-    padding: 18%;
+    padding: 4%;
   }
 
   .robotext {
@@ -193,7 +194,7 @@
   }
 
   .robo {
-    padding: 16%;
+    padding: 4%;
   }
 
   .robotext {
@@ -245,7 +246,7 @@
 
   .robo {
     border-top: 0px solid transparent;
-    padding: 16%;
+    padding: 4%;
   }
 
   .robotext {
@@ -301,7 +302,7 @@
   .robo {
     border: 8px solid transparent;
     border-bottom: 4px solid transparent;
-    padding: 9%;
+    padding: 4%;
   }
 
   .robotext {

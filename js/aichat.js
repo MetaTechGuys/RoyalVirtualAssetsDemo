@@ -8,7 +8,7 @@ class RVAAIChat {
     );
 
     this.aiCharacter = {
-      name: "Sarah",
+      name: "Diana",
       age: 24,
       expertise: "Blockchain & DeFi",
       personality: "friendly, knowledgeable, professional",
@@ -4012,7 +4012,7 @@ const unknownqResponses = [
   `Oops! I think I missed the mark on understanding your question 🎯 My brain works best with crypto-related topics, market data, and RVA platform questions.<br><br>
   Want to try rephrasing that? Or maybe ask me something about cryptocurrency prices or trading?`,
   `I'm scratching my digital head on that one! 😅 I might have missed something in your question. Could you try asking it differently?<br><br>
-  I'm Sarah, and I specialize in crypto markets and RVA services. Maybe I can help if you clarify what you're looking for?`
+  I'm Diana, and I specialize in crypto markets and RVA services. Maybe I can help if you clarify what you're looking for?`
 ];
   // If it seems like they're asking about something technical but unclear
   if (message.includes('how') || message.includes('what') || message.includes('why') || message.includes('when') || message.includes('where') || message.includes('who') || message.includes('which')) {
@@ -4647,6 +4647,87 @@ const EXAMPLE_QUERIES = {
     "What is DeFi?",
   ],
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    const aiChatToggle = document.querySelector('.ai-chat-toggle');
+    const holo = document.querySelector('.holo');
+    const aiChatContainer = document.getElementById('ai-chat-container');
+    
+    let shouldShowVideos = false;
+    let animationInProgress = false;
+    
+    function showVideos() {
+        if (!shouldShowVideos && !animationInProgress) {
+            shouldShowVideos = true;
+            animationInProgress = true;
+            
+            aiChatToggle.classList.remove('videos-hidden', 'animate-hide');
+            aiChatToggle.classList.add('animate-show');
+            
+            setTimeout(() => {
+                aiChatToggle.classList.remove('animate-show');
+                aiChatToggle.classList.add('videos-visible');
+                animationInProgress = false;
+            }, 400);
+        }
+    }
+    
+    function hideVideos() {
+        if (shouldShowVideos && !animationInProgress) {
+            shouldShowVideos = false;
+            animationInProgress = true;
+            
+            aiChatToggle.classList.remove('videos-visible', 'animate-show');
+            aiChatToggle.classList.add('animate-hide');
+            
+            setTimeout(() => {
+                aiChatToggle.classList.remove('animate-hide');
+                aiChatToggle.classList.add('videos-hidden');
+                animationInProgress = false;
+            }, 400);
+        }
+    }
+    
+    // Check if we should show videos based on current state
+    function checkVisibilityState() {
+        const isHovered = aiChatToggle.matches(':hover') || holo.matches(':hover');
+        const isChatVisible = aiChatContainer && !aiChatContainer.classList.contains('ai-chat-hidden');
+        
+        if (isHovered || isChatVisible) {
+            showVideos();
+        } else {
+            hideVideos();
+        }
+    }
+    
+    // Event listeners
+    if (holo) {
+        holo.addEventListener('mouseenter', showVideos);
+        holo.addEventListener('mouseleave', () => {
+            setTimeout(checkVisibilityState, 50); // Small delay to check if still hovering toggle
+        });
+    }
+    
+    if (aiChatToggle) {
+        aiChatToggle.addEventListener('mouseenter', showVideos);
+        aiChatToggle.addEventListener('mouseleave', () => {
+            setTimeout(checkVisibilityState, 50);
+        });
+    }
+    
+    // Watch for chat container visibility changes
+    if (aiChatContainer) {
+        const observer = new MutationObserver(checkVisibilityState);
+        observer.observe(aiChatContainer, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+    }
+    
+    // Initialize state
+    aiChatToggle.classList.add('videos-hidden');
+});
+
 
 // Export example queries
 window.EXAMPLE_QUERIES = EXAMPLE_QUERIES;

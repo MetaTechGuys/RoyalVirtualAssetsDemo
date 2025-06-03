@@ -62,12 +62,12 @@
 @media (min-width: 1921px) and (max-width: 2560px) {
   .countries4 {
     margin-bottom: 8%;
-    margin-top: 8%;
+    margin-top: 4%;
   }
 
   .country4 {
     border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
+    border-top: 0px solid transparent;
   }
 
   .ctext4 {
@@ -102,12 +102,11 @@
   .ctext4 {
     padding-top: 8%;
     padding-left: 4%;
-    width: 50%;
+    width: 60%;
   }
 
   .ctext4 > h4 {
     font-size: 48px;
-    margin-top: 6%;
   }
 
   .ctext4 > span {
@@ -115,7 +114,7 @@
   }
 
   .cimg4 {
-    width: 50%;
+    width: 40%;
   }
 }
 
@@ -148,7 +147,6 @@
 
   .cimg4 {
     width: 42%;
-    top: -99%;
   }
 }
 

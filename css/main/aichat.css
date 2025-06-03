@@ -4,40 +4,14 @@
     overflow: hidden;
 }
 
-.ai-chat-toggle video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+
 
 .ai-chat-notification {
     position: relative;
     z-index: 10;
 }
 
-.ai-chat-toggle {
-  position: fixed;
-  bottom: 40px;
-  right: 2vw;
-  width: 280PX;
-  height: 400PX;
-  background: transparent;
-  border: none;
-  border-radius: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  /* box-shadow: 0 4px 20px #2a2b41; */
-  /* border: 2PX SOLID #1e88e5; */
-  transition: all 0.3s ease;
-  z-index: 1000;
-  color: #000;
-  overflow: clip;
-}
+
 .ai-chat-toggle:hover{
     transform:scale(1.2) !important;
 }
@@ -67,13 +41,13 @@
 
 .ai-chat-notification {
   position: absolute;
-  top: 14px;
-  left: 80px;
-  background: #ff4757;
+  top: 96%;
+  left: 28%;
+  background: #1e88e5;
   color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  border-radius: 20%;
+  width: 88px;
+  height: 22px;
   font-size: 12px;
   display: flex;
   align-items: center;
@@ -84,9 +58,9 @@
 #ai-chat-container {
   position: fixed;
   bottom: 2%;
-  right: 18%;
-  width:32%;
-  height: 80%;
+  right: 14%;
+  width:33%;
+  height: 68%;
   background: rgba(0, 0, 0, 0.95);
   border: 1px solid #2a2b41;
   border-radius: 20px;
@@ -321,11 +295,50 @@
   }
 }
 
-/* Mobile Responsive */
+/* Responsive */
+@media (max-width: 1400px) {
+  #ai-chat-container {
+    width: 48%;
+    height: 64%;
+    right: 18%;
+    bottom: 40px;
+  }
+  
+  .ai-chat-toggle {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+@media (max-width: 1200px) {
+  #ai-chat-container {
+    width: 48%;
+    height: 64%;
+    right: 18%;
+    bottom: 40px;
+  }
+  
+  .ai-chat-toggle {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+@media (max-width: 992px) {
+  #ai-chat-container {
+    width: 48%;
+    height: 64%;
+    right: 20%;
+    bottom: 40px;
+  }
+  
+  .ai-chat-toggle {
+    bottom: 20px;
+    right: 20px;
+  }
+}
 @media (max-width: 768px) {
   #ai-chat-container {
     width: 100%;
-    height: 80%;
+    height: 68%;
     right: 0px;
     bottom: 248px;
   }
@@ -770,4 +783,225 @@
 
 .ai-chat-quick-actions::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
+}
+/* Add this to your existing CSS */
+
+
+.holo {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 30px;
+    background: radial-gradient(ellipse at center, rgba(30, 136, 229, 0.8) 0%, rgba(30, 136, 229, 0.4) 50%, transparent 100%);
+    border-radius: 50%;
+    z-index: 5;
+    filter: blur(2px);
+    opacity: 1;
+    animation: holoGlow 2s ease-in-out infinite alternate;
+    cursor: pointer; /* Make it clear it's interactive */
+}
+
+.holo:hover {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+    filter: blur(1px);
+    background: radial-gradient(ellipse at center, rgba(30, 136, 229, 1) 0%, rgba(30, 136, 229, 0.6) 50%, rgba(30, 136, 229, 0.2) 100%);
+}
+
+.holo::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: rgba(30, 136, 229, 0.8);
+    border-radius: 50%;
+    animation: holoIndicator 1.5s ease-in-out infinite;
+}
+
+@keyframes holoIndicator {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Enhanced glow animation */
+@keyframes holoGlow {
+    0% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 20px rgba(30, 136, 229, 0.3);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.1);
+        box-shadow: 0 0 30px rgba(30, 136, 229, 0.5);
+    }
+}
+
+
+
+.ai-chat-toggle {
+    position: fixed;
+    bottom: 40px;
+    right: 2vw;
+    width: 200px;
+    height: 280px;
+    background: transparent;
+    border: none;
+    border-radius: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    color: #000;
+    overflow: visible;
+}
+/* Videos container - this gets the animations */
+.videos-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 80px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(400px) scale(0.8);
+    transition: all 0.4s ease;
+}
+/* Individual videos inside container */
+.videos-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 80px;
+}
+
+
+
+/* Animation for video appearing (moving up) */
+@keyframes videoSlideUp {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(400px);
+    }
+    1% {
+        visibility: visible;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+@keyframes videoSlideDown {
+    0% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    99% {
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(400px);
+    }
+}
+holo:hover ~ .videos-container,
+.ai-chat-toggle:hover .videos-container,
+#ai-chat-container:not(.ai-chat-hidden) ~ .ai-chat-toggle .videos-container,
+.ai-chat-container-visible .ai-chat-toggle .videos-container {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 24px rgba(30, 136, 229, 0.4);
+}
+
+
+@media (max-width: 768px) {
+        .ai-chat-toggle {
+        width: 120px;
+        height: 200px;
+        bottom: 28px;
+        right: 20px;
+        border-radius: 60px;
+    }
+    
+    .videos-container {
+        border-radius: 60px;
+    }
+    
+    .videos-container video {
+        border-radius: 60px;
+    }
+    
+    .holo {
+        bottom: -15px;
+        height: 20px;
+        width: 130%;
+    }
+
+    
+    .holo::before {
+        width: 3px;
+        height: 3px;
+        top: -8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ai-chat-toggle {
+        width: 80px;
+        height: 140px;
+        bottom: 15px;
+        right: 15px;
+        border-radius: 40px;
+    }
+    
+    .videos-container {
+        border-radius: 40px;
+    }
+    
+    .videos-container video {
+        border-radius: 40px;
+    }
+    
+    .holo {
+        bottom: -10px;
+        height: 15px;
+        width: 140%;
+    }
+    
+    .holo::before {
+        width: 2px;
+        height: 2px;
+        top: -6px;
+    }
+}
+
+/* Enhanced hover effect that affects both video and holo */
+.ai-chat-toggle:hover .holo {
+    opacity: 1;
+    transform: translateX(-40%) scale(1.2);
+    filter: blur(1px);
 }

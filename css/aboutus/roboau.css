@@ -284,10 +284,11 @@
   .roboimg {
     width: 100%;
     text-align: center;
+    padding-top: 4%;
   }
 
   .roboimg > img {
-    width: 64%;
+    width: 100%;
     margin-top: 4%;
     margin-left: 0;
     border-radius: 8px;
@@ -314,10 +315,14 @@
     border-top: 4px solid transparent;
     margin-top: 8% !important;
   }
+  .robot{
+    display: block;
+  }
 
   .robotext {
     padding: 8%;
     width: 100%;
+
   }
 
   .robotext > h4 {
@@ -332,10 +337,11 @@
   .roboimg {
     width: 100%;
     text-align: center;
+
   }
 
   .roboimg > img {
-    width: 80%;
+    width: 100%;
     margin-top: 4%;
     margin-left: 0;
     border-radius: 8px;
@@ -363,6 +369,9 @@
     margin-top: 8% !important;
   }
 
+    .robot{
+    display: block;
+  }
   .robotext {
     padding: 4%;
     width: 100%;
@@ -383,7 +392,7 @@
   }
 
   .roboimg > img {
-    width: 68%;
+    width: 100%;
     margin-top: 4%;
     margin-left: 0;
     border-radius: 8px;
@@ -411,6 +420,10 @@
     margin-top: 8% !important;
   }
 
+    .robot{
+    display: block;
+  }
+
   .robotext {
     padding: 8%;
     width: 100%;
@@ -432,7 +445,7 @@
   }
 
   .roboimg > img {
-    width: 80%;
+    width: 88%;
     margin-top: 4%;
     margin-left: 0;
     border-radius: 8px;

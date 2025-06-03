@@ -213,7 +213,7 @@
 @media (min-width: 769px) and (max-width: 992px) {
   .r1 {
     left: 20%;
-    top: 18.8%;
+    top: 24%;
     height: 68%;
     opacity: 0.28;
   }
@@ -258,7 +258,7 @@
 @media (min-width: 577px) and (max-width: 768px) {
   .r1 {
     left: 28%;
-    top: 20%;
+    top: 24%;
     height: 64%;
     opacity: 0.28;
   }
