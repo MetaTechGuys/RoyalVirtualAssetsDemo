@@ -51,7 +51,6 @@ class Crypto3DVisualizer {
   async init() {
     // Create container if it doesn't exist
     if (!document.querySelector(this.config.containerSelector)) {
-      //console.warn(`Container ${this.config.containerSelector} not found. Creating one.`);
       const container = document.createElement("div");
       container.id = this.config.containerSelector.replace("#", "");
       document.body.appendChild(container);
@@ -64,14 +63,16 @@ class Crypto3DVisualizer {
     // Set up Three.js scene
     this.setupScene();
 
-    // Add event listeners
+    // Add event listeners for both mouse and touch
     window.addEventListener("resize", this.onWindowResize);
-    document
-      .querySelector(this.config.containerSelector)
-      .addEventListener("mousemove", this.onMouseMove);
-    document
-      .querySelector(this.config.containerSelector)
-      .addEventListener("click", this.onClick);
+    
+    // Mouse events
+    container.addEventListener("mousemove", this.onMouseMove);
+    container.addEventListener("click", this.onClick);
+    
+    // Touch events
+    container.addEventListener("touchmove", this.onMouseMove, { passive: false });
+    container.addEventListener("touchend", this.onClick, { passive: false });
 
     // Initialize texture loader
     this.textureLoader = new THREE.TextureLoader();
@@ -96,13 +97,7 @@ class Crypto3DVisualizer {
       }
     }, 8000);
 
-    // Add zoom instruction
-    const zoomInstruction = document.createElement("div");
-    zoomInstruction.className = "crypto-3d-zoom-instruction";
-    zoomInstruction.textContent = "Use + and - buttons to zoom";
-    document
-      .querySelector(this.config.containerSelector)
-      .appendChild(zoomInstruction);
+   
 
     // Hide zoom instruction after 8 seconds
     setTimeout(() => {
@@ -135,12 +130,24 @@ class Crypto3DVisualizer {
     window.removeEventListener("resize", this.onWindowResize);
     const container = document.querySelector(this.config.containerSelector);
     if (container) {
+      // Mouse events
       container.removeEventListener("mousemove", this.onMouseMove);
       container.removeEventListener("click", this.onClick);
+      
+      // Touch events
+      container.removeEventListener("touchmove", this.onMouseMove);
+      container.removeEventListener("touchend", this.onClick);
 
       // Remove wheel handler
       if (this.wheelHandler) {
         container.removeEventListener("wheel", this.wheelHandler);
+      }
+      
+      // Remove touch handlers
+      if (this.touchHandlers) {
+        container.removeEventListener("touchstart", this.touchHandlers.touchstart);
+        container.removeEventListener("touchmove", this.touchHandlers.touchmove);
+container.removeEventListener("touchend", this.touchHandlers.touchend);
       }
 
       // Remove Three.js canvas
@@ -171,7 +178,6 @@ class Crypto3DVisualizer {
     this.selectedObject = null;
     this.initialized = false;
   }
-
   /**
    * Recursively dispose of an object and its children
    */
@@ -262,11 +268,10 @@ class Crypto3DVisualizer {
       attempts++;
     }
 
-    //console.warn('Crypto3DVisualizer: Timed out waiting for prices');
     return false;
   }
 
-  /**
+   /**
    * Set up the Three.js scene, camera, and renderer
    */
   setupScene() {
@@ -346,6 +351,8 @@ class Crypto3DVisualizer {
         this.camera,
         this.renderer.domElement
       );
+      
+      // Enhanced controls for all devices including touch
       this.controls.enableDamping = true;
       this.controls.dampingFactor = 0.05;
       this.controls.screenSpacePanning = false;
@@ -355,11 +362,36 @@ class Crypto3DVisualizer {
       this.controls.autoRotate = true;
       this.controls.autoRotateSpeed = 0.3;
 
+      // Enable rotation (dragging) on all devices
+      this.controls.enableRotate = true;
+      this.controls.rotateSpeed = 1.0;
+      
+      // Enable panning for better navigation
+      this.controls.enablePan = true;
+      this.controls.panSpeed = 0.8;
+      this.controls.keyPanSpeed = 7.0;
+      
+      // Touch-specific settings
+      this.controls.touches = {
+        ONE: THREE.TOUCH.ROTATE,    // Single finger drag to rotate
+        TWO: THREE.TOUCH.DOLLY_PAN  // Two finger pinch to zoom and pan
+      };
+      
+      // Mouse button settings
+      this.controls.mouseButtons = {
+        LEFT: THREE.MOUSE.ROTATE,   // Left click drag to rotate
+        MIDDLE: THREE.MOUSE.DOLLY,  // Middle mouse to zoom
+        RIGHT: THREE.MOUSE.PAN      // Right click drag to pan
+      };
+
       // IMPORTANT: Disable zoom via mouse wheel in OrbitControls
       this.controls.enableZoom = false;
 
       // Add our own wheel zoom handler
       this.addWheelZoomHandler();
+      
+      // Add touch zoom handler for mobile devices
+      this.addTouchZoomHandler();
     }
   }
 
@@ -470,6 +502,101 @@ class Crypto3DVisualizer {
     }, 2000);
   }
 
+   /**
+   * Add touch zoom handler for mobile devices
+   */
+  addTouchZoomHandler() {
+    const container = document.querySelector(this.config.containerSelector);
+    
+    // Touch zoom variables
+    let initialDistance = 0;
+    let currentDistance = 0;
+    let isZooming = false;
+    
+    // Define min and max zoom values
+    const minZoom = 20; // Minimum FOV (maximum zoom in)
+    const maxZoom = 80; // Maximum FOV (maximum zoom out)
+
+    // Helper function to get distance between two touches
+    const getTouchDistance = (touch1, touch2) => {
+      const dx = touch1.clientX - touch2.clientX;
+      const dy = touch1.clientY - touch2.clientY;
+      return Math.sqrt(dx * dx + dy * dy);
+    };
+
+    // Touch start handler
+    const handleTouchStart = (event) => {
+      if (event.touches.length === 2) {
+        // Two finger touch - prepare for zoom
+        initialDistance = getTouchDistance(event.touches[0], event.touches[1]);
+        isZooming = true;
+        
+        // Disable auto-rotation during zoom
+        if (this.controls) {
+          this.controls.autoRotate = false;
+        }
+      }
+    };
+
+    // Touch move handler
+    const handleTouchMove = (event) => {
+      if (event.touches.length === 2 && isZooming) {
+        event.preventDefault(); // Prevent page zoom
+        
+        currentDistance = getTouchDistance(event.touches[0], event.touches[1]);
+        const deltaDistance = currentDistance - initialDistance;
+        
+        // Calculate zoom factor
+        const zoomFactor = deltaDistance * 0.01; // Adjust sensitivity
+        
+        // Get current FOV
+        let fov = this.camera.fov;
+        
+        // Apply zoom
+        fov = Math.max(minZoom, Math.min(maxZoom, fov - zoomFactor));
+        
+        // Update camera FOV
+        this.camera.fov = fov;
+        this.camera.updateProjectionMatrix();
+        
+        // Show zoom level indicator
+        const zoomPercentage = Math.round(
+          ((maxZoom - fov) / (maxZoom - minZoom)) * 100
+        );
+        this.showZoomLevel(zoomPercentage);
+        
+        // Update initial distance for next frame
+        initialDistance = currentDistance;
+      }
+    };
+
+    // Touch end handler
+    const handleTouchEnd = (event) => {
+      if (event.touches.length < 2) {
+        isZooming = false;
+        
+        // Re-enable auto-rotation after a delay
+        setTimeout(() => {
+          if (this.controls) {
+            this.controls.autoRotate = true;
+          }
+        }, 2000);
+      }
+    };
+
+    // Add touch event listeners
+    container.addEventListener('touchstart', handleTouchStart, { passive: false });
+    container.addEventListener('touchmove', handleTouchMove, { passive: false });
+    container.addEventListener('touchend', handleTouchEnd, { passive: false });
+    
+    // Store handlers for cleanup
+    this.touchHandlers = {
+      touchstart: handleTouchStart,
+      touchmove: handleTouchMove,
+      touchend: handleTouchEnd
+    };
+  }
+
   /**
    * Show zoom level percentage
    */
@@ -484,8 +611,10 @@ class Crypto3DVisualizer {
         .appendChild(zoomLevel);
     }
 
-    // Update zoom level
-    zoomLevel.textContent = `Zoom: ${percentage}%`;
+    // Update zoom level with device-specific text
+    const isMobile = window.innerWidth <= 992;
+    const zoomText = isMobile ? `Zoom: ${percentage}%` : `Zoom: ${percentage}%`;
+    zoomLevel.textContent = zoomText;
     zoomLevel.classList.add("show");
 
     // Hide after a delay
@@ -495,12 +624,12 @@ class Crypto3DVisualizer {
     }, 1000);
   }
 
+
   /**
    * Create 3D objects for cryptocurrencies using their SVG logos as textures
    */
   createCryptoObjects() {
     if (!this.config.apiInstance || !this.config.apiInstance.prices) {
-      //console.error('No cryptocurrency data available');
       return;
     }
 
@@ -514,7 +643,6 @@ class Crypto3DVisualizer {
         ? this.config.apiInstance.prices.slice(0, this.config.cryptoCount)
         : this.config.apiInstance.prices;
 
-    //console.log(`Creating 3D objects for ${cryptos.length} cryptocurrencies`);
 
     // Process each cryptocurrency
     cryptos.forEach((crypto, index) => {
@@ -544,14 +672,12 @@ class Crypto3DVisualizer {
       this.textureLoader.load(
         svgPath,
         (texture) => {
-          //console.log(`Successfully loaded SVG texture for ${crypto.symbol}`);
           material.map = texture;
           material.needsUpdate = true;
         },
         undefined,
         (error) => {
-          //console.error(`Error loading SVG texture for ${crypto.symbol}:`, error);
-          // Use fallback
+         // Use fallback
           this.createFallbackTexture(crypto, material, index);
         }
       );
@@ -1029,9 +1155,24 @@ class Crypto3DVisualizer {
     const container = document.querySelector(this.config.containerSelector);
     const rect = container.getBoundingClientRect();
 
+    // Handle both mouse and touch events
+    let clientX, clientY;
+    
+    if (event.type === 'touchmove' && event.touches.length === 1) {
+      // Single touch
+      clientX = event.touches[0].clientX;
+      clientY = event.touches[0].clientY;
+    } else if (event.type === 'mousemove') {
+      // Mouse
+      clientX = event.clientX;
+      clientY = event.clientY;
+    } else {
+      return; // Multi-touch or unsupported event
+    }
+
     // Calculate mouse position in normalized device coordinates
-    this.mouse.x = ((event.clientX - rect.left) / this.config.width) * 2 - 1;
-    this.mouse.y = -((event.clientY - rect.top) / this.config.height) * 2 + 1;
+    this.mouse.x = ((clientX - rect.left) / this.config.width) * 2 - 1;
+    this.mouse.y = -((clientY - rect.top) / this.config.height) * 2 + 1;
   }
 
   /**
@@ -1041,6 +1182,25 @@ class Crypto3DVisualizer {
    * Handle click events for object selection (continued)
    */
   onClick(event) {
+    // Handle both click and touch events
+    let clientX, clientY;
+    
+    if (event.type === 'touchend' && event.changedTouches.length === 1) {
+      // Single touch end
+      clientX = event.changedTouches[0].clientX;
+      clientY = event.changedTouches[0].clientY;
+      
+      // Update mouse position for touch
+      const container = document.querySelector(this.config.containerSelector);
+      const rect = container.getBoundingClientRect();
+      this.mouse.x = ((clientX - rect.left) / this.config.width) * 2 - 1;
+      this.mouse.y = -((clientY - rect.top) / this.config.height) * 2 + 1;
+    } else if (event.type === 'click') {
+      // Regular mouse click - mouse position already updated in onMouseMove
+    } else {
+      return; // Multi-touch or unsupported event
+    }
+
     // Update raycaster with current mouse position
     this.raycaster.setFromCamera(this.mouse, this.camera);
 
@@ -1191,6 +1351,11 @@ class Crypto3DVisualizer {
     // Don't apply hover effect if already selected
     if (object.userData.isSelected) return;
 
+    // Provide haptic feedback on mobile devices
+    if ('vibrate' in navigator && window.innerWidth <= 992) {
+      navigator.vibrate(50); // Short vibration for touch feedback
+    }
+
     // Scale up the object
     gsap.to(object.scale, {
       x: object.userData.originalScale.x * 1.5,
@@ -1211,6 +1376,7 @@ class Crypto3DVisualizer {
     const crypto = object.userData.crypto;
     this.showCryptoInfo(crypto);
   }
+
 
   /**
    * Add a subtle glow effect to the crypto logo
@@ -1289,7 +1455,6 @@ class Crypto3DVisualizer {
   createSVGText(text, color = 0xffffff) {
     // Check if TextGeometry is available
     if (typeof THREE.TextGeometry === "undefined") {
-      //console.warn('TextGeometry not available. Loading font will be skipped.');
       return null;
     }
 
@@ -1327,7 +1492,6 @@ class Crypto3DVisualizer {
         },
         undefined,
         (error) => {
-          //console.error('Error loading font:', error);
           reject(error);
         }
       );
@@ -1426,15 +1590,12 @@ class Crypto3DVisualizer {
    * Setup the SVG directory structure
    */
   setupSVGDirectory() {
-    //console.log('Setting up SVG directory structure...');
 
     // Create a directory for SVG files if it doesn't exist
     const directoryPath = "assets/crypto-logos";
 
     // This would typically be done server-side
     // For client-side, we'll just log instructions
-    //console.log(`Please ensure you have a directory at ${directoryPath} containing SVG files named after each cryptocurrency symbol (lowercase).`);
-    //console.log('Example: bitcoin.svg, ethereum.svg, etc.');
 
     // Return a promise that resolves when directory is ready
     return new Promise((resolve) => {
@@ -1546,11 +1707,34 @@ class Crypto3DVisualizer {
    */
   onWindowResize() {
     const container = document.querySelector(this.config.containerSelector);
+    
+    // Update dimensions
     this.config.width = container.clientWidth;
+    this.config.height = container.clientHeight;
 
+    // Update camera aspect ratio
     this.camera.aspect = this.config.width / this.config.height;
     this.camera.updateProjectionMatrix();
+    
+    // Update renderer size
     this.renderer.setSize(this.config.width, this.config.height);
+    
+    // Adjust controls sensitivity based on screen size
+    if (this.controls) {
+      const isMobile = window.innerWidth <= 992;
+      
+      if (isMobile) {
+        // More sensitive controls for mobile
+        this.controls.rotateSpeed = 1.5;
+        this.controls.panSpeed = 1.2;
+        this.controls.autoRotateSpeed = 0.5;
+      } else {
+        // Standard controls for desktop
+        this.controls.rotateSpeed = 1.0;
+        this.controls.panSpeed = 0.8;
+        this.controls.autoRotateSpeed = 0.3;
+      }
+    }
   }
 
   /**
@@ -1737,7 +1921,10 @@ class Crypto3DVisualizer {
         .appendChild(infoPanel);
     }
 
-    // Update info panel content
+    // Check if mobile device
+    const isMobile = window.innerWidth <= 992;
+
+    // Update info panel content with responsive design
     const priceChange = crypto.price_change_percentage_24h;
     const priceChangeClass = priceChange >= 0 ? "positive" : "negative";
     const formattedPrice = this.formatPrice(
@@ -1745,64 +1932,79 @@ class Crypto3DVisualizer {
       this.config.apiInstance.config.currency
     );
 
-    infoPanel.innerHTML = `
-            <div class="crypto-3d-info-header">
-                <img src="${crypto.image}" alt="${
-      crypto.name
-    }" width="32" height="32">
-                <h3>${
-                  crypto.name
-                } <span>(${crypto.symbol.toUpperCase()})</span></h3>
-            </div>
-            <div class="crypto-3d-info-price">
-                <div class="price-value">${formattedPrice}</div>
-                <div class="price-change ${priceChangeClass}">
-                    ${priceChange >= 0 ? "↑" : "↓"} ${Math.abs(
-      priceChange
-    ).toFixed(2)}%
-                </div>
-            </div>
-            <div class="crypto-3d-info-details">
-                <div class="detail-row">
-                    <span class="detail-label">Market Cap:</span>
-                    <span class="detail-value">${this.formatMarketCap(
-                      crypto.market_cap
-                    )}</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">24h Volume:</span>
-                    <span class="detail-value">${this.formatMarketCap(
-                      crypto.total_volume
-                    )}</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Rank:</span>
-                    <span class="detail-value">#${crypto.market_cap_rank}</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">24h High:</span>
-                    <span class="detail-value">${this.formatPrice(
-                      crypto.high_24h,
-                      this.config.apiInstance.config.currency
-                    )}</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">24h Low:</span>
-                    <span class="detail-value">${this.formatPrice(
-                      crypto.low_24h,
-                      this.config.apiInstance.config.currency
-                    )}</span>
-                </div>
-            </div>
-            <div class="crypto-3d-info-actions">
-                <button class="action-button convert-button" data-crypto="${
-                  crypto.id
-                }">Convert</button>
-                <button class="action-button details-button" data-crypto="${
-                  crypto.id
-                }">Details</button>
-            </div>
-        `;
+    // Mobile-friendly layout
+    if (isMobile) {
+      infoPanel.innerHTML = `
+        <div class="crypto-3d-info-header">
+          <img src="${crypto.image}" alt="${crypto.name}" width="28" height="28">
+          <h3>${crypto.name} <span>(${crypto.symbol.toUpperCase()})</span></h3>
+        </div>
+        <div class="crypto-3d-info-price">
+          <div class="price-value">${formattedPrice}</div>
+          <div class="price-change ${priceChangeClass}">
+            ${priceChange >= 0 ? "↑" : "↓"} ${Math.abs(priceChange).toFixed(2)}%
+          </div>
+        </div>
+        <div class="crypto-3d-info-details">
+          <div class="detail-row">
+            <span class="detail-label">Market Cap:</span>
+            <span class="detail-value">${this.formatMarketCap(crypto.market_cap)}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">24h Volume:</span>
+            <span class="detail-value">${this.formatMarketCap(crypto.total_volume)}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Rank:</span>
+            <span class="detail-value">#${crypto.market_cap_rank}</span>
+          </div>
+        </div>
+        <div class="crypto-3d-info-actions">
+          <button class="action-button convert-button" data-crypto="${crypto.id}">Convert</button>
+          <button class="action-button details-button" data-crypto="${crypto.id}">Details</button>
+        </div>
+      `;
+    } else {
+      // Desktop layout (original)
+      infoPanel.innerHTML = `
+        <div class="crypto-3d-info-header">
+          <img src="${crypto.image}" alt="${crypto.name}" width="32" height="32">
+          <h3>${crypto.name} <span>(${crypto.symbol.toUpperCase()})</span></h3>
+        </div>
+        <div class="crypto-3d-info-price">
+          <div class="price-value">${formattedPrice}</div>
+          <div class="price-change ${priceChangeClass}">
+            ${priceChange >= 0 ? "↑" : "↓"} ${Math.abs(priceChange).toFixed(2)}%
+          </div>
+        </div>
+        <div class="crypto-3d-info-details">
+          <div class="detail-row">
+            <span class="detail-label">Market Cap:</span>
+            <span class="detail-value">${this.formatMarketCap(crypto.market_cap)}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">24h Volume:</span>
+            <span class="detail-value">${this.formatMarketCap(crypto.total_volume)}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Rank:</span>
+            <span class="detail-value">#${crypto.market_cap_rank}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">24h High:</span>
+            <span class="detail-value">${this.formatPrice(crypto.high_24h, this.config.apiInstance.config.currency)}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">24h Low:</span>
+            <span class="detail-value">${this.formatPrice(crypto.low_24h, this.config.apiInstance.config.currency)}</span>
+          </div>
+        </div>
+        <div class="crypto-3d-info-actions">
+          <button class="action-button convert-button" data-crypto="${crypto.id}">Convert</button>
+          <button class="action-button details-button" data-crypto="${crypto.id}">Details</button>
+        </div>
+      `;
+    }
 
     // Show with animation
     gsap.fromTo(
@@ -1811,29 +2013,29 @@ class Crypto3DVisualizer {
       { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", display: "block" }
     );
 
-    // Add event listeners to buttons
+    // Add event listeners to buttons with touch-friendly handling
     const convertButton = infoPanel.querySelector(".convert-button");
     if (convertButton) {
-      convertButton.addEventListener("click", () => {
+      const handleConvert = () => {
+        // Provide haptic feedback on mobile
+        if ('vibrate' in navigator && isMobile) {
+          navigator.vibrate(100);
+        }
+        
         // Scroll to converter and pre-select this crypto
         const converterContainer = document.querySelector("#crypto-converter");
         if (converterContainer) {
           converterContainer.scrollIntoView({ behavior: "smooth" });
 
-          // For our custom dropdown
-          // Pre-select the crypto in the converter if possible
           setTimeout(() => {
-            // For our custom dropdown
             const currencyFromSelect = document.getElementById("currency-from");
             if (currencyFromSelect) {
               const cryptoValue = `crypto:${crypto.id}`;
               currencyFromSelect.value = cryptoValue;
 
-              // Trigger change event
               const event = new Event("change");
               currencyFromSelect.dispatchEvent(event);
 
-              // If we have the converter instance available, update the UI
               if (window.cryptoConverter) {
                 window.cryptoConverter.updateCurrencyLogo("from");
                 window.cryptoConverter.performConversion();
@@ -1841,29 +2043,31 @@ class Crypto3DVisualizer {
             }
           }, 500);
         }
-      });
+      };
+
+      convertButton.addEventListener("click", handleConvert);
+      convertButton.addEventListener("touchend", handleConvert);
     }
 
     // Add event listener for details button
     const detailsButton = infoPanel.querySelector(".details-button");
     if (detailsButton) {
-      detailsButton.addEventListener("click", () => {
-        // Open detailed view or navigate to a details page
-        // For now, we'll just scroll to the price table and highlight this crypto
+      const handleDetails = () => {
+        // Provide haptic feedback on mobile
+        if ('vibrate' in navigator && isMobile) {
+          navigator.vibrate(100);
+        }
+        
         const priceTable = document.querySelector(".crypto-table");
         if (priceTable) {
           priceTable.scrollIntoView({ behavior: "smooth" });
 
-          // Find and highlight the row for this crypto
           setTimeout(() => {
             const rows = priceTable.querySelectorAll("tbody tr");
             rows.forEach((row) => {
               const nameCell = row.querySelector(".crypto-name");
               if (nameCell && nameCell.textContent.includes(crypto.name)) {
-                // Add highlight class
                 row.classList.add("highlight-row");
-
-                // Remove highlight after 3 seconds
                 setTimeout(() => {
                   row.classList.remove("highlight-row");
                 }, 3000);
@@ -1871,9 +2075,14 @@ class Crypto3DVisualizer {
             });
           }, 500);
         }
-      });
+      };
+
+      detailsButton.addEventListener("click", handleDetails);
+      detailsButton.addEventListener("touchend", handleDetails);
     }
   }
+
+
 
   /**
    * Hide cryptocurrency information
@@ -1999,29 +2208,31 @@ class Crypto3DVisualizer {
 }
 
 // Create and initialize the visualizer when the DOM is ready
-// Create and initialize the visualizer when the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   // Add loading indicator
   const container =
     document.querySelector("#crypto-3d-container") || document.body;
+  
   // Remove any existing loading indicator first
   const existingIndicator = container.querySelector(".crypto-3d-loading");
   if (existingIndicator) {
     container.removeChild(existingIndicator);
   }
+  
   const loadingIndicator = document.createElement("div");
   loadingIndicator.className = "crypto-3d-loading";
+  
+  // Device-specific loading message
+  const isMobile = window.innerWidth <= 992;
+  const loadingMessage = isMobile 
+    ? "Loading 3D Visualizer...<br>"
+    : "Loading 3D Cryptocurrency Visualizer...";
+    
   loadingIndicator.innerHTML = `
-        <div class="spinner"></div>
-        <div>Loading 3D Cryptocurrency Visualizer...</div>
-    `;
+    <div class="spinner"></div>
+    <div>${loadingMessage}</div>
+  `;
   container.appendChild(loadingIndicator);
-
-  // Add instructions
-  // const instructions = document.createElement('div');
-  // instructions.className = 'crypto-3d-instructions';
-  // instructions.textContent = 'Hover over cryptocurrencies to see details. Click to select.';
-  // container.appendChild(instructions);
 
   // Load required libraries
   const loadScript = (url, callback) => {
@@ -2029,6 +2240,9 @@ document.addEventListener("DOMContentLoaded", () => {
     script.type = "text/javascript";
     script.src = url;
     script.onload = callback;
+    script.onerror = () => {
+      callback(); // Continue anyway
+    };
     document.head.appendChild(script);
   };
 
@@ -2057,45 +2271,104 @@ document.addEventListener("DOMContentLoaded", () => {
                     ) {
                       clearInterval(waitForCryptoApi);
 
-                      // Create and initialize the visualizer
-                      const crypto3D = new Crypto3DVisualizer();
-                      crypto3D.init().catch((err) => {
-                        //console.error('Failed to initialize 3D visualizer:', err);
-                        // Make sure to remove loading spinner even if initialization fails
-                        const loadingIndicator =
-                          document.querySelector(".crypto-3d-loading");
-                        if (loadingIndicator && loadingIndicator.parentNode) {
-                          loadingIndicator.parentNode.removeChild(
-                            loadingIndicator
-                          );
+                      // Create and initialize the visualizer with mobile-optimized settings
+                      const isMobile = window.innerWidth <= 992;
+                      const crypto3DConfig = {
+                        containerSelector: "#crypto-3d-container",
+                        width: window.innerWidth,
+                        height: isMobile ? window.innerHeight * 0.88 : window.innerHeight,
+                        backgroundColor: 0x0a0a14,
+                        apiInstance: window.cryptoApi,
+                        cryptoCount: isMobile ? 15 : 20, // Fewer objects on mobile for better performance
+                        logoSize: isMobile ? 2.5 : 3.5, // Smaller logos on mobile
+                        hoverDuration: isMobile ? 6000 : 8000, // Shorter hover duration on mobile
+                      };
+
+                      const crypto3D = new Crypto3DVisualizer(crypto3DConfig);
+                      
+                      crypto3D.init().then(() => {
+                        // Add mobile-specific instructions
+                        if (isMobile) {
+
+                          // Hide mobile instructions after 10 seconds
+                          setTimeout(() => {
+                            instructions.classList.add("fade");
+                          }, 10000);
                         }
+                      }).catch((err) => {
+                        // Make sure to remove loading spinner even if initialization fails
+                        const loadingIndicator = document.querySelector(".crypto-3d-loading");
+                        if (loadingIndicator && loadingIndicator.parentNode) {
+                          loadingIndicator.parentNode.removeChild(loadingIndicator);
+                        }
+                        
+                        // Show error message
+                        const errorMessage = document.createElement("div");
+                        errorMessage.className = "crypto-3d-error";
+                        errorMessage.innerHTML = `
+                        `;
+                        container.appendChild(errorMessage);
                       });
 
                       // Add update listener to cryptoApi
-                      const originalFetchPrices = window.cryptoApi.fetchPrices;
-                      window.cryptoApi.fetchPrices = async function () {
-                        const result = await originalFetchPrices.apply(
-                          this,
-                          arguments
-                        );
-                        crypto3D.update();
-                        return result;
-                      };
+                      if (window.cryptoApi && typeof window.cryptoApi.fetchPrices === 'function') {
+                        const originalFetchPrices = window.cryptoApi.fetchPrices;
+                        window.cryptoApi.fetchPrices = async function () {
+                          const result = await originalFetchPrices.apply(this, arguments);
+                          if (crypto3D && crypto3D.initialized) {
+                            crypto3D.update();
+                          }
+                          return result;
+                        };
+                      }
 
                       // Export for external use
                       window.crypto3D = crypto3D;
+
+                      // Add orientation change handler for mobile devices
+                      if (isMobile) {
+                        window.addEventListener('orientationchange', () => {
+                          setTimeout(() => {
+                            if (crypto3D && crypto3D.initialized) {
+                              crypto3D.onWindowResize();
+                            }
+                          }, 500); // Delay to allow orientation change to complete
+                        });
+                      }
+
+                      // Add visibility change handler to pause/resume animation
+                      document.addEventListener('visibilitychange', () => {
+                        if (crypto3D && crypto3D.controls) {
+                          if (document.hidden) {
+                            // Pause auto-rotation when tab is hidden
+                            crypto3D.controls.autoRotate = false;
+                          } else {
+                            // Resume auto-rotation when tab is visible
+                            setTimeout(() => {
+                              crypto3D.controls.autoRotate = true;
+                            }, 1000);
+                          }
+                        }
+                      });
                     }
                   }, 100);
 
                   // Add a timeout to remove the loading spinner if initialization takes too long
                   setTimeout(() => {
-                    const loadingIndicator =
-                      document.querySelector(".crypto-3d-loading");
+                    const loadingIndicator = document.querySelector(".crypto-3d-loading");
                     if (loadingIndicator && loadingIndicator.parentNode) {
-                      //console.warn('Removing loading spinner after timeout');
                       loadingIndicator.parentNode.removeChild(loadingIndicator);
+                      
+                      // Show timeout message
+                      const timeoutMessage = document.createElement("div");
+                      timeoutMessage.className = "crypto-3d-timeout";
+                      timeoutMessage.innerHTML = `
+                        <div>⏱️ Loading timeout</div>
+                        <div><small>Please refresh the page to try again</small></div>
+                      `;
+                      container.appendChild(timeoutMessage);
                     }
-                  }, 20000); // 20 seconds timeout
+                  }, 30000); // 30 seconds timeout
                 }
               );
             }
@@ -2104,4 +2377,156 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
   );
+
+  // Add CSS for mobile-specific styling
+  const mobileStyles = document.createElement('style');
+  mobileStyles.textContent = `
+    @media (max-width: 992px) {
+      .crypto-3d-info.mobile {
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 10px !important;
+        right: 10px !important;
+        top: auto !important;
+        max-width: none !important;
+        font-size: 14px !important;
+        z-index: 1000 !important;
+      }
+      
+      .crypto-3d-info-header.mobile h3 {
+        font-size: 14px !important;
+        margin: 5px 0 !important;
+      }
+      
+      .crypto-3d-info-price.mobile .price-value {
+        font-size: 16px !important;
+      }
+      
+      .crypto-3d-info-details.mobile {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 5px !important;
+        margin: 10px 0 !important;
+      }
+      
+      .crypto-3d-info-actions.mobile {
+        display: flex !important;
+        gap: 10px !important;
+        margin-top: 10px !important;
+      }
+      
+      .crypto-3d-info-actions.mobile .action-button {
+        flex: 1 !important;
+        padding: 12px 8px !important;
+        font-size: 14px !important;
+        touch-action: manipulation !important;
+      }
+      
+      .crypto-3d-instructions.mobile {
+        position: fixed !important;
+        top: 20px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        background: rgba(0, 0, 0, 0.8) !important;
+        color: white !important;
+        padding: 15px 20px !important;
+        border-radius: 10px !important;
+        font-size: 14px !important;
+        text-align: center !important;
+        z-index: 1000 !important;
+        backdrop-filter: blur(10px) !important;
+      }
+      
+      .crypto-3d-instructions.mobile div {
+        margin: 5px 0 !important;
+      }
+      
+      .crypto-3d-zoom-level {
+        font-size: 14px !important;
+        padding: 8px 12px !important;
+      }
+      
+      .crypto-3d-zoom-instruction {
+        font-size: 12px !important;
+        padding: 8px 12px !important;
+      }
+      
+      .crypto-3d-error,
+      .crypto-3d-timeout {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        background: rgba(255, 0, 0, 0.1) !important;
+        border: 2px solid #ff4444 !important;
+        color: #ff4444 !important;
+        padding: 20px !important;
+        border-radius: 10px !important;
+        text-align: center !important;
+        z-index: 1000 !important;
+        backdrop-filter: blur(10px) !important;
+      }
+      
+      /* Prevent text selection on mobile */
+      .crypto-3d-info * {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+      }
+      
+      /* Improve touch targets */
+      .action-button {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+    }
+    
+    /* Fade animations */
+    .crypto-3d-instructions.fade,
+    .crypto-3d-zoom-instruction.fade-out {
+      opacity: 0 !important;
+      transition: opacity 1s ease-out !important;
+    }
+    
+    /* Loading spinner */
+    .crypto-3d-loading .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Zoom indicators */
+    .crypto-3d-zoom-level,
+    .crypto-3d-zoom-indicator {
+    height: 40px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-size: 12px;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .crypto-3d-zoom-level.show,
+    .crypto-3d-zoom-indicator.show {
+      opacity: 1;
+    }
+  `;
+  document.head.appendChild(mobileStyles);
 });

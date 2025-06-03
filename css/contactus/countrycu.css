@@ -1,982 +1,332 @@
+/* Base styles - common across all breakpoints */
+.countries,
+.countries1 {
+  width: 100%;
+  display: flex;
+  height: auto;
+  overflow: hidden !important;
+  position: relative;
+  align-content: center;
+}
+
+.countries {
+  margin-bottom: 4%;
+  margin-top: 4%;
+}
+
+.countries1 {
+  margin-bottom: 8%;
+  margin-top: 8%;
+}
+
+.countries > video,
+.countries1 > video {
+  position: absolute;
+  height: 100%;
+  rotate: 0deg;
+  z-index: 1;
+  visibility: hidden !important;
+  background-color: #000 !important;
+}
+
+.country,
+.country1 {
+  background-color: transparent !important;
+}
+
+.country {
+  padding-left: 0 !important;
+}
+
+.country1 {
+  padding-right: 0 !important;
+  display: flex;
+  justify-content: end;
+}
+
+.ctext,
+.ctext1 {
+  padding: 2%;
+  width: 64%;
+  z-index: 2;
+  background-color: #1e88e5 !important;
+  opacity: 0;
+  transition: opacity 2s ease-out, transform 2s ease-out;
+  will-change: transform, opacity;
+}
+
+.ctext {
+  border-top-right-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+}
+
+.ctext1 {
+  border-top-left-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
+}
+
+.ctext > h4,
+.ctext1 > h4,
+.ctext > span,
+.ctext1 > span {
+  color: whitesmoke !important;
+}
+
+.ctext.animate-left {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideInLeft 2s forwards;
+}
+
+.ctext1.animate-right {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideInRight 2s forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 4%;
-    margin-top: 4%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
-  .country {
-    padding-left: 0 !important;
-
-    background-color: transparent !important;
-
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-  }
-  .ctext {
-    padding: 2%;
-
-    border-top-right-radius: 20px !important;
-    border-bottom-right-radius: 20px !important;
-
-    width: 64%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 40px;
-    }
-    > span {
-      color: whitesmoke !important;
-      font-size: 20px;
-    }
-  }
-  .countries1 {
-    width: 100%;
-    height: 40vh;
-
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 8%;
-    margin-top: 8%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
+  .country,
   .country1 {
-    padding-right: 0 !important;
-
-    background-color: transparent !important;
-
     border-bottom: 24px solid transparent;
     border-top: 24px solid transparent;
-    display: flex;
-    justify-content: end;
-  }
-  .ctext1 {
-    padding: 2%;
-
-    border-top-left-radius: 20px !important;
-    border-bottom-left-radius: 20px !important;
-
-    width: 64%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 40px;
-    }
-    > span {
-      color: whitesmoke !important;
-      font-size: 20px;
-    }
-  }
-  .ctext,
-  .ctext1 {
-    opacity: 0;
-    transition: opacity 2s ease-out, transform 2s ease-out;
-    will-change: transform, opacity;
   }
 
-  .ctext.animate-left {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInLeft 2s forwards;
+  .countries1 {
+    height: 40vh;
   }
 
-  .ctext1.animate-right {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInRight 2s forwards;
+  .ctext > h4,
+  .ctext1 > h4 {
+    font-size: 40px;
   }
 
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .ctext > span,
+  .ctext1 > span {
+    font-size: 20px;
   }
 }
+
 @media (min-width: 1401px) and (max-width: 1920px) {
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 4%;
-    margin-top: 4%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
-  .country {
-    padding-left: 0 !important;
-
-    background-color: transparent !important;
-
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-  }
-  .ctext {
-    padding: 2%;
-
-    border-top-right-radius: 20px !important;
-    border-bottom-right-radius: 20px !important;
-
-    width: 64%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 28px;
-    }
-    > span {
-      color: whitesmoke !important;
-      font-size: 14px;
-    }
-  }
-  .countries1 {
-    width: 100%;
-    height: 40vh;
-
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 8%;
-    margin-top: 8%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
+  .country,
   .country1 {
-    padding-right: 0 !important;
-
-    background-color: transparent !important;
-
     border-bottom: 24px solid transparent;
     border-top: 24px solid transparent;
-    display: flex;
-    justify-content: end;
-  }
-  .ctext1 {
-    padding: 2%;
-
-    border-top-left-radius: 20px !important;
-    border-bottom-left-radius: 20px !important;
-
-    width: 64%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 28px;
-    }
-    > span {
-      color: whitesmoke !important;
-      font-size: 14px;
-    }
-  }
-  .ctext,
-  .ctext1 {
-    opacity: 0;
-    transition: opacity 2s ease-out, transform 2s ease-out;
-    will-change: transform, opacity;
   }
 
-  .ctext.animate-left {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInLeft 2s forwards;
+  .countries1 {
+    height: 40vh;
   }
 
-  .ctext1.animate-right {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInRight 2s forwards;
+  .ctext > h4,
+  .ctext1 > h4 {
+    font-size: 28px;
   }
 
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .ctext > span,
+  .ctext1 > span {
+    font-size: 14px;
   }
 }
+
 @media (min-width: 1201px) and (max-width: 1400px) {
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 4%;
-    margin-top: 4%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
-  .country {
-    padding-left: 0 !important;
-
-    background-color: transparent !important;
-
+  .country,
+  .country1 {
     border-bottom: 24px solid transparent;
     border-top: 24px solid transparent;
   }
-  .ctext {
-    padding: 2%;
 
-    border-top-right-radius: 20px !important;
-    border-bottom-right-radius: 20px !important;
-
-    width: 64%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 28px;
-    }
-    > span {
-      color: whitesmoke !important;
-      font-size: 14px;
-    }
-  }
   .countries1 {
-    width: 100%;
     height: 40vh;
-
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 8%;
-    margin-top: 8%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
-  .country1 {
-    padding-right: 0 !important;
-
-    background-color: transparent !important;
-
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-    display: flex;
-    justify-content: end;
-  }
-  .ctext1 {
-    padding: 2%;
-
-    border-top-left-radius: 20px !important;
-    border-bottom-left-radius: 20px !important;
-
-    width: 64%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 28px;
-    }
-    > span {
-      color: whitesmoke !important;
-      font-size: 14px;
-    }
-  }
-  .ctext,
-  .ctext1 {
-    opacity: 0;
-    transition: opacity 2s ease-out, transform 2s ease-out;
-    will-change: transform, opacity;
   }
 
-  .ctext.animate-left {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInLeft 2s forwards;
+  .ctext > h4,
+  .ctext1 > h4 {
+    font-size: 28px;
   }
 
-  .ctext1.animate-right {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInRight 2s forwards;
-  }
-
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .ctext > span,
+  .ctext1 > span {
+    font-size: 14px;
   }
 }
+
 @media (min-width: 993px) and (max-width: 1200px) {
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 4%;
-    margin-top: 4%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
-  .country {
-    padding-left: 0 !important;
-
-    background-color: transparent !important;
-
-    border-bottom: 4px solid transparent;
-    border-top: 4px solid transparent;
-  }
-  .ctext {
-    padding: 2%;
-
-    border-top-right-radius: 14px !important;
-    border-bottom-right-radius: 14px !important;
-
-    width: 88%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 22px;
-
-      margin-bottom: 0;
-    }
-    > span {
-      font-family: "inter";
-
-      color: whitesmoke !important;
-      font-size: 16px;
-    }
-  }
-  .countries1 {
-    width: 100%;
-    height: auto;
-
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 4%;
-    margin-top: 4%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
+  .country,
   .country1 {
-    padding-right: 0 !important;
-
-    background-color: transparent !important;
-
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
-    justify-items: end;
   }
-  .ctext1 {
-    padding: 2%;
 
-    border-top-left-radius: 14px !important;
-    border-bottom-left-radius: 14px !important;
-
-    width: 88%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 24px;
-
-      margin-bottom: 0;
-    }
-    > span {
-      font-family: "inter";
-      color: whitesmoke !important;
-      font-size: 16px;
-    }
-  }
   .ctext,
   .ctext1 {
-    opacity: 0;
-    transition: opacity 2s ease-out, transform 2s ease-out;
-    will-change: transform, opacity;
+    width: 88%;
   }
 
-  .ctext.animate-left {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInLeft 2s forwards;
+  .ctext {
+    border-top-right-radius: 14px !important;
+    border-bottom-right-radius: 14px !important;
   }
 
-  .ctext1.animate-right {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInRight 2s forwards;
+  .ctext1 {
+    border-top-left-radius: 14px !important;
+    border-bottom-left-radius: 14px !important;
   }
 
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .country1 {
+    justify-items: end;
   }
 
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .ctext > h4 {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+
+  .ctext1 > h4 {
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+
+  .ctext > span,
+  .ctext1 > span {
+    font-family: "inter";
+    font-size: 16px;
   }
 }
+
 @media (min-width: 769px) and (max-width: 992px) {
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 4%;
-    margin-top: 4%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
-  .country {
-    padding-left: 0 !important;
-
-    background-color: transparent !important;
-
-    border-bottom: 4px solid transparent;
-    border-top: 4px solid transparent;
-  }
-  .ctext {
-    padding: 2%;
-
-    border-top-right-radius: 14px !important;
-    border-bottom-right-radius: 14px !important;
-
-    width: 88%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 28px;
-    }
-    > span {
-      font-family: "inter";
-
-      color: whitesmoke !important;
-      font-size: 24px;
-    }
-  }
-  .countries1 {
-    width: 100%;
-    height: auto;
-
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 4%;
-    margin-top: 4%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
+  .country,
   .country1 {
-    padding-right: 0 !important;
-
-    background-color: transparent !important;
-
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
-    justify-items: end;
   }
-  .ctext1 {
-    padding: 2%;
 
-    border-top-left-radius: 14px !important;
-    border-bottom-left-radius: 14px !important;
-
-    width: 88%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 28px;
-    }
-    > span {
-      font-family: "inter";
-      color: whitesmoke !important;
-      font-size: 24px;
-    }
-  }
   .ctext,
   .ctext1 {
-    opacity: 0;
-    transition: opacity 2s ease-out, transform 2s ease-out;
-    will-change: transform, opacity;
+    width: 88%;
   }
 
-  .ctext.animate-left {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInLeft 2s forwards;
+  .ctext {
+    border-top-right-radius: 14px !important;
+    border-bottom-right-radius: 14px !important;
   }
 
-  .ctext1.animate-right {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInRight 2s forwards;
+  .ctext1 {
+    border-top-left-radius: 14px !important;
+    border-bottom-left-radius: 14px !important;
   }
 
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .country1 {
+    justify-items: end;
   }
 
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .ctext > h4,
+  .ctext1 > h4 {
+    font-size: 28px;
+  }
+
+  .ctext > span,
+  .ctext1 > span {
+    font-family: "inter";
+    font-size: 24px;
   }
 }
+
 @media (min-width: 577px) and (max-width: 768px) {
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 4%;
-    margin-top: 4%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
-  .country {
-    padding-left: 0 !important;
-
-    background-color: transparent !important;
-
-    border-bottom: 4px solid transparent;
-    border-top: 4px solid transparent;
-  }
-  .ctext {
-    padding: 2%;
-
-    border-top-right-radius: 14px !important;
-    border-bottom-right-radius: 14px !important;
-
-    width: 88%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 28px;
-    }
-    > span {
-      font-family: "inter";
-
-      color: whitesmoke !important;
-      font-size: 16px;
-    }
-  }
-  .countries1 {
-    width: 100%;
-    height: auto;
-
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 4%;
-    margin-top: 4%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
+  .country,
   .country1 {
-    padding-right: 0 !important;
-
-    background-color: transparent !important;
-
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
-    justify-items: end;
   }
-  .ctext1 {
-    padding: 2%;
 
-    border-top-left-radius: 14px !important;
-    border-bottom-left-radius: 14px !important;
-
-    width: 88%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 28px;
-    }
-    > span {
-      font-family: "inter";
-      color: whitesmoke !important;
-      font-size: 16px;
-    }
-  }
   .ctext,
   .ctext1 {
-    opacity: 0;
-    transition: opacity 2s ease-out, transform 2s ease-out;
-    will-change: transform, opacity;
+    width: 88%;
   }
 
-  .ctext.animate-left {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInLeft 2s forwards;
+  .ctext {
+    border-top-right-radius: 14px !important;
+    border-bottom-right-radius: 14px !important;
   }
 
-  .ctext1.animate-right {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInRight 2s forwards;
+  .ctext1 {
+    border-top-left-radius: 14px !important;
+    border-bottom-left-radius: 14px !important;
   }
 
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .country1 {
+    justify-items: end;
   }
 
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .ctext > h4,
+  .ctext1 > h4 {
+    font-size: 28px;
+  }
+
+  .ctext > span,
+  .ctext1 > span {
+    font-family: "inter";
+    font-size: 16px;
   }
 }
+
 @media (max-width: 576px) {
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 4%;
-    margin-top: 4%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
-  .country {
-    padding-left: 0 !important;
-
-    background-color: transparent !important;
-
-    border-bottom: 4px solid transparent;
-    border-top: 4px solid transparent;
-  }
-  .ctext {
-    padding: 2%;
-
-    border-top-right-radius: 14px !important;
-    border-bottom-right-radius: 14px !important;
-
-    width: 88%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 18px;
-
-      margin-bottom: 0;
-    }
-    > span {
-      font-family: "inter";
-
-      color: whitesmoke !important;
-      font-size: 12px;
-    }
-  }
-  .countries1 {
-    width: 100%;
-    height: auto;
-
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-    margin-bottom: 4%;
-    margin-top: 4%;
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
+  .country,
   .country1 {
-    padding-right: 0 !important;
-
-    background-color: transparent !important;
-
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
-    justify-items: end;
   }
-  .ctext1 {
-    padding: 2%;
 
-    border-top-left-radius: 14px !important;
-    border-bottom-left-radius: 14px !important;
-
-    width: 88%;
-    z-index: 2;
-    background-color: #1e88e5 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 18px;
-
-      margin-bottom: 0;
-    }
-    > span {
-      font-family: "inter";
-      color: whitesmoke !important;
-      font-size: 12px;
-    }
-  }
   .ctext,
   .ctext1 {
-    opacity: 0;
-    transition: opacity 2s ease-out, transform 2s ease-out;
-    will-change: transform, opacity;
+    width: 88%;
   }
 
-  .ctext.animate-left {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInLeft 2s forwards;
+  .ctext {
+    border-top-right-radius: 14px !important;
+    border-bottom-right-radius: 14px !important;
   }
 
-  .ctext1.animate-right {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideInRight 2s forwards;
+  .ctext1 {
+    border-top-left-radius: 14px !important;
+    border-bottom-left-radius: 14px !important;
   }
 
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .country1 {
+    justify-items: end;
   }
 
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .ctext > h4,
+  .ctext1 > h4 {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+
+  .ctext > span,
+  .ctext1 > span {
+    font-family: "inter";
+    font-size: 12px;
   }
 }

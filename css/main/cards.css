@@ -1,3 +1,4 @@
+/* Base styles - common across all breakpoints */
 .container {
   max-width: 1200px;
   margin: 4% auto;
@@ -12,6 +13,8 @@
   height: 450px;
   perspective: 2000px;
   margin: 15px;
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
 }
 
 .card-inner {
@@ -45,10 +48,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  >img{
-    width:100%;
-    height:100%;
-  }
+}
+
+.card-front > img {
+  width: 100%;
+  height: 100%;
 }
 
 .card-front img {
@@ -175,7 +179,32 @@
   transform: translateX(3px);
 }
 
-/* Add some responsiveness */
+/* Card animation delays */
+.card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Query Specific Styles */
 @media (max-width: 768px) {
   .card {
     width: 280px;
@@ -189,33 +218,4 @@
   .card-back h3 {
     font-size: 22px;
   }
-}
-
-/* Add subtle animation for cards on page load */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.card {
-  animation: fadeIn 0.8s ease forwards;
-  opacity: 0;
-}
-
-.card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.card:nth-child(2) {
-  animation-delay: 0.3s;
-}
-
-.card:nth-child(3) {
-  animation-delay: 0.5s;
 }

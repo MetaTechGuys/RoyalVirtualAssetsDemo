@@ -1,725 +1,356 @@
-@media (min-width: 1921px) and (max-width: 2560px) {
-  .slider {
-    width: 100%;
+/* Base styles - common across all breakpoints */
+.slider {
+  width: 100%;
+  position: relative;
+  background-color: #2a2b41;
+}
 
-    position: relative;
-    background-color: #2a2b41;
+.slidehelp {
+  width: 100% !important;
+  background-color: transparent !important;
+}
+
+.stext {
+  position: absolute;
+  top: 14%;
+}
+
+.stext > h3 {
+  font-family: "sora-b" !important;
+  color: whitesmoke !important;
+  margin-bottom: 2%;
+}
+
+.stext > h4 {
+  color: whitesmoke !important;
+  font-family: "jb-mono" !important;
+  margin-bottom: 2%;
+}
+
+.carousel-item > img {
+  height: auto !important;
+  margin: 0 0 !important;
+  border-radius: 28px !important;
+}
+
+.slimge {
+  width: 88% !important;
+  height: auto !important;
+  margin: 0 0 !important;
+}
+
+.white1 {
+  font-family: "sora" !important;
+  color: whitesmoke !important;
+  border-color: whitesmoke !important;
+  background-color: #1e88e5;
+  border-radius: 48px !important;
+  font-weight: 500 !important;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.08s ease-in;
+  -o-transition: 0.08s ease-in;
+  -ms-transition: 0.08s ease-in;
+  -moz-transition: 0.08s ease-in;
+  -webkit-transition: 0.08s ease-in;
+}
+
+.white1:hover {
+  color: #1e88e5 !important;
+  border: 2px solid #1e88e5 !important;
+  background: whitesmoke !important;
+}
+
+.white1:before {
+  content: "";
+  position: absolute;
+  background: whitesmoke;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: -1;
+  -webkit-transition: top 0.09s ease-in;
+}
+
+.white1:hover:before {
+  top: 0;
+}
+
+/* Keyframes - Must be outside media queries */
+@keyframes moves {
+  0% {
+    transform: translateX(0);
   }
-  .slidehelp {
-    width: 100% !important;
-    background-color: transparent !important;
+  50% {
+    transform: translateX(-280%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
+/* Media Query Specific Styles */
+@media (min-width: 1921px) and (max-width: 2560px) {
+  .slidehelp {
     padding: 4% !important;
     padding-top: 2% !important;
     padding-bottom: 2% !important;
   }
 
+  .carousel-item > img {
+  width: 28% !important;
+  }
   .stext {
-    position: absolute;
-    top: 14%;
-    left: 28%;
-    > h3 {
-      font-family: "sora-b" !important;
+    left: 32%;
+  }
 
-      color: whitesmoke !important;
-      font-size: 40px;
+  .stext > h3 {
+    font-size: 40px;
+  }
 
-      margin-bottom: 2%;
-    }
-    > h4 {
-      color: whitesmoke !important;
-      font-family: "jb-mono" !important;
+  .stext > h4 {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
 
-      font-size: 24px;
-      margin-bottom: 2%;
-      letter-spacing: 2px;
-    }
-
-    .carousel-item {
-      > img {
-        width: 88% !important;
-        height: auto !important;
-
-        margin: 0 0 !important;
-
-        border-radius: 28px !important;
-      }
-    }
-
-    .white1 {
-      font-family: "sora" !important;
-
-      color: whitesmoke !important;
-      border-color: whitesmoke !important;
-      background-color: #1e88e5;
-      width: 400px;
-      height: 68px;
-      border-radius: 48px !important;
-      font-size: 20px !important;
-      font-weight: 500 !important;
-
-      border-width: 4px !important;
-      position: relative;
-
-      overflow: hidden;
-      z-index: 1;
-      cursor: pointer;
-      transition: 0.08s ease-in;
-      -o-transition: 0.08s ease-in;
-      -ms-transition: 0.08s ease-in;
-      -moz-transition: 0.08s ease-in;
-      -webkit-transition: 0.08s ease-in;
-    }
-    .white1:hover {
-      color: #1e88e5 !important;
-      border: 2px solid #1e88e5 !important;
-      background: whitesmoke !important;
-    }
-
-    .white1:before {
-      content: "";
-      position: absolute;
-      background: whitesmoke;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: 100%;
-      z-index: -1;
-      -webkit-transition: top 0.09s ease-in;
-    }
-
-    .white1:hover:before {
-      top: 0;
-    }
-
-    @keyframes moves {
-      0% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(-280%);
-      }
-      100% {
-        transform: translateX(0);
-      }
-    }
+  .white1 {
+    width: 400px;
+    height: 68px;
+    font-size: 20px !important;
+    border-width: 4px !important;
   }
 }
+
 @media (min-width: 1401px) and (max-width: 1920px) {
-  .slider {
-    width: 100%;
-
-    position: relative;
-    background-color: #2a2b41;
-  }
   .slidehelp {
-    width: 100% !important;
-    background-color: transparent !important;
-
     padding-left: 8% !important;
     padding-top: 2% !important;
     padding-bottom: 2% !important;
   }
 
+  .carousel-item > img {
+  width: 28% !important;
+  }
   .stext {
-    position: absolute;
-    top: 14%;
     left: 34%;
-    > h3 {
-      font-family: "sora-b" !important;
+  }
 
-      color: whitesmoke !important;
-      font-size: 36px;
+  .stext > h3 {
+    font-size: 36px;
+  }
 
-      margin-bottom: 2%;
-    }
-    > h4 {
-      color: whitesmoke !important;
-      font-family: "jb-mono" !important;
+  .stext > h4 {
+    font-size: 18px;
+  }
 
-      font-size: 18px;
-      margin-bottom: 2%;
-    }
-
-    .slimge {
-      width: 88% !important;
-      height: auto !important;
-
-      margin: 0 0 !important;
-    }
-
-    .white1 {
-      font-family: "sora" !important;
-
-      color: whitesmoke !important;
-      border-color: whitesmoke !important;
-      background-color: #1e88e5;
-      width: 288px;
-      height: 60px;
-      border-radius: 48px !important;
-      font-size: 18px !important;
-      font-weight: 500 !important;
-
-      border-width: 4px !important;
-      position: relative;
-
-      overflow: hidden;
-      z-index: 1;
-      cursor: pointer;
-      transition: 0.08s ease-in;
-      -o-transition: 0.08s ease-in;
-      -ms-transition: 0.08s ease-in;
-      -moz-transition: 0.08s ease-in;
-      -webkit-transition: 0.08s ease-in;
-    }
-    .white1:hover {
-      color: #1e88e5 !important;
-      border: 2px solid #1e88e5 !important;
-      background: whitesmoke !important;
-    }
-
-    .white1:before {
-      content: "";
-      position: absolute;
-      background: whitesmoke;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: 100%;
-      z-index: -1;
-      -webkit-transition: top 0.09s ease-in;
-    }
-
-    .white1:hover:before {
-      top: 0;
-    }
-
-    @keyframes moves {
-      0% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(-280%);
-      }
-      100% {
-        transform: translateX(0);
-      }
-    }
+  .white1 {
+    width: 288px;
+    height: 60px;
+    font-size: 18px !important;
+    border-width: 4px !important;
   }
 }
+
 @media (min-width: 1201px) and (max-width: 1400px) {
-  .slider {
-    width: 100%;
-
-    position: relative;
-    background-color: #2a2b41;
-  }
   .slidehelp {
-    width: 100% !important;
-    background-color: transparent !important;
-
     padding: 4% !important;
     padding-top: 2% !important;
     padding-bottom: 2% !important;
   }
 
   .stext {
-    position: absolute;
-    top: 14%;
     left: 42%;
-    > h3 {
-      font-family: "sora-b" !important;
+  }
 
-      color: whitesmoke !important;
-      font-size: 24px;
+  .carousel-item > img {
+  width: 28% !important;
+  }
 
-      margin-bottom: 2%;
-    }
-    > h4 {
-      color: whitesmoke !important;
-      font-family: "jb-mono" !important;
+  .stext > h3 {
+    font-size: 24px;
+  }
 
-      font-size: 14px;
-      margin-bottom: 2%;
-    }
+  .stext > h4 {
+    font-size: 14px;
+  }
 
-    .slimge {
-      width: 88% !important;
-      height: auto !important;
-
-      margin: 0 0 !important;
-    }
-
-    .white1 {
-      font-family: "sora" !important;
-
-      color: whitesmoke !important;
-      border-color: whitesmoke !important;
-      background-color: #1e88e5;
-      width: 240px;
-      height: 60px;
-      border-radius: 48px !important;
-      font-size: 14px !important;
-      font-weight: 500 !important;
-
-      border-width: 4px !important;
-      position: relative;
-
-      overflow: hidden;
-      z-index: 1;
-      cursor: pointer;
-      transition: 0.08s ease-in;
-      -o-transition: 0.08s ease-in;
-      -ms-transition: 0.08s ease-in;
-      -moz-transition: 0.08s ease-in;
-      -webkit-transition: 0.08s ease-in;
-    }
-    .white1:hover {
-      color: #1e88e5 !important;
-      border: 2px solid #1e88e5 !important;
-      background: whitesmoke !important;
-    }
-
-    .white1:before {
-      content: "";
-      position: absolute;
-      background: whitesmoke;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: 100%;
-      z-index: -1;
-      -webkit-transition: top 0.09s ease-in;
-    }
-
-    .white1:hover:before {
-      top: 0;
-    }
-
-    @keyframes moves {
-      0% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(-280%);
-      }
-      100% {
-        transform: translateX(0);
-      }
-    }
+  .white1 {
+    width: 240px;
+    height: 60px;
+    font-size: 14px !important;
+    border-width: 4px !important;
   }
 }
+
 @media (min-width: 993px) and (max-width: 1200px) {
-  .slider {
-    width: 100%;
-
-    position: relative;
-    background-color: #2a2b41;
-  }
   .slidehelp {
-    width: 100% !important;
-    background-color: transparent !important;
-
     padding: 2% !important;
     padding-top: 2% !important;
     padding-bottom: 2% !important;
   }
 
   .stext {
-    position: absolute;
-    top: 14%;
     left: 48%;
-    > h3 {
-      font-family: "sora-b" !important;
+  }
 
-      color: whitesmoke !important;
-      font-size: 24px;
+  .stext > h3 {
+    font-size: 24px;
+  }
 
-      margin-bottom: 2%;
-    }
-    > h4 {
-      color: whitesmoke !important;
-      font-family: "jb-mono" !important;
-
-      font-size: 16px;
-      margin-bottom: 2%;
-    }
+  .carousel-item > img {
+  width: 28% !important;
+  }
+  .stext > h4 {
+    font-size: 16px;
   }
 
   .slimge {
     border-radius: 8px !important;
     width: 42% !important;
-    height: auto !important;
-
-    margin: 0 0 !important;
   }
 
   .white1 {
-    font-family: "sora" !important;
-
-    color: whitesmoke !important;
-    border-color: whitesmoke !important;
-    background-color: #1e88e5;
     width: 168px;
     height: 44px;
     border-radius: 20px !important;
     font-size: 10px !important;
-    font-weight: 500 !important;
-
     border-width: 2px !important;
-    position: relative;
-
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-  .white1:hover {
-    color: #1e88e5 !important;
-    border: 2px solid #1e88e5 !important;
-    background: whitesmoke !important;
-  }
-
-  .white1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .white1:hover:before {
-    top: 0;
-  }
-
-  @keyframes moves {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-280%);
-    }
-    100% {
-      transform: translateX(0);
-    }
   }
 }
+
 @media (min-width: 769px) and (max-width: 992px) {
   .slider {
-    width: 100%;
-
-    position: relative;
-    background-color: #2a2b41;
-
     text-align: center;
   }
-  .slidehelp {
-    width: 100% !important;
-    background-color: transparent !important;
 
+  .carousel-item > img {
+  width: 88% !important;
+  }
+
+  .slidehelp {
     padding-top: 8% !important;
     padding-bottom: 4% !important;
   }
 
   .stext {
     padding: 4%;
-    > h3 {
-      font-family: "sora-b" !important;
+    position: static;
+  }
 
-      color: whitesmoke !important;
-      font-size: 36px;
+  .stext > h3 {
+    font-size: 36px;
+    margin-bottom: 4%;
+  }
 
-      margin-bottom: 4%;
-    }
-    > h4 {
-      color: whitesmoke !important;
-      font-family: "inter" !important;
-
-      font-size: 34px;
-      margin-bottom: 8%;
-    }
+  .stext > h4 {
+    font-family: "inter" !important;
+    font-size: 34px;
+    margin-bottom: 8%;
   }
 
   .slimge {
     border-radius: 8px !important;
     width: 80% !important;
-    height: auto !important;
-
-    margin: 0 0 !important;
-
     margin-bottom: 4% !important;
   }
 
   .white1 {
-    font-family: "sora" !important;
-
-    color: whitesmoke !important;
-    border-color: whitesmoke !important;
-    background-color: #1e88e5;
     width: 440px;
     height: 80px;
     border-radius: 36px !important;
     font-size: 28px !important;
-    font-weight: 500 !important;
-
     border-width: 2px !important;
-    position: relative;
-
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-  .white1:hover {
-    color: #1e88e5 !important;
-    border: 2px solid #1e88e5 !important;
-    background: whitesmoke !important;
-  }
-
-  .white1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .white1:hover:before {
-    top: 0;
-  }
-
-  @keyframes moves {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-280%);
-    }
-    100% {
-      transform: translateX(0);
-    }
   }
 }
+
 @media (min-width: 577px) and (max-width: 768px) {
   .slider {
-    width: 100%;
-
-    position: relative;
-    background-color: #2a2b41;
-
     text-align: center;
   }
-  .slidehelp {
-    width: 100% !important;
-    background-color: transparent !important;
 
+  .slidehelp {
     padding-top: 4% !important;
     padding-bottom: 8% !important;
   }
 
   .stext {
     padding: 2%;
-    > h3 {
-      font-family: "sora-b" !important;
+    position: static;
+  }
 
-      color: whitesmoke !important;
-      font-size: 22px;
+  .carousel-item > img {
+  width: 88% !important;
+  }
+  .stext > h3 {
+    font-size: 22px;
+    margin-bottom: 4%;
+  }
 
-      margin-bottom: 4%;
-    }
-    > h4 {
-      color: whitesmoke !important;
-      font-family: "inter" !important;
-
-      font-size: 20px;
-      margin-bottom: 8%;
-    }
+  .stext > h4 {
+    font-family: "inter" !important;
+    font-size: 20px;
+    margin-bottom: 8%;
   }
 
   .slimge {
     border-radius: 8px !important;
     width: 80% !important;
-    height: auto !important;
-
-    margin: 0 0 !important;
-
     margin-bottom: 4% !important;
   }
 
   .white1 {
-    font-family: "sora" !important;
-
-    color: whitesmoke !important;
-    border-color: whitesmoke !important;
-    background-color: #1e88e5;
     width: 320px;
     height: 60px;
     border-radius: 36px !important;
     font-size: 18px !important;
-    font-weight: 500 !important;
-
     border-width: 2px !important;
-    position: relative;
-
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-  .white1:hover {
-    color: #1e88e5 !important;
-    border: 2px solid #1e88e5 !important;
-    background: whitesmoke !important;
-  }
-
-  .white1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .white1:hover:before {
-    top: 0;
-  }
-
-  @keyframes moves {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-280%);
-    }
-    100% {
-      transform: translateX(0);
-    }
   }
 }
+
 @media (max-width: 576px) {
   .slider {
-    width: 100%;
-
-    position: relative;
-    background-color: #2a2b41;
-
     text-align: center;
   }
-  .slidehelp {
-    width: 100% !important;
-    background-color: transparent !important;
 
+  .slidehelp {
     padding-top: 4% !important;
     padding-bottom: 4% !important;
   }
 
   .stext {
     padding: 4%;
-    > h3 {
-      font-family: "sora-b" !important;
+    position: static;
+  }
 
-      color: whitesmoke !important;
-      font-size: 14px;
+  .carousel-item > img {
+  width: 88% !important;
+  }
 
-      margin-bottom: 4%;
-      margin-top: 4%;
-    }
-    > h4 {
-      color: whitesmoke !important;
-      font-family: "inter" !important;
+  .stext > h3 {
+    font-size: 14px;
+    margin-bottom: 4%;
+    margin-top: 4%;
+  }
 
-      font-size: 14px;
-      margin-bottom: 4%;
-    }
+  .stext > h4 {
+    font-family: "inter" !important;
+    font-size: 14px;
+    margin-bottom: 4%;
   }
 
   .slimge {
     border-radius: 8px !important;
     width: 80% !important;
-    height: auto !important;
-
-    margin: 0 0 !important;
   }
 
   .white1 {
-    font-family: "sora" !important;
-
-    color: whitesmoke !important;
-    border-color: whitesmoke !important;
-    background-color: #1e88e5;
     width: 200px;
     height: 40px;
     border-radius: 20px !important;
     font-size: 12px !important;
-    font-weight: 500 !important;
-
     border-width: 2px !important;
-    position: relative;
-
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-  .white1:hover {
-    color: #1e88e5 !important;
-    border: 2px solid #1e88e5 !important;
-    background: whitesmoke !important;
-  }
-
-  .white1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .white1:hover:before {
-    top: 0;
-  }
-
-  @keyframes moves {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-280%);
-    }
-    100% {
-      transform: translateX(0);
-    }
   }
 }

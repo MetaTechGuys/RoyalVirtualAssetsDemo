@@ -153,7 +153,6 @@ class CryptoConverter {
 
       return true;
     } catch (error) {
-      //console.error("Error fetching crypto data:", error);
       document.getElementById("crypto-error").textContent =
         "Failed to load cryptocurrency data";
       document.getElementById("crypto-error").style.display = "block";
@@ -549,7 +548,6 @@ class CryptoConverter {
       void resultInput.offsetWidth; // Trigger reflow
       resultInput.classList.add("highlight");
     } catch (error) {
-      //console.error("Conversion error:", error);
       const errorElement = document.getElementById("crypto-error");
       if (errorElement) {
         errorElement.textContent =

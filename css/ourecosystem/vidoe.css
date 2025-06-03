@@ -1,936 +1,338 @@
+/* Base styles - common across all breakpoints */
+.vid {
+  width: 100%;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  position: relative;
+  justify-items: center;
+  margin-top: 2%;
+}
+
+.vid > img {
+  position: absolute;
+  width: 20%;
+  z-index: -1;
+  left: 8%;
+  opacity: 0.8;
+}
+
+.vidhelp {
+  background-color: transparent !important;
+  border: 48px solid transparent;
+  border-bottom: 0px solid transparent;
+  border-top: 24px solid transparent;
+}
+
+.vidtext {
+  text-align: center;
+  z-index: 2;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4%;
+}
+
+.vidtext > h4 {
+  font-family: "sora-b" !important;
+  color: #000 !important;
+  margin-bottom: 2%;
+}
+
+.vidtext > span {
+  font-family: "jb-mono" !important;
+  color: #000 !important;
+}
+
+.vidimg1 {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  z-index: 2;
+}
+
+.vidimg1 > img {
+  border-radius: 20px;
+  margin-bottom: 4%;
+  z-index: 2;
+}
+
+.vidimg {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  z-index: 2;
+}
+
+.vidimg > img {
+  border-radius: 20px;
+  margin-bottom: 4%;
+  z-index: 2;
+}
+
+.buttons1 {
+  font-family: "sora" !important;
+  position: absolute;
+  top: 84%;
+  left: 20%;
+  opacity: 1;
+  width: 80%;
+}
+
+.golden1 {
+  position: relative;
+  background: #2a2b41;
+  color: whitesmoke !important;
+  width: 280px;
+  height: 68px;
+  border-radius: 48px !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  margin-left: 8%;
+  overflow: hidden;
+  border: none !important;
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.08s ease-in;
+  -o-transition: 0.08s ease-in;
+  -ms-transition: 0.08s ease-in;
+  -moz-transition: 0.08s ease-in;
+  -webkit-transition: 0.08s ease-in;
+}
+
+.golden1:hover {
+  color: #2a2b41 !important;
+  background-color: whitesmoke !important;
+  border: 4px solid #2a2b41 !important;
+}
+
+.golden1:before {
+  content: "";
+  position: absolute;
+  background: whitesmoke;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: -1;
+  -webkit-transition: top 0.09s ease-in;
+}
+
+.golden1:hover:before {
+  top: 0;
+}
+
+/* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
-  .vid {
-    width: 100%;
-
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-    justify-items: center;
-    margin-top: 2%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 8%;
-      opacity: 0.8;
-    }
-  }
-  .vidhelp {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 0px solid transparent;
-    border-top: 24px solid transparent;
-  }
   .vidtext {
-    text-align: center;
-
     width: 48%;
-    z-index: 2;
-    margin-left: auto;
-    margin-right: auto;
-
-    margin-bottom: 4%;
-    > h4 {
-      font-family: "sora-b" !important;
-
-      color: #000 !important;
-      font-size: 44px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 20px;
-    }
   }
 
-  .vidimg1 {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 64%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
-  }
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 48%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
+  .vidtext > h4 {
+    font-size: 44px;
   }
 
-  .buttons1 {
-    font-family: "sora" !important;
-
-    position: absolute;
-    top: 84%;
-    left: 20%;
-    opacity: 1;
-    width: 80%;
+  .vidtext > span {
+    font-size: 20px;
   }
 
-  .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 280px;
-    height: 68px;
-    border-radius: 48px !important;
-    font-size: 20px !important;
-    font-weight: 500 !important;
-    margin-left: 8%;
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
+  .vidimg1 > img {
+    width: 64%;
   }
 
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
+  .vidimg > img {
+    width: 48%;
   }
 }
+
 @media (min-width: 1401px) and (max-width: 1920px) {
-  .vid {
-    width: 100%;
-
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-    justify-items: center;
-    margin-top: 2%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 8%;
-      opacity: 0.8;
-    }
-  }
-  .vidhelp {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 0px solid transparent;
-    border-top: 24px solid transparent;
-  }
   .vidtext {
-    text-align: center;
-
     width: 60%;
-    z-index: 2;
-    margin-left: auto;
-    margin-right: auto;
-
-    margin-bottom: 4%;
-    > h4 {
-      font-family: "sora-b" !important;
-
-      color: #000 !important;
-      font-size: 28px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 14px;
-    }
   }
 
-  .vidimg1 {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 68%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
-  }
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 60%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
+  .vidtext > h4 {
+    font-size: 28px;
   }
 
-  .buttons1 {
-    font-family: "sora" !important;
-
-    position: absolute;
-    top: 84%;
-    left: 20%;
-    opacity: 1;
-    width: 80%;
+  .vidtext > span {
+    font-size: 14px;
   }
 
-  .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 280px;
-    height: 68px;
-    border-radius: 48px !important;
-    font-size: 20px !important;
-    font-weight: 500 !important;
-    margin-left: 8%;
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
+  .vidimg1 > img {
+    width: 68%;
   }
 
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
+  .vidimg > img {
+    width: 60%;
   }
 }
+
 @media (min-width: 1201px) and (max-width: 1400px) {
-  .vid {
-    width: 100%;
-
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-    justify-items: center;
-    margin-top: 2%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 8%;
-      opacity: 0.8;
-    }
-  }
   .vidhelp {
-    background-color: transparent !important;
-    border: 48px solid transparent;
     border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
   }
+
   .vidtext {
-    text-align: center;
-
     width: 48%;
-    z-index: 2;
-    margin-left: auto;
-    margin-right: auto;
-
-    margin-bottom: 4%;
-    > h4 {
-      font-family: "sora-b" !important;
-
-      color: #000 !important;
-      font-size: 28px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 14px;
-    }
   }
 
-  .vidimg1 {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 68%;
-      border-radius: 20px;
-
-      margin-bottom: 2%;
-      z-index: 2;
-    }
+  .vidtext > h4 {
+    font-size: 28px;
   }
 
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 48%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
+  .vidtext > span {
+    font-size: 14px;
   }
 
-  .buttons1 {
-    font-family: "sora" !important;
+  .vidimg1 > img {
+    width: 68%;
+    margin-bottom: 2%;
+  }
 
-    position: absolute;
-    top: 84%;
-    left: 20%;
-    opacity: 1;
-    width: 80%;
+  .vidimg > img {
+    width: 48%;
   }
 
   .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 280px;
-    height: 68px;
     border-radius: 20px !important;
-    font-size: 20px !important;
-    font-weight: 500 !important;
-    margin-left: 8%;
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
   }
 }
+
 @media (min-width: 993px) and (max-width: 1200px) {
   .vid {
-    width: 100%;
-
     border-radius: 14px !important;
-    overflow: hidden !important;
-
-    position: relative;
-    justify-items: center;
-    margin-top: 2%;
-    > img {
-      position: absolute;
-
-      z-index: -1;
-
-      left: 8%;
-      opacity: 0.8;
-    }
   }
+
   .vidhelp {
-    background-color: transparent !important;
-    border: 48px solid transparent;
     border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
   }
+
   .vidtext {
-    text-align: center;
-
     width: 68%;
-    z-index: 2;
+  }
 
+  .vidtext > h4 {
+    font-size: 24px;
     margin-bottom: 4%;
-    > h4 {
-      font-family: "sora-b" !important;
-
-      color: #000 !important;
-      font-size: 24px;
-
-      margin-bottom: 4%;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 14px;
-    }
-  }
-  .vidimg1 {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 88%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
   }
 
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 68%;
-      border-radius: 8px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
+  .vidtext > span {
+    font-family: "inter" !important;
+    font-size: 14px;
   }
 
-  .buttons1 {
-    font-family: "sora" !important;
-
-    position: absolute;
-    top: 84%;
-    left: 20%;
-    opacity: 1;
-    width: 80%;
+  .vidimg1 > img {
+    width: 88%;
   }
 
-  .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 280px;
-    height: 68px;
-    border-radius: 48px !important;
-    font-size: 20px !important;
-    font-weight: 500 !important;
-    margin-left: 8%;
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
+  .vidimg > img {
+    width: 68%;
+    border-radius: 8px;
   }
 }
+
 @media (min-width: 769px) and (max-width: 992px) {
   .vid {
-    width: 100%;
-
     border-radius: 8px !important;
-    overflow: hidden !important;
-
-    position: relative;
-    justify-items: center;
     margin-top: 4%;
-    > img {
-      position: absolute;
-
-      z-index: -1;
-
-      left: 8%;
-      opacity: 0.8;
-    }
   }
+
   .vidhelp {
-    background-color: transparent !important;
     border: 8px solid transparent;
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
   }
+
   .vidtext {
-    text-align: center;
-
-    width: 80%;
-    z-index: 2;
-
-    margin-bottom: 4%;
-    > h4 {
-      font-family: "sora-b" !important;
-
-      color: #000 !important;
-      font-size: 28px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 24px;
-    }
-  }
-
-  .vidimg1 {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 88%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
-  }
-
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 80%;
-      border-radius: 18px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
-  }
-
-  .buttons1 {
-    font-family: "sora" !important;
-
-    position: absolute;
-    top: 84%;
-    left: 20%;
-    opacity: 1;
     width: 80%;
   }
 
-  .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 280px;
-    height: 68px;
-    border-radius: 48px !important;
-    font-size: 20px !important;
-    font-weight: 500 !important;
-    margin-left: 8%;
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
+  .vidtext > h4 {
+    font-size: 28px;
+    margin-bottom: 2%;
   }
 
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
+  .vidtext > span {
+    font-family: "inter" !important;
+    font-size: 24px;
   }
 
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
+  .vidimg1 > img {
+    width: 88%;
   }
 
-  .golden1:hover:before {
-    top: 0;
+  .vidimg > img {
+    width: 80%;
+    border-radius: 18px;
   }
 }
+
 @media (min-width: 577px) and (max-width: 768px) {
   .vid {
-    width: 100%;
-
     border-radius: 8px !important;
-    overflow: hidden !important;
-
-    position: relative;
-    justify-items: center;
     margin-top: 4%;
-    > img {
-      position: absolute;
-
-      z-index: -1;
-
-      left: 8%;
-      opacity: 0.8;
-    }
   }
+
   .vidhelp {
-    background-color: transparent !important;
     border: 8px solid transparent;
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
   }
+
   .vidtext {
-    text-align: center;
-
-    width: 80%;
-    z-index: 2;
-
-    margin-bottom: 4%;
-    > h4 {
-      font-family: "sora-b" !important;
-
-      color: #000 !important;
-      font-size: 18px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 14px;
-    }
-  }
-
-  .vidimg1 {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 88%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
-  }
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 80%;
-      border-radius: 18px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
-  }
-
-  .buttons1 {
-    font-family: "sora" !important;
-
-    position: absolute;
-    top: 84%;
-    left: 20%;
-    opacity: 1;
     width: 80%;
   }
 
-  .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 280px;
-    height: 68px;
-    border-radius: 48px !important;
-    font-size: 20px !important;
-    font-weight: 500 !important;
-    margin-left: 8%;
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
+  .vidtext > h4 {
+    font-size: 18px;
+    margin-bottom: 2%;
   }
 
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
+  .vidtext > span {
+    font-family: "inter" !important;
+    font-size: 14px;
   }
 
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
+  .vidimg1 > img {
+    width: 88%;
   }
 
-  .golden1:hover:before {
-    top: 0;
+  .vidimg > img {
+    width: 80%;
+    border-radius: 18px;
   }
 }
+
 @media (max-width: 576px) {
   .vid {
-    width: 100%;
-
     border-radius: 8px !important;
-    overflow: hidden !important;
-
-    position: relative;
-    justify-items: center;
     margin-top: 4%;
-    > img {
-      position: absolute;
-
-      z-index: -1;
-
-      left: 8%;
-      opacity: 0.8;
-    }
   }
+
   .vidhelp {
-    background-color: transparent !important;
     border: 8px solid transparent;
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
   }
+
   .vidtext {
-    text-align: center;
-
     width: 88%;
-    z-index: 2;
-
-    margin-bottom: 4%;
-    > h4 {
-      font-family: "sora-b" !important;
-
-      color: #000 !important;
-      font-size: 14px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 14px;
-    }
   }
 
-  .vidimg1 {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 88%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
+  .vidtext > h4 {
+    font-size: 14px;
+    margin-bottom: 2%;
   }
 
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 88%;
-      border-radius: 14px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
+  .vidtext > span {
+    font-family: "inter" !important;
+    font-size: 14px;
   }
 
-  .buttons1 {
-    font-family: "sora" !important;
-
-    position: absolute;
-    top: 84%;
-    left: 20%;
-    opacity: 1;
-    width: 80%;
+  .vidimg1 > img {
+    width: 88%;
   }
 
-  .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 280px;
-    height: 68px;
-    border-radius: 48px !important;
-    font-size: 20px !important;
-    font-weight: 500 !important;
-    margin-left: 8%;
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
+  .vidimg > img {
+    width: 88%;
+    border-radius: 14px;
   }
 }

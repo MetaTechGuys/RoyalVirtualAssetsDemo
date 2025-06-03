@@ -1,740 +1,347 @@
+/* Base styles - common across all breakpoints */
+.backg {
+  position: relative;
+}
+
+.r1 {
+  position: absolute;
+  z-index: 4 !important;
+  height: 50%;
+}
+
+.countries {
+  width: 100%;
+  display: flex;
+  height: auto;
+  overflow: hidden !important;
+  position: relative;
+  align-content: center;
+}
+
+.countries > video {
+  position: absolute;
+  height: 100%;
+  rotate: 0deg;
+  z-index: 1;
+  visibility: hidden !important;
+  background-color: #000 !important;
+}
+
+.country {
+  padding-left: 0 !important;
+  background-color: transparent !important;
+}
+
+.ctext {
+  padding: 2%;
+  border-top-right-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+  width: 100%;
+  z-index: 2;
+  background-color: #2a2b41 !important;
+}
+
+.ctext > h4 {
+  color: whitesmoke !important;
+}
+
+.ctext > span {
+  color: whitesmoke !important;
+}
+
+.countries1 {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  height: auto;
+  overflow: hidden !important;
+  position: relative;
+  align-content: center;
+}
+
+.countries1 > video {
+  position: absolute;
+  height: 100%;
+  rotate: 0deg;
+  z-index: 1;
+  visibility: hidden !important;
+  background-color: #000 !important;
+}
+
+.country1 {
+  padding-left: 0 !important;
+  background-color: transparent !important;
+  justify-items: end;
+}
+
+.country1 > img {
+  width: 14%;
+  position: absolute;
+  left: 0%;
+  top: -4%;
+}
+
+.ctext1 {
+  padding: 2%;
+  border-top-left-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
+  width: 100%;
+  z-index: 2;
+}
+
+.ctext1 > h4 {
+  color: #2a2b41 !important;
+}
+
+.ctext1 > span {
+  color: #2a2b41 !important;
+}
+
+/* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
-  .backg {
-    position: relative;
-  }
   .r1 {
-    position: absolute;
-    z-index: 4 !important;
     left: 74%;
-
-    height: 50%;
   }
 
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
+  .ctext > h4 {
+    font-size: 40px;
   }
-  .country {
-    padding-left: 0 !important;
 
-    background-color: transparent !important;
+  .ctext > span {
+    font-size: 20px;
   }
-  .ctext {
-    padding: 2%;
 
-    border-top-right-radius: 20px !important;
-    border-bottom-right-radius: 20px !important;
-
-    width: 100%;
-    z-index: 2;
-    background-color: #2a2b41 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 40px;
-    }
-    > span {
-      color: whitesmoke !important;
-      font-size: 20px;
-    }
+  .ctext1 > h4 {
+    font-size: 40px;
   }
-  .countries1 {
-    width: 100%;
-    height: 40vh;
 
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
-  .country1 {
-    padding-left: 0 !important;
-
-    background-color: transparent !important;
-
-    justify-items: end;
-    > img {
-      width: 14%;
-      position: absolute;
-      left: 0%;
-      top: -4%;
-    }
-  }
-  .ctext1 {
-    padding: 2%;
-
-    border-top-left-radius: 20px !important;
-    border-bottom-left-radius: 20px !important;
-
-    width: 100%;
-    z-index: 2;
-
-    > h4 {
-      color: #2a2b41 !important;
-      font-size: 40px;
-    }
-    > span {
-      color: #2a2b41 !important;
-      font-size: 20px;
-    }
+  .ctext1 > span {
+    font-size: 20px;
   }
 }
+
 @media (min-width: 1401px) and (max-width: 1920px) {
-  .backg {
-    position: relative;
-  }
   .r1 {
-    position: absolute;
-    z-index: 4 !important;
     left: 74%;
-
-    height: 50%;
   }
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
 
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
+  .ctext > h4 {
+    font-size: 28px;
   }
-  .country {
-    padding-left: 0 !important;
 
-    background-color: transparent !important;
+  .ctext > span {
+    font-size: 14px;
   }
-  .ctext {
-    padding: 2%;
 
-    border-top-right-radius: 20px !important;
-    border-bottom-right-radius: 20px !important;
-
-    width: 100%;
-    z-index: 2;
-    background-color: #2a2b41 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 28px;
-    }
-    > span {
-      color: whitesmoke !important;
-      font-size: 14px;
-    }
+  .ctext1 > h4 {
+    font-size: 28px;
   }
-  .countries1 {
-    width: 100%;
-    height: 40vh;
 
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
-  .country1 {
-    padding-left: 0 !important;
-
-    background-color: transparent !important;
-
-    justify-items: end;
-    > img {
-      width: 14%;
-      position: absolute;
-      left: 0%;
-      top: -4%;
-    }
-  }
-  .ctext1 {
-    padding: 2%;
-
-    border-top-left-radius: 20px !important;
-    border-bottom-left-radius: 20px !important;
-
-    width: 100%;
-    z-index: 2;
-
-    > h4 {
-      color: #2a2b41 !important;
-      font-size: 28px;
-    }
-    > span {
-      color: #2a2b41 !important;
-      font-size: 14px;
-    }
+  .ctext1 > span {
+    font-size: 14px;
   }
 }
-@media (min-width: 1201px) and (max-width: 1400px) {
-  .backg {
-    position: relative;
-  }
-  .r1 {
-    position: absolute;
-    z-index: 4 !important;
-    left: 68%;
 
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .r1 {
+    left: 68%;
     height: 52%;
   }
 
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
+  .ctext > h4 {
+    font-size: 28px;
   }
-  .country {
-    padding-left: 0 !important;
 
-    background-color: transparent !important;
+  .ctext > span {
+    font-size: 14px;
   }
-  .ctext {
-    padding: 2%;
 
-    border-top-right-radius: 20px !important;
-    border-bottom-right-radius: 20px !important;
-
-    width: 100%;
-    z-index: 2;
-    background-color: #2a2b41 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 28px;
-    }
-    > span {
-      color: whitesmoke !important;
-      font-size: 14px;
-    }
+  .ctext1 > h4 {
+    font-size: 28px;
   }
-  .countries1 {
-    width: 100%;
-    height: 40vh;
 
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
-  .country1 {
-    padding-left: 0 !important;
-
-    background-color: transparent !important;
-
-    justify-items: end;
-    > img {
-      width: 14%;
-      position: absolute;
-      left: 0%;
-      top: -4%;
-    }
-  }
-  .ctext1 {
-    padding: 2%;
-
-    border-top-left-radius: 20px !important;
-    border-bottom-left-radius: 20px !important;
-
-    width: 100%;
-    z-index: 2;
-
-    > h4 {
-      color: #2a2b41 !important;
-      font-size: 28px;
-    }
-    > span {
-      color: #2a2b41 !important;
-      font-size: 14px;
-    }
+  .ctext1 > span {
+    font-size: 14px;
   }
 }
-@media (min-width: 993px) and (max-width: 1200px) {
-  .backg {
-    position: relative;
-  }
-  .r1 {
-    position: absolute;
-    z-index: 4 !important;
-    left: 66%;
 
+@media (min-width: 993px) and (max-width: 1200px) {
+  .r1 {
+    left: 66%;
     height: 62%;
   }
 
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
   .country {
-    padding-left: 0 !important;
     width: 100%;
-    background-color: transparent !important;
     padding: 0 !important;
   }
+
   .ctext {
     padding: 4%;
     padding-top: 1% !important;
-
-    width: 100%;
-    z-index: 2;
-    background-color: #2a2b41 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 24px;
-    }
-    > span {
-      font-family: "inter" !important;
-      color: whitesmoke !important;
-      font-size: 16px;
-    }
   }
-  .countries1 {
-    width: 100%;
-    height: 40vh;
 
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
+  .ctext > h4 {
+    font-size: 24px;
   }
+
+  .ctext > span {
+    font-family: "inter" !important;
+    font-size: 16px;
+  }
+
   .country1 {
-    padding-left: 0 !important;
     width: 100%;
-    background-color: transparent !important;
-
-    justify-items: end;
     padding: 0 !important;
-    > img {
-      width: 14%;
-      position: absolute;
-      left: 0%;
-      top: -4%;
-    }
   }
+
   .ctext1 {
     padding: 4%;
     padding-top: 1% !important;
+  }
 
-    width: 100%;
-    z-index: 2;
+  .ctext1 > h4 {
+    font-size: 24px;
+  }
 
-    > h4 {
-      color: #2a2b41 !important;
-      font-size: 24px;
-    }
-    > span {
-      font-family: "inter" !important;
-      color: #2a2b41 !important;
-      font-size: 16px;
-    }
+  .ctext1 > span {
+    font-family: "inter" !important;
+    font-size: 16px;
   }
 }
+
 @media (min-width: 769px) and (max-width: 992px) {
-  .backg {
-    position: relative;
-  }
   .r1 {
-    position: absolute;
-    z-index: 4 !important;
     left: 20%;
     top: 18.8%;
     height: 68%;
     opacity: 0.28;
   }
 
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
   .country {
-    padding-left: 0 !important;
     width: 100%;
-    background-color: transparent !important;
     padding: 0 !important;
   }
+
   .ctext {
     padding: 8%;
-
-    width: 100%;
-    z-index: 2;
-    background-color: #2a2b41 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 28px;
-    }
-    > span {
-      font-family: "inter" !important;
-      color: whitesmoke !important;
-      font-size: 24px;
-    }
   }
-  .countries1 {
-    width: 100%;
-    height: 40vh;
 
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
+  .ctext > h4 {
+    font-size: 28px;
   }
+
+  .ctext > span {
+    font-family: "inter" !important;
+    font-size: 24px;
+  }
+
   .country1 {
-    padding-left: 0 !important;
     width: 100%;
-    background-color: transparent !important;
-
-    justify-items: end;
     padding: 0 !important;
-    > img {
-      width: 14%;
-      position: absolute;
-      left: 0%;
-      top: -4%;
-    }
   }
+
   .ctext1 {
     padding: 8%;
+  }
 
-    width: 100%;
-    z-index: 2;
+  .ctext1 > h4 {
+    font-size: 28px;
+  }
 
-    > h4 {
-      color: #2a2b41 !important;
-      font-size: 28px;
-    }
-    > span {
-      font-family: "inter" !important;
-      color: #2a2b41 !important;
-      font-size: 24px;
-    }
+  .ctext1 > span {
+    font-family: "inter" !important;
+    font-size: 24px;
   }
 }
+
 @media (min-width: 577px) and (max-width: 768px) {
-  .backg {
-    position: relative;
-  }
   .r1 {
-    position: absolute;
-    z-index: 4 !important;
     left: 28%;
     top: 20%;
     height: 64%;
     opacity: 0.28;
   }
 
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
   .country {
-    padding-left: 0 !important;
     width: 100%;
-    background-color: transparent !important;
     padding: 0 !important;
   }
+
   .ctext {
     padding: 8%;
-
-    width: 100%;
-    z-index: 2;
-    background-color: #2a2b41 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 18px;
-    }
-    > span {
-      font-family: "inter" !important;
-      color: whitesmoke !important;
-      font-size: 14px;
-    }
   }
-  .countries1 {
-    width: 100%;
-    height: 40vh;
 
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
+  .ctext > h4 {
+    font-size: 18px;
   }
+
+  .ctext > span {
+    font-family: "inter" !important;
+    font-size: 14px;
+  }
+
   .country1 {
-    padding-left: 0 !important;
     width: 100%;
-    background-color: transparent !important;
-
-    justify-items: end;
     padding: 0 !important;
-    > img {
-      width: 14%;
-      position: absolute;
-      left: 0%;
-      top: -4%;
-    }
   }
+
   .ctext1 {
     padding: 8%;
+  }
 
-    width: 100%;
-    z-index: 2;
+  .ctext1 > h4 {
+    font-size: 18px;
+  }
 
-    > h4 {
-      color: #2a2b41 !important;
-      font-size: 18px;
-    }
-    > span {
-      font-family: "inter" !important;
-      color: #2a2b41 !important;
-      font-size: 14px;
-    }
+  .ctext1 > span {
+    font-family: "inter" !important;
+    font-size: 14px;
   }
 }
-@media (max-width: 576px) {
-  .backg {
-    position: relative;
-  }
-  .r1 {
-    position: absolute;
-    z-index: 4 !important;
 
+@media (max-width: 576px) {
+  .r1 {
     height: 68%;
     width: 114%;
     opacity: 0.28;
   }
 
-  .countries {
-    width: 100%;
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
-  }
   .country {
-    padding-left: 0 !important;
     width: 100%;
-    background-color: transparent !important;
     padding: 0 !important;
   }
+
   .ctext {
     padding: 8%;
     padding-top: 0 !important;
-
-    width: 100%;
-    z-index: 2;
-    background-color: #2a2b41 !important;
-
-    > h4 {
-      color: whitesmoke !important;
-      font-size: 14px;
-    }
-    > span {
-      font-family: "inter" !important;
-      color: whitesmoke !important;
-      font-size: 14px;
-    }
   }
-  .countries1 {
-    width: 100%;
-    height: 40vh;
 
-    display: flex;
-    height: auto;
-    overflow: hidden !important;
-    position: relative;
-
-    align-content: center;
-    > video {
-      position: absolute;
-      height: 100%;
-
-      rotate: 0deg;
-      z-index: 1;
-      visibility: hidden !important;
-      background-color: #000 !important;
-    }
+  .ctext > h4 {
+    font-size: 14px;
   }
+
+  .ctext > span {
+    font-family: "inter" !important;
+    font-size: 14px;
+  }
+
   .country1 {
-    padding-left: 0 !important;
     width: 100%;
-    background-color: transparent !important;
-
-    justify-items: end;
     padding: 0 !important;
-    > img {
-      width: 14%;
-      position: absolute;
-      left: 0%;
-      top: -4%;
-    }
   }
+
   .ctext1 {
     padding: 8%;
     padding-top: 0 !important;
+  }
 
-    width: 100%;
-    z-index: 2;
+  .ctext1 > h4 {
+    font-size: 14px;
+  }
 
-    > h4 {
-      color: #2a2b41 !important;
-      font-size: 14px;
-    }
-    > span {
-      font-family: "inter" !important;
-      color: #2a2b41 !important;
-      font-size: 14px;
-    }
+  .ctext1 > span {
+    font-family: "inter" !important;
+    font-size: 14px;
   }
 }

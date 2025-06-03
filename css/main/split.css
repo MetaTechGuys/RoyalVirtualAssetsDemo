@@ -1,815 +1,376 @@
+/* Keyframes - Must be defined globally first */
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-48%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes move2 {
+  0% {
+    transform: translateX(-48%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-48%);
+  }
+}
+
+/* Base styles - common across all breakpoints */
+.split {
+  width: 100%;
+  display: flex;
+  height: auto;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 8%;
+}
+
+.split > img {
+  position: absolute;
+  width: 20%;
+  z-index: -1;
+  left: 80%;
+  top: 0%;
+  opacity: 0.8;
+}
+
+.splithelp {
+  background-color: transparent !important;
+  border: 48px solid transparent;
+  border-bottom: 24px solid transparent;
+  border-top: 24px solid transparent;
+}
+
+.split1 {
+  background-color: #2a2b41 !important;
+  z-index: 2;
+  border-radius: 20px !important;
+  overflow: clip !important;
+  position: relative;
+}
+
+.split1 > h2 {
+  color: whitesmoke !important;
+  position: absolute;
+  margin-bottom: 6%;
+  background-color: #1e88e5;
+  z-index: 2;
+  border-radius: 48px;
+  padding-top: 14px;
+  padding-left: 28px;
+  padding-right: 28px;
+  padding-bottom: 14px;
+}
+
+.split1 > span {
+  position: absolute;
+  color: whitesmoke !important;
+  opacity: 0.8;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  z-index: 1;
+  left: 0;
+}
+
+.sfirst,
+.ssecond,
+.sthird {
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+}
+
+.sfirst {
+  animation: move 20s linear infinite;
+}
+
+.ssecond {
+  animation: move2 20s linear infinite;
+  left: -48% !important;
+}
+
+.sthird {
+  animation: move 20s linear infinite;
+}
+
+/* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
-  .split {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-    justify-content: center;
-    text-align: center;
-    margin-bottom: 8%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 80%;
-      top: 0%;
-
-      opacity: 0.8;
-    }
-  }
-  .splithelp {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-  }
-
   .split1 {
-    background-color: #2a2b41 !important;
-
     width: 1200px;
     height: 400px;
-    z-index: 2;
-    border-radius: 20px !important;
-    overflow: clip !important;
-    position: relative;
-
-    > h2 {
-      color: whitesmoke !important;
-      position: absolute;
-      font-size: 48px;
-
-      margin-bottom: 6%;
-      background-color: #1e88e5;
-      z-index: 2;
-      top: 39%;
-      left: 28%;
-      border-radius: 48px;
-      padding-top: 14px;
-      padding-left: 28px;
-      padding-right: 28px;
-      padding-bottom: 14px;
-    }
-    > span {
-      position: absolute;
-      color: whitesmoke !important;
-      opacity: 0.8;
-      font-size: 48px;
-
-      letter-spacing: 2px;
-      white-space: nowrap;
-
-      word-spacing: 48px !important;
-      z-index: 1;
-      left: 0;
-    }
   }
+
+  .split1 > h2 {
+    font-size: 48px;
+    top: 39%;
+    left: 28%;
+  }
+
+  .split1 > span {
+    font-size: 48px;
+    word-spacing: 48px !important;
+  }
+
   .sfirst {
     top: 20%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
   }
+
   .ssecond {
     top: 42%;
-    animation: move2 linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-    left: -48% !important;
   }
+
   .sthird {
     top: 64%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-  }
-  @keyframes move {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-48%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @keyframes move2 {
-    0% {
-      transform: translateX(-48%);
-    }
-    50% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-48%);
-    }
   }
 }
+
 @media (min-width: 1401px) and (max-width: 1920px) {
-  .split {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-    justify-content: center;
-    text-align: center;
-    margin-bottom: 8%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 80%;
-      top: 0%;
-
-      opacity: 0.8;
-    }
-  }
-  .splithelp {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-  }
-
   .split1 {
-    background-color: #2a2b41 !important;
-
     width: 1000px;
     height: 400px;
-    z-index: 2;
-    border-radius: 20px !important;
-    overflow: clip !important;
-    position: relative;
-
-    > h2 {
-      color: whitesmoke !important;
-      position: absolute;
-      font-size: 36px;
-      margin-bottom: 6%;
-      background-color: #1e88e5;
-      z-index: 2;
-      top: 40%;
-      left: 29%;
-      border-radius: 48px;
-      padding-top: 14px;
-      padding-left: 28px;
-      padding-right: 28px;
-      padding-bottom: 14px;
-    }
-    > span {
-      position: absolute;
-      color: whitesmoke !important;
-      opacity: 0.8;
-      font-size: 36px;
-
-      letter-spacing: 2px;
-      white-space: nowrap;
-
-      word-spacing: 40px !important;
-      z-index: 1;
-      left: 0;
-    }
   }
+
+  .split1 > h2 {
+    font-size: 36px;
+    top: 40%;
+    left: 29%;
+  }
+
+  .split1 > span {
+    font-size: 36px;
+    word-spacing: 40px !important;
+  }
+
   .sfirst {
     top: 22%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
   }
+
   .ssecond {
     top: 44%;
-    animation: move2 linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-    left: -48% !important;
   }
+
   .sthird {
     top: 66%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-  }
-  @keyframes move {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-48%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @keyframes move2 {
-    0% {
-      transform: translateX(-48%);
-    }
-    50% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-48%);
-    }
   }
 }
+
 @media (min-width: 1201px) and (max-width: 1400px) {
-  .split {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-    justify-content: center;
-    text-align: center;
-    margin-bottom: 8%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 80%;
-      top: 0%;
-
-      opacity: 0.8;
-    }
-  }
-  .splithelp {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-  }
-
   .split1 {
-    background-color: #2a2b41 !important;
-
     width: 800px;
     height: 280px;
-    z-index: 2;
-    border-radius: 20px !important;
-    overflow: clip !important;
-    position: relative;
-
-    > h2 {
-      color: whitesmoke !important;
-      position: absolute;
-      font-size: 28px;
-
-      margin-bottom: 6%;
-      background-color: #1e88e5;
-      z-index: 2;
-      top: 40%;
-      left: 30%;
-      border-radius: 48px;
-      padding-top: 14px;
-      padding-left: 28px;
-      padding-right: 28px;
-      padding-bottom: 14px;
-    }
-    > span {
-      position: absolute;
-      color: whitesmoke !important;
-      opacity: 0.8;
-      font-size: 28px;
-
-      letter-spacing: 2px;
-      white-space: nowrap;
-
-      word-spacing: 40px !important;
-      z-index: 1;
-      left: 0;
-    }
   }
+
+  .split1 > h2 {
+    font-size: 28px;
+    top: 40%;
+    left: 30%;
+  }
+
+  .split1 > span {
+    font-size: 28px;
+    word-spacing: 40px !important;
+  }
+
   .sfirst {
     top: 22%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
   }
+
   .ssecond {
     top: 44%;
-    animation: move2 linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-    left: -48% !important;
   }
+
   .sthird {
     top: 66%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-  }
-  @keyframes move {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-48%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @keyframes move2 {
-    0% {
-      transform: translateX(-48%);
-    }
-    50% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-48%);
-    }
   }
 }
+
 @media (min-width: 993px) and (max-width: 1200px) {
   .split {
-    width: 100%;
-
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
     justify-items: center;
-    text-align: center;
-    margin-bottom: 8%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 80%;
-      top: 0%;
-
-      opacity: 0.8;
-    }
   }
+
   .splithelp {
-    background-color: transparent !important;
     border: 4px solid transparent;
     border-bottom: 2px solid transparent;
     border-top: 2px solid transparent;
   }
 
   .split1 {
-    background-color: #2a2b41 !important;
     padding-top: 80px;
-
     width: 680px;
     height: 240px;
-    z-index: 2;
-    border-radius: 20px !important;
-    overflow: clip !important;
-    position: relative;
-
-    > h2 {
-      color: whitesmoke !important;
-      position: absolute;
-      font-size: 24px;
-
-      margin-bottom: 6%;
-      background-color: #1e88e5;
-      z-index: 2;
-      top: 38%;
-      left: 31%;
-      border-radius: 48px;
-      padding-top: 8px;
-      padding-left: 16px;
-      padding-right: 16px;
-      padding-bottom: 8px;
-    }
-    > span {
-      position: absolute;
-      color: whitesmoke !important;
-      opacity: 0.8;
-      font-size: 24px;
-
-      letter-spacing: 2px;
-      white-space: nowrap;
-
-      word-spacing: 48px !important;
-      z-index: 1;
-      left: 0;
-    }
   }
+
+  .split1 > h2 {
+    font-size: 24px;
+    top: 38%;
+    left: 31%;
+    padding-top: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+  }
+
+  .split1 > span {
+    font-size: 24px;
+    word-spacing: 48px !important;
+  }
+
   .sfirst {
     top: 20%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
   }
+
   .ssecond {
     top: 40%;
-    animation: move2 linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-    left: -48% !important;
   }
+
   .sthird {
     top: 60%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-  }
-  @keyframes move {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-48%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @keyframes move2 {
-    0% {
-      transform: translateX(-48%);
-    }
-    50% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-48%);
-    }
   }
 }
+
 @media (min-width: 769px) and (max-width: 992px) {
   .split {
-    width: 100%;
-
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
     justify-items: center;
-    text-align: center;
-    margin-bottom: 8%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 80%;
-      top: 0%;
-
-      opacity: 0.8;
-    }
   }
+
   .splithelp {
-    background-color: transparent !important;
     border: 4px solid transparent;
     border-bottom: 2px solid transparent;
     border-top: 2px solid transparent;
   }
 
   .split1 {
-    background-color: #2a2b41 !important;
     padding-top: 80px;
-
     width: 880px;
     height: 320px;
-    z-index: 2;
-    border-radius: 20px !important;
-    overflow: clip !important;
-    position: relative;
-
-    > h2 {
-      color: whitesmoke !important;
-      position: absolute;
-      font-size: 36px;
-
-      margin-bottom: 6%;
-      background-color: #1e88e5;
-      z-index: 2;
-      top: 40%;
-      left: 30%;
-      border-radius: 48px;
-      padding-top: 8px;
-      padding-left: 16px;
-      padding-right: 16px;
-      padding-bottom: 8px;
-    }
-    > span {
-      position: absolute;
-      color: whitesmoke !important;
-      opacity: 0.8;
-      font-size: 36px;
-
-      letter-spacing: 2px;
-      white-space: nowrap;
-
-      word-spacing: 48px !important;
-      z-index: 1;
-      left: 0;
-    }
   }
+
+  .split1 > h2 {
+    font-size: 36px;
+    top: 40%;
+    left: 30%;
+    padding-top: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+  }
+
+  .split1 > span {
+    font-size: 36px;
+    word-spacing: 48px !important;
+  }
+
   .sfirst {
     top: 20%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
   }
+
   .ssecond {
     top: 40%;
-    animation: move2 linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-    left: -48% !important;
   }
+
   .sthird {
     top: 60%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-  }
-  @keyframes move {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-48%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @keyframes move2 {
-    0% {
-      transform: translateX(-48%);
-    }
-    50% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-48%);
-    }
   }
 }
+
 @media (min-width: 577px) and (max-width: 768px) {
   .split {
-    width: 100%;
-
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
     justify-items: center;
-    text-align: center;
-    margin-bottom: 8%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 80%;
-      top: 0%;
-
-      opacity: 0.8;
-    }
   }
+
   .splithelp {
-    background-color: transparent !important;
     border: 4px solid transparent;
     border-bottom: 2px solid transparent;
     border-top: 2px solid transparent;
   }
 
   .split1 {
-    background-color: #2a2b41 !important;
     padding-top: 80px;
-
     width: 680px;
     height: 240px;
-    z-index: 2;
-    border-radius: 20px !important;
-    overflow: clip !important;
-    position: relative;
-
-    > h2 {
-      color: whitesmoke !important;
-      position: absolute;
-      font-size: 30px;
-
-      margin-bottom: 6%;
-      background-color: #1e88e5;
-      z-index: 2;
-      top: 40%;
-      left: 27%;
-      border-radius: 48px;
-      padding-top: 4px;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-bottom: 4px;
-    }
-    > span {
-      position: absolute;
-      color: whitesmoke !important;
-      opacity: 0.8;
-      font-size: 30px;
-
-      letter-spacing: 2px;
-      white-space: nowrap;
-
-      word-spacing: 48px !important;
-      z-index: 1;
-      left: 0;
-    }
   }
+
+  .split1 > h2 {
+    font-size: 30px;
+    top: 40%;
+    left: 27%;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+  }
+
+  .split1 > span {
+    font-size: 30px;
+    word-spacing: 48px !important;
+  }
+
   .sfirst {
     top: 20%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
   }
+
   .ssecond {
     top: 40%;
-    animation: move2 linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-    left: -48% !important;
   }
+
   .sthird {
     top: 60%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-  }
-  @keyframes move {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-48%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @keyframes move2 {
-    0% {
-      transform: translateX(-48%);
-    }
-    50% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-48%);
-    }
   }
 }
+
 @media (max-width: 576px) {
   .split {
-    width: 100%;
-
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
     justify-items: center;
-    text-align: center;
-    margin-bottom: 8%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 80%;
-      top: 0%;
-
-      opacity: 0.8;
-    }
   }
+
   .splithelp {
-    background-color: transparent !important;
     border: 4px solid transparent;
     border-bottom: 2px solid transparent;
     border-top: 2px solid transparent;
   }
 
   .split1 {
-    background-color: #2a2b41 !important;
     padding-top: 80px;
-
     width: 360px;
     height: 140px;
-    z-index: 2;
-    border-radius: 20px !important;
-    overflow: clip !important;
-    position: relative;
-
-    > h2 {
-      color: whitesmoke !important;
-      position: absolute;
-      font-size: 16px;
-
-      margin-bottom: 6%;
-      background-color: #1e88e5;
-      z-index: 2;
-      top: 40%;
-      left: 27%;
-      border-radius: 48px;
-      padding-top: 4px;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-bottom: 4px;
-    }
-    > span {
-      position: absolute;
-      color: whitesmoke !important;
-      opacity: 0.8;
-      font-size: 16px;
-
-      letter-spacing: 1px;
-      white-space: nowrap;
-
-      word-spacing: 28px !important;
-      z-index: 1;
-      left: 0;
-    }
   }
+
+  .split1 > h2 {
+    font-size: 16px;
+    top: 40%;
+    left: 27%;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+  }
+
+  .split1 > span {
+    font-size: 16px;
+    letter-spacing: 1px;
+    word-spacing: 28px !important;
+  }
+
   .sfirst {
     top: 20%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
   }
+
   .ssecond {
     top: 40%;
-    animation: move2 linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-    left: -48% !important;
   }
+
   .sthird {
     top: 60%;
-    animation: move linear forwards;
-    animation-duration: 20s;
-    transition: 20s;
-    animation-iteration-count: infinite;
-  }
-  @keyframes move {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-48%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @keyframes move2 {
-    0% {
-      transform: translateX(-48%);
-    }
-    50% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-48%);
-    }
   }
 }

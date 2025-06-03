@@ -95,7 +95,6 @@ class CryptoAPI {
           mode: "cors",
         }).catch(() => {
           // Silently fail prefetch attempts
-          // console.log('Prefetch failed, will fetch normally when needed');
         });
       } catch (error) {
         // Fallback for browsers that don't support priority
@@ -115,9 +114,7 @@ class CryptoAPI {
         currency: this.config.currency,
       };
       localStorage.setItem(this.config.cacheKey, JSON.stringify(cacheData));
-      // console.log('Data cached successfully');
     } catch (error) {
-      //console.warn('Failed to save to cache:', error);
     }
   }
 
@@ -134,21 +131,17 @@ class CryptoAPI {
 
       // Check if cache is expired
       if (now - cacheData.timestamp > this.config.cacheExpiry) {
-        console.log("Cache expired, removing old data");
         localStorage.removeItem(this.config.cacheKey);
         return null;
       }
 
       // Check if currency matches
       if (cacheData.currency !== this.config.currency) {
-        //console.log('Currency changed, cache invalid');
         return null;
       }
 
-      //console.log('Loading data from cache');
       return cacheData.data;
     } catch (error) {
-      //console.warn('Failed to load from cache:', error);
       return null;
     }
   }
@@ -159,9 +152,7 @@ class CryptoAPI {
   clearCache() {
     try {
       localStorage.removeItem(this.config.cacheKey);
-      //console.log('Cache cleared');
     } catch (error) {
-      //console.warn('Failed to clear cache:', error);
     }
   }
 
@@ -251,13 +242,19 @@ class CryptoAPI {
   }
 
   /**
-   * Render market overview analysis table
+   * Render market overview with dropdown containing all analysis sections
    */
-  renderMarketOverview(analysis) {
+  renderMarketOverview(analysis, priceAnalysis) {
     const overviewDiv = document.createElement("div");
-    overviewDiv.className = "crypto-analysis-section";
+    overviewDiv.className = "crypto-analysis-section crypto-market-overview";
     overviewDiv.innerHTML = `
-      <h3>📊 Market Overview</h3>
+      <div class="crypto-overview-header">
+        <h3>📊 Market Overview</h3>
+        <button class="crypto-dropdown-toggle" id="crypto-analysis-toggle">
+          <span>View Detailed Analysis</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+      </div>
       <div class="crypto-overview-grid">
         <div class="crypto-stat-card">
           <div class="stat-label">Total Market Cap</div>
@@ -278,17 +275,22 @@ class CryptoAPI {
           <div class="stat-value sentiment-${analysis.marketSentiment.replace(' ', '-')}">${analysis.marketSentiment.toUpperCase()}</div>
         </div>
       </div>
+      <div class="crypto-dropdown-content" id="crypto-analysis-dropdown">
+        <div class="crypto-dropdown-inner">
+          ${this.renderTopPerformersContent(analysis)}
+          ${this.renderMarketSentimentContent(analysis)}
+          ${this.renderPriceRangeAnalysisContent(priceAnalysis)}
+          ${this.renderMarketCapAnalysisContent()}
+        </div>
+      </div>
     `;
     return overviewDiv;
   }
 
   /**
-   * Render top performers table
+   * Render top performers content (for dropdown)
    */
-  renderTopPerformers(analysis) {
-    const performersDiv = document.createElement("div");
-    performersDiv.className = "crypto-analysis-section";
-    
+  renderTopPerformersContent(analysis) {
     const gainersHtml = analysis.gainers.map((coin, index) => `
       <tr>
         <td>${index + 1}</td>
@@ -313,151 +315,145 @@ class CryptoAPI {
       </tr>
     `).join('');
 
-    performersDiv.innerHTML = `
-      <h3>🚀 Top Performers & Losers</h3>
-      <div class="crypto-performers-grid">
-        <div class="crypto-performers-table">
-          <h4>Top Gainers (24h)</h4>
-          <table class="crypto-mini-table">
-            <thead>
-              <tr><th>#</th><th>Coin</th><th>Change</th><th>Price</th></tr>
-            </thead>
-            <tbody>${gainersHtml}</tbody>
-          </table>
-        </div>
-        <div class="crypto-performers-table">
-          <h4>Top Losers (24h)</h4>
-          <table class="crypto-mini-table">
-            <thead>
-              <tr><th>#</th><th>Coin</th><th>Change</th><th>Price</th></tr>
-            </thead>
-            <tbody>${losersHtml}</tbody>
-          </table>
+    return `
+      <div class="crypto-dropdown-section">
+        <h4>🚀 Top Performers & Losers</h4>
+        <div class="crypto-performers-grid">
+          <div class="crypto-performers-table">
+            <h5>Top Gainers (24h)</h5>
+            <table class="crypto-mini-table">
+              <thead>
+                <tr><th>#</th><th>Coin</th><th>Change</th><th>Price</th></tr>
+              </thead>
+              <tbody>${gainersHtml}</tbody>
+            </table>
+          </div>
+          <div class="crypto-performers-table">
+            <h5>Top Losers (24h)</h5>
+            <table class="crypto-mini-table">
+              <thead>
+                <tr><th>#</th><th>Coin</th><th>Change</th><th>Price</th></tr>
+              </thead>
+              <tbody>${losersHtml}</tbody>
+            </table>
+          </div>
         </div>
       </div>
     `;
-    return performersDiv;
   }
 
   /**
-   * Render market sentiment analysis
+   * Render market sentiment content (for dropdown)
    */
-  renderMarketSentiment(analysis) {
-    const sentimentDiv = document.createElement("div");
-    sentimentDiv.className = "crypto-analysis-section";
-    
+  renderMarketSentimentContent(analysis) {
     const bullishPercentage = ((analysis.bullishCount / this.prices.length) * 100).toFixed(1);
     const bearishPercentage = ((analysis.bearishCount / this.prices.length) * 100).toFixed(1);
     
-    sentimentDiv.innerHTML = `
-      <h3>📈 Market Sentiment Analysis</h3>
-      <div class="crypto-sentiment-grid">
-        <div class="crypto-sentiment-card bullish">
-          <div class="sentiment-icon">📈</div>
-          <div class="sentiment-data">
-            <div class="sentiment-count">${analysis.bullishCount}</div>
-            <div class="sentiment-label">Bullish Coins</div>
-            <div class="sentiment-percentage">${bullishPercentage}%</div>
+    return `
+      <div class="crypto-dropdown-section">
+        <h4>📈 Market Sentiment Analysis</h4>
+        <div class="crypto-sentiment-grid">
+          <div class="crypto-sentiment-card bullish">
+            <div class="sentiment-icon">📈</div>
+            <div class="sentiment-data">
+              <div class="sentiment-count">${analysis.bullishCount}</div>
+              <div class="sentiment-label">Bullish Coins</div>
+              <div class="sentiment-percentage">${bullishPercentage}%</div>
+            </div>
+          </div>
+          <div class="crypto-sentiment-card bearish">
+            <div class="sentiment-icon">📉</div>
+            <div class="sentiment-data">
+              <div class="sentiment-count">${analysis.bearishCount}</div>
+              <div class="sentiment-label">Bearish Coins</div>
+              <div class="sentiment-percentage">${bearishPercentage}%</div>
+            </div>
+          </div>
+          <div class="crypto-sentiment-card neutral">
+            <div class="sentiment-icon">⚖️</div>
+            <div class="sentiment-data">
+              <div class="sentiment-count">${this.prices.length - analysis.bullishCount - analysis.bearishCount}</div>
+              <div class="sentiment-label">Neutral Coins</div>
+              <div class="sentiment-percentage">${(100 - parseFloat(bullishPercentage) - parseFloat(bearishPercentage)).toFixed(1)}%</div>
+            </div>
           </div>
         </div>
-        <div class="crypto-sentiment-card bearish">
-          <div class="sentiment-icon">📉</div>
-          <div class="sentiment-data">
-            <div class="sentiment-count">${analysis.bearishCount}</div>
-            <div class="sentiment-label">Bearish Coins</div>
-            <div class="sentiment-percentage">${bearishPercentage}%</div>
-          </div>
+        <div class="crypto-sentiment-bar">
+          <div class="sentiment-bar-fill bullish" style="width: ${bullishPercentage}%"></div>
+          <div class="sentiment-bar-fill bearish" style="width: ${bearishPercentage}%"></div>
         </div>
-        <div class="crypto-sentiment-card neutral">
-          <div class="sentiment-icon">⚖️</div>
-          <div class="sentiment-data">
-            <div class="sentiment-count">${this.prices.length - analysis.bullishCount - analysis.bearishCount}</div>
-            <div class="sentiment-label">Neutral Coins</div>
-            <div class="sentiment-percentage">${(100 - parseFloat(bullishPercentage) - parseFloat(bearishPercentage)).toFixed(1)}%</div>
-          </div>
-        </div>
-      </div>
-      <div class="crypto-sentiment-bar">
-        <div class="sentiment-bar-fill bullish" style="width: ${bullishPercentage}%"></div>
-        <div class="sentiment-bar-fill bearish" style="width: ${bearishPercentage}%"></div>
       </div>
     `;
-    return sentimentDiv;
   }
 
   /**
-   * Render price range distribution analysis
+   * Render price range distribution analysis content (for dropdown)
    */
-  renderPriceRangeAnalysis(priceAnalysis) {
-    const rangeDiv = document.createElement("div");
-    rangeDiv.className = "crypto-analysis-section";
-    
+  renderPriceRangeAnalysisContent(priceAnalysis) {
     const currencySymbol = this.getCurrencySymbol();
     
-    rangeDiv.innerHTML = `
-      <h3>💰 Price Range Distribution</h3>
-      <div class="crypto-price-range-grid">
-        <div class="price-range-item">
-          <div class="range-label">Under ${currencySymbol}1</div>
-          <div class="range-count">${priceAnalysis.priceRanges.under1}</div>
-          <div class="range-bar">
-            <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.under1 / this.prices.length) * 100}%"></div>
+    return `
+      <div class="crypto-dropdown-section">
+        <h4>💰 Price Range Distribution</h4>
+        <div class="crypto-price-range-grid">
+          <div class="price-range-item">
+            <div class="range-label">Under ${currencySymbol}1</div>
+            <div class="range-count">${priceAnalysis.priceRanges.under1}</div>
+            <div class="range-bar">
+              <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.under1 / this.prices.length) * 100}%"></div>
+            </div>
+          </div>
+          <div class="price-range-item">
+            <div class="range-label">${currencySymbol}1 - ${currencySymbol}10</div>
+            <div class="range-count">${priceAnalysis.priceRanges.range1to10}</div>
+            <div class="range-bar">
+              <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.range1to10 / this.prices.length) * 100}%"></div>
+            </div>
+          </div>
+          <div class="price-range-item">
+            <div class="range-label">${currencySymbol}10 - ${currencySymbol}100</div>
+            <div class="range-count">${priceAnalysis.priceRanges.range10to100}</div>
+            <div class="range-bar">
+              <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.range10to100 / this.prices.length) * 100}%"></div>
+            </div>
+          </div>
+          <div class="price-range-item">
+            <div class="range-label">${currencySymbol}100 - ${currencySymbol}1K</div>
+            <div class="range-count">${priceAnalysis.priceRanges.range100to1000}</div>
+            <div class="range-bar">
+              <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.range100to1000 / this.prices.length) * 100}%"></div>
+            </div>
+          </div>
+          <div class="price-range-item">
+            <div class="range-label">Over ${currencySymbol}1K</div>
+            <div class="range-count">${priceAnalysis.priceRanges.over1000}</div>
+            <div class="range-bar">
+              <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.over1000 / this.prices.length) * 100}%"></div>
+            </div>
           </div>
         </div>
-        <div class="price-range-item">
-          <div class="range-label">${currencySymbol}1 - ${currencySymbol}10</div>
-          <div class="range-count">${priceAnalysis.priceRanges.range1to10}</div>
-          <div class="range-bar">
-            <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.range1to10 / this.prices.length) * 100}%"></div>
+        <div class="crypto-price-stats">
+          <div class="price-stat">
+            <span class="stat-label">Highest:</span>
+            <span class="stat-value">${this.formatPrice(priceAnalysis.highestPrice, this.config.currency)}</span>
           </div>
-        </div>
-        <div class="price-range-item">
-          <div class="range-label">${currencySymbol}10 - ${currencySymbol}100</div>
-          <div class="range-count">${priceAnalysis.priceRanges.range10to100}</div>
-          <div class="range-bar">
-            <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.range10to100 / this.prices.length) * 100}%"></div>
+          <div class="price-stat">
+            <span class="stat-label">Lowest:</span>
+            <span class="stat-value">${this.formatPrice(priceAnalysis.lowestPrice, this.config.currency)}</span>
           </div>
-        </div>
-        <div class="price-range-item">
-          <div class="range-label">${currencySymbol}100 - ${currencySymbol}1K</div>
-          <div class="range-count">${priceAnalysis.priceRanges.range100to1000}</div>
-          <div class="range-bar">
-            <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.range100to1000 / this.prices.length) * 100}%"></div>
+          <div class="price-stat">
+            <span class="stat-label">Average:</span>
+            <span class="stat-value">${this.formatPrice(priceAnalysis.averagePrice, this.config.currency)}</span>
           </div>
-        </div>
-        <div class="price-range-item">
-          <div class="range-label">Over ${currencySymbol}1K</div>
-          <div class="range-count">${priceAnalysis.priceRanges.over1000}</div>
-          <div class="range-bar">
-            <div class="range-fill" style="width: ${(priceAnalysis.priceRanges.over1000 / this.prices.length) * 100}%"></div>
-          </div>
-        </div>
-      </div>
-      <div class="crypto-price-stats">
-        <div class="price-stat">
-          <span class="stat-label">Highest:</span>
-          <span class="stat-value">${this.formatPrice(priceAnalysis.highestPrice, this.config.currency)}</span>
-        </div>
-        <div class="price-stat">
-          <span class="stat-label">Lowest:</span>
-          <span class="stat-value">${this.formatPrice(priceAnalysis.lowestPrice, this.config.currency)}</span>
-        </div>
-        <div class="price-stat">
-          <span class="stat-label">Average:</span>
-          <span class="stat-value">${this.formatPrice(priceAnalysis.averagePrice, this.config.currency)}</span>
         </div>
       </div>
     `;
-    return rangeDiv;
   }
 
   /**
-   * Render market cap analysis
+   * Render market cap analysis content (for dropdown)
    */
-  renderMarketCapAnalysis() {
-    const marketCapDiv = document.createElement("div");
-    marketCapDiv.className = "crypto-analysis-section";
-    
+  renderMarketCapAnalysisContent() {
     // Calculate market cap distribution
     const totalMarketCap = this.prices.reduce((sum, coin) => sum + (coin.market_cap || 0), 0);
     const top5MarketCap = this.prices.slice(0, 5).reduce((sum, coin) => sum + (coin.market_cap || 0), 0);
@@ -483,36 +479,37 @@ class CryptoAPI {
       </tr>
     `).join('');
 
-    marketCapDiv.innerHTML = `
-      <h3>🏆 Market Cap Analysis</h3>
-      <div class="crypto-marketcap-overview">
-        <div class="marketcap-stat">
-          <div class="stat-label">Total Market Cap</div>
-          <div class="stat-value">${this.formatMarketCap(totalMarketCap, this.config.currency)}</div>
+    return `
+      <div class="crypto-dropdown-section">
+        <h4>🏆 Market Cap Analysis</h4>
+        <div class="crypto-marketcap-overview">
+          <div class="marketcap-stat">
+            <div class="stat-label">Total Market Cap</div>
+            <div class="stat-value">${this.formatMarketCap(totalMarketCap, this.config.currency)}</div>
+          </div>
+          <div class="marketcap-stat">
+            <div class="stat-label">Top 5 Dominance</div>
+            <div class="stat-value">${((top5MarketCap / totalMarketCap) * 100).toFixed(1)}%</div>
+          </div>
+          <div class="marketcap-stat">
+            <div class="stat-label">Top 10 Dominance</div>
+            <div class="stat-value">${((top10MarketCap / totalMarketCap) * 100).toFixed(1)}%</div>
+          </div>
         </div>
-        <div class="marketcap-stat">
-          <div class="stat-label">Top 5 Dominance</div>
-          <div class="stat-value">${((top5MarketCap / totalMarketCap) * 100).toFixed(1)}%</div>
-        </div>
-        <div class="marketcap-stat">
-          <div class="stat-label">Top 10 Dominance</div>
-          <div class="stat-value">${((top10MarketCap / totalMarketCap) * 100).toFixed(1)}%</div>
-        </div>
+        <table class="crypto-dominance-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Coin</th>
+              <th>Market Cap</th>
+              <th>Dominance</th>
+              <th>Visual</th>
+            </tr>
+          </thead>
+          <tbody>${dominanceHtml}</tbody>
+        </table>
       </div>
-      <table class="crypto-dominance-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Coin</th>
-            <th>Market Cap</th>
-            <th>Dominance</th>
-            <th>Visual</th>
-          </tr>
-        </thead>
-        <tbody>${dominanceHtml}</tbody>
-      </table>
     `;
-    return marketCapDiv;
   }
 
   /**
@@ -551,7 +548,90 @@ class CryptoAPI {
           font-weight: 600;
         }
 
-        /* Market Overview Styles */
+        /* Market Overview with Dropdown Styles */
+        .crypto-market-overview {
+          position: relative;
+        }
+
+        .crypto-overview-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+        }
+
+        .crypto-dropdown-toggle {
+          background: rgba(30, 136, 229, 0.8);
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 8px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 14px;
+          transition: all 0.3s ease;
+        }
+
+        .crypto-dropdown-toggle:hover {
+          background: rgba(30, 136, 229, 1);
+          transform: translateY(-1px);
+        }
+
+        .dropdown-arrow {
+          transition: transform 0.3s ease;
+          font-size: 12px;
+        }
+
+        .crypto-dropdown-toggle.active .dropdown-arrow {
+          transform: rotate(180deg);
+        }
+
+        .crypto-dropdown-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-out;
+          background: rgba(42, 43, 65, 0.95);
+          border-radius: 8px;
+          margin-top: 15px;
+        }
+
+        .crypto-dropdown-content.active {
+          max-height: 2000px;
+          transition: max-height 0.5s ease-in;
+        }
+
+        .crypto-dropdown-inner {
+          padding: 20px;
+        }
+
+        .crypto-dropdown-section {
+          margin-bottom: 30px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .crypto-dropdown-section:last-child {
+          border-bottom: none;
+          margin-bottom: 0;
+        }
+
+        .crypto-dropdown-section h4 {
+          margin: 0 0 15px 0;
+          color: whitesmoke;
+          font-size: 16px;
+          font-weight: 600;
+        }
+
+        .crypto-dropdown-section h5 {
+          margin: 0 0 10px 0;
+          color: whitesmoke;
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        /* Market Overview Grid */
         .crypto-overview-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -559,13 +639,12 @@ class CryptoAPI {
         }
 
         .crypto-stat-card {
-          background:rgba(30, 136, 229, 0.48);
+          background: rgba(30, 136, 229, 0.48);
           padding: 15px;
           border-radius: 8px;
           text-align: center;
           box-shadow: 0 1px 3px rgba(0,0,0,0.1);
           color: whitesmoke;
-
         }
 
         .stat-label {
@@ -580,7 +659,6 @@ class CryptoAPI {
           font-size: 18px;
           font-weight: bold;
           color: whitesmoke;
-
         }
 
         .sentiment-very-bullish { color: #27ae60; }
@@ -596,7 +674,7 @@ class CryptoAPI {
           gap: 20px;
         }
 
-        .crypto-performers-table h4 {
+        .crypto-performers-table h5 {
           margin: 0 0 10px 0;
           color: whitesmoke;
           font-size: 14px;
@@ -612,7 +690,7 @@ class CryptoAPI {
         }
 
         .crypto-mini-table th {
-          background:rgba(30, 136, 229, 0.88);
+          background: rgba(30, 136, 229, 0.88);
           color: white;
           padding: 8px;
           font-size: 12px;
@@ -645,7 +723,7 @@ class CryptoAPI {
         }
 
         .crypto-sentiment-card {
-          background:rgba(30, 136, 229, 0.48);
+          background: rgba(30, 136, 229, 0.48);
           padding: 15px;
           border-radius: 8px;
           display: flex;
@@ -789,7 +867,7 @@ class CryptoAPI {
         }
 
         .crypto-dominance-table th {
-          background:rgba(30, 136, 229, 0.88);
+          background: rgba(30, 136, 229, 0.88);
           color: white;
           padding: 12px;
           font-size: 13px;
@@ -800,6 +878,7 @@ class CryptoAPI {
           padding: 12px;
           border-bottom: 1px solid #ecf0f1;
           font-size: 13px;
+          color: whitesmoke;
         }
 
         .dominance-bar {
@@ -843,6 +922,16 @@ class CryptoAPI {
           .crypto-price-stats {
             grid-template-columns: 1fr;
           }
+
+          .crypto-overview-header {
+            flex-direction: column;
+            gap: 10px;
+            align-items: stretch;
+          }
+
+          .crypto-dropdown-toggle {
+            justify-content: center;
+          }
         }
 
         /* Animation for loading */
@@ -875,7 +964,6 @@ class CryptoAPI {
     try {
       // Create container if it doesn't exist
       if (!document.querySelector(this.config.containerSelector)) {
-        //console.warn(`Container ${this.config.containerSelector} not found. Creating one.`);
         const container = document.createElement("div");
         container.id = this.config.containerSelector.replace("#", "");
         document.body.appendChild(container);
@@ -891,7 +979,6 @@ class CryptoAPI {
         this.isUsingCache = true;
         this.sortPrices();
         this.renderAnalysisAndPrices();
-        //console.log('Displaying cached data while fetching fresh data');
       }
 
       // Fetch fresh data
@@ -939,7 +1026,6 @@ class CryptoAPI {
       // Check if data is empty or invalid
       if (!data || data.length === 0) {
         if (retryAttempt < this.config.maxRetries) {
-          //console.log(`No data received. Retry attempt ${retryAttempt + 1}/${this.config.maxRetries}`);
           this.isLoading = false;
           this.updateLoadingState();
 
@@ -968,7 +1054,6 @@ class CryptoAPI {
       return this.prices;
     } catch (error) {
       if (retryAttempt < this.config.maxRetries) {
-        //console.log(`Error: ${error.message}. Retry attempt ${retryAttempt + 1}/${this.config.maxRetries}`);
         this.isLoading = false;
         this.updateLoadingState();
 
@@ -979,7 +1064,6 @@ class CryptoAPI {
         // All retries failed, try to use cached data
         const cachedData = this.loadFromCache();
         if (cachedData && cachedData.length > 0) {
-          //console.log('API failed, using cached data as fallback');
           this.prices = cachedData;
           this.isUsingCache = true;
           this.hasError = false; // Don't show error if we have cached data
@@ -1077,7 +1161,7 @@ class CryptoAPI {
   }
 
   /**
-   * Render all analysis tables
+   * Render all analysis tables (now just the market overview with dropdown)
    */
   renderAnalysisTables(marketAnalysis, priceAnalysis) {
     const container = document.querySelector(this.config.containerSelector);
@@ -1091,12 +1175,8 @@ class CryptoAPI {
     const analysisContainer = document.createElement('div');
     analysisContainer.className = 'crypto-analysis-container';
 
-    // Add all analysis sections
-    analysisContainer.appendChild(this.renderMarketOverview(marketAnalysis));
-    analysisContainer.appendChild(this.renderTopPerformers(marketAnalysis));
-    analysisContainer.appendChild(this.renderMarketSentiment(marketAnalysis));
-    analysisContainer.appendChild(this.renderPriceRangeAnalysis(priceAnalysis));
-    analysisContainer.appendChild(this.renderMarketCapAnalysis());
+    // Add only the market overview with dropdown containing all other analysis
+    analysisContainer.appendChild(this.renderMarketOverview(marketAnalysis, priceAnalysis));
 
     // Insert at the beginning of the container
     container.insertBefore(analysisContainer, container.firstChild);
@@ -1109,7 +1189,6 @@ class CryptoAPI {
     const container = document.querySelector(this.config.containerSelector);
 
     if (!container) {
-      //console.error(`Container ${this.config.containerSelector} not found`);
       return;
     }
 
@@ -1123,35 +1202,27 @@ class CryptoAPI {
 
     header.innerHTML = `
             <h2>Live Cryptocurrency Prices</h2>
-            <div class="crypto-controls">
-                <label for="crypto-currency-select" style="opacity:0">Choose:</label>
-                <select  id="crypto-currency-select">
-                    <option value="usd" ${
-                      this.config.currency === "usd" ? "selected" : ""
-                    }>USD</option>
-                    <option value="eur" ${
-                      this.config.currency === "eur" ? "selected" : ""
-                    }>EUR</option>
-                    <option value="gbp" ${
-                      this.config.currency === "gbp" ? "selected" : ""
-                    }>GBP</option>
-                    <option value="jpy" ${
-                      this.config.currency === "jpy" ? "selected" : ""
-                    }>JPY</option>
-                </select>
-                <div class="crypto-sort-dropdown">
-                    <button  name="crypto" id="crypto-sort-btn">Sort By</button>
-                    <div class="crypto-sort-menu">
-                        <div class="crypto-sort-option" data-sort="price" data-direction="desc">Price (High-Low)</div>
-                        <div class="crypto-sort-option" data-sort="price" data-direction="asc">Price (Low-High)</div>
-                        <div class="crypto-sort-option" data-sort="change" data-direction="desc">24h Change (High-Low)</div>
-                        <div class="crypto-sort-option" data-sort="change" data-direction="asc">24h Change (Low-High)</div>
-                        <div class="crypto-sort-option" data-sort="market_cap" data-direction="desc">Market Cap (High-Low)</div>
-                        <div class="crypto-sort-option" data-sort="market_cap" data-direction="asc">Market Cap (Low-High)</div>
-                    </div>
-                </div>
-                <button  name="crypto button" id="crypto-refresh-btn">Refresh</button>
+    <div class="crypto-controls">
+        <label for="crypto-currency-select" style="opacity:0">Choose:</label>
+        <select id="crypto-currency-select">
+            <option value="usd" ${this.config.currency === "usd" ? "selected" : ""}>USD</option>
+            <option value="eur" ${this.config.currency === "eur" ? "selected" : ""}>EUR</option>
+            <option value="gbp" ${this.config.currency === "gbp" ? "selected" : ""}>GBP</option>
+            <option value="jpy" ${this.config.currency === "jpy" ? "selected" : ""}>JPY</option>
+        </select>
+        <div class="crypto-sort-dropdown">
+            <button type="button" name="crypto" id="crypto-sort-btn">Sort By</button>
+            <div class="crypto-sort-menu">
+                <div class="crypto-sort-option" data-sort="price" data-direction="desc">Price (High-Low)</div>
+                <div class="crypto-sort-option" data-sort="price" data-direction="asc">Price (Low-High)</div>
+                <div class="crypto-sort-option" data-sort="change" data-direction="desc">24h Change (High-Low)</div>
+                <div class="crypto-sort-option" data-sort="change" data-direction="asc">24h Change (Low-High)</div>
+                <div class="crypto-sort-option" data-sort="market_cap" data-direction="desc">Market Cap (High-Low)</div>
+                <div class="crypto-sort-option" data-sort="market_cap" data-direction="asc">Market Cap (Low-High)</div>
             </div>
+        </div>
+        <button type="button" name="crypto button" id="crypto-refresh-btn">Refresh</button>
+    </div>
         `;
     container.appendChild(header);
 
@@ -1394,7 +1465,7 @@ class CryptoAPI {
                 }
                 
                 #crypto-sort-btn:hover {
-                    background-color: #e0e0e0;
+                    background-color: #1e88e5;
                 }
                 
                 #crypto-sort-btn::after {
@@ -1522,7 +1593,6 @@ class CryptoAPI {
    * Handle API errors
    */
   handleError(error) {
-    //console.error('Crypto API Error:', error);
     this.hasError = true;
     this.errorMessage = error.message || "Failed to fetch cryptocurrency data";
     this.renderAnalysisAndPrices();
@@ -1599,6 +1669,17 @@ class CryptoAPI {
       // Show Less button
       if (event.target.id === "crypto-show-less-btn") {
         this.toggleItemsDisplay();
+      }
+
+      // Analysis dropdown toggle
+      if (event.target.id === "crypto-analysis-toggle" || event.target.closest("#crypto-analysis-toggle")) {
+        const toggle = document.getElementById("crypto-analysis-toggle");
+        const dropdown = document.getElementById("crypto-analysis-dropdown");
+        
+        if (toggle && dropdown) {
+          toggle.classList.toggle("active");
+          dropdown.classList.toggle("active");
+        }
       }
 
       // Sort dropdown toggle
@@ -1689,7 +1770,6 @@ class CryptoAPI {
 
     // Remove event listeners would need more specific cleanup
     // For now, just stop the interval
-    //console.log('CryptoAPI instance destroyed');
   }
 }
 
@@ -1714,19 +1794,16 @@ if ("serviceWorker" in navigator) {
             
             // Install event - cache static resources
             self.addEventListener('install', (event) => {
-                //console.log('Service Worker installing...');
                 self.skipWaiting();
             });
             
             // Activate event - clean up old caches
             self.addEventListener('activate', (event) => {
-                //console.log('Service Worker activating...');
                 event.waitUntil(
                     caches.keys().then(cacheNames => {
                         return Promise.all(
                             cacheNames.map(cacheName => {
                                 if (cacheName !== CACHE_NAME && cacheName !== API_CACHE_NAME) {
-                                    //console.log('Deleting old cache:', cacheName);
                                     return caches.delete(cacheName);
                                 }
                             })
@@ -1765,7 +1842,6 @@ if ("serviceWorker" in navigator) {
                                     }
                                     return response;
                                 }).catch(error => {
-                                    //console.log('Network request failed:', error);
                                     // Return a basic error response
                                     return new Response(JSON.stringify({
                                         error: 'Network unavailable',
@@ -1793,17 +1869,13 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker
       .register(swUrl)
       .then((registration) => {
-        //console.log('Service Worker registered successfully:', registration);
 
         // Clean up the blob URL after registration
         URL.revokeObjectURL(swUrl);
       })
       .catch((error) => {
-        //console.log('Service Worker registration failed:', error);
         // Clean up the blob URL on error too
         URL.revokeObjectURL(swUrl);
       });
   });
 }
-
-

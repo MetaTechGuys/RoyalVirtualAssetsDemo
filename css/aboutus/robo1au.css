@@ -1,304 +1,235 @@
+/* Base styles - common across all breakpoints */
+.robot1 {
+  width: 100%;
+  display: flex;
+  height: auto;
+  overflow: hidden !important;
+  position: relative;
+}
+
+.robo1 {
+  background-color: transparent !important;
+}
+
+.roboimg1 {
+  overflow: hidden;
+  z-index: 2;
+}
+
+.roboimg1 > img {
+  margin-top: 0%;
+  margin-left: 48%;
+}
+
+.roboimg2 {
+  overflow: hidden;
+  z-index: 2;
+  text-align: center;
+}
+
+/* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
   .robot1 {
-    width: 100%;
-    display: flex;
-    height: auto;
     border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
   }
-  .robo1 {
-    background-color: transparent !important;
 
+  .robo1 {
     border-bottom: 24px solid transparent;
     border-top: 24px solid transparent;
   }
 
   .roboimg1 {
     width: 48%;
-
-    overflow: hidden;
-    z-index: 2;
     display: none;
-    > img {
-      width: 60%;
-
-      margin-top: 0%;
-      margin-left: 48%;
-      border-radius: 20px;
-    }
   }
+
+  .roboimg1 > img {
+    width: 60%;
+    border-radius: 20px;
+  }
+
   .roboimg2 {
     width: 100%;
+  }
 
-    overflow: hidden;
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 60%;
-
-      border-radius: 20px;
-    }
+  .roboimg2 > img {
+    width: 60%;
+    border-radius: 20px;
   }
 }
+
 @media (min-width: 1401px) and (max-width: 1920px) {
   .robot1 {
-    width: 100%;
-    display: flex;
-    height: auto;
     border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
   }
-  .robo1 {
-    background-color: transparent !important;
 
+  .robo1 {
     border-bottom: 24px solid transparent;
     border-top: 24px solid transparent;
   }
 
   .roboimg1 {
     width: 48%;
-
-    overflow: hidden;
-    z-index: 2;
     display: none;
-    > img {
-      width: 60%;
-
-      margin-top: 0%;
-      margin-left: 48%;
-      border-radius: 20px;
-    }
   }
+
+  .roboimg1 > img {
+    width: 60%;
+    border-radius: 20px;
+  }
+
   .roboimg2 {
     width: 100%;
+  }
 
-    overflow: hidden;
-    z-index: 2;
-    text-align: center;
-    > img {
-      width: 60%;
-
-      border-radius: 20px;
-    }
+  .roboimg2 > img {
+    width: 60%;
+    border-radius: 20px;
   }
 }
+
 @media (min-width: 1201px) and (max-width: 1400px) {
   .robot1 {
-    width: 100%;
-    display: flex;
-    height: auto;
     border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
   }
-  .robo1 {
-    background-color: transparent !important;
 
+  .robo1 {
     border-bottom: 24px solid transparent;
     border-top: 24px solid transparent;
   }
 
   .roboimg1 {
     width: 48%;
-
-    overflow: hidden;
-    z-index: 2;
     display: none;
-    > img {
-      width: 60%;
-
-      margin-top: 0%;
-      margin-left: 48%;
-      border-radius: 20px;
-    }
   }
+
+  .roboimg1 > img {
+    width: 60%;
+    border-radius: 20px;
+  }
+
   .roboimg2 {
     width: 100%;
+  }
 
-    overflow: hidden;
-    text-align: center;
-    z-index: 2;
-    > img {
-      width: 64%;
-
-      border-radius: 20px;
-    }
+  .roboimg2 > img {
+    width: 64%;
+    border-radius: 20px;
   }
 }
+
 @media (min-width: 993px) and (max-width: 1200px) {
   .robot1 {
-    width: 100%;
-    display: flex;
-    height: auto;
     border-radius: 14px !important;
-    overflow: hidden !important;
-
-    position: relative;
   }
-  .robo1 {
-    background-color: transparent !important;
 
+  .robo1 {
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
   }
 
   .roboimg1 {
     width: 0%;
-
-    overflow: hidden;
-    z-index: 2;
-    > img {
-      width: 80%;
-
-      margin-top: 0%;
-      margin-left: 48%;
-      border-radius: 20px;
-    }
   }
+
+  .roboimg1 > img {
+    width: 80%;
+    border-radius: 20px;
+  }
+
   .roboimg2 {
     width: 100%;
+  }
 
-    overflow: hidden;
-    z-index: 2;
-    text-align: center;
-    > img {
-      width: 64%;
-
-      border-radius: 14px;
-    }
+  .roboimg2 > img {
+    width: 64%;
+    border-radius: 14px;
   }
 }
+
 @media (min-width: 769px) and (max-width: 992px) {
   .robot1 {
-    width: 100%;
-    display: flex;
-    height: auto;
     border-radius: 14px !important;
-    overflow: hidden !important;
-
-    position: relative;
   }
-  .robo1 {
-    background-color: transparent !important;
 
+  .robo1 {
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
   }
 
   .roboimg1 {
     width: 0%;
-
-    overflow: hidden;
-    z-index: 2;
-    > img {
-      width: 80%;
-
-      margin-top: 0%;
-      margin-left: 48%;
-      border-radius: 20px;
-    }
   }
+
+  .roboimg1 > img {
+    width: 80%;
+    border-radius: 20px;
+  }
+
   .roboimg2 {
     width: 100%;
+  }
 
-    overflow: hidden;
-    z-index: 2;
-    text-align: center;
-    > img {
-      width: 68%;
-
-      border-radius: 14px;
-    }
+  .roboimg2 > img {
+    width: 68%;
+    border-radius: 14px;
   }
 }
+
 @media (min-width: 577px) and (max-width: 768px) {
   .robot1 {
-    width: 100%;
-    display: flex;
-    height: auto;
     border-radius: 14px !important;
-    overflow: hidden !important;
-
-    position: relative;
   }
-  .robo1 {
-    background-color: transparent !important;
 
+  .robo1 {
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
   }
 
   .roboimg1 {
     width: 0%;
-
-    overflow: hidden;
-    z-index: 2;
-    > img {
-      width: 80%;
-
-      margin-top: 0%;
-      margin-left: 48%;
-      border-radius: 20px;
-    }
   }
+
+  .roboimg1 > img {
+    width: 80%;
+    border-radius: 20px;
+  }
+
   .roboimg2 {
     width: 100%;
+  }
 
-    overflow: hidden;
-    z-index: 2;
-    text-align: center;
-    > img {
-      width: 80%;
-
-      border-radius: 14px;
-    }
+  .roboimg2 > img {
+    width: 80%;
+    border-radius: 14px;
   }
 }
+
 @media (max-width: 576px) {
   .robot1 {
-    width: 100%;
-    display: flex;
-    height: auto;
     border-radius: 14px !important;
-    overflow: hidden !important;
-
-    position: relative;
   }
-  .robo1 {
-    background-color: transparent !important;
 
+  .robo1 {
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
   }
 
   .roboimg1 {
     width: 0%;
-
-    overflow: hidden;
-    z-index: 2;
-    > img {
-      width: 80%;
-
-      margin-top: 0%;
-      margin-left: 48%;
-      border-radius: 20px;
-    }
   }
+
+  .roboimg1 > img {
+    width: 80%;
+    border-radius: 20px;
+  }
+
   .roboimg2 {
     width: 100%;
+  }
 
-    overflow: hidden;
-    z-index: 2;
-    text-align: center;
-    > img {
-      width: 88%;
-
-      border-radius: 14px;
-    }
+  .roboimg2 > img {
+    width: 88%;
+    border-radius: 14px;
   }
 }

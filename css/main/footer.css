@@ -1,569 +1,327 @@
+/* Base styles - common across all breakpoints */
+.foothelp {
+  background-color: #2a2b41 !important;
+}
+
+.footer {
+  background-color: #2a2b41;
+  width: 100%;
+  display: block;
+  height: auto;
+  overflow: hidden !important;
+  position: relative;
+}
+
+.foot {
+  height: auto !important;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+.foot > h3,
+.foot > span {
+  font-family: "sora" !important;
+  color: whitesmoke;
+  font-weight: 500;
+}
+
+.foot > h3 {
+  line-height: 180%;
+}
+
+.soc > button {
+  border: 2px solid whitesmoke !important;
+  border-radius: 100%;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.08s ease-in;
+  -o-transition: 0.08s ease-in;
+  -ms-transition: 0.08s ease-in;
+  -moz-transition: 0.08s ease-in;
+  -webkit-transition: 0.08s ease-in;
+  position: relative;
+}
+
+.soc > button > img {
+  filter: invert(100%);
+}
+
+.end {
+  background-color: #000;
+  color: whitesmoke;
+  display: block;
+  text-align: center;
+  padding-top: 8px;
+  position: relative;
+  z-index: 2 !important;
+}
+
+.end > h3 {
+  font-family: "sora" !important;
+  color: whitesmoke;
+  font-weight: 500;
+}
+
+/* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
   .foothelp {
-    background-color: #2a2b41 !important;
+    background-color: hsl(237, 21%, 21%) !important;
   }
-  .footer {
-    background-color: #2a2b41;
-    width: 100%;
-    display: block;
-    height: auto;
 
-    overflow: hidden !important;
-    position: relative;
-  }
   .foot {
-    height: auto !important;
     padding-top: 100px;
-
-    width: 100%;
-
-    position: relative;
-
-    text-align: center;
-    > h3 {
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 180%;
-    }
-    > span {
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 20px;
-      font-weight: 500;
-    }
   }
+
+  .foot > h3,
+  .foot > span {
+    font-size: 20px;
+  }
+
   .soc {
     margin-top: 28px;
-    > button {
-      border: 2px solid whitesmoke !important;
-      border-radius: 100%;
-      margin-right: 14px;
-      overflow: hidden;
-      z-index: 1;
-      cursor: pointer;
-      transition: 0.08s ease-in;
-      -o-transition: 0.08s ease-in;
-      -ms-transition: 0.08s ease-in;
-      -moz-transition: 0.08s ease-in;
-      -webkit-transition: 0.08s ease-in;
-      position: relative;
-      width: 80px;
-      height: 80px;
-      > img {
-        width: 28px;
-        height: 40px;
-        filter: invert(100%);
-      }
-    }
+  }
+
+  .soc > button {
+    margin-right: 14px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .soc > button > img {
+    width: 28px;
+    height: 40px;
   }
 
   .end {
-    background-color: #000;
-    color: whitesmoke;
     height: 40px;
-    display: block;
-    text-align: center;
-    padding-top: 8px;
     margin-top: 28px;
-    position: relative;
-    z-index: 2 !important;
+  }
 
-    > h4 {
-      font-family: "sora" !important;
-
-      font-size: 20px;
-      color: whitesmoke;
-      font-weight: 500;
-    }
+  .end > h3 {
+    font-size: 20px;
   }
 }
+
 @media (min-width: 1401px) and (max-width: 1920px) {
-  .foothelp {
-    background-color: #2a2b41 !important;
-  }
-  .footer {
-    background-color: #2a2b41;
-    width: 100%;
-    display: block;
-    height: auto;
-
-    overflow: hidden !important;
-    position: relative;
-  }
   .foot {
-    height: auto !important;
     padding-top: 100px;
-
-    width: 100%;
-
-    position: relative;
-
-    text-align: center;
-    > h3 {
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 180%;
-    }
-    > span {
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 18px;
-      font-weight: 500;
-    }
   }
+
+  .foot > h3,
+  .foot > span {
+    font-size: 18px;
+  }
+
   .soc {
     margin-top: 28px;
-    > button {
-      border: 2px solid whitesmoke !important;
-      border-radius: 100%;
-      margin-right: 14px;
-      overflow: hidden;
-      z-index: 1;
-      cursor: pointer;
-      transition: 0.08s ease-in;
-      -o-transition: 0.08s ease-in;
-      -ms-transition: 0.08s ease-in;
-      -moz-transition: 0.08s ease-in;
-      -webkit-transition: 0.08s ease-in;
-      position: relative;
-      width: 64px;
-      height: 64px;
-      > img {
-        width: 24px;
-        height: 36px;
-        filter: invert(100%);
-      }
-    }
+  }
+
+  .soc > button {
+    margin-right: 14px;
+    width: 64px;
+    height: 64px;
+  }
+
+  .soc > button > img {
+    width: 24px;
+    height: 36px;
   }
 
   .end {
-    background-color: #000;
-    color: whitesmoke;
     height: 40px;
-    display: block;
-    text-align: center;
-    padding-top: 8px;
     margin-top: 28px;
-    position: relative;
-    z-index: 2 !important;
+  }
 
-    > h4 {
-      font-family: "sora" !important;
-
-      font-size: 14px;
-      color: whitesmoke;
-      font-weight: 500;
-    }
+  .end > h3 {
+    font-size: 14px;
   }
 }
+
 @media (min-width: 1201px) and (max-width: 1400px) {
-  .foothelp {
-    background-color: #2a2b41 !important;
-  }
-  .footer {
-    background-color: #2a2b41;
-    width: 100%;
-    display: block;
-    height: auto;
-
-    overflow: hidden !important;
-    position: relative;
-  }
   .foot {
-    height: auto !important;
     padding-top: 100px;
-
-    width: 100%;
-
-    position: relative;
-
-    text-align: center;
-    > h3 {
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 180%;
-    }
-    > span {
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 16px;
-      font-weight: 500;
-    }
   }
+
+  .foot > h3,
+  .foot > span {
+    font-size: 16px;
+  }
+
   .soc {
     margin-top: 28px;
-    > button {
-      border: 2px solid whitesmoke !important;
-      border-radius: 100%;
-      margin-right: 14px;
-      overflow: hidden;
-      z-index: 1;
-      cursor: pointer;
-      transition: 0.08s ease-in;
-      -o-transition: 0.08s ease-in;
-      -ms-transition: 0.08s ease-in;
-      -moz-transition: 0.08s ease-in;
-      -webkit-transition: 0.08s ease-in;
-      position: relative;
-      > img {
-        width: 28px;
-        height: 40px;
-        filter: invert(100%);
-      }
-    }
   }
 
-  .end {
-    background-color: #000;
-    color: whitesmoke;
+  .soc > button {
+    margin-right: 14px;
+  }
+
+  .soc > button > img {
+    width: 28px;
     height: 40px;
-    display: block;
-    text-align: center;
-    padding-top: 8px;
-    margin-top: 28px;
-    position: relative;
-    z-index: 2 !important;
-
-    > h4 {
-      font-family: "sora" !important;
-
-      font-size: 14px;
-      color: whitesmoke;
-      font-weight: 500;
-    }
-  }
-}
-@media (min-width: 993px) and (max-width: 1200px) {
-  .foothelp {
-    background-color: #2a2b41 !important;
-  }
-  .footer {
-    background-color: #2a2b41;
-    width: 100%;
-    display: block;
-    height: auto;
-
-    overflow: hidden !important;
-    position: relative;
-  }
-  .foot {
-    height: auto !important;
-    padding-top: 4%;
-
-    width: 100%;
-
-    position: relative;
-
-    text-align: center;
-    > h3 {
-      margin-bottom: 0;
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 180%;
-    }
-    > span {
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 12px;
-      font-weight: 500;
-    }
-  }
-  .soc {
-    margin-top: 8px;
-    > button {
-      border: 1px solid whitesmoke !important;
-      border-radius: 100%;
-
-      overflow: hidden;
-      z-index: 1;
-      cursor: pointer;
-      transition: 0.08s ease-in;
-      -o-transition: 0.08s ease-in;
-      -ms-transition: 0.08s ease-in;
-      -moz-transition: 0.08s ease-in;
-      -webkit-transition: 0.08s ease-in;
-      position: relative;
-
-      > img {
-        width: 18px;
-        height: 28px;
-        filter: invert(100%);
-      }
-    }
   }
 
   .end {
-    background-color: #000;
-    color: whitesmoke;
-    height: auto;
-    display: block;
-    text-align: center;
-    padding-top: 8px;
-    margin-top: 8px;
-    position: relative;
-    z-index: 2 !important;
+    height: 40px;
+    margin-top: 28px;
+  }
 
-    > h4 {
-      font-family: "sora" !important;
-      margin-bottom: 0;
-      font-size: 10px;
-      color: whitesmoke;
-      font-weight: 500;
-    }
+  .end > h3 {
+    font-size: 14px;
   }
 }
-@media (min-width: 769px) and (max-width: 992px) {
-  .foothelp {
-    background-color: #2a2b41 !important;
-  }
-  .footer {
-    background-color: #2a2b41;
-    width: 100%;
-    display: block;
-    height: auto;
 
-    overflow: hidden !important;
-    position: relative;
-  }
+@media (min-width: 993px) and (max-width: 1200px) {
   .foot {
-    height: auto !important;
     padding-top: 4%;
-
-    width: 100%;
-
-    position: relative;
-
-    text-align: center;
-    > h3 {
-      margin-bottom: 0;
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 180%;
-    }
-    > span {
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 16px;
-      font-weight: 500;
-    }
   }
+
+  .foot > h3 {
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+
+  .foot > span {
+    font-size: 12px;
+  }
+
+  .soc {
+    margin-top: 8px;
+  }
+
+  .soc > button {
+    border: 1px solid whitesmoke !important;
+  }
+
+  .soc > button > img {
+    width: 18px;
+    height: 28px;
+  }
+
+  .end {
+    height: auto;
+    margin-top: 8px;
+  }
+
+  .end > h3 {
+    margin-bottom: 0;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .foot {
+    padding-top: 4%;
+  }
+
+  .foot > h3 {
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+
+  .foot > span {
+    font-size: 16px;
+  }
+
   .soc {
     margin: 2%;
-    > button {
-      border: 2px solid whitesmoke !important;
-      border-radius: 100%;
+  }
 
-      overflow: hidden;
-      z-index: 1;
-      cursor: pointer;
-      transition: 0.08s ease-in;
-      -o-transition: 0.08s ease-in;
-      -ms-transition: 0.08s ease-in;
-      -moz-transition: 0.08s ease-in;
-      -webkit-transition: 0.08s ease-in;
-      position: relative;
+  .soc > button {
+    width: 60px;
+    height: 60px;
+  }
 
-      width: 60px;
-      height: 60px;
-      > img {
-        width: 20px;
-        height: 36px;
-        filter: invert(100%);
-      }
-    }
+  .soc > button > img {
+    width: 20px;
+    height: 36px;
   }
 
   .end {
-    background-color: #000;
-    color: whitesmoke;
     height: auto;
-    display: block;
-    text-align: center;
-    padding-top: 8px;
     margin-top: 8px;
-    position: relative;
-    z-index: 2 !important;
+  }
 
-    > h4 {
-      font-family: "sora" !important;
-      margin-bottom: 0;
-      font-size: 20px;
-      color: whitesmoke;
-      font-weight: 500;
-    }
+  .end > h3 {
+    margin-bottom: 0;
+    font-size: 20px;
   }
 }
+
 @media (min-width: 577px) and (max-width: 768px) {
-  .foothelp {
-    background-color: #2a2b41 !important;
-  }
-  .footer {
-    background-color: #2a2b41;
-    width: 100%;
-    display: block;
-    height: auto;
-
-    overflow: hidden !important;
-    position: relative;
-  }
   .foot {
-    height: auto !important;
     padding-top: 4%;
-
-    width: 100%;
-
-    position: relative;
-
-    text-align: center;
-    > h3 {
-      margin-bottom: 0;
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 12px;
-      font-weight: 500;
-      line-height: 180%;
-    }
-    > span {
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 12px;
-      font-weight: 500;
-    }
   }
+
+  .foot > h3 {
+    margin-bottom: 0;
+    font-size: 12px;
+  }
+
+  .foot > span {
+    font-size: 12px;
+  }
+
   .soc {
     margin-top: 8px;
-    > button {
-      border: 2px solid whitesmoke !important;
-      border-radius: 100%;
+  }
 
-      overflow: hidden;
-      z-index: 1;
-      cursor: pointer;
-      transition: 0.08s ease-in;
-      -o-transition: 0.08s ease-in;
-      -ms-transition: 0.08s ease-in;
-      -moz-transition: 0.08s ease-in;
-      -webkit-transition: 0.08s ease-in;
-      position: relative;
+  .soc > button {
+    width: 48px;
+    height: 48px;
+  }
 
-      width: 48px;
-      height: 48px;
-      > img {
-        width: 20px;
-        height: 24px;
-        filter: invert(100%);
-      }
-    }
+  .soc > button > img {
+    width: 20px;
+    height: 24px;
   }
 
   .end {
-    background-color: #000;
-    color: whitesmoke;
     height: auto;
-    display: block;
-    text-align: center;
-    padding-top: 8px;
     margin-top: 8px;
-    position: relative;
-    z-index: 2 !important;
+  }
 
-    > h4 {
-      font-family: "sora" !important;
-      margin-bottom: 0;
-      font-size: 12px;
-      color: whitesmoke;
-      font-weight: 500;
-    }
+  .end > h3 {
+    margin-bottom: 0;
+    font-size: 12px;
   }
 }
+
 @media (max-width: 576px) {
-  .foothelp {
-    background-color: #2a2b41 !important;
-  }
-  .footer {
-    background-color: #2a2b41;
-    width: 100%;
-    display: block;
-    height: auto;
-
-    overflow: hidden !important;
-    position: relative;
-  }
   .foot {
-    height: auto !important;
     padding-top: 4%;
-
-    width: 100%;
-
-    position: relative;
-
-    text-align: center;
-    > h3 {
-      margin-bottom: 0;
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 10px;
-      font-weight: 500;
-      line-height: 180%;
-    }
-    > span {
-      font-family: "sora" !important;
-      color: whitesmoke;
-      font-size: 10px;
-      font-weight: 500;
-    }
   }
+
+  .foot > h3 {
+    margin-bottom: 0;
+    font-size: 10px;
+  }
+
+  .foot > span {
+    font-size: 10px;
+  }
+
   .soc {
     margin-top: 8px;
-    > button {
-      border: 1px solid whitesmoke !important;
-      border-radius: 100%;
+  }
 
-      overflow: hidden;
-      z-index: 1;
-      cursor: pointer;
-      transition: 0.08s ease-in;
-      -o-transition: 0.08s ease-in;
-      -ms-transition: 0.08s ease-in;
-      -moz-transition: 0.08s ease-in;
-      -webkit-transition: 0.08s ease-in;
-      position: relative;
+  .soc > button {
+    border: 1px solid whitesmoke !important;
+  }
 
-      > img {
-        width: 14px;
-        height: 18px;
-        filter: invert(100%);
-      }
-    }
+  .soc > button > img {
+    width: 14px;
+    height: 18px;
   }
 
   .end {
-    background-color: #000;
-    color: whitesmoke;
     height: auto;
-    display: block;
-    text-align: center;
-    padding-top: 8px;
     margin-top: 8px;
-    position: relative;
-    z-index: 2 !important;
+  }
 
-    > h4 {
-      font-family: "sora" !important;
-      margin-bottom: 0;
-      font-size: 10px;
-      color: whitesmoke;
-      font-weight: 500;
-    }
+  .end > h3 {
+    margin-bottom: 0;
+    font-size: 10px;
   }
 }

@@ -1,835 +1,338 @@
+/* Base styles - common across all breakpoints */
+.vid {
+  width: 100%;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  position: relative;
+}
+
+.vid > img {
+  position: absolute;
+  width: 20%;
+  z-index: -1;
+  left: 0%;
+  opacity: 0.8;
+}
+
+.vidhelp {
+  background-color: transparent !important;
+  border: 48px solid transparent;
+  border-bottom: 24px solid transparent;
+  border-top: 24px solid transparent;
+}
+
+.vidtext {
+  width: 80%;
+  z-index: 2;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vidtext > h2 {
+  font-family: "sora-b" !important;
+  color: #1e88e5 !important;
+  margin-bottom: 2%;
+}
+
+.vidtext > span {
+  font-family: "jb-mono" !important;
+  color: #000 !important;
+}
+
+.vidimg {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  z-index: 2;
+}
+
+.vidimg > video {
+  width: 80%;
+  border-radius: 20px;
+  margin-bottom: 4%;
+  z-index: 2;
+  pointer-events: visible;
+}
+
+.buttons1 {
+  font-family: "sora" !important;
+  margin-top: 4%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.golden1 {
+  position: relative;
+  background: #2a2b41;
+  color: whitesmoke !important;
+  border-radius: 48px !important;
+  font-weight: 500 !important;
+  overflow: hidden;
+  border: none !important;
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.08s ease-in;
+  -o-transition: 0.08s ease-in;
+  -ms-transition: 0.08s ease-in;
+  -moz-transition: 0.08s ease-in;
+  -webkit-transition: 0.08s ease-in;
+}
+
+.golden1:hover {
+  color: #2a2b41 !important;
+  background-color: whitesmoke !important;
+  border: 4px solid #2a2b41 !important;
+}
+
+.golden1:before {
+  content: "";
+  position: absolute;
+  background: whitesmoke;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: -1;
+  -webkit-transition: top 0.09s ease-in;
+}
+
+.golden1:hover:before {
+  top: 0;
+}
+
+/* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
   .vid {
-    width: 100%;
-
     height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-
     margin-top: 0%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 0%;
-      opacity: 0.8;
-    }
-  }
-  .vidhelp {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-  }
-  .vidtext {
-    width: 64%;
-    z-index: 2;
-    margin-left: auto;
-    margin-right: auto;
-
-    > h2 {
-      font-family: "sora-b" !important;
-
-            color: #1e88e5 !important;
-
-      font-size: 60px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 28px;
-    }
-  }
-
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > video {
-      width: 64%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
   }
 
   .buttons1 {
-    font-family: "sora" !important;
-
     opacity: 1;
-    width: 100%;
-    margin-top: 4%;
+  }
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  .vidtext > h2 {
+    font-size: 60px;
+  }
+
+  .vidtext > span {
+    font-size: 28px;
   }
 
   .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 320px;
+    width: 300px;
     height: 80px;
-    border-radius: 48px !important;
     font-size: 24px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
   }
 }
+
 @media (min-width: 1401px) and (max-width: 1920px) {
   .vid {
-    width: 100%;
-
-    height: 1080px;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-
+    height: 1100px;
     margin-top: 8%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 0%;
-      opacity: 0.8;
-    }
-  }
-  .vidhelp {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-  }
-  .vidtext {
-    width: 64%;
-    z-index: 2;
-    margin-left: auto;
-    margin-right: auto;
-
-    > h2 {
-      font-family: "sora-b" !important;
-
-      color: #1e88e5 !important;
-      font-size: 48px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 18px;
-    }
   }
 
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > video {
-      width: 64%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
+  .vidtext > h2 {
+    font-size: 48px;
   }
 
-  .buttons1 {
-    font-family: "sora" !important;
-
-    margin-top: 4%;
-    width: 100%;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  .vidtext > span {
+    font-size: 18px;
   }
 
   .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 240px;
+    width: 220px;
     height: 60px;
-    border-radius: 48px !important;
     font-size: 18px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
   }
 }
+
 @media (min-width: 1201px) and (max-width: 1400px) {
   .vid {
-    width: 100%;
-
     height: 880px;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-
-    margin-top: 0%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 0%;
-      opacity: 0.8;
-    }
-  }
-  .vidhelp {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-  }
-  .vidtext {
-    width: 64%;
-    z-index: 2;
-    margin-left: auto;
-    margin-right: auto;
-
-    > h2 {
-      font-family: "sora-b" !important;
-
-         color: #1e88e5 !important;
-
-      font-size: 28px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 14px;
-    }
+    margin-top: 2%;
   }
 
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > video {
-      width: 64%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
+  .vidtext > h2 {
+    font-size: 28px;
   }
 
-  .buttons1 {
-    font-family: "sora" !important;
-
-    width: 100%;
-    margin-top: 4%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  .vidtext > span {
+    font-size: 14px;
   }
 
   .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 180px;
+    width: 160px;
     height: 60px;
-    border-radius: 48px !important;
     font-size: 14px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
   }
 }
+
 @media (min-width: 993px) and (max-width: 1200px) {
   .vid {
-    width: 100%;
-
     height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
     justify-items: center;
     margin-top: 4%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 0%;
-      opacity: 0.8;
-    }
   }
+
   .vidhelp {
-    background-color: transparent !important;
     border: 4px solid transparent;
     border-bottom: 2px solid transparent;
     border-top: 2px solid transparent;
   }
+
   .vidtext {
     padding: 4%;
     width: 88%;
-    z-index: 2;
-
     margin-bottom: 8%;
-    > h2 {
-      font-family: "sora-b" !important;
-
-      color: #1e88e5 !important;
-
-      font-size: 26px;
-
-      margin-bottom: 2%;
-      margin-bottom: 0;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 16px;
-    }
   }
 
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > video {
-      width: 80%;
-      border-radius: 20px;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
+  .vidtext > h2 {
+    font-size: 26px;
+    margin-bottom: 0;
   }
 
-  .buttons1 {
-    font-family: "sora" !important;
-
-    margin-top: 4%;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  .vidtext > span {
+    font-family: "inter" !important;
+    font-size: 16px;
   }
 
   .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 180px;
+    width: 160px;
     height: 44px;
     border-radius: 20px !important;
     font-size: 12px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
   }
 }
+
 @media (min-width: 769px) and (max-width: 992px) {
   .vid {
-    width: 100%;
-
     height: auto;
-
-    overflow: hidden !important;
-
-    position: relative;
     justify-items: center;
     margin-top: 4%;
     padding: 0;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 0%;
-      opacity: 0.8;
-    }
   }
-  .vidhelp {
-    background-color: transparent !important;
 
+  .vidhelp {
     border-bottom: 2px solid transparent;
     border-top: 2px solid transparent;
   }
+
   .vidtext {
     width: 88%;
-    z-index: 2;
-
     margin-bottom: 14%;
     padding: 0%;
-    > h2 {
-      font-family: "sora-b" !important;
-
-      color: #1e88e5 !important;
-
-      font-size: 60px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 32px;
-    }
   }
 
-  .vidimg {
-    width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > video {
-      width: 100%;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
+  .vidtext > h2 {
+    font-size: 60px;
   }
 
-  .buttons1 {
-    font-family: "sora" !important;
+  .vidtext > span {
+    font-family: "inter" !important;
+    font-size: 32px;
+  }
 
-    margin-top: 4%;
+  .vidimg > video {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
   }
 
   .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 248px;
+    width: 160px;
     height: 64px;
     border-radius: 28px !important;
-    font-size: 28px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
+    font-size: 22px !important;
   }
 }
+
 @media (min-width: 577px) and (max-width: 768px) {
   .vid {
-    width: 100%;
-
     padding: 0;
     height: auto;
-
-    overflow: hidden !important;
-
-    position: relative;
     justify-items: center;
     margin-top: 4%;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 0%;
-      opacity: 0.8;
-    }
   }
-  .vidhelp {
-    background-color: transparent !important;
 
+  .vidhelp {
+    border: 0;
     border-bottom: 2px solid transparent;
     border-top: 2px solid transparent;
   }
+
   .vidtext {
     padding: 4%;
     width: 100%;
-    z-index: 2;
-
     margin-bottom: 4%;
-    > h2 {
-      font-family: "sora-b" !important;
-
-      color: #1e88e5 !important;
-
-      font-size: 28px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 20px;
-    }
   }
 
-  .vidimg {
+  .vidtext > h2 {
+    font-size: 28px;
+  }
+
+  .vidtext > span {
+    font-family: "inter" !important;
+    font-size: 20px;
+  }
+
+  .vidimg > video {
     width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > video {
-      width: 100%;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
   }
 
   .buttons1 {
-    font-family: "sora" !important;
-
     margin-top: 8%;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
   }
 
   .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 164px;
+    width: 140px;
     height: 48px;
     border-radius: 28px !important;
-    font-size: 18px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
+    font-size: 16px !important;
   }
 }
+
 @media (max-width: 576px) {
   .vid {
-    width: 100%;
-
     height: auto;
-
-    overflow: hidden !important;
-
-    position: relative;
     justify-items: center;
     margin-top: 4%;
     padding: 0;
-    > img {
-      position: absolute;
-      width: 20%;
-
-      z-index: -1;
-
-      left: 0%;
-      opacity: 0.8;
-    }
   }
-  .vidhelp {
-    background-color: transparent !important;
 
+  .vidhelp {
+    border: 0;
     border-bottom: 2px solid transparent;
     border-top: 2px solid transparent;
   }
+
   .vidtext {
     width: 100%;
-    z-index: 2;
     padding: 4%;
-
     margin-bottom: 8%;
-    > h2 {
-      font-family: "sora-b" !important;
-      color: #1e88e5 !important;
-
-      font-size: 28px;
-
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 14px;
-    }
   }
 
-  .vidimg {
+  .vidtext > h2 {
+    font-size: 28px;
+  }
+
+  .vidtext > span {
+    font-family: "inter" !important;
+    font-size: 14px;
+  }
+
+  .vidimg > video {
     width: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-    z-index: 2;
-    > video {
-      width: 100%;
-
-      margin-bottom: 4%;
-      z-index: 2;
-    }
   }
 
   .buttons1 {
-    font-family: "sora" !important;
-
     margin-top: 8%;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
   }
 
   .golden1 {
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
-    width: 100px;
-    height: 32px;
+    width: 84px;
+    height: 28px;
     border-radius: 20px !important;
-    font-size: 12px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden1:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden1:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden1:hover:before {
-    top: 0;
+    font-size: 10px !important;
   }
 }

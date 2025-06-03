@@ -20,7 +20,7 @@
     @font-face {
       font-family: 'sora-b';
       src: url('./Fonts/sora/Sora-Bold.woff') format('woff');
-      /* font-display: swap; */
+      font-display: swap;
     }
     .hero-title{
       font-family: 'sora-b';
@@ -252,7 +252,9 @@
 
 <!-- AI Chat Toggle Button -->
 <button id="ai-chat-toggle" class="ai-chat-toggle" data-cursor="pointer2">
-      <img src="./media/img/ai-avatar.webp" style="width: 100%; border-radius: 40px;" alt="Alex" />
+      <video src="./media/videos/nebula Standing.mp4" muted playsinline preload="auto"></video>
+      <video src="./media/videos/Standing 3.mp4" muted playsinline preload="auto"></video>
+      <video src="./media/videos/looking at her hands.mp4" muted playsinline preload="auto"></video>
 
   <span class="ai-chat-notification">1</span>
 </button>
@@ -266,10 +268,6 @@
     <div class="crypto-3d-loading">
         <div class="spinner"></div>
         <div>Loading cryptocurrency data...</div>
-      </div>
-      <div class="crypto-3d-instructions">
-        
-        Hover over cryptocurrencies to see details. Click and drag to rotate the view.
       </div>
       <div class="bottom-left">
 
@@ -306,7 +304,7 @@
                 >
               </div>
               <div class="richimg">
-              <video src="./media/videos/S-01.webm" autoplay loop muted></video>
+              <video src="./media/videos/Scene-01.mp4" autoplay loop muted></video>
             </div>
           </section>
   
@@ -325,6 +323,11 @@
 
     </section>
 
+
+    <section class="cover">
+      <img src="./media/img/79-05.webp" alt="">
+    </section>
+
         <section class="hero m-0 p-0">
           <div class="container-fluid overlay m-0 p-0">
             
@@ -332,19 +335,25 @@
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img src="./media/img/071.webp" class="d-block w-100" loading="lazy" alt="slide image">
+        <img src="./media/img/resized_image_1.webp" class="d-block w-100" loading="lazy" alt="slide image">
       </div>
       <div class="swiper-slide">
-        <img src="./media/img/076.webp" class="d-block w-100" loading="lazy" alt="slide image">
+        <img src="./media/img/resized_image_4.webp" class="d-block w-100" loading="lazy" alt="slide image">
       </div>
       <div class="swiper-slide">
-        <img src="./media/img/073.webp" class="d-block w-100" loading="lazy" alt="slide image">
+        <img src="./media/img/resized_image_6.webp" class="d-block w-100" loading="lazy" alt="slide image">
       </div>
       <div class="swiper-slide">
-        <img src="./media/img/072.webp" class="d-block w-100" loading="lazy" alt="slide image">
+        <img src="./media/img/resized_image_2.webp" class="d-block w-100" loading="lazy" alt="slide image">
       </div>
       <div class="swiper-slide">
-        <img src="./media/img/074.webp" class="d-block w-100" loading="lazy" alt="slide image">
+        <img src="./media/img/resized_image_3.webp" class="d-block w-100" loading="lazy" alt="slide image">
+      </div>
+      <div class="swiper-slide">
+        <img src="./media/img/resized_image_5.webp" class="d-block w-100" loading="lazy" alt="slide image">
+      </div>
+      <div class="swiper-slide">
+        <img src="./media/img/resized_image_7.webp" class="d-block w-100" loading="lazy" alt="slide image">
       </div>
     </div>
     <div class="swiper-pagination"></div>
@@ -359,12 +368,10 @@
         <section class="robo">
           <div class="container-fluid robot">
             <div class="roboimg">
-              <img src="./media/img/Untitled design (5)-edit.webp" alt="robot">
+               <video class="walk" src="./media/videos/she is coming.mp4" muted></video>
+               <video class="type" src="./media/videos/she is typing.mp4" muted></video>
             </div>
             <div class="robotext">
-              <video src="./media/videos/Comp 1_3.webm" autoplay loop muted></video>
-
-
               <h2>Our Vision</h2>
               <span
                 >We are committed to empowering individuals, businesses, and institutions
@@ -749,7 +756,7 @@ document.addEventListener('DOMContentLoaded', function() {
       grabCursor: true,
       centeredSlides: true,
       slidesPerView: "auto",
-      initialSlide: 2,
+      initialSlide: 3,
       coverflowEffect: {
         rotate: 40,
         stretch: 0,
@@ -788,6 +795,6 @@ window.addEventListener('pageshow', function(event) {
 
 
 <script defer src="./js/aichat.js"></script>
-
+<script defer src="./js/video-sequence.js"></script>
   </body>
 </html>

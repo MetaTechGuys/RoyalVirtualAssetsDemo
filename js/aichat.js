@@ -112,7 +112,6 @@ class RVAAIChat {
     const checkCryptoAPI = () => {
       if (window.cryptoApi) {
         this.cryptoApi = window.cryptoApi;
-        console.log("AI Chat connected to Crypto API");
       } else {
         setTimeout(checkCryptoAPI, 500);
       }
@@ -4053,9 +4052,9 @@ if (message.length > 4 && !/\s/.test(message) && (message.match(/[aeiou]/gi) || 
   
 // Array of generic responses
 const genericResponses = [
-    "I'm not sure about that, but I'm here to help with RoialVirtualAssets. What else can I assist you with?",
-    "I don't have information on that topic. Is there something else about RoialVirtualAssets I can help you with?",
-    "That's outside my knowledge area. Feel free to ask me anything else about RoialVirtualAssets!",
+    "I'm not sure about that, but I'm here to help with RoyalVirtualAssets. What else can I assist you with?",
+    "I don't have information on that topic. Is there something else about RoyalVirtualAssets I can help you with?",
+    "That's outside my knowledge area. Feel free to ask me anything else about RoyalVirtualAssets!",
     "I don't understand that. Try asking me something else about our virtual assets!"
 ];
 
@@ -4453,16 +4452,12 @@ document.addEventListener("DOMContentLoaded", function () {
       setInterval(() => {
         if (aiChat.cryptoApi && aiChat.cryptoApi.prices) {
           // AI chat will automatically use updated data
-          console.log("Crypto data refreshed for AI chat");
         }
       }, 60000); // Check every minute
 
       // Store globally for debugging
       window.rvaAIChat = aiChat;
 
-      console.log(
-        "RVA AI Chat with crypto integration initialized successfully"
-      );
     } else {
       // Retry after 1 second
       setTimeout(initializeAIChat, 1000);
@@ -4549,7 +4544,6 @@ const recoverConversation = () => {
         return data.history;
       }
     } catch (e) {
-      console.warn("Failed to recover conversation:", e);
     }
   }
   return null;
@@ -4565,7 +4559,6 @@ const RVAAIChatPerformance = {
   logPerformance: (action, startTime) => {
     const endTime = Date.now();
     const duration = endTime - startTime;
-    console.log(`AI Chat Performance - ${action}: ${duration}ms`);
   },
 
   getMemoryUsage: () => {
@@ -4599,10 +4592,8 @@ const testAIChat = {
     ];
 
     for (const query of queries) {
-      console.log(`Testing: ${query}`);
       if (window.rvaAIChat) {
         const response = await window.rvaAIChat.generateResponse(query);
-        console.log(`Response: ${response}`);
       }
     }
   },
@@ -4610,19 +4601,13 @@ const testAIChat = {
   // Test conversation stats
   testStats: () => {
     if (window.rvaAIChat) {
-      console.log("Chat Stats:", window.rvaAIChat.getConversationStats());
+
     }
   },
 };
 
 // Make available globally for testing
 window.testAIChat = testAIChat;
-
-// Final initialization log
-console.log("✅ RVA AI Chat system fully loaded and ready");
-console.log(
-  `📊 Initialization time: ${RVAAIChatPerformance.getInitializationTime()}ms`
-);
 
 // Example queries that the AI can handle
 const EXAMPLE_QUERIES = {

@@ -1,1092 +1,525 @@
+/* Base styles - common across all breakpoints */
+.robot {
+  width: 100%;
+  display: flex;
+  height: auto;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  position: relative;
+}
+
+.robot > img {
+  position: absolute;
+  z-index: -1;
+  top: -2%;
+  filter: invert(1);
+}
+
+.eco {
+  width: 80%;
+  margin-bottom: 4%;
+  display: block;
+}
+
+.robo {
+  background-color: transparent !important;
+  border: 48px solid transparent;
+  border-bottom: 24px solid transparent;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.robotext {
+  overflow: visible;
+}
+
+.robotext > video {
+  position: absolute;
+  z-index: -1 !important;
+}
+
+.robotext > h4 {
+  color: #000 !important;
+  font-family: "sora-b" !important;
+  z-index: 2 !important;
+}
+
+.robotext > span {
+  font-family: "jb-mono" !important;
+  color: #000 !important;
+  z-index: 2 !important;
+}
+
+.buttons {
+  width: 100%;
+  margin-top: 8%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.golden {
+  font-family: "sora" !important;
+  position: relative;
+  background: #2a2b41;
+  color: whitesmoke !important;
+  border-radius: 22px !important;
+  font-weight: 500 !important;
+  overflow: hidden;
+  border: none !important;
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.08s ease-in;
+  -o-transition: 0.08s ease-in;
+  -ms-transition: 0.08s ease-in;
+  -moz-transition: 0.08s ease-in;
+  -webkit-transition: 0.08s ease-in;
+}
+
+.white {
+  font-family: "sora" !important;
+  color: #2a2b41 !important;
+  border-color: #2a2b41 !important;
+  border-radius: 22px !important;
+  font-weight: 500 !important;
+  margin-left: 28px;
+  border-width: 4px !important;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.08s ease-in;
+  -o-transition: 0.08s ease-in;
+  -ms-transition: 0.08s ease-in;
+  -moz-transition: 0.08s ease-in;
+  -webkit-transition: 0.08s ease-in;
+}
+
+.golden:hover {
+  color: #2a2b41 !important;
+  background-color: whitesmoke !important;
+  border: 4px solid #2a2b41 !important;
+}
+
+.golden:before {
+  content: "";
+  position: absolute;
+  background: whitesmoke;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: -1;
+  -webkit-transition: top 0.09s ease-in;
+}
+
+.golden:hover:before {
+  top: 0;
+}
+
+.white:hover {
+  color: whitesmoke !important;
+  border: 2px solid #000 !important;
+  background: #2a2b41 !important;
+}
+
+.white:before {
+  content: "";
+  position: absolute;
+  background: #2a2b41;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: -1;
+  -webkit-transition: top 0.09s ease-in;
+}
+
+.white:hover:before {
+  top: 0;
+}
+
+/* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
-  .robot {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-
-    > img {
-      width: 88%;
-      position: absolute;
-      left: 80%;
-      z-index: -1;
-      top: -2%;
-      filter: invert(1);
-    }
+  .robot > img {
+    width: 88%;
+    left: 80%;
   }
-  .eco {
-    width: 80%;
 
-    margin-bottom: 4%;
-    display: block;
-  }
   .robo {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-
     padding: 18%;
-    padding-top: 0;
-    padding-bottom: 0;
   }
+
   .robotext {
     width: 64%;
-    overflow: visible;
     margin-bottom: 20%;
+  }
 
-    > video {
-      position: absolute;
-      width: 60%;
+  .robotext > video {
+    width: 60%;
+    top: -14%;
+    left: 52%;
+  }
 
-      z-index: -1 !important;
+  .robotext > h4 {
+    margin-top: 4%;
+    font-size: 48px;
+  }
 
-      top: -14%;
-      left: 52%;
-    }
-    > h4 {
-      margin-top: 4%;
-
-      color: #000 !important;
-      font-family: "sora-b" !important;
-
-      z-index: 2 !important;
-      font-size: 48px;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 24px;
-      z-index: 2 !important;
-    }
+  .robotext > span {
+    font-size: 24px;
   }
 
   .buttons {
-    width: 100%;
-    margin-top: 8%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
   }
 
   .golden {
-    font-family: "sora" !important;
-
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
     width: 280px;
     height: 68px;
-    border-radius: 22px !important;
     font-size: 20px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
   }
+
   .white {
-    font-family: "sora" !important;
-
-    color: #2a2b41 !important;
-    border-color: #2a2b41 !important;
     width: 280px;
     height: 68px;
-    border-radius: 22px !important;
     font-size: 20px !important;
-    font-weight: 500 !important;
-    margin-left: 28px;
-    border-width: 4px !important;
-    position: relative;
-
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden:hover:before {
-    top: 0;
-  }
-
-  .white:hover {
-    color: whitesmoke !important;
-    border: 2px solid #000 !important;
-    background: #2a2b41 !important;
-  }
-
-  .white:before {
-    content: "";
-    position: absolute;
-    background: #2a2b41;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .white:hover:before {
-    top: 0;
   }
 }
+
 @media (min-width: 1401px) and (max-width: 1920px) {
-  .robot {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-
-    > img {
-      width: 20%;
-      position: absolute;
-      left: 80%;
-      z-index: -1;
-      top: -2%;
-    }
+  .robot > img {
+    width: 20%;
+    left: 80%;
   }
+
   .robo {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-
     padding: 16%;
-    padding-top: 0;
-    padding-bottom: 0;
   }
+
   .robotext {
     width: 60%;
-    overflow: visible;
     margin-bottom: 14%;
+  }
 
-    > video {
-      position: absolute;
-      width: 62%;
+  .robotext > video {
+    width: 62%;
+    top: -20%;
+    left: 50%;
+  }
 
-      z-index: -1 !important;
+  .robotext > h4 {
+    margin-top: 4%;
+    font-size: 28px;
+    z-index: 2;
+  }
 
-      top: -20%;
-      left: 50%;
-    }
-    > h4 {
-      margin-top: 4%;
-      color: #000 !important;
-      font-family: "sora-b" !important;
-
-      z-index: 2;
-      font-size: 28px;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 16px;
-      z-index: 2;
-    }
+  .robotext > span {
+    font-size: 16px;
+    z-index: 2;
   }
 
   .buttons {
-    width: 100%;
-    margin-top: 8%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: left;
   }
 
   .golden {
-    font-family: "sora" !important;
-
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
     width: 220px;
     height: 54px;
     border-radius: 20px !important;
     font-size: 16px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
   }
+
   .white {
-    font-family: "sora" !important;
-
-    color: #2a2b41 !important;
-    border-color: #2a2b41 !important;
     width: 220px;
     height: 54px;
     border-radius: 20px !important;
     font-size: 16px !important;
-    font-weight: 500 !important;
-    margin-left: 28px;
-    border-width: 4px !important;
-    position: relative;
-
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden:hover:before {
-    top: 0;
-  }
-
-  .white:hover {
-    color: whitesmoke !important;
-    border: 2px solid #000 !important;
-    background: #2a2b41 !important;
-  }
-
-  .white:before {
-    content: "";
-    position: absolute;
-    background: #2a2b41;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .white:hover:before {
-    top: 0;
   }
 }
+
 @media (min-width: 1201px) and (max-width: 1400px) {
-  .robot {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-
-    > img {
-      width: 20%;
-      position: absolute;
-      left: 80%;
-      z-index: -1;
-      top: -2%;
-    }
+  .robot > img {
+    width: 20%;
+    left: 80%;
   }
+
   .robo {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
     border-top: 0px solid transparent;
-
     padding: 16%;
-    padding-top: 0;
-    padding-bottom: 0;
   }
+
   .robotext {
     width: 60%;
-    overflow: visible;
     margin-bottom: 20%;
+  }
 
-    > video {
-      position: absolute;
-      width: 64%;
+  .robotext > video {
+    width: 64%;
+    top: -8%;
+    left: 48%;
+  }
 
-      z-index: -1 !important;
+  .robotext > h4 {
+    font-size: 28px;
+    z-index: 2;
+  }
 
-      top: -8%;
-      left: 48%;
-    }
-    > h4 {
-      color: #000 !important;
-      font-family: "sora-b" !important;
-
-      z-index: 2;
-      font-size: 28px;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 14px;
-      z-index: 2;
-    }
+  .robotext > span {
+    font-size: 14px;
+    z-index: 2;
   }
 
   .buttons {
-    width: 100%;
-    margin-top: 8%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
   }
 
   .golden {
-    font-family: "sora" !important;
-
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
     width: 180px;
     height: 48px;
     border-radius: 20px !important;
     font-size: 16px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
   }
+
   .white {
-    font-family: "sora" !important;
-
-    color: #2a2b41 !important;
-    border-color: #2a2b41 !important;
     width: 180px;
     height: 48px;
     border-radius: 20px !important;
     font-size: 16px !important;
-    font-weight: 500 !important;
-    margin-left: 28px;
-    border-width: 4px !important;
-    position: relative;
-
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden:hover:before {
-    top: 0;
-  }
-
-  .white:hover {
-    color: whitesmoke !important;
-    border: 2px solid #000 !important;
-    background: #2a2b41 !important;
-  }
-
-  .white:before {
-    content: "";
-    position: absolute;
-    background: #2a2b41;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .white:hover:before {
-    top: 0;
   }
 }
+
 @media (min-width: 993px) and (max-width: 1200px) {
+  .robot {
+    margin-bottom: 4%;
+  }
+
+  .robot > img {
+    width: 20%;
+    left: 80%;
+  }
+
   .robo {
-    background-color: transparent !important;
     border: 8px solid transparent;
     border-bottom: 4px solid transparent;
-
     padding: 9%;
-    padding-top: 0;
-    padding-bottom: 0;
   }
-  .robot {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
 
-    position: relative;
-    margin-bottom: 4%;
-    > img {
-      width: 20%;
-      position: absolute;
-      left: 80%;
-      z-index: -1;
-      top: -2%;
-    }
-  }
   .robotext {
     padding: 0%;
-
     width: 60%;
-    overflow: visible;
     margin-bottom: 18%;
-    > video {
-      position: absolute;
-      width: 62%;
+  }
 
-      z-index: -1 !important;
+  .robotext > video {
+    width: 62%;
+    top: -20%;
+    left: 48%;
+  }
 
-      top: -20%;
-      left: 48%;
-    }
-    > h4 {
-      color: #000 !important;
-      font-family: "sora-b" !important;
+  .robotext > h4 {
+    font-size: 24px;
+    z-index: 2;
+  }
 
-      z-index: 2;
-      font-size: 24px;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 16px;
-      z-index: 2;
-    }
+  .robotext > span {
+    font-family: "inter" !important;
+    font-size: 16px;
+    z-index: 2;
   }
 
   .buttons {
     width: 80%;
-    margin-top: 8%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
   }
 
   .golden {
-    font-family: "sora" !important;
-
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
     width: 148px;
     height: 44px;
     border-radius: 18px !important;
     font-size: 12px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
   }
-  .white {
-    font-family: "sora" !important;
 
-    color: #2a2b41 !important;
-    border-color: #2a2b41 !important;
+  .white {
     width: 148px;
     height: 44px;
     border-radius: 18px !important;
     font-size: 12px !important;
-    font-weight: 500 !important;
     margin-left: 8px;
     border-width: 2px !important;
-    position: relative;
-
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden:hover:before {
-    top: 0;
-  }
-
-  .white:hover {
-    color: whitesmoke !important;
-    border: 2px solid #000 !important;
-    background: #2a2b41 !important;
-  }
-
-  .white:before {
-    content: "";
-    position: absolute;
-    background: #2a2b41;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .white:hover:before {
-    top: 0;
   }
 }
+
 @media (min-width: 769px) and (max-width: 992px) {
+  .robot {
+    margin-bottom: 4%;
+  }
+
+  .robot > img {
+    width: 20%;
+    left: 80%;
+  }
+
   .robo {
-    background-color: transparent !important;
     border: 8px solid transparent;
     border-bottom: 4px solid transparent;
-
     padding: 2%;
   }
-  .robot {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
 
-    position: relative;
-    margin-bottom: 4%;
-    > img {
-      width: 20%;
-      position: absolute;
-      left: 80%;
-      z-index: -1;
-      top: -2%;
-    }
-  }
   .robotext {
     padding: 4%;
-
     width: 100%;
-    overflow: visible;
     margin-bottom: 8%;
-    > video {
-      position: absolute;
-      width: 48%;
+  }
 
-      z-index: -1 !important;
+  .robotext > video {
+    width: 48%;
+    top: 44%;
+    left: 56%;
+  }
 
-      top: 44%;
-      left: 56%;
-    }
-    > h4 {
-      color: #000 !important;
-      font-family: "sora-b" !important;
+  .robotext > h4 {
+    font-size: 28px;
+    z-index: 2;
+  }
 
-      z-index: 2;
-      font-size: 28px;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 24px;
-      z-index: 2;
-    }
+  .robotext > span {
+    font-family: "inter" !important;
+    font-size: 24px;
+    z-index: 2;
   }
 
   .buttons {
-    width: 100%;
-    margin-top: 8%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: left;
   }
 
   .golden {
-    font-family: "sora" !important;
-
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
     width: 260px;
     height: 64px;
     border-radius: 18px !important;
     font-size: 20px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
   }
-  .white {
-    font-family: "sora" !important;
 
-    color: #2a2b41 !important;
-    border-color: #2a2b41 !important;
+  .white {
     width: 260px;
     height: 64px;
     border-radius: 18px !important;
     font-size: 20px !important;
-    font-weight: 500 !important;
     margin-left: 14px;
     border-width: 2px !important;
-    position: relative;
-
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden:hover:before {
-    top: 0;
-  }
-
-  .white:hover {
-    color: whitesmoke !important;
-    border: 2px solid #000 !important;
-    background: #2a2b41 !important;
-  }
-
-  .white:before {
-    content: "";
-    position: absolute;
-    background: #2a2b41;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .white:hover:before {
-    top: 0;
   }
 }
+
 @media (min-width: 577px) and (max-width: 768px) {
+  .robot {
+    margin-bottom: 4%;
+  }
+
+  .robot > img {
+    width: 20%;
+    left: 80%;
+  }
+
   .robo {
-    background-color: transparent !important;
     border: 8px solid transparent;
     border-bottom: 4px solid transparent;
-
     padding: 2%;
   }
-  .robot {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
 
-    position: relative;
-    margin-bottom: 4%;
-    > img {
-      width: 20%;
-      position: absolute;
-      left: 80%;
-      z-index: -1;
-      top: -2%;
-    }
-  }
   .robotext {
     padding: 4%;
-
     width: 100%;
-    overflow: visible;
     margin-bottom: 8%;
-    > video {
-      position: absolute;
-      width: 48%;
+  }
 
-      z-index: -1 !important;
+  .robotext > video {
+    width: 48%;
+    top: 48%;
+    left: 56%;
+  }
 
-      top: 48%;
-      left: 56%;
-    }
-    > h4 {
-      color: #000 !important;
-      font-family: "sora-b" !important;
+  .robotext > h4 {
+    font-size: 24px;
+    z-index: 2;
+  }
 
-      z-index: 2;
-      font-size: 24px;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 16px;
-      z-index: 2;
-    }
+  .robotext > span {
+    font-family: "inter" !important;
+    font-size: 16px;
+    z-index: 2;
   }
 
   .buttons {
-    width: 100%;
-    margin-top: 8%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: left;
   }
 
   .golden {
-    font-family: "sora" !important;
-
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
     width: 160px;
     height: 48px;
     border-radius: 18px !important;
     font-size: 14px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
   }
-  .white {
-    font-family: "sora" !important;
 
-    color: #2a2b41 !important;
-    border-color: #2a2b41 !important;
+  .white {
     width: 160px;
     height: 48px;
     border-radius: 18px !important;
     font-size: 14px !important;
-    font-weight: 500 !important;
     margin-left: 14px;
     border-width: 2px !important;
-    position: relative;
-
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden:hover:before {
-    top: 0;
-  }
-
-  .white:hover {
-    color: whitesmoke !important;
-    border: 2px solid #000 !important;
-    background: #2a2b41 !important;
-  }
-
-  .white:before {
-    content: "";
-    position: absolute;
-    background: #2a2b41;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .white:hover:before {
-    top: 0;
   }
 }
+
 @media (max-width: 576px) {
+  .robot > img {
+    width: 20%;
+    left: 80%;
+  }
+
   .robo {
-    background-color: transparent !important;
     border: 8px solid transparent;
     border-bottom: 4px solid transparent;
-
     padding: 4%;
   }
-  .robot {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
 
-    position: relative;
-
-    > img {
-      width: 20%;
-      position: absolute;
-      left: 80%;
-      z-index: -1;
-      top: -2%;
-    }
-  }
   .robotext {
     width: 100%;
-    overflow: visible;
     margin-bottom: 48%;
-    > video {
-      position: absolute;
-      width: 80%;
+  }
 
-      z-index: -1 !important;
+  .robotext > video {
+    width: 80%;
+    top: 64%;
+    left: 8%;
+  }
 
-      top: 64%;
-      left: 8%;
-    }
-    > h4 {
-      color: #000 !important;
-      font-family: "sora-b" !important;
+  .robotext > h4 {
+    font-size: 14px;
+    z-index: 2;
+  }
 
-      z-index: 2;
-      font-size: 14px;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 14px;
-      z-index: 2;
-    }
+  .robotext > span {
+    font-family: "inter" !important;
+    font-size: 14px;
+    z-index: 2;
   }
 
   .buttons {
-    width: 100%;
-    margin-top: 8%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
   }
 
   .golden {
-    font-family: "sora" !important;
-
-    position: relative;
-    background: #2a2b41;
-    color: whitesmoke !important;
     width: 128px;
     height: 36px;
     border-radius: 14px !important;
     font-size: 12px !important;
-    font-weight: 500 !important;
-
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
   }
-  .white {
-    font-family: "sora" !important;
 
-    color: #2a2b41 !important;
-    border-color: #2a2b41 !important;
+  .white {
     width: 128px;
     height: 36px;
     border-radius: 14px !important;
     font-size: 12px !important;
-    font-weight: 500 !important;
     margin-left: 8px;
     border-width: 2px !important;
-    position: relative;
-
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    transition: 0.08s ease-in;
-    -o-transition: 0.08s ease-in;
-    -ms-transition: 0.08s ease-in;
-    -moz-transition: 0.08s ease-in;
-    -webkit-transition: 0.08s ease-in;
-  }
-
-  .golden:hover {
-    color: #2a2b41 !important;
-    background-color: whitesmoke !important;
-    border: 4px solid #2a2b41 !important;
-  }
-
-  .golden:before {
-    content: "";
-    position: absolute;
-    background: whitesmoke;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .golden:hover:before {
-    top: 0;
-  }
-
-  .white:hover {
-    color: whitesmoke !important;
-    border: 2px solid #000 !important;
-    background: #2a2b41 !important;
-  }
-
-  .white:before {
-    content: "";
-    position: absolute;
-    background: #2a2b41;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    -webkit-transition: top 0.09s ease-in;
-  }
-
-  .white:hover:before {
-    top: 0;
   }
 }

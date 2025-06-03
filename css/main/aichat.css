@@ -1,27 +1,51 @@
 /* AI Chat Styles */
 .ai-chat-toggle {
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-chat-toggle video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ai-chat-notification {
+    position: relative;
+    z-index: 10;
+}
+
+.ai-chat-toggle {
   position: fixed;
-  bottom: 20px;
-  right: 28px;
-  width: 8%;
-  height: auto;
-  background: linear-gradient(135deg, #1e88e5, #2a2b41);
+  bottom: 40px;
+  right: 2vw;
+  width: 280PX;
+  height: 400PX;
+  background: transparent;
   border: none;
   border-radius: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 20px #2a2b41;
+  /* box-shadow: 0 4px 20px #2a2b41; */
+  /* border: 2PX SOLID #1e88e5; */
   transition: all 0.3s ease;
   z-index: 1000;
   color: #000;
+  overflow: clip;
+}
+.ai-chat-toggle:hover{
+    transform:scale(1.2) !important;
 }
 @media (max-width: 768px) {
   .ai-chat-toggle {
-    width: 80px;
-    height: auto;
-    bottom: 20px;
+    width: 120px;
+    height: 200px;
+    bottom: 28px;
     right: 20px;
     border-radius: 60px;
   }
@@ -29,8 +53,8 @@
 
 @media (max-width: 480px) {
   .ai-chat-toggle {
-    width: 88px;
-    height: 88px;
+    width: 80px;
+    height: 140px;
     bottom: 15px;
     right: 15px;
     border-radius: 40px;
@@ -43,8 +67,8 @@
 
 .ai-chat-notification {
   position: absolute;
-  top: -5px;
-  left: -5px;
+  top: 14px;
+  left: 80px;
   background: #ff4757;
   color: white;
   border-radius: 50%;
@@ -60,9 +84,9 @@
 #ai-chat-container {
   position: fixed;
   bottom: 2%;
-  right: 12%;
-  width: 40%;
-  height: 88%;
+  right: 18%;
+  width:32%;
+  height: 80%;
   background: rgba(0, 0, 0, 0.95);
   border: 1px solid #2a2b41;
   border-radius: 20px;
@@ -300,10 +324,10 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   #ai-chat-container {
-    width: calc(100vw - 20px);
-    height: calc(100vh - 120px);
-    right: 10px;
-    bottom: 90px;
+    width: 100%;
+    height: 80%;
+    right: 0px;
+    bottom: 248px;
   }
   
   .ai-chat-toggle {
@@ -311,7 +335,6 @@
     right: 20px;
   }
 }
-/* Add these styles to your existing ai-chat.css file */
 
 /* Crypto data styling in messages */
 .ai-message-content .crypto-positive {

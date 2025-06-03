@@ -1,454 +1,341 @@
+/* Base styles - common across all breakpoints */
+.robot {
+  width: 100%;
+  display: flex;
+  height: auto;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  position: relative;
+}
+
+.robo {
+  background-color: transparent !important;
+  border: 48px solid transparent;
+  border-bottom: 24px solid transparent;
+  border-top: 24px solid transparent;
+  margin-top: 8% !important;
+}
+
+.robotext {
+  width: 60%;
+  z-index: 2;
+}
+
+.robotext > video {
+  position: absolute;
+  width: 48%;
+  filter: invert(100%);
+  z-index: 0 !important;
+  top: -14%;
+  left: 48%;
+  opacity: 0.24 !important;
+}
+
+.robotext > h2 {
+  color: #1e88e5 !important;
+  font-family: "sora-b" !important;
+  margin-bottom: 4%;
+  margin-top: 28%;
+}
+
+.robotext > span {
+  font-family: "jb-mono" !important;
+  color: #000 !important;
+  margin-bottom: 240px;
+}
+
+.roboimg {
+  width: 48%;
+  overflow: hidden;
+}
+
+.roboimg > video {
+  width: 80%;
+}
+
+/* Video switching functionality for 1401-1920px */
+.roboimg {
+  position: relative;
+}
+
+.roboimg video {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.roboimg video.active {
+  display: block;
+}
+
+/* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
   .robot {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
     margin-bottom: 4%;
   }
-  .robo {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-    margin-top: 8% !important;
-  }
+
   .robotext {
-    width: 60%;
     margin-bottom: 14%;
-    > video {
-      position: absolute;
-      width: 48%;
-
-      filter: invert(100%);
-
-      z-index: 0 !important;
-
-      top: -14%;
-      left: 48%;
-      opacity: 0.24 !important;
-    }
-    > h2 {
-      color: #1e88e5 !important;
-      font-family: "sora-b" !important;
-
-      z-index: 2;
-      font-size: 60px;
-
-      margin-bottom: 4%;
-      margin-top: 28%;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 28px;
-      z-index: 2;
-      margin-bottom: 240px;
-      letter-spacing: 2px;
-    }
   }
 
-  .roboimg {
-    width: 48%;
+  .robotext > h2 {
+    z-index: 2;
+    font-size: 60px;
+  }
 
-    overflow: hidden;
-    > img {
-      width: 88%;
+  .robotext > span {
+    font-size: 28px;
+    z-index: 2;
+    letter-spacing: 2px;
+  }
 
-      margin-top: 8%;
-      margin-left: 14%;
-    }
+  .roboimg > video {
+    margin-top: 8%;
+    margin-left: 2%;
   }
 }
+
 @media (min-width: 1401px) and (max-width: 1920px) {
   .robot {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
     margin-bottom: 8%;
   }
-  .robo {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-    margin-top: 8% !important;
-  }
+
   .robotext {
-    width: 60%;
-    margin-bottom: 14%;
-    > video {
-      position: absolute;
-      width: 48%;
-
-      filter: invert(100%);
-
-      z-index: 0 !important;
-
-      top: -14%;
-      left: 48%;
-      opacity: 0.24 !important;
-    }
-    > h2 {
-      color: #1e88e5 !important;
-      font-family: "sora-b" !important;
-
-      z-index: 1 !important;
-      font-size: 48px;
-
-      margin-bottom: 2%;
-      margin-top: 28%;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 18px;
-      z-index: 1 !important;
-      margin-bottom: 240px;
-    }
+    margin-bottom: 4%;
   }
 
-  .roboimg {
-    width: 48%;
-
-    overflow: hidden;
-    > img {
-      width: 80%;
-
-      margin-left: 8%;
-    }
-  }
-}
-@media (min-width: 1201px) and (max-width: 1400px) {
-  .robot {
-    width: 100%;
-    display: flex;
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
-    margin-bottom: 8%;
-  }
-  .robo {
-    background-color: transparent !important;
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-top: 24px solid transparent;
-    margin-top: 8% !important;
-  }
-  .robotext {
-    width: 60%;
-    margin-bottom: 14%;
-    > video {
-      position: absolute;
-      width: 48%;
-
-      filter: invert(100%);
-
-      z-index: 0 !important;
-
-      top: -14%;
-      left: 48%;
-      opacity: 0.24 !important;
-    }
-    > h2 {
-      color: #1e88e5 !important;
-      font-family: "sora-b" !important;
-
-      z-index: 1 !important;
-      font-size: 28px;
-
-      margin-bottom: 2%;
-      margin-top: 28%;
-    }
-    > span {
-      font-family: "jb-mono" !important;
-
-      color: #000 !important;
-      font-size: 16px;
-      z-index: 1 !important;
-      margin-bottom: 240px;
-    }
-  }
-
-  .roboimg {
-    width: 48%;
-
-    overflow: hidden;
-    > img {
-      width: 80%;
-
-      margin-left: 8%;
-    }
-  }
-}
-@media (min-width: 993px) and (max-width: 1200px) {
-  .robot {
-    width: 100%;
-
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
+  .robotext > h2 {
+    z-index: 1 !important;
+    font-size: 48px;
     margin-bottom: 2%;
   }
+
+  .robotext > span {
+    font-size: 18px;
+    z-index: 1 !important;
+  }
+
+  .roboimg > video {
+    margin-left: 8%;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .robot {
+    margin-bottom: 8%;
+  }
+
+  .robotext {
+    margin-bottom: 14%;
+  }
+
+  .robotext > h2 {
+    z-index: 1 !important;
+    font-size: 28px;
+    margin-bottom: 2%;
+  }
+
+  .robotext > span {
+    font-size: 16px;
+    z-index: 1 !important;
+  }
+
+  .roboimg > video {
+    margin-left: 8%;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  .robot {
+    margin-bottom: 2%;
+  }
+
   .robo {
-    background-color: transparent !important;
     border: 8px solid transparent;
     border-bottom: 2px solid transparent;
     border-top: 4px solid transparent;
-    margin-top: 8% !important;
   }
+
   .robotext {
     padding: 8%;
     padding-top: 0px;
-
     width: 100%;
-    > video {
-      position: absolute;
-      width: 40%;
+  }
 
-      filter: invert(100%);
+  .robotext > video {
+    width: 40%;
+    top: -10%;
+    left: 60%;
+  }
 
-      z-index: 0 !important;
+  .robotext > h2 {
+    z-index: 2;
+    font-size: 28px;
+    margin-top: 8%;
+    margin-bottom: 0;
+  }
 
-      top: -10%;
-      left: 60%;
-      opacity: 0.24 !important;
-    }
-    > h2 {
-      color: #1e88e5 !important;
-      font-family: "sora-b" !important;
-
-      z-index: 2;
-      font-size: 28px;
-
-      margin-top: 8%;
-      margin-bottom: 0;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 16px;
-      z-index: 2;
-    }
+  .robotext > span {
+    font-family: "inter" !important;
+    font-size: 16px;
+    z-index: 2;
   }
 
   .roboimg {
     width: 100%;
-
-    overflow: hidden;
     text-align: center;
-    > img {
-      width: 40%;
+  }
 
-      margin-top: 4%;
-    }
+  .roboimg > video {
+    width: 40%;
+    margin-top: 4%;
   }
 }
+
 @media (min-width: 769px) and (max-width: 992px) {
   .robot {
-    width: 100%;
-
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
     margin-bottom: 4%;
+    display: block;
+
   }
+
   .robo {
-    background-color: transparent !important;
-    border: 8px solid transparent;
+    border: 0px solid transparent;
     border-bottom: 2px solid transparent;
     border-top: 4px solid transparent;
-    margin-top: 8% !important;
+
   }
+
   .robotext {
     padding: 4%;
     padding-top: 0px;
-
     width: 100%;
-    > video {
-      position: absolute;
-      width: 48%;
+    text-align: center;
 
-      filter: invert(100%);
+  }
 
-      z-index: 0 !important;
+  .robotext > video {
+    top: -12%;
+    left: 54%;
+  }
 
-      top: -12%;
-      left: 54%;
-      opacity: 0.24 !important;
-    }
-    > h2 {
-      color: #1e88e5 !important;
-      font-family: "sora-b" !important;
+  .robotext > h2 {
+    z-index: 2;
+    font-size: 60px;
+    margin-top: 8%;
+  }
 
-      z-index: 2;
-      font-size: 60px;
-
-      margin-top: 8%;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 36px;
-      z-index: 2;
-    }
+  .robotext > span {
+    font-family: "inter" !important;
+    font-size: 36px;
+    z-index: 2;
   }
 
   .roboimg {
     width: 100%;
-
-    overflow: hidden;
     text-align: center;
-    > img {
-      width: 80%;
 
-      margin-top: 4%;
-    }
+  }
+
+  .roboimg > video {
+    width: 100%;
+    margin-top: 4%;
   }
 }
+
 @media (min-width: 577px) and (max-width: 768px) {
   .robot {
-    width: 100%;
-
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
     margin-bottom: 4%;
+        display: block;
   }
+
   .robo {
-    background-color: transparent !important;
-    border: 8px solid transparent;
+    border: 0px solid transparent;
     border-bottom: 2px solid transparent;
     border-top: 4px solid transparent;
-    margin-top: 8% !important;
+
   }
+
   .robotext {
     padding: 4%;
     padding-top: 0px;
-
     width: 100%;
-    > video {
-      position: absolute;
-      width: 48%;
+    text-align: center;
 
-      filter: invert(100%);
+  }
 
-      z-index: 0 !important;
+  .robotext > video {
+    top: -12%;
+    left: 53%;
+  }
 
-      top: -12%;
-      left: 53%;
-      opacity: 0.24 !important;
-    }
-    > h2 {
-      color: #1e88e5 !important;
-      font-family: "sora-b" !important;
+  .robotext > h2 {
+    z-index: 2;
+    font-size: 28px;
+    margin-top: 8%;
+    margin-bottom: 2%;
+  }
 
-      z-index: 2;
-      font-size: 28px;
-
-      margin-top: 8%;
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 20px;
-      z-index: 2;
-    }
+  .robotext > span {
+    font-family: "inter" !important;
+    font-size: 20px;
+    z-index: 2;
   }
 
   .roboimg {
     width: 100%;
-
-    overflow: hidden;
     text-align: center;
-    > img {
-      width: 80%;
+  }
 
-      margin-top: 4%;
-    }
+  .roboimg > video {
+    width: 100%;
+    margin-top: 4%;
   }
 }
+
 @media (max-width: 576px) {
   .robot {
-    width: 100%;
-
-    height: auto;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-
-    position: relative;
     margin-bottom: 8%;
+    display: block;
   }
+
   .robo {
-    background-color: transparent !important;
-    border: 4px solid transparent;
+    border: 0px solid transparent;
     border-bottom: 2px solid transparent;
     border-top: 2px solid transparent;
-    margin-top: 8% !important;
   }
+
   .robotext {
     width: 100%;
-    > video {
-      position: absolute;
-      width: 48%;
+    text-align: center;
 
-      filter: invert(100%);
+  }
 
-      z-index: 0 !important;
+  .robotext > video {
+    top: -12%;
+    left: 48%;
+  }
 
-      top: -12%;
-      left: 48%;
-      opacity: 0.24 !important;
-    }
-    > h2 {
-      color: #1e88e5 !important;
-      font-family: "sora-b" !important;
+  .robotext > h2 {
+    z-index: 2;
+    font-size: 28px;
+    margin-top: 8%;
+    margin-bottom: 2%;
+  }
 
-      z-index: 2;
-      font-size: 28px;
-
-      margin-top: 8%;
-      margin-bottom: 2%;
-    }
-    > span {
-      font-family: "inter" !important;
-
-      color: #000 !important;
-      font-size: 16px;
-      z-index: 2;
-    }
+  .robotext > span {
+    font-family: "inter" !important;
+    font-size: 16px;
+    z-index: 2;
   }
 
   .roboimg {
     width: 100%;
-
-    overflow: hidden;
     text-align: center;
-    > img {
-      width: 80%;
+  }
 
-      margin-top: 4%;
-    }
+  .roboimg > video {
+    width: 100%;
+    margin-top: 4%;
   }
 }
