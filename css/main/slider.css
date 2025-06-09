@@ -10,6 +10,7 @@
   background-color: transparent !important;
 }
 
+
 .stext {
   position: absolute;
   top: 14%;
@@ -38,7 +39,21 @@
   height: auto !important;
   margin: 0 0 !important;
 }
-
+.slider-cursor-follower {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  background-image: url('../../media/img/left-and-right.webp');
+filter: invert(1);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
 .white1 {
   font-family: "sora" !important;
   color: whitesmoke !important;
@@ -91,6 +106,37 @@
     transform: translateX(0);
   }
 }
+/* Add these styles to your existing slider.css */
+
+.carousel {
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel.active {
+    cursor: grabbing;
+}
+
+.carousel-inner {
+    transition: transform 0.3s ease;
+}
+
+.carousel-item img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.carousel-item .stext * {
+    pointer-events: auto;
+}
+
+/* Disable default Bootstrap transitions during drag */
+.carousel.active .carousel-inner {
+    transition: none;
+}
+
+
 
 /* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {

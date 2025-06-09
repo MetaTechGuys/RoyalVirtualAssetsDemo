@@ -1,20 +1,14 @@
 /* AI Chat Styles */
 .ai-chat-toggle {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
-
-
 
 .ai-chat-notification {
-    position: relative;
-    z-index: 10;
+  position: relative;
+  z-index: 10;
 }
 
-
-.ai-chat-toggle:hover{
-    transform:scale(1.2) !important;
-}
 @media (max-width: 768px) {
   .ai-chat-toggle {
     width: 120px;
@@ -29,20 +23,18 @@
   .ai-chat-toggle {
     width: 80px;
     height: 140px;
-    bottom: 15px;
-    right: 15px;
+    bottom: 20px;
+    right: 20px;
     border-radius: 40px;
   }
 }
 .ai-chat-toggle:hover {
   transform: scale(1.2);
-  box-shadow: 0 6px 25px #2a2b41;
 }
 
 .ai-chat-notification {
   position: absolute;
   top: 96%;
-  left: 28%;
   background: #1e88e5;
   color: white;
   border-radius: 20%;
@@ -59,8 +51,8 @@
   position: fixed;
   bottom: 2%;
   right: 14%;
-  width:33%;
-  height: 68%;
+  width: 33%;
+  height: 80%;
   background: rgba(0, 0, 0, 0.95);
   border: 1px solid #2a2b41;
   border-radius: 20px;
@@ -144,7 +136,8 @@
   border-radius: 3px;
 }
 
-.ai-message, .user-message {
+.ai-message,
+.user-message {
   display: flex;
   gap: 10px;
   animation: messageSlideIn 0.3s ease;
@@ -154,7 +147,8 @@
   flex-direction: row-reverse;
 }
 
-.ai-message-avatar img, .user-message-avatar {
+.ai-message-avatar img,
+.user-message-avatar {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -171,7 +165,8 @@
   font-size: 14px;
 }
 
-.ai-message-content, .user-message-content {
+.ai-message-content,
+.user-message-content {
   background: rgba(255, 255, 255, 0.1);
   padding: 12px 15px;
   border-radius: 15px;
@@ -183,7 +178,8 @@
   color: #000;
 }
 
-.ai-message-content p, .user-message-content p {
+.ai-message-content p,
+.user-message-content p {
   margin: 0;
   color: #fff;
   font-size: 12px;
@@ -194,7 +190,8 @@
   color: #000;
 }
 
-.ai-message-time, .user-message-time {
+.ai-message-time,
+.user-message-time {
   font-size: 11px;
   color: rgba(255, 255, 255, 0.6);
   margin-top: 5px;
@@ -228,8 +225,12 @@
   animation: typingDots 1.4s infinite ease-in-out;
 }
 
-.ai-typing-dots span:nth-child(1) { animation-delay: -0.32s; }
-.ai-typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+.ai-typing-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+.ai-typing-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
 
 .ai-chat-input {
   display: flex;
@@ -287,7 +288,9 @@
 }
 
 @keyframes typingDots {
-  0%, 80%, 100% {
+  0%,
+  80%,
+  100% {
     transform: scale(0);
   }
   40% {
@@ -303,7 +306,7 @@
     right: 18%;
     bottom: 40px;
   }
-  
+
   .ai-chat-toggle {
     bottom: 20px;
     right: 20px;
@@ -316,7 +319,7 @@
     right: 18%;
     bottom: 40px;
   }
-  
+
   .ai-chat-toggle {
     bottom: 20px;
     right: 20px;
@@ -329,7 +332,7 @@
     right: 20%;
     bottom: 40px;
   }
-  
+
   .ai-chat-toggle {
     bottom: 20px;
     right: 20px;
@@ -338,11 +341,11 @@
 @media (max-width: 768px) {
   #ai-chat-container {
     width: 100%;
-    height: 68%;
+    height: 100%;
     right: 0px;
     bottom: 248px;
   }
-  
+
   .ai-chat-toggle {
     bottom: 20px;
     right: 20px;
@@ -403,9 +406,17 @@
 }
 
 @keyframes loadingDots {
-  0%, 20% { content: "."; }
-  40% { content: ".."; }
-  60%, 100% { content: "..."; }
+  0%,
+  20% {
+    content: ".";
+  }
+  40% {
+    content: "..";
+  }
+  60%,
+  100% {
+    content: "...";
+  }
 }
 
 /* Enhanced message styling for crypto data */
@@ -422,7 +433,7 @@
   .ai-message-content table {
     font-size: 11px;
   }
-  
+
   .ai-message-content table th,
   .ai-message-content table td {
     padding: 3px;
@@ -517,8 +528,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 /* Error states */
@@ -546,12 +562,12 @@
   .quick-actions-buttons {
     justify-content: center;
   }
-  
+
   .quick-action-btn {
     font-size: 10px;
     padding: 5px 10px;
   }
-  
+
   .ai-message-content .comparison-table {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -563,7 +579,7 @@
   .ai-chat-quick-actions {
     background: rgba(255, 255, 255, 0.05);
   }
-  
+
   .quick-action-btn {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
@@ -587,7 +603,11 @@
 
 /* Highlight important crypto information */
 .crypto-highlight {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.2),
+    rgba(255, 165, 0, 0.1)
+  );
   padding: 2px 6px;
   border-radius: 4px;
   font-weight: bold;
@@ -711,17 +731,17 @@
   .quick-actions-tabs {
     flex-wrap: wrap;
   }
-  
+
   .quick-tab {
     font-size: 10px;
     padding: 6px 8px;
   }
-  
+
   .quick-action-btn {
     font-size: 10px;
     padding: 5px 8px;
   }
-  
+
   .section-title {
     font-size: 10px;
   }
@@ -760,10 +780,20 @@
 }
 
 @keyframes dots {
-  0%, 20% { content: "..."; }
-  40% { content: ".."; }
-  60% { content: "."; }
-  80%, 100% { content: ""; }
+  0%,
+  20% {
+    content: "...";
+  }
+  40% {
+    content: "..";
+  }
+  60% {
+    content: ".";
+  }
+  80%,
+  100% {
+    content: "";
+  }
 }
 
 /* Scrollbar styling for quick actions */
@@ -786,222 +816,247 @@
 }
 /* Add this to your existing CSS */
 
-
 .holo {
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120%;
-    height: 30px;
-    background: radial-gradient(ellipse at center, rgba(30, 136, 229, 0.8) 0%, rgba(30, 136, 229, 0.4) 50%, transparent 100%);
-    border-radius: 50%;
-    z-index: 5;
-    filter: blur(2px);
-    opacity: 1;
-    animation: holoGlow 2s ease-in-out infinite alternate;
-    cursor: pointer; /* Make it clear it's interactive */
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 30px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(30, 136, 229, 0.8) 0%,
+    rgba(30, 136, 229, 0.4) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  z-index: 5;
+  filter: blur(2px);
+  opacity: 1;
+  animation: holoGlow 2s ease-in-out infinite alternate;
+  cursor: pointer; /* Make it clear it's interactive */
 }
 
 .holo:hover {
-    opacity: 1;
-    transform: translateX(-50%) scale(1.2);
-    filter: blur(1px);
-    background: radial-gradient(ellipse at center, rgba(30, 136, 229, 1) 0%, rgba(30, 136, 229, 0.6) 50%, rgba(30, 136, 229, 0.2) 100%);
+  opacity: 1;
+  transform: translateX(-50%) scale(1.2);
+  filter: blur(1px);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(30, 136, 229, 1) 0%,
+    rgba(30, 136, 229, 0.6) 50%,
+    rgba(30, 136, 229, 0.2) 100%
+  );
 }
 
 .holo::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
-    background: rgba(30, 136, 229, 0.8);
-    border-radius: 50%;
-    animation: holoIndicator 1.5s ease-in-out infinite;
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: rgba(30, 136, 229, 0.8);
+  border-radius: 50%;
+  animation: holoIndicator 1.5s ease-in-out infinite;
 }
 
 @keyframes holoIndicator {
-    0%, 100% {
-        opacity: 0.3;
-        transform: translateX(-50%) translateY(0);
-    }
-    50% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(-5px);
-    }
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+  }
 }
 
 /* Enhanced glow animation */
 @keyframes holoGlow {
-    0% {
-        opacity: 0.8;
-        transform: translateX(-50%) scale(1);
-        box-shadow: 0 0 20px rgba(30, 136, 229, 0.3);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) scale(1.1);
-        box-shadow: 0 0 30px rgba(30, 136, 229, 0.5);
-    }
+  0% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 20px rgba(30, 136, 229, 0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 0 30px rgba(30, 136, 229, 0.5);
+  }
 }
 
-
-
 .ai-chat-toggle {
-    position: fixed;
-    bottom: 40px;
-    right: 2vw;
-    width: 200px;
-    height: 280px;
-    background: transparent;
-    border: none;
-    border-radius: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    color: #000;
-    overflow: visible;
+  position: fixed;
+  bottom: 40px;
+  right: 2vw;
+  width: 280px;
+  height: 280px;
+  background: transparent;
+  border: none;
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  color: #000;
+  overflow: visible;
 }
 /* Videos container - this gets the animations */
 .videos-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 80px;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(400px) scale(0.8);
-    transition: all 0.4s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(40px) scale(0.8);
+  transition: all 0.8s ease;
 }
 /* Individual videos inside container */
 .videos-container video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 40px;
 }
-
-
 
 /* Animation for video appearing (moving up) */
 @keyframes videoSlideUp {
-    0% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(400px);
-    }
-    1% {
-        visibility: visible;
-    }
-    100% {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(400px);
+  }
+  1% {
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 }
 
 @keyframes videoSlideDown {
-    0% {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-    99% {
-        visibility: visible;
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(400px);
-    }
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  99% {
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(400px);
+  }
 }
-holo:hover ~ .videos-container,
+
+.videos-container.show-videos,
+.holo:hover ~ .videos-container,
 .ai-chat-toggle:hover .videos-container,
 #ai-chat-container:not(.ai-chat-hidden) ~ .ai-chat-toggle .videos-container,
 .ai-chat-container-visible .ai-chat-toggle .videos-container {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-    box-shadow: 0 0 24px rgba(30, 136, 229, 0.4);
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
 }
 
-
 @media (max-width: 768px) {
-        .ai-chat-toggle {
-        width: 120px;
-        height: 200px;
-        bottom: 28px;
-        right: 20px;
-        border-radius: 60px;
-    }
-    
-    .videos-container {
-        border-radius: 60px;
-    }
-    
-    .videos-container video {
-        border-radius: 60px;
-    }
-    
-    .holo {
-        bottom: -15px;
-        height: 20px;
-        width: 130%;
-    }
+  .ai-chat-toggle {
+    width: 120px;
+    height: 200px;
+    bottom: 28px;
+    right: 20px;
+    border-radius: 60px;
+  }
 
-    
-    .holo::before {
-        width: 3px;
-        height: 3px;
-        top: -8px;
-    }
+  .videos-container {
+    border-radius: 60px;
+  }
+
+  .videos-container video {
+    border-radius: 60px;
+  }
+
+  .holo {
+    bottom: -15px;
+    height: 20px;
+    width: 130%;
+  }
+
+  .holo::before {
+    width: 3px;
+    height: 3px;
+    top: -8px;
+  }
 }
 
 @media (max-width: 480px) {
-    .ai-chat-toggle {
-        width: 80px;
-        height: 140px;
-        bottom: 15px;
-        right: 15px;
-        border-radius: 40px;
-    }
-    
-    .videos-container {
-        border-radius: 40px;
-    }
-    
-    .videos-container video {
-        border-radius: 40px;
-    }
-    
-    .holo {
-        bottom: -10px;
-        height: 15px;
-        width: 140%;
-    }
-    
-    .holo::before {
-        width: 2px;
-        height: 2px;
-        top: -6px;
-    }
+  .ai-chat-toggle {
+    width: 80px;
+    height: 140px;
+    bottom: 15px;
+    right: 15px;
+    border-radius: 40px;
+  }
+
+  .videos-container {
+    border-radius: 40px;
+  }
+
+  .videos-container video {
+    border-radius: 40px;
+  }
+
+  .holo {
+    bottom: -10px;
+    height: 15px;
+    width: 140%;
+  }
+
+  .holo::before {
+    width: 2px;
+    height: 2px;
+    top: -6px;
+  }
 }
 
 /* Enhanced hover effect that affects both video and holo */
 .ai-chat-toggle:hover .holo {
-    opacity: 1;
-    transform: translateX(-40%) scale(1.2);
-    filter: blur(1px);
+  opacity: 1;
+  transform: translateX(-40%) scale(1.2);
+  filter: blur(1px);
+}
+
+.videos-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.videos-container .wave,
+.videos-container .loop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.videos-container .loop {
+  display: none; /* Initially hidden */
 }

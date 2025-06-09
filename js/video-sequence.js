@@ -46,105 +46,76 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 document.addEventListener('DOMContentLoaded', function() {
-    
-    const aiChatToggle = document.getElementById('ai-chat-toggle');
-    
-    if (!aiChatToggle) {
-        return;
-    }
-    
-    const videos = aiChatToggle.querySelectorAll('video');
-    
-    if (videos.length === 0) {
-        return;
-    }
-    
-    let currentVideoIndex = 0;
-    const delayBetweenVideos = 4000;
+    const waveVideo = document.querySelector('.wave');
+    const loopVideo = document.querySelector('.loop');
+    const videosContainer = document.querySelector('.videos-container');
+    let hasPlayedWave = false;
 
-    // Initially hide all videos except the first one
-    videos.forEach((video, index) => {
-        
-        if (index === 0) {
-            video.style.display = 'block';
-        } else {
-            video.style.display = 'none';
-        }
-        
-        // Ensure videos are muted and set to play inline
-        video.muted = true;
-        video.playsInline = true;
-        video.loop = false;
-        
-        // Add load event listener
-        video.addEventListener('loadeddata', () => {
-        });
-        
-        video.addEventListener('error', (e) => {
-        });
-    });
-
-    function playNextVideo() {
-        
-        const nextVideoIndex = (currentVideoIndex + 1) % videos.length;
-        
-        setTimeout(() => {
-            // Hide current video
-            videos[currentVideoIndex].style.display = 'none';
-            
-            // Update current index
-            currentVideoIndex = nextVideoIndex;
-            
-            // Show and play next video
-            videos[currentVideoIndex].style.display = 'block';
-            videos[currentVideoIndex].currentTime = 0;
-            
-            
-            videos[currentVideoIndex].play()
-                .then(() => {
-                })
-                .catch(error => {
-                });
-                
-        }, delayBetweenVideos);
+    // Make videos container visible initially for the wave video
+    if (videosContainer) {
+        videosContainer.classList.add('show-videos');
     }
 
-    // Set up event listeners for when each video ends
-    videos.forEach((video, index) => {
-        video.addEventListener('ended', () => {
-            playNextVideo();
-        });
-        
-        video.addEventListener('play', () => {
-        });
-        
-        video.addEventListener('pause', () => {
-        });
-    });
-
-    // Start playing the first video with user interaction fallback
-    function startFirstVideo() {
-        
-        videos[0].play()
-            .then(() => {
-            })
-            .catch(error => {
-                
-                // Add click listener to start videos on user interaction
-                document.addEventListener('click', function startOnClick() {
-                    videos[0].play()
-                        .then(() => {
-                        })
-                        .catch(err => {
-                        });
+    // Function to play wave video
+    function playWaveVideo() {
+        if (waveVideo && !hasPlayedWave) {
+            waveVideo.style.display = 'block';
+            loopVideo.style.display = 'none';
+            
+            waveVideo.currentTime = 0;
+            waveVideo.play().catch(e => console.log('Wave video play failed:', e));
+            
+            // Hide container before video ends
+            waveVideo.addEventListener('timeupdate', function() {
+                // Hide when there's 0.5 seconds left (adjust this value as needed)
+                if (waveVideo.duration - waveVideo.currentTime <= 0.2 && !hasPlayedWave) {
+                    hasPlayedWave = true;
                     
-                    // Remove this listener after first use
-                    document.removeEventListener('click', startOnClick);
-                }, { once: true });
+                    // Remove the show-videos class to return to original CSS behavior
+                    videosContainer.classList.remove('show-videos');
+                    
+                    // Hide wave video first, don't show loop video yet
+                    waveVideo.style.display = 'none';
+                    // Remove this line: loopVideo.style.display = 'block';
+                    loopVideo.loop = true;
+                }
             });
+        }
     }
 
-    // Try to start immediately, or wait a bit for DOM to be fully ready
-    setTimeout(startFirstVideo, 100);
+
+    // Function to play loop video (for hover/click interactions)
+    function playLoopVideo() {
+        if (loopVideo && hasPlayedWave) {
+            waveVideo.style.display = 'none';
+            loopVideo.style.display = 'block';
+            
+            loopVideo.currentTime = 0;
+            loopVideo.play().catch(e => console.log('Loop video play failed:', e));
+        }
+    }
+
+    // Play wave video automatically when page loads
+    setTimeout(() => {
+        playWaveVideo();
+    }, 800);
+
+    // Handle AI chat toggle button interactions
+    const aiChatToggle = document.getElementById('ai-chat-toggle');
+    if (aiChatToggle) {
+        aiChatToggle.addEventListener('mouseenter', function() {
+            if (hasPlayedWave) {
+                playLoopVideo();
+            }
+        });
+
+        aiChatToggle.addEventListener('click', function() {
+            if (hasPlayedWave) {
+                playLoopVideo();
+            }
+        });
+    }
 });
+
+
 

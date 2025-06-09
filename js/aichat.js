@@ -142,7 +142,7 @@ class RVAAIChat {
       toggleBtn.addEventListener("click", () => {
         const notification = document.querySelector(".ai-chat-notification");
         if (notification) {
-          notification.style.display = "none";
+          notification.style.display = "block";
         }
       });
     }
@@ -953,18 +953,18 @@ class RVAAIChat {
     }
 
     // Crypto price queries
-    if (
+            if (
       message.includes("price of") ||
       message.includes("cost of") ||
       message.includes("how much is")
     ) {
       // Extract coin name from message
       const pricePatterns = [
-        /price of (\w+)/i,
-        /cost of (\w+)/i,
-        /how much is (\w+)/i,
-        /(\w+) price/i,
-        /(\w+) cost/i,
+        /price of (\b\w+\b)/i,
+        /cost of (\b\w+\b)/i,
+        /how much is (\b\w+\b)/i,
+        /(\b\w+\b) price/i,
+        /(\b\w+\b) cost/i,
       ];
 
       for (const pattern of pricePatterns) {
@@ -976,14 +976,14 @@ class RVAAIChat {
       }
     }
 
-    // Specific cryptocurrency queries
-    const cryptoNames = [
+    // Specific cryptocurrency queries - only coins with reliable price data
+   const cryptoNames = [
       "bitcoin",
       "btc",
       "ethereum",
       "eth",
       "binance",
-      "bnb",
+      "bnb", 
       "solana",
       "sol",
       "cardano",
@@ -1002,13 +1002,90 @@ class RVAAIChat {
       "shib",
       "litecoin",
       "ltc",
+      "ripple",
+      "xrp",
+      "tron",
+      "trx",
+      "cosmos",
+      "atom",
+      "uniswap",
+      "uni",
+      "stellar",
+      "xlm",
+      "filecoin",
+      "fil",
+      "vechain",
+      "vet",
+      "theta",
+      "monero",
+      "xmr",
+      "aave",
+      "maker",
+      "mkr",
+      "compound",
+      "comp",
+      "fantom",
+      "ftm",
+      "algorand",
+      "algo",
+      "tezos",
+      "xtz",
+      "near",
+      "icp",
+      "sandbox",
+      "sand",
+      "decentraland",
+      "mana",
+      "gala",
+      "enjin",
+      "enj",
+      "chiliz",
+      "chz",
+      "curve",
+      "crv",
+      "synthetix",
+      "snx",
+      "dash",
+      "zcash",
+      "zec",
+      "pepe",
+      "arbitrum",
+      "arb",
+      "optimism",
+      "op",
+      "apecoin",
+      "ape",
+      "pancakeswap",
+      "cake",
+      "sushiswap", 
+      "sushi",
+      "yearn",
+      "yfi",
+      "1inch",
+      "loopring",
+      "lrc",
+      "basic attention token",
+      "bat"
     ];
 
+    // Fix: Use 'message' instead of 'lowerMessage' since message is already lowercased
+    const messageWords = message.split(/\s+/);
+    
+    // Check for exact word matches to avoid partial matching
     for (const crypto of cryptoNames) {
-      if (message.includes(crypto) && !message.includes("history")) {
-        return this.generateCryptoPriceResponse(crypto);
+      // For multi-word crypto names
+      if (crypto.includes(' ')) {
+        if (message.includes(crypto)) {
+          return this.generateCryptoPriceResponse(crypto);
+        }
+      } else {
+        // For single word crypto names, check if it appears as a complete word
+        if (messageWords.includes(crypto)) {
+          return this.generateCryptoPriceResponse(crypto);
+        }
       }
     }
+
 
     // Market analysis queries
     if (
@@ -1847,36 +1924,39 @@ class RVAAIChat {
 
     const jokes = [
   `<strong>Why did the Bitcoin break up with the Dollar?</strong><br>
-    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
-    Because it was tired of being controlled! 💔<br><br> `,
+
+    Because it was tired of being controlled! 💔<br><br>
+   <em>Laughter is the best medicine for portfolio pain! 💊😄</em>`,
   
   `<strong>What's a crypto trader's favorite type of music?</strong><br>
-    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
-    Heavy metal... because they love those dips! 🎸📉<br><br> `,
+    Heavy metal... because they love those dips! 🎸📉<br><br>
+   <em>Laughter is the best medicine for portfolio pain! 💊😄</em>`,
   
   `<strong>What did Ethereum say to Bitcoin?</strong><br>
-    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
-    "You may be the king, but I've got smart contracts!" 👑🤖<br><br> `,
+    "You may be the king, but I've got smart contracts!" 👑🤖<br><br>
+   <em>Laughter is the best medicine for portfolio pain! 💊😄</em>`,
   `<strong>Why did the DeFi protocol go to therapy?</strong><br>
-    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
-    It had too many trust issues! 🛋️💭<br><br>` ,
+
+    It had too many trust issues! 🛋️💭<br><br>
+         <em>Laughter is the best medicine for portfolio pain! 💊😄</em>`,
 
   `<strong>Real crypto trader problems:</strong><br>
     • Checking portfolio every 5 minutes but calling it "long-term investing"<br>
     • Explaining to family why you're excited about "fake internet money"<br>
     • Having more crypto apps than social media apps<br>
-    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
-    • Dreaming in candlestick charts<br><br>` ,
+
+    • Dreaming in candlestick charts<br><br>
+        <em>Laughter is the best medicine for portfolio pain! 💊😄</em>` ,
   `<strong>The ultimate crypto dad joke:</strong><br>
-    <em>Laughter is the best medicine for portfolio pain! 💊😄</em>
-    "I told my wife I was investing in Ethereum. She said 'That's ether a good idea or a bad one!'" 🤦‍♂️<br><br> `
+    "I told my wife I was investing in Ethereum. She said 'That's ether a good idea or a bad one!'" 🤦‍♂️<br><br>
+        <em>Laughter is the best medicine for portfolio pain! 💊😄</em> `
 ];
     if (
       message.includes("joke") ||
       message.includes("funny") ||
       message.includes("humor")
     ) {
-    return jokes[Math.floor(Math.random() * gibberishResponses.length)];
+    return jokes[Math.floor(Math.random() * jokes.length)];
   ;
     }
 
@@ -3336,8 +3416,12 @@ if (
     // Crypto psychology and emotions
     if (
       message.includes("psychology") ||
+      message.includes("sad") ||
+      message.includes("happy") ||
+      message.includes("depressed") ||
+      message.includes("excited") ||
       message.includes("emotions") ||
-      message.includes("mental health")
+      message.includes("mental health") 
     ) {
       return `
     <strong>🧠 Crypto Psychology: The Emotional Rollercoaster:</strong><br><br>
@@ -3397,6 +3481,15 @@ if (
     Crypto is a marathon, not a sprint. The technology is revolutionary, but your mental health is more important than any portfolio. Take care of yourself first! 💚<br><br>
     
     <em>The real gains are the friends we made along the way! (And maybe some Bitcoin too) 😊</em>
+  `;
+    }
+
+    if (
+      message.includes("buy") ||
+      message.includes("sell")
+    ) {
+      return `
+    <strong>I can't give an actual advise on buying or selling, i don't have enough experience to give you this advise. I can tell you prices and changes only!</strong><br>
   `;
     }
 

@@ -598,7 +598,7 @@ class CryptoAPI {
         }
 
         .crypto-dropdown-content.active {
-          max-height: 2000px;
+          max-height: 2400px;
           transition: max-height 0.5s ease-in;
         }
 

@@ -62,6 +62,9 @@ body {
   background-color: #f5f5f5 !important;
   overflow-x: clip !important;
 }
+body::-webkit-scrollbar {
+    display: none;
+}
 
 button {
   cursor: url(../../media/img/starter-motherboard-pointer.webp), pointer !important;

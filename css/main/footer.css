@@ -99,8 +99,8 @@
     margin-top: 28px;
   }
 
-  .end > h3 {
-    font-size: 20px;
+  .end > h4 {
+    font-size: 16px;
   }
 }
 
@@ -134,7 +134,7 @@
     margin-top: 28px;
   }
 
-  .end > h3 {
+  .end > h4 {
     font-size: 14px;
   }
 }
@@ -167,7 +167,7 @@
     margin-top: 28px;
   }
 
-  .end > h3 {
+  .end > h4 {
     font-size: 14px;
   }
 }
@@ -204,9 +204,9 @@
     margin-top: 8px;
   }
 
-  .end > h3 {
+  .end > h4 {
     margin-bottom: 0;
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
@@ -243,9 +243,9 @@
     margin-top: 8px;
   }
 
-  .end > h3 {
+  .end > h4 {
     margin-bottom: 0;
-    font-size: 20px;
+    font-size: 14px;
   }
 }
 
@@ -282,9 +282,9 @@
     margin-top: 8px;
   }
 
-  .end > h3 {
+  .end > h4 {
     margin-bottom: 0;
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
@@ -320,8 +320,8 @@
     margin-top: 8px;
   }
 
-  .end > h3 {
+  .end > h4 {
     margin-bottom: 0;
-    font-size: 10px;
+    font-size: 8px;
   }
 }

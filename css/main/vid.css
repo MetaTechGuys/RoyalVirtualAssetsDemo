@@ -52,6 +52,27 @@
   margin-bottom: 4%;
   z-index: 2;
   pointer-events: visible;
+  cursor: none;
+}
+
+/* Cursor follower image */
+.cursor-follower {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  background-image: url('../../media/img/play-button-icon-png-18930.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.vidimg:hover .cursor-follower {
+  opacity: 1;
 }
 
 .buttons1 {
