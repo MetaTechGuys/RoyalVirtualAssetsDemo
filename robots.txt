@@ -1,0 +1,93 @@
+# Robots.txt for RoialVirtualAssets
+# Allow all crawlers to access public content while protecting sensitive areas
+
+User-agent: *
+Allow: /
+
+# Block access to sensitive directories
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /user/
+Disallow: /account/
+Disallow: /dashboard/
+Disallow: /wallet/
+Disallow: /trading/
+Disallow: /orders/
+Disallow: /transactions/
+Disallow: /kyc/
+Disallow: /auth/
+Disallow: /login/
+Disallow: /register/
+Disallow: /profile/
+Disallow: /settings/
+
+# Block temporary and system files
+Disallow: /tmp/
+Disallow: /temp/
+Disallow: /cache/
+Disallow: /logs/
+Disallow: /backup/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /vendor/
+
+# Block search and filter pages to prevent duplicate content
+Disallow: /search?
+Disallow: /*?sort=
+Disallow: /*?filter=
+Disallow: /*?page=
+Disallow: /*?limit=
+
+# Block PDF and document downloads that might contain sensitive info
+Disallow: /*.pdf$
+Disallow: /*.doc$
+Disallow: /*.docx$
+Disallow: /*.xls$
+Disallow: /*.xlsx$
+
+# Allow specific important pages
+Allow: /about/
+Allow: /contact/
+Allow: /help/
+Allow: /faq/
+Allow: /terms/
+Allow: /privacy/
+Allow: /security/
+Allow: /fees/
+Allow: /markets/
+Allow: /assets/
+Allow: /news/
+Allow: /blog/
+
+# Special rules for major search engines
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /user/
+Disallow: /account/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /user/
+Disallow: /account/
+
+# Block aggressive crawlers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Crawl delay for all bots (1 second)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://royal-virtual-assets-demo.vercel.app//sitemap.xml
+Sitemap: https://royal-virtual-assets-demo.vercel.app//sitemap-news.xml
