@@ -1,7 +1,7 @@
 /* Base styles - common across all breakpoints */
 .container {
   max-width: 1200px;
-  margin: 4% auto;
+  margin: 2% auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -86,6 +86,7 @@
   margin-bottom: 8px;
   transform: translateY(0);
   transition: transform 0.4s ease;
+  font-family: "sora" !important;
 }
 
 .hint {
@@ -98,6 +99,7 @@
   margin-top: 5px;
   transform: translateY(0);
   transition: transform 0.4s ease, opacity 0.4s ease;
+  
 }
 
 .card:hover .overlay {
@@ -133,6 +135,8 @@
   margin-bottom: 20px;
   position: relative;
   padding-bottom: 15px;
+  font-family: "sora" !important;
+
 }
 
 .card-back h3::after {
@@ -152,6 +156,7 @@
   line-height: 1.6;
   margin-bottom: 25px;
   font-weight: 300;
+  font-family: "jb-mono" !important;
 }
 
 .btnc {

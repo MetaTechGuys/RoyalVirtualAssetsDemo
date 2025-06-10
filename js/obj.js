@@ -58,6 +58,7 @@ class Object3DVisualizer {
     // Set container height
     const container = document.querySelector(this.config.containerSelector);
     container.style.height = `${this.config.height}px`;
+    
 
     // Set up Three.js scene
     this.setupScene();
@@ -299,6 +300,7 @@ class Object3DVisualizer {
 
   container.appendChild(this.renderer.domElement);
 
+  
   // Add ambient light
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
   this.scene.add(ambientLight);
@@ -633,7 +635,7 @@ createCentralObject(centralObj) {
   const geometry = new THREE.CircleGeometry(this.config.logoSize * 0.8, 64);
 
   // Define image file path
-  const imagePath = `assets/object-images/700.png`;
+  const imagePath = `assets/object-images/700.webp`;
 
   // Create a material with enhanced properties for the central object
   const material = new THREE.MeshPhysicalMaterial({
@@ -678,7 +680,7 @@ createCentralObject(centralObj) {
   mesh.lookAt(this.camera.position);
 
   // Scale it larger than other objects
-  const centralScale = 2.8; // Make it twice as large
+  const centralScale = 4.0; // Make it twice as large
   mesh.scale.set(centralScale, centralScale, centralScale);
 
   // Store object data
@@ -697,11 +699,58 @@ createCentralObject(centralObj) {
 
   // Add enhanced glow effect for central object
   this.addCentralGlowEffect(mesh, centralObj);
+  // this.addEnhancedCentralAnimation(mesh);
+  this.addMagneticFieldEffect(mesh);
+  this.addParticleSystem(mesh);
   
+  // Add attention-grabbing spotlight that follows the central object
+  this.addDynamicSpotlight(mesh);
 // Add floating animation
   this.addFloatingAnimation(mesh);
 }
 
+/**
+ * Add dynamic spotlight that follows the central object
+ */
+addDynamicSpotlight(mesh) {
+  const spotlight = new THREE.SpotLight(0xffffff, 2, 40, Math.PI / 4, 0.4);
+  spotlight.position.set(0, 20, 10);
+  spotlight.target = mesh;
+  spotlight.castShadow = true;
+  
+  this.scene.add(spotlight);
+  this.scene.add(spotlight.target);
+
+  if (window.gsap) {
+    // Move spotlight in a circle around the central object
+    gsap.to(spotlight.position, {
+      motionPath: {
+        path: [
+          {x: 15, y: 20, z: 10},
+          {x: 0, y: 25, z: 15},
+          {x: -15, y: 20, z: 10},
+          {x: 0, y: 15, z: 5},
+          {x: 15, y: 20, z: 10}
+        ],
+        curviness: 2
+      },
+      duration: 12,
+      repeat: -1,
+      ease: "none",
+    });
+
+    // Pulsing intensity
+    gsap.to(spotlight, {
+      intensity: 3,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  }
+
+  mesh.userData.dynamicSpotlight = spotlight;
+}
 /**
  * Create orbiting objects around the central object
  */
@@ -720,7 +769,7 @@ createOrbitingObjects(orbitingObjects) {
     const geometry = new THREE.CircleGeometry(this.config.logoSize / 2, 32);
 
     // Define image file path
-    const imagePath = customObj.image || `assets/object-images/${customObj.id || customObj.name.toLowerCase().replace(/\s+/g, '-')}.png`;
+    const imagePath = `assets/object-images/${customObj.name.toLowerCase().replace(/\s+/g, '-')}.webp`;
 
     // Create a material
     const material = new THREE.MeshPhysicalMaterial({
@@ -765,7 +814,7 @@ createOrbitingObjects(orbitingObjects) {
     mesh.lookAt(this.camera.position);
 
     // Different sizes based on orbit distance (closer = larger, like perspective)
-    const scale = Math.max(0.8, 2.4 - (orbitLevel * 0.14));
+    const scale = Math.max(0.8, 2.8 - (orbitLevel * 0.08));
     mesh.scale.set(scale, scale, scale);
 
     // Store object data with enhanced orbit information
@@ -843,9 +892,10 @@ addMultipleOrbitPaths() {
 
     const geometry = new THREE.BufferGeometry().setFromPoints(points);
     const material = new THREE.LineBasicMaterial({
-      color: new THREE.Color().setHSL(0.6 + i * 0.1, 0.8, 0.6),
+      color: new THREE.Color().setHSL(0.6, 0.8, 0.6),
+      // color: new THREE.Color().setHSL(0.6 + i * 0.1, 0.8, 0.6),
       transparent: true,
-      opacity: 0.8 - (i * 0.08),
+      opacity: 0.4 - (i * 0.04),
       depthTest: true,    // Enable depth testing
       depthWrite: false   // Don't write to depth buffer
     });
@@ -878,7 +928,7 @@ addCentralGlowEffect(mesh, customObj) {
     { size: 0.4, opacity: 1.2, color: 0x000000, animation: { duration: 1.4, intensity: 2.0 } },
     { size: 0.8, opacity: 0.8, color: 0x4CAF50, animation: { duration: 1.8, intensity: 1.4 } },
     { size: 1.2, opacity: 0.4, color: 0x2196F3, animation: { duration: 2.0, intensity: 0.8 } },
-    { size: 1.4, opacity: 0.2, color: 0x9C27B0, animation: { duration: 2.4, intensity: 0.4 } }
+    { size: 1.4, opacity: 0.2, color: 0x9C27B0, animation: { duration: 2.4, intensity: 0.4 } },
   ];
 
   glowLayers.forEach((layer, index) => {
@@ -896,7 +946,7 @@ addCentralGlowEffect(mesh, customObj) {
     });
 
     const glowMesh = new THREE.Mesh(glowGeometry, glowMaterial);
-    glowMesh.position.z = -0.2 - (index * 0.04); // Layer them behind each other
+    glowMesh.position.z = -0.2 - (index * 0.04);
     glowMesh.rotation.x = Math.PI / 1;
     mesh.add(glowMesh);
 
@@ -906,7 +956,7 @@ addCentralGlowEffect(mesh, customObj) {
     }
     mesh.userData.glowMeshes.push(glowMesh);
 
-    // Add pulsing animation
+    // Add pulsing animation with staggered timing
     if (window.gsap) {
       gsap.to(glowMaterial, {
         opacity: layer.opacity * layer.animation.intensity,
@@ -914,17 +964,101 @@ addCentralGlowEffect(mesh, customObj) {
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
+        delay: index * 0.2, // Stagger the animations
       });
-       // Add rotation animation
+
+      // Add rotation animation with different speeds for each layer
       gsap.to(glowMesh.rotation, {
-        z: Math.PI * 4,
+        z: Math.PI * 4 * (index % 2 === 0 ? 1 : -1), // Alternate directions
         duration: 8 + index * 2,
-        repeat: -2,
+        repeat: -1,
         ease: "none",
       });
+
+      // Add scale pulsing for outer layers
+      if (index >= 4) {
+        gsap.to(glowMesh.scale, {
+          x: 1.2,
+          y: 1.2,
+          z: 1.2,
+          duration: 4 + index,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
     }
   });
 
+  // Add energy rings around the central object
+  this.addEnergyRings(mesh);
+}
+
+/**
+ * Add rotating energy rings around the central object
+ */
+addEnergyRings(mesh) {
+  const ringCount = 1;
+  const rings = [];
+
+  for (let i = 0; i < ringCount; i++) {
+    const ringGeometry = new THREE.RingGeometry(
+      (this.config.logoSize * 1.2) + (i * 0.8),
+      (this.config.logoSize * 1.2) + (i * 0.8),
+      32
+    );
+
+    const ringMaterial = new THREE.MeshBasicMaterial({
+      color: new THREE.Color().setHSL(0.4 + i * 0.2, 0.8, 0.4),
+      transparent: true,
+      opacity: 0.3 - (i * 0.08),
+      side: THREE.DoubleSide,
+      blending: THREE.AdditiveBlending,
+    });
+
+    const ringMesh = new THREE.Mesh(ringGeometry, ringMaterial);
+    ringMesh.position.z = -0.1 - (i * 0.05);
+    
+    // Tilt rings at different angles
+    ringMesh.rotation.x = (i * Math.PI / 6);
+    ringMesh.rotation.y = (i * Math.PI / 4);
+    
+    mesh.add(ringMesh);
+    rings.push(ringMesh);
+
+    if (window.gsap) {
+      // Rotate each ring at different speeds
+      gsap.to(ringMesh.rotation, {
+        z: Math.PI * 2 * (i % 2 === 0 ? 1 : -1),
+        duration: 6 + (i * 2),
+        repeat: -1,
+        ease: "none",
+      });
+
+      // Pulsing opacity
+      gsap.to(ringMaterial, {
+        opacity: (0.3 - (i * 0.08)) * 2,
+        duration: 2 + (i * 0.5),
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+      // Scale pulsing
+      gsap.to(ringMesh.scale, {
+        x: 1.1,
+        y: 1.1,
+        z: 1.1,
+        duration: 3 + i,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+    }
+  }
+
+  // Store rings reference
+  mesh.userData.energyRings = rings;
 }
   /**
    * Create a fallback texture when image loading fails
@@ -989,15 +1123,14 @@ getColorForObject(name, index, isCentral = false) {
 
   // Predefined colors for different categories
   const categoryColors = {
-    jewelry: "#E91E63",
-    timepieces: "#2196F3",
-    art: "#9C27B0",
-    antiques: "#795548",
-    technology: "#00BCD4",
-    electronics: "#4CAF50",
-    collectibles: "#FF9800",
-    precious: "#FFD700",
-    default: "#607D8B"
+    tokenisation: "#2a2b41",
+    wallet: "#2a2b41",
+    trade: "#2a2b41",
+    coin: "#2a2b41",
+    dex: "#2a2b41",
+    swap: "#2a2b41",
+    ido: "#2a2b41",
+    ico: "#2a2b41"
   };
 
   // Try to match category
@@ -1100,32 +1233,115 @@ addPostProcessingEffects() {
 
 addFloatingAnimation(mesh) {
   if (window.gsap) {
-    // Gentle floating motion
+    // 1. Magnetic floating motion (up and down)
     gsap.to(mesh.position, {
-      y: mesh.position.y + 2,
+      y: mesh.position.y + 3,
+      duration: 2.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    // 2. Gentle rotation on Y-axis (spinning)
+    gsap.to(mesh.rotation, {
+      y: Math.PI * 2,
+      duration: 15,
+      repeat: -1,
+      ease: "none",
+    });
+
+    // 3. Subtle rotation on Z-axis for wobble effect
+    gsap.to(mesh.rotation, {
+      z: Math.PI * 0.1,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    // 4. Breathing scale animation
+    gsap.to(mesh.scale, {
+      x: mesh.scale.x * 1.1,
+      y: mesh.scale.y * 1.1,
+      z: mesh.scale.z * 1.1,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "power2.inOut",
+    });
+
+    // 5. Material emissive intensity pulsing
+    if (mesh.material && mesh.material.emissive) {
+      gsap.to(mesh.material, {
+        emissiveIntensity: 1.5,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+    }
+
+    // 6. Add orbital motion around its own center
+    const orbitRadius = 1.5;
+    let orbitAngle = 0;
+    
+    gsap.to({ angle: 0 }, {
+      angle: Math.PI * 2,
+      duration: 20,
+      repeat: -1,
+      ease: "none",
+      onUpdate: function() {
+        orbitAngle = this.targets()[0].angle;
+        const offsetX = Math.cos(orbitAngle) * orbitRadius;
+        const offsetZ = Math.sin(orbitAngle) * orbitRadius;
+        
+        // Apply orbital offset to the base position
+        mesh.position.x = offsetX;
+        mesh.position.z = offsetZ;
+      }
+    });
+
+    // 7. Add particle-like shimmer effect to the material
+    this.addShimmerEffect(mesh);
+  }
+}
+
+/**
+ * Add shimmer effect to the central object
+ */
+addShimmerEffect(mesh) {
+  if (window.gsap && mesh.material) {
+    // Create a timeline for complex shimmer animation
+    const shimmerTimeline = gsap.timeline({ repeat: -1, repeatDelay: 4 });
+    
+    // Metalness shimmer
+    shimmerTimeline.to(mesh.material, {
+      metalness: 0.8,
+      duration: 1,
+      ease: "power2.inOut",
+    })
+    .to(mesh.material, {
+      metalness: 0.2,
+      duration: 1,
+      ease: "power2.inOut",
+    });
+
+    // Roughness variation for surface texture changes
+    gsap.to(mesh.material, {
+      roughness: 0.1,
       duration: 3,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut",
     });
 
-    // Gentle rotation
-    gsap.to(mesh.rotation, {
-      y: Math.PI * 2,
-      duration: 20,
-      repeat: -1,
-      ease: "none",
-    });
-
-    // Scale pulsing
-    gsap.to(mesh.scale, {
-      x: mesh.scale.x * 1.05,
-      y: mesh.scale.y * 1.05,
-      z: mesh.scale.z * 1.05,
-      duration: 4,
+    // Clearcoat intensity variation
+    gsap.to(mesh.material, {
+      clearcoat: 1.0,
+      duration: 2.5,
       repeat: -1,
       yoyo: true,
-      ease: "sine.inOut",
+      ease: "power2.inOut",
     });
   }
 }
@@ -1708,11 +1924,32 @@ this.animationFrame = requestAnimationFrame(this.animate);
   this.objectModels.forEach((obj) => {
     obj.lookAt(this.camera.position);
 
-    // Handle central object
+    // Handle central object with enhanced effects
     if (obj.userData.isCentral) {
-      if (!obj.userData.isSelected && obj !== this.hoveredObject) {
-        obj.rotation.z += 0.001;
+      // Add dynamic lighting effect based on time
+      const time = Date.now() * 0.001;
+      
+      // Update emissive intensity dynamically
+      if (obj.material && obj.material.emissive && !obj.userData.isSelected && obj !== this.hoveredObject) {
+        obj.material.emissiveIntensity = 0.8 + Math.sin(time * 2) * 0.3;
       }
+
+      // Add subtle position variation for magnetic effect
+      if (!obj.userData.isSelected && obj !== this.hoveredObject) {
+        const magneticOffset = Math.sin(time * 1.5) * 0.2;
+        obj.position.x += magneticOffset;
+        obj.position.z += Math.cos(time * 1.2) * 0.15;
+      }
+
+      // Update energy rings if they exist
+      if (obj.userData.energyRings) {
+        obj.userData.energyRings.forEach((ring, index) => {
+          // Add dynamic color shifting
+          const hue = (time * 0.1 + index * 0.3) % 1;
+          ring.material.color.setHSL(hue, 0.8, 0.6);
+        });
+      }
+
       return;
     }
 
@@ -1785,6 +2022,142 @@ this.animationFrame = requestAnimationFrame(this.animate);
   this.renderer.render(this.scene, this.camera);
 }
 
+/**
+ * Add magnetic field effect around the central object
+ */
+addMagneticFieldEffect(mesh) {
+  const fieldGeometry = new THREE.SphereGeometry(this.config.logoSize * 0.88, 32, 16);
+  const fieldMaterial = new THREE.MeshBasicMaterial({
+    color: 0x00ffff,
+    transparent: true,
+    opacity: 0.08,
+    wireframe: true,
+    blending: THREE.AdditiveBlending,
+  });
+
+  const fieldMesh = new THREE.Mesh(fieldGeometry, fieldMaterial);
+  mesh.add(fieldMesh);
+
+  if (window.gsap) {
+    // Pulsing magnetic field
+    gsap.to(fieldMesh.scale, {
+      x: 1.4,
+      y: 1.4,
+      z: 1.4,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    // Rotating magnetic field
+    gsap.to(fieldMesh.rotation, {
+      x: Math.PI * 2,
+      y: Math.PI * 2,
+      z: Math.PI * 2,
+      duration: 4,
+      repeat: -1,
+      ease: "none",
+    });
+
+    // Opacity pulsing
+    gsap.to(fieldMaterial, {
+      opacity: 0.14,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  }
+
+  mesh.userData.magneticField = fieldMesh;
+}
+
+/**
+ * Add particle system around the central object
+ */
+addParticleSystem(mesh) {
+  const particleCount = 100;
+  const particles = new THREE.BufferGeometry();
+  const positions = new Float32Array(particleCount * 3);
+  const colors = new Float32Array(particleCount * 3);
+  const sizes = new Float32Array(particleCount);
+
+  for (let i = 0; i < particleCount; i++) {
+    const i3 = i * 3;
+    
+    // Random positions around the central object
+    const radius = this.config.logoSize * (2 + Math.random() * 3);
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.random() * Math.PI;
+    
+    positions[i3] = radius * Math.sin(phi) * Math.cos(theta);
+    positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+    positions[i3 + 2] = radius * Math.cos(phi);
+    
+    // Random colors
+    const color = new THREE.Color();
+    color.setHSL(Math.random(), 0.8, 0.6);
+    colors[i3] = color.r;
+    colors[i3 + 1] = color.g;
+    colors[i3 + 2] = color.b;
+    
+    // Random sizes
+    sizes[i] = Math.random() * 2 + 1;
+  }
+
+  particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  particles.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+  const particleMaterial = new THREE.PointsMaterial({
+    size: 0.1,
+    transparent: true,
+    opacity: 0.6,
+    vertexColors: true,
+    blending: THREE.AdditiveBlending,
+    sizeAttenuation: true,
+  });
+
+  const particleSystem = new THREE.Points(particles, particleMaterial);
+  mesh.add(particleSystem);
+
+  if (window.gsap) {
+    // Rotate particle system
+    gsap.to(particleSystem.rotation, {
+      x: Math.PI * 2,
+      y: Math.PI * 2,
+      duration: 30,
+      repeat: -1,
+      ease: "none",
+    });
+
+    // Animate particle positions
+    const animateParticles = () => {
+      const positions = particleSystem.geometry.attributes.position.array;
+      const time = Date.now() * 0.001;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const i3 = i * 3;
+        const originalX = positions[i3];
+        const originalY = positions[i3 + 1];
+        const originalZ = positions[i3 + 2];
+        
+        // Add wave motion
+        positions[i3] = originalX + Math.sin(time + i * 0.1) * 0.5;
+        positions[i3 + 1] = originalY + Math.cos(time + i * 0.1) * 0.5;
+        positions[i3 + 2] = originalZ + Math.sin(time * 0.5 + i * 0.05) * 0.3;
+      }
+      
+      particleSystem.geometry.attributes.position.needsUpdate = true;
+      requestAnimationFrame(animateParticles);
+    };
+    
+    animateParticles();
+  }
+
+  mesh.userData.particleSystem = particleSystem;
+}
 /**
  * Updated hover effect to handle different object types
  */
@@ -2022,7 +2395,7 @@ class CustomObjectAPI {
       {
         name: 'Royal Virtual Assets',
         description: 'Royal Virtual Assets is a new global atmosphere for investment and trading, RVA stands for transparency, efficiency, and security in blockchain technology.',
-        image: 'assets/object-images/700.png',
+        image: 'assets/object-images/700.webp',
         value: '$50,000',
         category: 'Royal Artifacts',
         priority: 1,
@@ -2033,7 +2406,7 @@ class CustomObjectAPI {
       {
         name: 'Tokenisation',
         description: 'A data security process that involves substituting a sensitive data element with a non-sensitive equivalent, known as a token.',
-        image: 'assets/object-images/diamond-ring.png',
+        image: 'assets/object-images/tokenisation.webp',
         value: '$5,000',
         category: 'Jewelry',
         priority: 2,

@@ -8,17 +8,14 @@
   position: relative;
   align-content: center;
 }
-
 .countries {
   margin-bottom: 4%;
   margin-top: 4%;
 }
-
 .countries1 {
   margin-bottom: 8%;
   margin-top: 8%;
 }
-
 .countries > video,
 .countries1 > video {
   position: absolute;
@@ -28,22 +25,18 @@
   visibility: hidden !important;
   background-color: #000 !important;
 }
-
 .country,
 .country1 {
   background-color: transparent !important;
 }
-
 .country {
   padding-left: 0 !important;
 }
-
 .country1 {
   padding-right: 0 !important;
   display: flex;
   justify-content: end;
 }
-
 .ctext,
 .ctext1 {
   padding: 2%;
@@ -54,36 +47,30 @@
   transition: opacity 2s ease-out, transform 2s ease-out;
   will-change: transform, opacity;
 }
-
 .ctext {
   border-top-right-radius: 20px !important;
   border-bottom-right-radius: 20px !important;
 }
-
 .ctext1 {
   border-top-left-radius: 20px !important;
   border-bottom-left-radius: 20px !important;
 }
-
 .ctext > h4,
 .ctext1 > h4,
 .ctext > span,
 .ctext1 > span {
   color: whitesmoke !important;
 }
-
 .ctext.animate-left {
   opacity: 1;
   transform: translateX(0);
   animation: slideInLeft 2s forwards;
 }
-
 .ctext1.animate-right {
   opacity: 1;
   transform: translateX(0);
   animation: slideInRight 2s forwards;
 }
-
 @keyframes slideInLeft {
   from {
     opacity: 0;
@@ -94,7 +81,6 @@
     transform: translateX(0);
   }
 }
-
 @keyframes slideInRight {
   from {
     opacity: 0;
@@ -105,7 +91,6 @@
     transform: translateX(0);
   }
 }
-
 /* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
   .country,
@@ -124,7 +109,6 @@
     font-size: 20px;
   }
 }
-
 @media (min-width: 1401px) and (max-width: 1920px) {
   .country,
   .country1 {
@@ -142,7 +126,6 @@
     font-size: 14px;
   }
 }
-
 @media (min-width: 1201px) and (max-width: 1400px) {
   .country,
   .country1 {
@@ -159,7 +142,6 @@
     font-size: 14px;
   }
 }
-
 @media (min-width: 993px) and (max-width: 1200px) {
   .country,
   .country1 {
@@ -202,7 +184,6 @@
     font-size: 16px;
   }
 }
-
 @media (min-width: 769px) and (max-width: 992px) {
   .country,
   .country1 {
@@ -244,7 +225,6 @@
     font-size: 24px;
   }
 }
-
 @media (min-width: 577px) and (max-width: 768px) {
   .country,
   .country1 {
@@ -282,7 +262,6 @@
     font-size: 16px;
   }
 }
-
 @media (max-width: 576px) {
   .country,
   .country1 {

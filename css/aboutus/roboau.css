@@ -6,15 +6,12 @@
   overflow: hidden !important;
   position: relative;
 }
-
 .robo {
   background-color: transparent !important;
 }
-
 .robotext {
   overflow: visible;
 }
-
 .robotext > img {
   position: absolute;
   width: 20%;
@@ -23,29 +20,24 @@
   top: -2%;
   opacity: 0.8 !important;
 }
-
 .robotext > h4 {
   color: #000 !important;
   font-family: "sora-b" !important;
   z-index: 2;
 }
-
 .robotext > span {
   color: #000 !important;
   z-index: 2;
 }
-
 .roboimg {
   overflow: hidden;
   z-index: 2;
 }
-
 .roboimg > img {
   margin-top: 14%;
   margin-left: 14%;
   border-radius: 20px;
 }
-
 .buttons {
   float: right;
   width: 100%;
@@ -54,7 +46,6 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .golden,
 .white {
   font-family: "sora" !important;
@@ -70,12 +61,10 @@
   -moz-transition: 0.08s ease-in;
   -webkit-transition: 0.08s ease-in;
 }
-
 .golden {
   background: #2a2b41;
   color: whitesmoke !important;
 }
-
 .white {
   color: #2a2b41 !important;
   border-color: #2a2b41 !important;
@@ -83,13 +72,11 @@
   border-width: 4px !important;
   border: 4px solid #2a2b41 !important;
 }
-
 .golden:hover {
   color: #2a2b41 !important;
   background-color: whitesmoke !important;
   border: 4px solid #2a2b41 !important;
 }
-
 .golden:before {
   content: "";
   position: absolute;
@@ -101,17 +88,14 @@
   z-index: -1;
   -webkit-transition: top 0.09s ease-in;
 }
-
 .golden:hover:before {
   top: 0;
 }
-
 .white:hover {
   color: whitesmoke !important;
   border: 2px solid #000 !important;
   background: #2a2b41 !important;
 }
-
 .white:before {
   content: "";
   position: absolute;
@@ -123,11 +107,9 @@
   z-index: -1;
   -webkit-transition: top 0.09s ease-in;
 }
-
 .white:hover:before {
   top: 0;
 }
-
 /* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
   .robot {
@@ -171,7 +153,6 @@
     font-size: 20px !important;
   }
 }
-
 @media (min-width: 1401px) and (max-width: 1920px) {
   .robot {
     border-radius: 20px !important;
@@ -214,7 +195,6 @@
     font-size: 16px !important;
   }
 }
-
 @media (min-width: 1201px) and (max-width: 1400px) {
   .robot {
     border-radius: 20px !important;
@@ -257,7 +237,6 @@
     font-size: 14px !important;
   }
 }
-
 @media (min-width: 993px) and (max-width: 1200px) {
   .robo {
     border: 8px solid transparent;
@@ -307,7 +286,6 @@
     border-width: 2px !important;
   }
 }
-
 @media (min-width: 769px) and (max-width: 992px) {
   .robo {
     border: 8px solid transparent;
@@ -360,7 +338,6 @@
     border-width: 2px !important;
   }
 }
-
 @media (min-width: 576px) and (max-width: 768px) {
   .robo {
     border: 8px solid transparent;
@@ -411,7 +388,6 @@
     border-width: 2px !important;
   }
 }
-
 @media (max-width: 575px) {
   .robo {
     border: 8px solid transparent;

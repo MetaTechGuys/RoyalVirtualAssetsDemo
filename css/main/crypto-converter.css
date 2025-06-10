@@ -564,12 +564,23 @@ input[type="number"] {
 @media (min-width: 577px) and (max-width: 768px) {
   .clogos {
     margin-top: 2.8%;
+    >img{
+      width: 22px !important;
+      height: 22px !important;
+    }
+  }
+
+  .convert{
+    >img{
+      height: 100% !important;
+      width: auto !important;
+    }
   }
 
   .crypto-converter {
     max-width: 400px;
     margin-right: 4%;
-    margin-top: 4%;
+    margin-top: 0%;
     padding: 8px;
   }
 
@@ -599,7 +610,11 @@ input[type="number"] {
 
   .crypto-equals {
     font-size: 8px;
-    margin-top: 2%;
+    margin-top: 0%;
+    >img{
+      width: 20px !important;
+      height: 20px !important;
+    }
   }
 
   .crypto-input-group.clogos {
@@ -623,6 +638,13 @@ input[type="number"] {
     margin-top: 2.8%;
   }
 
+  
+  .convert{
+    >img{
+      height: 100% !important;
+      width: auto !important;
+    }
+  }
   .crypto-converter {
     max-width: 320px;
     margin-right: 4%;

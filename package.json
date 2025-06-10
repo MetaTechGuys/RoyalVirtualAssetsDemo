@@ -1,11 +1,8 @@
 {
-  "name": "royalvirtualassets",
+  "name": "roial-virtual-assets",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Royal Virtual Assets CSS optimization",
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,5 +12,6 @@
     "live-server": "^1.2.0",
     "three": "^0.176.0",
     "three-svg-loader": "^0.3.1"
-  }
+  },
+  "devDependencies": {}
 }

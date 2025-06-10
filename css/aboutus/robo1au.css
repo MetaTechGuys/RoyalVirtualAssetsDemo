@@ -6,27 +6,22 @@
   overflow: hidden !important;
   position: relative;
 }
-
 .robo1 {
   background-color: transparent !important;
 }
-
 .roboimg1 {
   overflow: hidden;
   z-index: 2;
 }
-
 .roboimg1 > img {
   margin-top: 0%;
   margin-left: 48%;
 }
-
 .roboimg2 {
   overflow: hidden;
   z-index: 2;
   text-align: center;
 }
-
 /* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
   .robot1 {
@@ -57,7 +52,6 @@
     border-radius: 20px;
   }
 }
-
 @media (min-width: 1401px) and (max-width: 1920px) {
   .robot1 {
     border-radius: 20px !important;
@@ -87,7 +81,6 @@
     border-radius: 20px;
   }
 }
-
 @media (min-width: 1201px) and (max-width: 1400px) {
   .robot1 {
     border-radius: 20px !important;
@@ -117,7 +110,6 @@
     border-radius: 20px;
   }
 }
-
 @media (min-width: 993px) and (max-width: 1200px) {
   .robot1 {
     border-radius: 14px !important;
@@ -146,7 +138,6 @@
     border-radius: 14px;
   }
 }
-
 @media (min-width: 769px) and (max-width: 992px) {
   .robot1 {
     border-radius: 14px !important;
@@ -175,7 +166,6 @@
     border-radius: 14px;
   }
 }
-
 @media (min-width: 577px) and (max-width: 768px) {
   .robot1 {
     border-radius: 14px !important;
@@ -204,7 +194,6 @@
     border-radius: 14px;
   }
 }
-
 @media (max-width: 576px) {
   .robot1 {
     border-radius: 14px !important;

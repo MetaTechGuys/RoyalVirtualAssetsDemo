@@ -2,7 +2,6 @@
 .foothelp {
   background-color: #2a2b41 !important;
 }
-
 .footer {
   background-color: #2a2b41;
   width: 100%;
@@ -11,25 +10,21 @@
   overflow: hidden !important;
   position: relative;
 }
-
 .foot {
   height: auto !important;
   width: 100%;
   position: relative;
   text-align: center;
 }
-
 .foot > h4,
 .foot > span {
   font-family: "sora" !important;
   color: whitesmoke;
   font-weight: 500;
 }
-
 .foot > h4 {
   line-height: 180%;
 }
-
 .soc > button {
   border: 2px solid whitesmoke !important;
   border-radius: 100%;
@@ -43,11 +38,9 @@
   -webkit-transition: 0.08s ease-in;
   position: relative;
 }
-
 .soc > button > img {
   filter: invert(100%);
 }
-
 .end {
   background-color: #000;
   color: whitesmoke;
@@ -57,13 +50,11 @@
   position: relative;
   z-index: 2 !important;
 }
-
 .end > h5 {
   font-family: "sora" !important;
   color: whitesmoke;
   font-weight: 500;
 }
-
 /* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
   .foothelp {
@@ -103,7 +94,6 @@
     font-size: 20px;
   }
 }
-
 @media (min-width: 1401px) and (max-width: 1920px) {
   .foot {
     padding-top: 100px;
@@ -138,7 +128,6 @@
     font-size: 14px;
   }
 }
-
 @media (min-width: 1201px) and (max-width: 1400px) {
   .foot {
     padding-top: 100px;
@@ -171,7 +160,6 @@
     font-size: 14px;
   }
 }
-
 @media (min-width: 993px) and (max-width: 1200px) {
   .foot {
     padding-top: 4%;
@@ -209,7 +197,6 @@
     font-size: 10px;
   }
 }
-
 @media (min-width: 769px) and (max-width: 992px) {
   .foot {
     padding-top: 4%;
@@ -248,7 +235,6 @@
     font-size: 20px;
   }
 }
-
 @media (min-width: 577px) and (max-width: 768px) {
   .foot {
     padding-top: 4%;
@@ -287,7 +273,6 @@
     font-size: 12px;
   }
 }
-
 @media (max-width: 576px) {
   .foot {
     padding-top: 4%;

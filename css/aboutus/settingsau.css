@@ -1,87 +1,67 @@
 /* Base styles - common across all breakpoints */
-* {
-  font-family: "jb-mono" !important;
-  font-weight: 500 !important;
-  cursor: url(./../../media/img/starter-motherboard-cursor.webp), default;
-}
 
 a {
   font-family: "jb-mono" !important;
 }
-
 /* Font face declarations */
 @font-face {
   font-family: "sora-b";
   src: url(../../Fonts/sora/Sora-Bold.woff);
   font-display: swap;
 }
-
 @font-face {
   font-family: "sora";
   src: url(../../Fonts/sora/Sora-Regular.woff);
   font-display: swap;
 }
-
 @font-face {
   font-family: "jb-mono";
   src: url(../../Fonts/jb-mono/JetBrainsMono-Regular.woff);
   font-display: swap;
 }
-
 @font-face {
   font-family: "fira";
   src: url(../../Fonts/Fira/FiraCode-Medium.woff);
   font-display: swap;
 }
-
 @font-face {
   font-family: "ibm";
   src: url(../../Fonts/ibm/IBMPlexMono-Medium.woff);
   font-display: swap;
 }
-
 @font-face {
   font-family: "ibmr";
   src: url(../../Fonts/ibm/IBMPlexMono-Regular.woff);
   font-display: swap;
 }
-
 @font-face {
   font-family: "inter";
   src: url(../../Fonts/inter/Inter_18pt-Regular.woff);
   font-display: swap;
 }
-
 /* Layout and general styles */
 .wrapper {
   overflow-x: clip !important;
   height: auto;
   position: relative;
 }
-
 body {
   background-color: #f5f5f5 !important;
   overflow-x: clip !important;
 }
-
 button {
   cursor: url(../../media/img/starter-motherboard-pointer.webp), pointer !important;
   font-family: "sora" !important;
 }
-
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: "sora-b" !important;
-}
 
 span {
   font-family: "jb-mono" !important;
 }
-
 /* Custom cursor styles - desktop only */
 @media (min-width: 993px) {
   #cursor {
@@ -91,7 +71,7 @@ span {
     pointer-events: none;
     z-index: 999;
   }
-
+}
   #cursor-border {
     --size: 14px;
     position: fixed;
@@ -106,7 +86,6 @@ span {
       height 0.15s ease-out, background-color 0.15s ease-out;
     z-index: 999;
   }
-}
 video{
   pointer-events: none;
 }
