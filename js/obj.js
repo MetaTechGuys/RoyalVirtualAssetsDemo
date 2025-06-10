@@ -110,6 +110,7 @@ class Object3DVisualizer {
     return true;
   }
 
+  
   /**
    * Clean up resources when the visualizer is no longer needed
    */
@@ -2395,95 +2396,52 @@ class CustomObjectAPI {
       {
         name: 'Royal Virtual Assets',
         description: 'Royal Virtual Assets is a new global atmosphere for investment and trading, RVA stands for transparency, efficiency, and security in blockchain technology.',
-        image: 'assets/object-images/700.webp',
-        value: '$50,000',
-        category: 'Royal Artifacts',
-        priority: 1,
-        status: 'Central Display',
-        tags: ['RVA', 'Crypto', 'precious', 'centerpiece'],
+
         isCentral: true
       },
       {
         name: 'Tokenisation',
         description: 'A data security process that involves substituting a sensitive data element with a non-sensitive equivalent, known as a token.',
-        image: 'assets/object-images/tokenisation.webp',
-        value: '$5,000',
-        category: 'Jewelry',
-        priority: 2,
-        status: 'Available',
-        tags: ['luxury', 'jewelry', 'diamond']
+
       },
       {
         name: 'Wallet',
         description: 'A type of financial transaction app that runs on any connected device. It securely stores your payment information and passwords.',
-        image: 'assets/object-images/vintage-watch.png',
-        value: '$2,500',
-        category: 'Timepieces',
-        priority: 3,
-        status: 'Available',
-        tags: ['vintage', 'watch', 'collectible']
       },
       {
         name: 'Trade Platform',
         description: 'A cryptocurrency trading platform is an online portal (exchange) that facilitates crypto-to-crypto transactions.',
-        image: 'assets/object-images/art-painting.png',
-        value: '$3,200',
-        category: 'Art',
-        priority: 4,
-        status: 'Available',
-        tags: ['art', 'painting', 'original']
+
       },
       {
         name: 'Coin',
         description: 'Cryptocurrencies are digital assets that rely on an encrypted network to execute, verify, and record transactions.',
-        image: 'assets/object-images/gold-necklace.png',
-        value: '$1,800',
-        category: 'Jewelry',
-        priority: 5,
-        status: 'Available',
-        tags: ['gold', 'jewelry', 'necklace']
+
       },
       {
         name: 'Dex',
         description: 'Decentralized exchanges are platforms that crypto traders can connect with using a web3 crypto wallet in order to perform trades.',
-        image: 'assets/object-images/antique-vase.png',
-        value: '$8,500',
-        category: 'Antiques',
-        priority: 6,
-        status: 'Available',
-        tags: ['antique', 'ceramic', 'ming', 'rare']
+
       },
       {
         name: 'Swap',
         description: 'Swap refers to exchanging one crypto asset for another.',
         image: 'assets/object-images/emerald-brooch.png',
-        value: '$3,800',
-        category: 'Jewelry',
-        priority: 7,
-        status: 'Available',
-        tags: ['emerald', 'victorian', 'brooch', 'antique']
+
       }
       ,
       {
         name: 'IDO',
         description: 'An initial DEX offering (IDO) is a fundraising method for blockchain-based projects through decentralized exchanges (DEXs).',
         image: 'assets/object-images/emerald-brooch.png',
-        value: '$3,800',
-        category: 'Jewelry',
-        priority: 7,
-        status: 'Available',
-        tags: ['emerald', 'victorian', 'brooch', 'antique']
+
       }
       ,
       {
         name: 'ICO',
         description: 'An initial coin offering (ICO) is the cryptocurrency industry’s equivalent of an initial public offering (IPO).',
         image: 'assets/object-images/emerald-brooch.png',
-        value: '$3,800',
-        category: 'Jewelry',
-        priority: 7,
-        status: 'Available',
-        tags: ['emerald', 'victorian', 'brooch', 'antique']
+
       }
     ];
 
