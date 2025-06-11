@@ -121,6 +121,7 @@
   opacity: 1 !important;
   visibility: visible !important;
   transition: transform 0.8s ease, opacity 0.4s ease, visibility 0.4s !important;
+  z-index: 1000 !important;
 }
 
 .navhelp .dropstart .dropdown-menu {

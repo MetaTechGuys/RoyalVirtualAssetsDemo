@@ -63,7 +63,7 @@
   position: relative;
   background: #2a2b41;
   color: whitesmoke !important;
-  border-radius: 22px !important;
+  border-radius: 20px !important;
   font-weight: 500 !important;
   overflow: hidden;
   border: none !important;
@@ -80,7 +80,7 @@
   font-family: "sora" !important;
   color: #2a2b41 !important;
   border-color: #2a2b41 !important;
-  border-radius: 22px !important;
+  border-radius: 20px !important;
   font-weight: 500 !important;
   margin-left: 28px;
   border-width: 4px !important;
