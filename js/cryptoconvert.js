@@ -136,29 +136,71 @@ class CryptoConverter {
   /**
    * Fetch cryptocurrency data
    */
-  async fetchCryptoData() {
-    try {
-      const response = await fetch(
-        `${this.apiUrl}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false`
-      );
+async fetchCryptoData() {
+  try {
+    // Check if we're in a local development environment
+    const isLocalDev = window.location.hostname === 'localhost' || 
+                      window.location.hostname === '127.0.0.1' || 
+                      window.location.protocol === 'file:';
 
-      if (!response.ok) {
-        throw new Error(`API request failed with status ${response.status}`);
-      }
+    // Construct the API URL
+    const apiUrl = `${this.apiUrl}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false`;
+    
+    // Use CORS proxy for local development
+    const requestUrl = isLocalDev 
+      ? `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`
+      : apiUrl;
 
-      this.cryptoData = await response.json();
 
-      // Update dropdowns
-      this.updateCurrencyDropdowns();
+    const response = await fetch(requestUrl, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+      cache: "no-cache",
+    });
 
-      return true;
-    } catch (error) {
-      document.getElementById("crypto-error").textContent =
-        "Failed to load cryptocurrency data";
-      document.getElementById("crypto-error").style.display = "block";
-      return false;
+    if (!response.ok) {
+      throw new Error(`API request failed with status ${response.status}: ${response.statusText}`);
     }
+
+    let data;
+    // Handle proxy response format for local development
+    if (isLocalDev) {
+      const proxyResponse = await response.json();
+      if (proxyResponse.status && proxyResponse.status.http_code !== 200) {
+        throw new Error(`Proxy error: ${proxyResponse.status.http_code}`);
+      }
+      data = JSON.parse(proxyResponse.contents);
+    } else {
+      data = await response.json();
+    }
+
+    // Validate data
+    if (!Array.isArray(data) || data.length === 0) {
+      throw new Error("No cryptocurrency data available");
+    }
+
+    this.cryptoData = data;
+
+    // Update dropdowns
+    this.updateCurrencyDropdowns();
+
+    return true;
+
+  } catch (error) {
+    
+    // Hide any existing error messages first
+    const errorElement = document.getElementById("crypto-error");
+    if (errorElement) {
+      errorElement.textContent = `Failed to load cryptocurrency data: ${error.message}`;
+      errorElement.style.display = "block";
+    }
+    
+    return false;
   }
+}
+
 
   /**
    * Update currency dropdowns with both crypto and fiat

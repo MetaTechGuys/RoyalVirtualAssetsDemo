@@ -18,20 +18,28 @@
 .robo {
   background-color: transparent !important;
   border: 48px solid transparent;
-  border-bottom: 24px solid transparent;
+  border-bottom: 0px solid transparent;
+  border-top: 0px solid transparent;
   padding: 8%;
   padding-bottom: 0;
 }
 
 .robotext {
   overflow: visible;
+  width: 60%;
+  padding-top: 8%;
 }
 
-.robotext > video {
-  position: absolute;
+.robovid{
+  width: 60%;
+ > video {
+  /* position: absolute; */
   z-index: -1 !important;
+  padding-top: 0%;
+  width: 100%;
+margin-bottom: -4%;
 }
-
+}
 .robotext > h4 {
   color: #000 !important;
   font-family: "sora-b" !important;
@@ -49,7 +57,7 @@
   margin-top: 8%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .golden {
@@ -139,10 +147,6 @@
     top: 4%;
   }
 
-  .robotext {
-    width: 64%;
-    margin-bottom: 18%;
-  }
 
   .robotext > video {
     position: absolute;
@@ -177,10 +181,6 @@
     top: 24%;
   }
 
-  .robotext {
-    width: 64%;
-    margin-bottom: 20%;
-  }
 
   .robotext > video {
     width: 48%;
@@ -212,11 +212,6 @@
 @media (min-width: 1201px) and (max-width: 1400px) {
   .robot > img {
     top: -2%;
-  }
-
-  .robotext {
-    width: 64%;
-    margin-bottom: 20%;
   }
 
   .robotext > video {
@@ -253,12 +248,7 @@
 
   .robo {
     border: 8px solid transparent;
-    border-bottom: 4px solid transparent;
-  }
-
-  .robotext {
-    width: 100%;
-    margin-bottom: 14%;
+    border-bottom: 0px solid transparent;
   }
 
   .robotext > video {
@@ -298,24 +288,24 @@
 }
 
 @media (min-width: 769px) and (max-width: 992px) {
-  .robot > img {
-    top: -2%;
+  .robot {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .robo {
     border: 8px solid transparent;
-    border-bottom: 4px solid transparent;
+    border-bottom: 0px solid transparent;
+    
   }
 
   .robotext {
     width: 100%;
-    margin-bottom: 18%;
   }
 
-  .robotext > video {
-    width: 48%;
-    top: 40%;
-    left: 56%;
+  .robovid {
+    width: 100%;
+    margin-top: 2%;
   }
 
   .robotext > h4 {
@@ -328,7 +318,7 @@
   }
 
   .buttons {
-    justify-content: left;
+    justify-content: center;
   }
 
   .golden {
@@ -349,26 +339,25 @@
 }
 
 @media (min-width: 577px) and (max-width: 768px) {
-  .robot > img {
-    top: -2%;
+  .robot {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .robo {
     border: 8px solid transparent;
-    border-bottom: 4px solid transparent;
+    border-bottom: 0px solid transparent;
+    
   }
 
   .robotext {
     width: 100%;
-    margin-bottom: 18%;
   }
 
-  .robotext > video {
-    width: 48%;
-    top: 44%;
-    left: 60%;
+  .robovid {
+    width: 100%;
+    margin-top: 2%;
   }
-
   .robotext > h4 {
     font-size: 18px;
   }
@@ -379,7 +368,7 @@
   }
 
   .buttons {
-    justify-content: left;
+    justify-content: center;
   }
 
   .golden {
@@ -400,25 +389,24 @@
 }
 
 @media (max-width: 576px) {
-  .robot > img {
-    top: -2%;
+  .robot {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .robo {
     border: 8px solid transparent;
-    border-bottom: 4px solid transparent;
-    padding: 4%;
+    border-bottom: 0px solid transparent;
+    
   }
 
   .robotext {
     width: 100%;
-    margin-bottom: 60%;
   }
 
-  .robotext > video {
-    width: 88%;
-    top: 60%;
-    left: 6%;
+  .robovid {
+    width: 100%;
+    margin-top: 2%;
   }
 
   .robotext > h4 {
@@ -430,6 +418,9 @@
     font-size: 14px;
   }
 
+   .buttons {
+    justify-content: center;
+  }
   .golden {
     width: 140px;
     height: 32px;

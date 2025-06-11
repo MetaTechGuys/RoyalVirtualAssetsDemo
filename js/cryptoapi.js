@@ -14,7 +14,7 @@ class CryptoAPI {
       limit: options.limit || 40,
       currency: options.currency || "usd",
       initialDisplay: options.initialDisplay || 8, // Default: initially show 8 items
-      maxRetries: options.maxRetries || 8, // Maximum number of retry attempts
+      maxRetries: options.maxRetries || 4, // Maximum number of retry attempts
       cacheKey: "Royal_crypto_cache", // LocalStorage key for caching
       cacheExpiry: options.cacheExpiry || 480000, // Cache expiry: 8 minutes
       eagerLoad: options.eagerLoad !== true, // Enable eager loading by default
@@ -80,28 +80,38 @@ class CryptoAPI {
     }
   }
 
-  /**
-   * Prefetch the API endpoint for faster initial load
-   */
-  prefetchApiEndpoint() {
-    const url = `${this.config.baseUrl}/coins/markets?vs_currency=${this.config.currency}&order=market_cap_desc&per_page=${this.config.limit}&page=1&sparkline=false&price_change_percentage=24h`;
+ /**
+ * Prefetch the API endpoint for faster initial load
+ */
+prefetchApiEndpoint() {
+  // Skip prefetching in local development to avoid rate limiting
+  const isLocalDev = window.location.hostname === 'localhost' || 
+                    window.location.hostname === '127.0.0.1' || 
+                    window.location.protocol === 'file:';
+  
+  if (isLocalDev) {
+    return;
+  }
 
-    // Use fetch with low priority for prefetching
-    if ("fetch" in window && "Request" in window) {
-      try {
-        const request = new Request(url);
-        fetch(request, {
-          priority: "low",
-          mode: "cors",
-        }).catch(() => {
-          // Silently fail prefetch attempts
-        });
-      } catch (error) {
-        // Fallback for browsers that don't support priority
-        fetch(url, { mode: "cors" }).catch(() => {});
-      }
+  const url = `${this.config.baseUrl}/coins/markets?vs_currency=${this.config.currency}&order=market_cap_desc&per_page=${this.config.limit}&page=1&sparkline=false&price_change_percentage=24h`;
+
+  // Use fetch with low priority for prefetching (production only)
+  if ("fetch" in window && "Request" in window) {
+    try {
+      const request = new Request(url);
+      fetch(request, {
+        priority: "low",
+        mode: "cors",
+      }).catch(() => {
+        // Silently fail prefetch attempts
+      });
+    } catch (error) {
+      // Fallback for browsers that don't support priority
+      fetch(url, { mode: "cors" }).catch(() => {});
     }
   }
+}
+
 
   /**
    * Save data to cache
@@ -1001,85 +1011,101 @@ class CryptoAPI {
   /**
    * Fetch cryptocurrency prices from the API
    */
-  async fetchPrices(retryAttempt = 0) {
-    try {
-      this.isLoading = true;
-      this.updateLoadingState();
+  /**
+ * Fetch cryptocurrency prices from the API
+ */
+async fetchPrices(retryAttempt = 0) {
+  try {
+    this.isLoading = true;
+    this.updateLoadingState();
 
-      const url = `${this.config.baseUrl}/coins/markets?vs_currency=${this.config.currency}&order=market_cap_desc&per_page=${this.config.limit}&page=1&sparkline=false&price_change_percentage=24h`;
+    // Check if we're in a local development environment
+    const isLocalDev = window.location.hostname === 'localhost' || 
+                      window.location.hostname === '127.0.0.1' || 
+                      window.location.protocol === 'file:';
 
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-        },
-        // Add cache control for better performance
-        cache: "no-cache",
-      });
+    // Construct the API URL
+    const apiUrl = `${this.config.baseUrl}/coins/markets?vs_currency=${this.config.currency}&order=market_cap_desc&per_page=${this.config.limit}&page=1&sparkline=false&price_change_percentage=24h`;
+    
+    // Use CORS proxy for local development
+    const requestUrl = isLocalDev 
+      ? `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`
+      : apiUrl;
 
-      if (!response.ok) {
-        throw new Error(`API request failed with status ${response.status}`);
+    const response = await fetch(requestUrl, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+      cache: "no-cache",
+    });
+
+    if (!response.ok) {
+      throw new Error(`API request failed with status ${response.status}: ${response.statusText}`);
+    }
+
+    let data;
+    // Handle proxy response format for local development
+    if (isLocalDev) {
+      const proxyResponse = await response.json();
+      if (proxyResponse.status && proxyResponse.status.http_code !== 200) {
+        throw new Error(`Proxy error: ${proxyResponse.status.http_code}`);
       }
+      data = JSON.parse(proxyResponse.contents);
+    } else {
+      data = await response.json();
+    }
 
-      const data = await response.json();
-
-      // Check if data is empty or invalid
-      if (!data || data.length === 0) {
-        if (retryAttempt < this.config.maxRetries) {
-          this.isLoading = false;
-          this.updateLoadingState();
-
-          // Wait 2 seconds before retrying
-          await new Promise((resolve) => setTimeout(resolve, 2000));
-          return this.fetchPrices(retryAttempt + 1);
-        } else {
-          throw new Error(
-            "No cryptocurrency data available after multiple attempts"
-          );
-        }
-      }
-
-      // Success! Update data and cache
-      this.prices = data;
-      this.hasError = false;
-      this.isUsingCache = false;
-      this.lastSuccessfulFetch = Date.now();
-
-      // Save to cache
-      this.saveToCache(data);
-
-      // Apply current sorting
-      this.sortPrices();
-
-      return this.prices;
-    } catch (error) {
+    // Validate data
+    if (!Array.isArray(data) || data.length === 0) {
       if (retryAttempt < this.config.maxRetries) {
         this.isLoading = false;
         this.updateLoadingState();
-
-        // Wait 2 seconds before retrying
         await new Promise((resolve) => setTimeout(resolve, 2000));
         return this.fetchPrices(retryAttempt + 1);
       } else {
-        // All retries failed, try to use cached data
-        const cachedData = this.loadFromCache();
-        if (cachedData && cachedData.length > 0) {
-          this.prices = cachedData;
-          this.isUsingCache = true;
-          this.hasError = false; // Don't show error if we have cached data
-          this.sortPrices();
-          return this.prices;
-        } else {
-          // No cached data available, show error
-          this.handleError(error);
-          return [];
-        }
+        throw new Error("No cryptocurrency data available after multiple attempts");
       }
-    } finally {
+    }
+
+    // Success! Update data and cache
+    this.prices = data;
+    this.hasError = false;
+    this.isUsingCache = false;
+    this.lastSuccessfulFetch = Date.now();
+
+    this.saveToCache(data);
+    this.sortPrices();
+    return this.prices;
+
+  } catch (error) {
+    
+    if (retryAttempt < this.config.maxRetries) {
       this.isLoading = false;
       this.updateLoadingState();
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      return this.fetchPrices(retryAttempt + 1);
+    } else {
+      // Try to use cached data as fallback
+      const cachedData = this.loadFromCache();
+      if (cachedData && cachedData.length > 0) {
+        this.prices = cachedData;
+        this.isUsingCache = true;
+        this.hasError = false;
+        this.sortPrices();
+        return this.prices;
+      } else {
+        this.handleError(error);
+        return [];
+      }
     }
+  } finally {
+    this.isLoading = false;
+    this.updateLoadingState();
   }
+}
+
+
 
   /**
    * Sort prices based on current sort configuration
@@ -1783,6 +1809,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Export for external use
 window.cryptoApi = cryptoApi;
+
 
 // Add service worker registration for better caching (optional)
 if ("serviceWorker" in navigator) {

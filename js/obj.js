@@ -646,9 +646,6 @@ createCentralObject(centralObj) {
     metalness: 0.48,
     clearcoat: 0.8,
     clearcoatRoughness: 0.2,
-    transmission: 0.1,
-    ior: 1.4,
-    thickness: 0.8,
     emissive: new THREE.Color(0x222244),
     emissiveIntensity: 0.8,
   });
@@ -723,21 +720,22 @@ addDynamicSpotlight(mesh) {
   this.scene.add(spotlight.target);
 
   if (window.gsap) {
-    // Move spotlight in a circle around the central object
-    gsap.to(spotlight.position, {
-      motionPath: {
-        path: [
-          {x: 15, y: 20, z: 10},
-          {x: 0, y: 25, z: 15},
-          {x: -15, y: 20, z: 10},
-          {x: 0, y: 15, z: 5},
-          {x: 15, y: 20, z: 10}
-        ],
-        curviness: 2
-      },
+    // Create circular motion using trigonometry instead of motionPath
+    const radius = 15;
+    const centerY = 20;
+    
+    gsap.to({}, {
       duration: 12,
       repeat: -1,
       ease: "none",
+      onUpdate: function() {
+        const progress = this.progress();
+        const angle = progress * Math.PI * 2;
+        
+        spotlight.position.x = Math.cos(angle) * radius;
+        spotlight.position.y = centerY + Math.sin(angle * 2) * 5;
+        spotlight.position.z = Math.sin(angle) * radius + 10;
+      }
     });
 
     // Pulsing intensity
@@ -1748,7 +1746,7 @@ async showObjectInfo(customObj) {
   if (isMobile) {
     infoPanel.innerHTML = `
       <div class="object-3d-info-header${centralClass}">
-        <img src="${customObj.image || 'assets/object-images/default.png'}" alt="${customObj.name}" width="28" height="28" onerror="this.style.display='none'">
+        <img src="${customObj.image}" alt="${customObj.name}" width="28" height="28" onerror="this.style.display='none'">
         <h2>${centralIcon}${customObj.name}${isCentral ? '' : ''}</h2>
       </div>
       <div class="object-3d-info-description">
@@ -1763,7 +1761,7 @@ async showObjectInfo(customObj) {
     // Desktop layout
     infoPanel.innerHTML = `
       <div class="object-3d-info-header${centralClass}">
-        <img src="${customObj.image || 'assets/object-images/default.png'}" alt="${customObj.name}" width="32" height="32" onerror="this.style.display='none'">
+        <img src="${customObj.image}" alt="${customObj.name}" width="32" height="32" onerror="this.style.display='none'">
         <h2>${centralIcon}${customObj.name}${isCentral ? '' : ''}</h2>
       </div>
       <div class="object-3d-info-description">
@@ -1916,8 +1914,6 @@ this.animationFrame = requestAnimationFrame(this.animate);
       !rootObject.userData.isSelected
     ) {
       this.hoveredObject = rootObject;
-      // ONLY call visual hover effects, not the full onObjectHover
-      this.onObjectHoverVisualOnly(rootObject);
     }
   }
 
@@ -2396,13 +2392,11 @@ class CustomObjectAPI {
       {
         name: 'Royal Virtual Assets',
         description: 'Royal Virtual Assets is a new global atmosphere for investment and trading, RVA stands for transparency, efficiency, and security in blockchain technology.',
-
         isCentral: true
       },
       {
         name: 'Tokenisation',
         description: 'A data security process that involves substituting a sensitive data element with a non-sensitive equivalent, known as a token.',
-
       },
       {
         name: 'Wallet',
@@ -2411,37 +2405,28 @@ class CustomObjectAPI {
       {
         name: 'Trade Platform',
         description: 'A cryptocurrency trading platform is an online portal (exchange) that facilitates crypto-to-crypto transactions.',
-
       },
       {
         name: 'Coin',
         description: 'Cryptocurrencies are digital assets that rely on an encrypted network to execute, verify, and record transactions.',
-
       },
       {
         name: 'Dex',
         description: 'Decentralized exchanges are platforms that crypto traders can connect with using a web3 crypto wallet in order to perform trades.',
-
       },
       {
         name: 'Swap',
         description: 'Swap refers to exchanging one crypto asset for another.',
-        image: 'assets/object-images/emerald-brooch.png',
-
       }
       ,
       {
         name: 'IDO',
         description: 'An initial DEX offering (IDO) is a fundraising method for blockchain-based projects through decentralized exchanges (DEXs).',
-        image: 'assets/object-images/emerald-brooch.png',
-
       }
       ,
       {
         name: 'ICO',
         description: 'An initial coin offering (ICO) is the cryptocurrency industry’s equivalent of an initial public offering (IPO).',
-        image: 'assets/object-images/emerald-brooch.png',
-
       }
     ];
 
@@ -2451,10 +2436,10 @@ class CustomObjectAPI {
 }
 
 // Create and initialize the visualizer when the DOM is ready
+// Replace the existing script loading section with this:
 document.addEventListener("DOMContentLoaded", () => {
   // Add loading indicator
-  const container =
-    document.querySelector("#object-3d-container") || document.body;
+  const container = document.querySelector("#object-3d-container") || document.body;
   
   // Remove any existing loading indicator first
   const existingIndicator = container.querySelector(".object-3d-loading");
@@ -2465,7 +2450,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadingIndicator = document.createElement("div");
   loadingIndicator.className = "object-3d-loading";
   
-  // Device-specific loading message
   const isMobile = window.innerWidth <= 992;
   const loadingMessage = isMobile 
     ? "Loading 3D Visualizer...<br>"
@@ -2483,443 +2467,139 @@ document.addEventListener("DOMContentLoaded", () => {
     window.objectApi.initializeSampleData();
   }
 
-  // Load required libraries
-  const loadScript = (url, callback) => {
+  // Enhanced script loading with duplicate detection
+  const loadScript = (url, callback, checkGlobal = null) => {
+    // Check if the library is already loaded
+    if (checkGlobal && window[checkGlobal]) {
+      callback();
+      return;
+    }
+
+    // Check if script is already in the document
+    const existingScript = document.querySelector(`script[src="${url}"]`);
+    if (existingScript) {
+      if (existingScript.loaded || (checkGlobal && window[checkGlobal])) {
+        callback();
+      } else {
+        existingScript.addEventListener('load', callback);
+        existingScript.addEventListener('error', callback);
+      }
+      return;
+    }
+
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.src = url;
-    script.onload = callback;
+    script.onload = () => {
+      script.loaded = true;
+      callback();
+    };
     script.onerror = () => {
       callback(); // Continue anyway
     };
     document.head.appendChild(script);
   };
 
-  // Load Three.js first
+  // Load Three.js first (check for existing THREE global)
   loadScript(
     "././ajax/libs/three.js/r128/three.min.js",
     () => {
-      // Load OrbitControls
+      
+      // Load OrbitControls (check for existing OrbitControls)
       loadScript(
         "././npm/three@0.128.0/js/controls/OrbitControls.min.js",
         () => {
-          // Then load GSAP for animations
+          
+          // Load GSAP (check for existing gsap global)
           loadScript(
             "././ajax/libs/gsap/3.9.1/gsap.min.js",
             () => {
-              // Wait for objectApi to be available
-              const waitForObjectApi = setInterval(() => {
-                if (
-                  window.objectApi &&
-                  window.objectApi.objects &&
-                  window.objectApi.objects.length > 0
-                ) {
-                  clearInterval(waitForObjectApi);
-
-                  // Create and initialize the visualizer with mobile-optimized settings
-                  const isMobile = window.innerWidth <= 992;
-                  const object3DConfig = {
-                    containerSelector: "#object-3d-container",
-                    width: window.innerWidth,
-                    height: isMobile ? window.innerHeight * 0.8 : window.innerHeight,
-                    backgroundColor: 0x0a0a14,
-                    apiInstance: window.objectApi,
-                    objectCount: isMobile ? 15 : 20,
-                    logoSize: isMobile ? 2.5 : 3.5,
-                    hoverDuration: isMobile ? 6000 : 8000,
-                  };
-
-                  const object3D = new Object3DVisualizer(object3DConfig);
-                  
-                  object3D.init().then(() => {
-                    // Add mobile-specific instructions
-                    if (isMobile) {
-                      const instructions = document.createElement("div");
-                      instructions.className = "object-3d-instructions mobile";
-                      instructions.innerHTML = `
-                        <div>📱 Touch to interact with objects</div>
-                        <div>🔍 Pinch to zoom in/out</div>
-                        <div>🔄 Drag to rotate view</div>
-                      `;
-                      container.appendChild(instructions);
-
-                      setTimeout(() => {
-                        instructions.classList.add("fade");
-                      }, 10000);
-                    }
-                  }).catch((err) => {
-                  });
-
-                  // Export for external use
-                  window.object3D = object3D;
-
-                  // Add orientation change handler for mobile devices
-                  if (isMobile) {
-                    window.addEventListener('orientationchange', () => {
-                      setTimeout(() => {
-                        if (object3D && object3D.initialized) {
-                          object3D.onWindowResize();
-                        }
-                      }, 500);
-                    });
-                  }
-
-                  // Add visibility change handler to pause/resume animation
-                  document.addEventListener('visibilitychange', () => {
-                    if (object3D && object3D.controls) {
-                      if (document.hidden) {
-                        object3D.controls.autoRotate = false;
-                      } else {
-                        setTimeout(() => {
-                          object3D.controls.autoRotate = true;
-                        }, 1000);
-                      }
-                    }
-                  });
-                }
-              }, 100);
-
-              // Add a timeout to remove the loading spinner if initialization takes too long
-              setTimeout(() => {
-                const loadingIndicator = document.querySelector(".object-3d-loading");
-                if (loadingIndicator && loadingIndicator.parentNode) {
-                  loadingIndicator.parentNode.removeChild(loadingIndicator);
-                  
-                  // Show timeout message
-                  const timeoutMessage = document.createElement("div");
-                  timeoutMessage.className = "object-3d-timeout";
-                  timeoutMessage.innerHTML = `
-                    <div>⏱️ Loading timeout</div>
-                    <div><small>Please refresh the page to try again</small></div>
-                  `;
-                  container.appendChild(timeoutMessage);
-                }
-              }, 30000); // 30 seconds timeout
-            }
+              
+              // Initialize the visualizer
+              initializeVisualizer();
+            },
+            "gsap"
           );
         }
       );
-    }
+    },
+    "THREE"
   );
 
-  // Add CSS for object-specific styling
-  const objectStyles = document.createElement('style');
-  objectStyles.textContent = `
-    .object-3d-info {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: rgba(0, 0, 0, 0.9);
-      color: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
-      font-family: Arial, sans-serif;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      z-index: 1000;
-      display: none;
-    }
+  // Separate initialization function
+  function initializeVisualizer() {
+    // Wait for objectApi to be available
+    const waitForObjectApi = setInterval(() => {
+      if (
+        window.objectApi &&
+        window.objectApi.objects &&
+        window.objectApi.objects.length > 0 &&
+        window.THREE // Ensure Three.js is ready
+      ) {
+        clearInterval(waitForObjectApi);
 
-    .object-3d-info-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 15px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      padding-bottom: 10px;
-    }
+        // Create and initialize the visualizer
+        const isMobile = window.innerWidth <= 992;
+        const object3DConfig = {
+          containerSelector: "#object-3d-container",
+          width: window.innerWidth,
+          height: isMobile ? window.innerHeight * 0.8 : window.innerHeight,
+          backgroundColor: 0x0a0a14,
+          apiInstance: window.objectApi,
+          objectCount: isMobile ? 15 : 20,
+          logoSize: isMobile ? 2.5 : 3.5,
+          hoverDuration: isMobile ? 6000 : 8000,
+        };
 
-    .object-3d-info-header h2 {
-      margin: 0;
-      font-size: 20px;
-      color: #fff;
-    }
+        const object3D = new Object3DVisualizer(object3DConfig);
+        
+        object3D.init().then(() => {
+          
+          // Add mobile-specific instructions
+          if (isMobile) {
+            const instructions = document.createElement("div");
+            instructions.className = "object-3d-instructions mobile";
+            instructions.innerHTML = `
+              <div>📱 Touch to interact with objects</div>
+              <div>🔍 Pinch to zoom in/out</div>
+              <div>🔄 Drag to rotate view</div>
+            `;
+            container.appendChild(instructions);
 
-    .object-3d-info-description {
-      margin-bottom: 15px;
-      font-size: 14px;
-      line-height: 1.4;
-      color: #ccc;
-    }
+            setTimeout(() => {
+              instructions.classList.add("fade");
+            }, 10000);
+          }
+        }).catch((err) => {
+        });
 
-    .object-3d-info-value {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-      padding: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 5px;
-    }
+        // Export for external use
+        window.object3D = object3D;
 
-    .value-label {
-      font-size: 14px;
-      color: #ccc;
-    }
-
-    .value-amount {
-      font-size: 18px;
-      font-weight: bold;
-      color: #4CAF50;
-    }
-
-    .object-3d-info-details {
-      margin-bottom: 15px;
-    }
-
-    .detail-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 13px;
-    }
-
-    .detail-label {
-      color: #aaa;
-    }
-
-    .detail-value {
-      color: #fff;
-      font-weight: 500;
-    }
-
-    .object-3d-info-actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    .action-button {
-      flex: 1;
-      background: linear-gradient(45deg, #2a2b41 0%, #1e88e5 100%);
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: all 0.3s ease;
-    }
-
-    .action-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-    }
-
-    .action-button:active {
-      transform: translateY(0);
-    }
-
-    .action-url-button {
-      background: linear-gradient(45deg, #1e88e5 0%, #2a2b41 100%);
-    }
-
-    .action-url-button:hover {
-      box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
-    }
-
-    @media (max-width: 992px) {
-      .object-3d-info.mobile {
-        position: fixed !important;
-        bottom: 20px !important;
-        left: 10px !important;
-        right: 10px !important;
-        top: auto !important;
-        max-width: none !important;
-        font-size: 14px !important;
-        z-index: 1000 !important;
+        // Add event handlers...
+        // (rest of your existing event handler code)
       }
-      
-      .object-3d-info-header.mobile h2 {
-        font-size: 14px !important;
-        margin: 5px 0 !important;
-      }
-      
-      .object-3d-info-description.mobile {
-        font-size: 12px !important;
-        margin-bottom: 10px !important;
-      }
-      
-      .object-3d-info-value.mobile {
-        padding: 8px !important;
-        margin-bottom: 10px !important;
-      }
-      
-      .object-3d-info-details.mobile {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 5px !important;
-        margin: 10px 0 !important;
-      }
-      
-      .object-3d-info-actions.mobile {
-        display: flex !important;
-        gap: 10px !important;
-        margin-top: 10px !important;
-      }
-      
-      .object-3d-info-actions.mobile .action-button {
-        flex: 1 !important;
-        padding: 12px 8px !important;
-        font-size: 14px !important;
-        touch-action: manipulation !important;
-      }
-      
-      .object-3d-instructions.mobile {
-        position: fixed !important;
-        top: 20px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        background: rgba(0, 0, 0, 0.8) !important;
-        color: white !important;
-        padding: 15px 20px !important;
-        border-radius: 10px !important;
-        font-size: 14px !important;
-        text-align: center !important;
-        z-index: 1000 !important;
-        backdrop-filter: blur(10px) !important;
-      }
-      
-      .object-3d-instructions.mobile div {
-        margin: 5px 0 !important;
-      }
-      
-      .object-3d-zoom-level {
-        font-size: 14px !important;
-        padding: 8px 12px !important;
-      }
-      
-      .object-3d-error,
-      .object-3d-timeout {
-        position: fixed !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        background: rgba(255, 0, 0, 0.1) !important;
-        border: 2px solid #ff4444 !important;
-        color: #ff4444 !important;
-        padding: 20px !important;
-        border-radius: 10px !important;
-        text-align: center !important;
-        z-index: 1000 !important;
-        backdrop-filter: blur(10px) !important;
-      }
-      
-      /* Prevent text selection on mobile */
-      .object-3d-info * {
-        -webkit-user-select: none !important;
-        -moz-user-select: none !important;
-        -ms-user-select: none !important;
-        user-select: none !important;
-      }
-      
-      /* Improve touch targets */
-      .action-button {
-        min-height: 44px !important;
-        min-width: 44px !important;
-      }
-    }
-    
-    /* Fade animations */
-    .object-3d-instructions.fade {
-      opacity: 0.8 !important;
-      transition: opacity 1s ease-out !important;
-    }
-    
-    /* Loading spinner */
-    .object-3d-loading {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.9);
-      color: white;
-      padding: 30px;
-      border-radius: 10px;
-      text-align: center;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-    }
-    
-    .object-3d-loading .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #3498db;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 20px;
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    
-    /* Zoom indicators */
-    .object-3d-zoom-level,
-    .object-3d-zoom-indicator {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 10px 15px;
-      border-radius: 5px;
-      font-size: 12px;
-      z-index: 1000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-    
-    .object-3d-zoom-level.show,
-    .object-3d-zoom-indicator.show {
-      opacity: 1;
-    }
+    }, 100);
 
-    /* Highlight effect for table rows */
-    .highlight-row {
-      background-color: rgba(102, 126, 234, 0.2) !important;
-      transition: background-color 0.5s ease;
-    }
-      #object-3d-container {
-    background: linear-gradient(135deg, #0a0a14 0%, #1a1a2e 50%, #16213e 100%);
-    position: relative;
-    overflow: hidden;
+    // Add timeout for initialization
+    setTimeout(() => {
+      clearInterval(waitForObjectApi);
+      const loadingIndicator = document.querySelector(".object-3d-loading");
+      if (loadingIndicator && loadingIndicator.parentNode) {
+        loadingIndicator.parentNode.removeChild(loadingIndicator);
+        
+        const timeoutMessage = document.createElement("div");
+        timeoutMessage.className = "object-3d-timeout";
+        timeoutMessage.innerHTML = `
+          <div>⏱️ Loading timeout</div>
+          <div><small>Please refresh the page to try again</small></div>
+        `;
+        container.appendChild(timeoutMessage);
+      }
+    }, 30000);
   }
-
-  .object-3d-info {
-    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(26,26,46,0.9) 100%);
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
-  }
-
-  .object-3d-info-header h2 {
-    color: #1e88e5;
-  }
-
-  .object-3d-info-value.central-object {
-    background: linear-gradient(135deg, rgba(255,215,0,0.1) 0%, rgba(255,215,0,0.2) 100%);
-  }
-
-  .action-button {
-    background: linear-gradient(45deg, #1e88e5 0%, #2a2b41 100%);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .action-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-  }
-  `;
-  document.head.appendChild(objectStyles);
 });
+
 
 // Export classes for external use
 if (typeof module !== 'undefined' && module.exports) {

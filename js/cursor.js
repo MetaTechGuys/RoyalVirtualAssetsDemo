@@ -40,6 +40,26 @@
         cursorBorder.style.setProperty("--size", "14px");
       });
     });
+
+    // Hide cursor border on specific elements
+    function addCursorBorderHideEvents(selector) {
+      document.querySelectorAll(selector).forEach((element) => {
+        element.addEventListener("mouseenter", () => {
+          cursorBorder.style.opacity = "0";
+        });
+        element.addEventListener("mouseleave", () => {
+          cursorBorder.style.opacity = "1";
+        });
+      });
+    }
+
+    // Apply to the specified elements
+    document.addEventListener('DOMContentLoaded', function() {
+      addCursorBorderHideEvents('.carousel-item');
+      addCursorBorderHideEvents('.swiper-slide img');
+      addCursorBorderHideEvents('.vidimg > video');
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
     const vidimg = document.querySelector('.vidimg');
     const video = document.querySelector('.vidimg > video');
@@ -138,4 +158,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-

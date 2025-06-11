@@ -51,6 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const videosContainer = document.querySelector('.videos-container');
     let hasPlayedWave = false;
 
+    // Add CSS transition for fade effect
+    if (waveVideo) {
+        waveVideo.style.transition = 'opacity 0.2s ease-out';
+    }
+
     // Make videos container visible initially for the wave video
     if (videosContainer) {
         videosContainer.classList.add('show-videos');
@@ -60,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function playWaveVideo() {
         if (waveVideo && !hasPlayedWave) {
             waveVideo.style.display = 'block';
+            waveVideo.style.opacity = '1';
             loopVideo.style.display = 'none';
             
             waveVideo.currentTime = 0;
@@ -68,21 +74,25 @@ document.addEventListener('DOMContentLoaded', function() {
             // Hide container before video ends
             waveVideo.addEventListener('timeupdate', function() {
                 // Hide when there's 0.5 seconds left (adjust this value as needed)
-                if (waveVideo.duration - waveVideo.currentTime <= 0.2 && !hasPlayedWave) {
+                if (waveVideo.duration - waveVideo.currentTime <= 0.4 && !hasPlayedWave) {
                     hasPlayedWave = true;
                     
                     // Remove the show-videos class to return to original CSS behavior
                     videosContainer.classList.remove('show-videos');
                     
-                    // Hide wave video first, don't show loop video yet
-                    waveVideo.style.display = 'none';
-                    // Remove this line: loopVideo.style.display = 'block';
+                    // Fade out wave video
+                    waveVideo.style.opacity = '0';
+                    
+                    // After fade animation completes, hide the video completely
+                    setTimeout(() => {
+                        waveVideo.style.display = 'none';
+                    }, 400); // Match the transition duration
+                    
                     loopVideo.loop = true;
                 }
             });
         }
     }
-
 
     // Function to play loop video (for hover/click interactions)
     function playLoopVideo() {
@@ -98,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Play wave video automatically when page loads
     setTimeout(() => {
         playWaveVideo();
-    }, 800);
+    }, 400);
 
     // Handle AI chat toggle button interactions
     const aiChatToggle = document.getElementById('ai-chat-toggle');
@@ -116,6 +126,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-
-

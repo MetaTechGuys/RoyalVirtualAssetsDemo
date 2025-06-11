@@ -212,9 +212,9 @@
 
 @media (min-width: 769px) and (max-width: 992px) {
   .r1 {
-    left: 20%;
-    top: 24%;
-    height: 68%;
+    left: 28%;
+    top: 38%;
+    height: 54%;
     opacity: 0.28;
   }
 
@@ -257,9 +257,9 @@
 
 @media (min-width: 577px) and (max-width: 768px) {
   .r1 {
-    left: 28%;
-    top: 24%;
-    height: 64%;
+    left: 32%;
+    top: 38%;
+    height: 55%;
     opacity: 0.28;
   }
 
@@ -302,8 +302,9 @@
 
 @media (max-width: 576px) {
   .r1 {
-    height: 68%;
-    width: 114%;
+    top: 32%;
+    height: 56%;
+    /* width: 114%; */
     opacity: 0.28;
   }
 
