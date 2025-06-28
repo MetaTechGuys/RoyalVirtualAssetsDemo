@@ -273,7 +273,7 @@ class Object3DVisualizer {
   this.scene.background = new THREE.Color(this.config.backgroundColor);
 
   // Add fog for depth
-  this.scene.fog = new THREE.FogExp2(this.config.backgroundColor, 0.008);
+  this.scene.fog = new THREE.FogExp2(this.config.backgroundColor, 0.0098);
 
   // Create camera with better positioning for orbital view
   this.camera = new THREE.PerspectiveCamera(
@@ -698,14 +698,129 @@ createCentralObject(centralObj) {
   // Add enhanced glow effect for central object
   this.addCentralGlowEffect(mesh, centralObj);
   // this.addEnhancedCentralAnimation(mesh);
-  this.addMagneticFieldEffect(mesh);
-  this.addParticleSystem(mesh);
   
   // Add attention-grabbing spotlight that follows the central object
   this.addDynamicSpotlight(mesh);
-// Add floating animation
+  
+  // Add floating animation
   this.addFloatingAnimation(mesh);
+  
+  // Add pulsing animation to the central object
+  this.addPulsingAnimation(mesh);
 }
+
+/**
+ * Add pulsing animation to the central object
+ */
+addPulsingAnimation(mesh) {
+  if (window.gsap) {
+    // Store the original scale for reference
+    const originalScale = mesh.userData.originalScale;
+    
+    // Create a pulsing scale animation
+    const pulseTimeline = gsap.timeline({ repeat: -1 });
+    
+    pulseTimeline
+      .to(mesh.scale, {
+        x: originalScale.x * 1.12,
+        y: originalScale.y * 1.12,
+        z: originalScale.z * 1.12,
+        duration: 1.4,
+        ease: "sine.inOut"
+      })
+      .to(mesh.scale, {
+        x: originalScale.x * 0.88,
+        y: originalScale.y * 0.88,
+        z: originalScale.z * 0.88,
+        duration: 1.2,
+        ease: "sine.inOut"
+      })
+      .to(mesh.scale, {
+        x: originalScale.x,
+        y: originalScale.y,
+        z: originalScale.z,
+        duration: 1.2,
+        ease: "sine.inOut"
+      });
+
+    // Add emissive intensity pulsing that syncs with scale
+    if (mesh.material && mesh.material.emissive) {
+      const emissivePulse = gsap.timeline({ repeat: -1 });
+      
+      emissivePulse
+        .to(mesh.material, {
+          emissiveIntensity: 1.12,
+          duration: 1.4,
+          ease: "sine.inOut"
+        })
+        .to(mesh.material, {
+          emissiveIntensity: 0.6,
+          duration: 1.2,
+          ease: "sine.inOut"
+        })
+        .to(mesh.material, {
+          emissiveIntensity: 0.8,
+          duration: 1.0,
+          ease: "sine.inOut"
+        });
+    }
+
+    // Add glow mesh pulsing if it exists
+    if (mesh.userData.glowMeshes) {
+      mesh.userData.glowMeshes.forEach((glowMesh, index) => {
+        const glowPulse = gsap.timeline({ repeat: -1, delay: index * 0.1 });
+        
+        glowPulse
+          .to(glowMesh.scale, {
+            x: 1.2,
+            y: 1.2,
+            z: 1.2,
+            duration: 1.4,
+            ease: "sine.inOut"
+          })
+          .to(glowMesh.scale, {
+            x: 0.8,
+            y: 0.8,
+            z: 0.8,
+            duration: 1.2,
+            ease: "sine.inOut"
+          })
+          .to(glowMesh.scale, {
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+            duration: 1.0,
+            ease: "sine.inOut"
+          });
+
+        // Pulse the glow opacity as well
+        const glowOpacityPulse = gsap.timeline({ repeat: -1, delay: index * 0.1 });
+        const originalOpacity = glowMesh.material.opacity;
+        
+        glowOpacityPulse
+          .to(glowMesh.material, {
+            opacity: originalOpacity * 1.2,
+            duration: 1.4,
+            ease: "sine.inOut"
+          })
+          .to(glowMesh.material, {
+            opacity: originalOpacity * 0.8,
+            duration: 1.2,
+            ease: "sine.inOut"
+          })
+          .to(glowMesh.material, {
+            opacity: originalOpacity,
+            duration: 1.0,
+            ease: "sine.inOut"
+          });
+      });
+    }
+
+    // Store animation references for cleanup if needed
+    mesh.userData.pulseAnimation = pulseTimeline;
+  }
+}
+
 
 /**
  * Add dynamic spotlight that follows the central object
@@ -1299,51 +1414,9 @@ addFloatingAnimation(mesh) {
         mesh.position.z = offsetZ;
       }
     });
-
-    // 7. Add particle-like shimmer effect to the material
-    this.addShimmerEffect(mesh);
   }
 }
 
-/**
- * Add shimmer effect to the central object
- */
-addShimmerEffect(mesh) {
-  if (window.gsap && mesh.material) {
-    // Create a timeline for complex shimmer animation
-    const shimmerTimeline = gsap.timeline({ repeat: -1, repeatDelay: 4 });
-    
-    // Metalness shimmer
-    shimmerTimeline.to(mesh.material, {
-      metalness: 0.8,
-      duration: 1,
-      ease: "power2.inOut",
-    })
-    .to(mesh.material, {
-      metalness: 0.2,
-      duration: 1,
-      ease: "power2.inOut",
-    });
-
-    // Roughness variation for surface texture changes
-    gsap.to(mesh.material, {
-      roughness: 0.1,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
-
-    // Clearcoat intensity variation
-    gsap.to(mesh.material, {
-      clearcoat: 1.0,
-      duration: 2.5,
-      repeat: -1,
-      yoyo: true,
-      ease: "power2.inOut",
-    });
-  }
-}
 
 addSubtleFloatingAnimation(mesh, index) {
   if (window.gsap) {
@@ -2019,142 +2092,6 @@ this.animationFrame = requestAnimationFrame(this.animate);
   this.renderer.render(this.scene, this.camera);
 }
 
-/**
- * Add magnetic field effect around the central object
- */
-addMagneticFieldEffect(mesh) {
-  const fieldGeometry = new THREE.SphereGeometry(this.config.logoSize * 0.88, 32, 16);
-  const fieldMaterial = new THREE.MeshBasicMaterial({
-    color: 0x00ffff,
-    transparent: true,
-    opacity: 0.08,
-    wireframe: true,
-    blending: THREE.AdditiveBlending,
-  });
-
-  const fieldMesh = new THREE.Mesh(fieldGeometry, fieldMaterial);
-  mesh.add(fieldMesh);
-
-  if (window.gsap) {
-    // Pulsing magnetic field
-    gsap.to(fieldMesh.scale, {
-      x: 1.4,
-      y: 1.4,
-      z: 1.4,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
-
-    // Rotating magnetic field
-    gsap.to(fieldMesh.rotation, {
-      x: Math.PI * 2,
-      y: Math.PI * 2,
-      z: Math.PI * 2,
-      duration: 4,
-      repeat: -1,
-      ease: "none",
-    });
-
-    // Opacity pulsing
-    gsap.to(fieldMaterial, {
-      opacity: 0.14,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
-  }
-
-  mesh.userData.magneticField = fieldMesh;
-}
-
-/**
- * Add particle system around the central object
- */
-addParticleSystem(mesh) {
-  const particleCount = 100;
-  const particles = new THREE.BufferGeometry();
-  const positions = new Float32Array(particleCount * 3);
-  const colors = new Float32Array(particleCount * 3);
-  const sizes = new Float32Array(particleCount);
-
-  for (let i = 0; i < particleCount; i++) {
-    const i3 = i * 3;
-    
-    // Random positions around the central object
-    const radius = this.config.logoSize * (2 + Math.random() * 3);
-    const theta = Math.random() * Math.PI * 2;
-    const phi = Math.random() * Math.PI;
-    
-    positions[i3] = radius * Math.sin(phi) * Math.cos(theta);
-    positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
-    positions[i3 + 2] = radius * Math.cos(phi);
-    
-    // Random colors
-    const color = new THREE.Color();
-    color.setHSL(Math.random(), 0.8, 0.6);
-    colors[i3] = color.r;
-    colors[i3 + 1] = color.g;
-    colors[i3 + 2] = color.b;
-    
-    // Random sizes
-    sizes[i] = Math.random() * 2 + 1;
-  }
-
-  particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-  particles.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-
-  const particleMaterial = new THREE.PointsMaterial({
-    size: 0.1,
-    transparent: true,
-    opacity: 0.6,
-    vertexColors: true,
-    blending: THREE.AdditiveBlending,
-    sizeAttenuation: true,
-  });
-
-  const particleSystem = new THREE.Points(particles, particleMaterial);
-  mesh.add(particleSystem);
-
-  if (window.gsap) {
-    // Rotate particle system
-    gsap.to(particleSystem.rotation, {
-      x: Math.PI * 2,
-      y: Math.PI * 2,
-      duration: 30,
-      repeat: -1,
-      ease: "none",
-    });
-
-    // Animate particle positions
-    const animateParticles = () => {
-      const positions = particleSystem.geometry.attributes.position.array;
-      const time = Date.now() * 0.001;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const i3 = i * 3;
-        const originalX = positions[i3];
-        const originalY = positions[i3 + 1];
-        const originalZ = positions[i3 + 2];
-        
-        // Add wave motion
-        positions[i3] = originalX + Math.sin(time + i * 0.1) * 0.5;
-        positions[i3 + 1] = originalY + Math.cos(time + i * 0.1) * 0.5;
-        positions[i3 + 2] = originalZ + Math.sin(time * 0.5 + i * 0.05) * 0.3;
-      }
-      
-      particleSystem.geometry.attributes.position.needsUpdate = true;
-      requestAnimationFrame(animateParticles);
-    };
-    
-    animateParticles();
-  }
-
-  mesh.userData.particleSystem = particleSystem;
-}
 /**
  * Updated hover effect to handle different object types
  */

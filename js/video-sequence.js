@@ -45,15 +45,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { once: true });
     }
 });
+
 document.addEventListener('DOMContentLoaded', function() {
     const waveVideo = document.querySelector('.wave');
     const loopVideo = document.querySelector('.loop');
     const videosContainer = document.querySelector('.videos-container');
     let hasPlayedWave = false;
 
-    // Add CSS transition for fade effect
+    // Add CSS transition for fade effect on wave video
     if (waveVideo) {
         waveVideo.style.transition = 'opacity 0.2s ease-out';
+    }
+
+    // Add CSS transition for scale effect on loop video
+    if (loopVideo) {
+        loopVideo.style.transition = 'transform 0.3s ease-out';
+        loopVideo.style.transformOrigin = 'center';
     }
 
     // Make videos container visible initially for the wave video
@@ -83,25 +90,38 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Fade out wave video
                     waveVideo.style.opacity = '0';
                     
-                    // After fade animation completes, hide the video completely
+                    // After fade animation completes, show loop video
                     setTimeout(() => {
                         waveVideo.style.display = 'none';
+                        // Show loop video and start playing it
+                        showLoopVideo();
                     }, 400); // Match the transition duration
-                    
-                    loopVideo.loop = true;
                 }
             });
         }
     }
 
-    // Function to play loop video (for hover/click interactions)
-    function playLoopVideo() {
+    // Function to show and play loop video
+    function showLoopVideo() {
         if (loopVideo && hasPlayedWave) {
-            waveVideo.style.display = 'none';
             loopVideo.style.display = 'block';
-            
+            loopVideo.loop = true;
             loopVideo.currentTime = 0;
             loopVideo.play().catch(e => console.log('Loop video play failed:', e));
+        }
+    }
+
+    // Function to scale up loop video
+    function scaleUpLoopVideo() {
+        if (loopVideo && hasPlayedWave) {
+            loopVideo.style.transform = 'scale(1.1)';
+        }
+    }
+
+    // Function to scale down loop video
+    function scaleDownLoopVideo() {
+        if (loopVideo && hasPlayedWave) {
+            loopVideo.style.transform = 'scale(1)';
         }
     }
 
@@ -114,15 +134,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const aiChatToggle = document.getElementById('ai-chat-toggle');
     if (aiChatToggle) {
         aiChatToggle.addEventListener('mouseenter', function() {
-            if (hasPlayedWave) {
-                playLoopVideo();
-            }
+            scaleUpLoopVideo();
+        });
+
+        aiChatToggle.addEventListener('mouseleave', function() {
+            scaleDownLoopVideo();
         });
 
         aiChatToggle.addEventListener('click', function() {
-            if (hasPlayedWave) {
-                playLoopVideo();
-            }
+            scaleUpLoopVideo();
+            // Scale back down after a short delay
+            setTimeout(() => {
+                scaleDownLoopVideo();
+            }, 200);
         });
     }
 });

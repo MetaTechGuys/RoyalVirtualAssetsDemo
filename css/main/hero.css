@@ -47,7 +47,7 @@
   position: absolute;
   display: flex;
   flex-wrap: wrap;
-  top: 8%;
+  top: 4%;
   width: 60%;
   z-index: 2;
   width: 100%;
@@ -883,7 +883,7 @@
   }
 
   .title-line {
-    font-size: 88px;
+    font-size: 80px;
   }
 
   .golden {
@@ -923,7 +923,7 @@
   }
 
   .hero-title {
-    font-size: 80px;
+    font-size: 64px;
     /* margin-top: 4.8%; */
   }
 
@@ -1085,7 +1085,7 @@
   }
 
   .title-line {
-    font-size: 48px;
+    font-size: 40px;
   }
 
   .golden {
@@ -1138,7 +1138,7 @@
   }
 
   .title-line {
-    font-size: 40px;
+    font-size: 36px;
   }
 
   .buttons {
@@ -1197,7 +1197,7 @@
   }
 
   .title-line {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .buttons {

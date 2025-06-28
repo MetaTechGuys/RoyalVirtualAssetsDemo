@@ -52,7 +52,7 @@
   bottom: 2%;
   right: 14%;
   width: 33%;
-  height: 80%;
+  height: 88%;
   background: rgba(0, 0, 0, 0.95);
   border: 1px solid #2a2b41;
   border-radius: 20px;
@@ -302,7 +302,7 @@
 @media (max-width: 1400px) {
   #ai-chat-container {
     width: 48%;
-    height: 64%;
+    height: 68%;
     right: 18%;
     bottom: 40px;
   }
@@ -315,7 +315,7 @@
 @media (max-width: 1200px) {
   #ai-chat-container {
     width: 48%;
-    height: 64%;
+    height: 68%;
     right: 18%;
     bottom: 40px;
   }
@@ -892,8 +892,8 @@
   position: fixed;
   bottom: 40px;
   right: 2vw;
-  width: 280px;
-  height: 280px;
+  width: 200px;
+  height: 200px;
   background: transparent;
   border: none;
   border-radius: 0px;
@@ -915,8 +915,8 @@
   height: 100%;
   border-radius: 0px;
   overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  /* visibility: hidden; */
   transform: translateY(40px) scale(0.8);
   transition: all 0.8s ease;
 }
