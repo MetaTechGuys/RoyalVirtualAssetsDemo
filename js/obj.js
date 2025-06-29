@@ -1671,9 +1671,7 @@ truncateDescription(text, maxLength = 200) {
   this.showObjectInfo(customObj);
 
     // Update instructions
-    const instructions = document.querySelector(".object-3d-instructions");
     if (instructions) {
-      instructions.textContent = "Object selected! Click again to deselect.";
       instructions.classList.remove("fade");
 
       setTimeout(() => {
@@ -2495,12 +2493,6 @@ document.addEventListener("DOMContentLoaded", () => {
           // Add mobile-specific instructions
           if (isMobile) {
             const instructions = document.createElement("div");
-            instructions.className = "object-3d-instructions mobile";
-            instructions.innerHTML = `
-              <div>📱 Touch to interact with objects</div>
-              <div>🔍 Pinch to zoom in/out</div>
-              <div>🔄 Drag to rotate view</div>
-            `;
             container.appendChild(instructions);
 
             setTimeout(() => {
