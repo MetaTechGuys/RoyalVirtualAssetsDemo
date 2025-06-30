@@ -11,7 +11,7 @@
 .robo {
   background-color: transparent !important;
   border: 48px solid transparent;
-  border-bottom: 24px solid transparent;
+  border-bottom: 0px solid transparent;
   border-top: 24px solid transparent;
   margin-top: 8% !important;
 }
@@ -35,7 +35,7 @@
   color: #1e88e5 !important;
   font-family: "sora-b" !important;
   margin-bottom: 4%;
-  margin-top: 28%;
+  margin-top: 20%;
 }
 
 .robotext > span {
@@ -49,12 +49,12 @@
   overflow: hidden;
 }
 
-.roboimg > video {
+.roboimg > img {
   width: 80%;
 }
 
 /* Video switching functionality for 1401-1920px */
-.roboimg {
+/* .roboimg {
   position: relative;
 }
 
@@ -66,13 +66,13 @@
 
 .roboimg video.active {
   display: block;
-}
+} */
 
 /* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
-  .robot {
+  /* .robot {
     margin-bottom: 4%;
-  }
+  } */
 
   .robotext {
     margin-bottom: 14%;
@@ -89,16 +89,16 @@
     letter-spacing: 2px;
   }
 
-  .roboimg > video {
+  .roboimg > img {
     margin-top: 8%;
     margin-left: 2%;
   }
 }
 
 @media (min-width: 1401px) and (max-width: 1920px) {
-  .robot {
+  /* .robot {
     margin-bottom: 8%;
-  }
+  } */
 
   .robotext {
     margin-bottom: 4%;
@@ -115,15 +115,15 @@
     z-index: 1 !important;
   }
 
-  .roboimg > video {
+  .roboimg > img {
     margin-left: 8%;
   }
 }
 
 @media (min-width: 1201px) and (max-width: 1400px) {
-  .robot {
+  /* .robot {
     margin-bottom: 8%;
-  }
+  } */
 
   .robotext {
     margin-bottom: 14%;
@@ -140,25 +140,26 @@
     z-index: 1 !important;
   }
 
-  .roboimg > video {
+  .roboimg > img {
     margin-left: 8%;
   }
 }
 
 @media (min-width: 993px) and (max-width: 1200px) {
-  .robot {
+  /* .robot {
     margin-bottom: 2%;
-  }
+  } */
 
   .robo {
     border: 8px solid transparent;
-    border-bottom: 2px solid transparent;
+    border-bottom: 0px solid transparent;
     border-top: 4px solid transparent;
   }
 
   .robotext {
     padding: 8%;
     padding-top: 0px;
+    padding-left: 0;
     width: 100%;
   }
 
@@ -186,8 +187,8 @@
     text-align: center;
   }
 
-  .roboimg > video {
-    width: 40%;
+  .roboimg > img {
+    width: 48%;
     margin-top: 4%;
   }
 }

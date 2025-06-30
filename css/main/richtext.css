@@ -115,6 +115,8 @@
 
   .richhelp {
     border: 4px solid transparent;
+  border-bottom: 0px solid transparent;
+
   }
 
   .richtext {
@@ -147,6 +149,8 @@
 
   .richhelp {
     border: 4px solid transparent;
+  border-bottom: 0px solid transparent;
+
   }
 
   .richtext {
@@ -179,6 +183,8 @@
 
   .richhelp {
     border: 4px solid transparent;
+  border-bottom: 0px solid transparent;
+
   }
 
   .richtext {
@@ -221,6 +227,8 @@
 
   .richhelp {
     border: 4px solid transparent;
+  border-bottom: 0px solid transparent;
+
   }
 
   .richtext {
