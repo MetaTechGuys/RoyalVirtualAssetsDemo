@@ -28,6 +28,8 @@
 
 .robotext {
   overflow: visible;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .robotext > video {

@@ -6,19 +6,19 @@
   border-radius: 20px !important;
   overflow: hidden !important;
   position: relative;
+  padding: 0;
 }
 
 .robo {
   background-color: transparent !important;
-  border: 48px solid transparent;
-  border-bottom: 0px solid transparent;
-  border-top: 24px solid transparent;
+  border: 0px solid transparent;
   margin-top: 8% !important;
 }
 
 .robotext {
   width: 60%;
   z-index: 2;
+  margin-left: 2%;
 }
 
 .robotext > video {
