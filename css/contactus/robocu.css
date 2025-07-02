@@ -6,6 +6,7 @@
   border-radius: 20px !important;
   overflow: hidden !important;
   position: relative;
+  padding: 0;
 }
 
 .robot > img {
@@ -16,13 +17,13 @@
 .robovid{
   >video{
      width: 100%;
-    border-radius: 20px;
     }
 }
 
 .robo {
   background-color: transparent !important;
   padding-bottom: 0;
+  
 }
 
 .robotext {
@@ -138,7 +139,7 @@
   }
 
   .robo {
-    padding: 4%;
+    padding: 0%;
   }
     .robovid{
     width: 40%;
@@ -185,9 +186,8 @@
   }
 
   .robo {
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    padding: 8%;
+    border: 0px solid transparent;
+    /* padding: 8%; */
     padding-bottom: 0;
     padding-top: 4%;
   }
@@ -244,10 +244,8 @@
   }
 
   .robo {
-    border: 48px solid transparent;
-    border-bottom: 24px solid transparent;
-    padding: 4%;
-    padding-bottom: 0;
+    border: 0px solid transparent;
+    padding: 0%;
   }
     .robovid{
     width: 40%;
@@ -294,10 +292,8 @@
   }
 
   .robo {
-    border: 8px solid transparent;
-    border-bottom: 4px solid transparent;
-    padding: 4%;
-    padding-bottom: 0;
+    border: 0px solid transparent;
+    padding: 0%;
   }
   .robovid{
     width: 40%;

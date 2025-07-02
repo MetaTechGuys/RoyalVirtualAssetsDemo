@@ -273,7 +273,7 @@ class Object3DVisualizer {
   this.scene.background = new THREE.Color(this.config.backgroundColor);
 
   // Add fog for depth
-  this.scene.fog = new THREE.FogExp2(this.config.backgroundColor, 0.0098);
+  this.scene.fog = new THREE.FogExp2(this.config.backgroundColor, 0.008);
 
   // Create camera with better positioning for orbital view
   this.camera = new THREE.PerspectiveCamera(
@@ -311,8 +311,8 @@ class Object3DVisualizer {
   directionalLight.position.set(10, 14, 10);
   directionalLight.target.position.set(0, 0, 0);
   directionalLight.castShadow = true;
-  directionalLight.shadow.mapSize.width = 2048;
-  directionalLight.shadow.mapSize.height = 2048;
+  directionalLight.shadow.mapSize.width = 1024;
+  directionalLight.shadow.mapSize.height = 1024;
   directionalLight.shadow.camera.near = 0.8;
   directionalLight.shadow.camera.far = 48;
   directionalLight.shadow.camera.left = -40;
@@ -323,11 +323,11 @@ class Object3DVisualizer {
 
   // Add point lights in a circle around the orbital system
   const colors = [0x3498db, 0xe74c3c, 0xf39c12, 0x2ecc71, 0x9b59b6, 0xe67e22,0x3498db, 0xe74c3c, 0xf39c12, 0x2ecc71, 0x9b59b6, 0xe67e22];
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 8; i++) {
     const pointLight = new THREE.PointLight(
       colors[i % colors.length],
-      0.4,
-      140
+      0.2,
+      80
     );
     const angle = (i / 12) * Math.PI * 2;
     const radius = 48;
@@ -365,8 +365,8 @@ class Object3DVisualizer {
     this.controls.minDistance = 40;
     this.controls.maxDistance = 120;
     this.controls.maxPolarAngle = Math.PI / 2;
-    this.controls.autoRotate = true;
-    this.controls.autoRotateSpeed = 0.5; // Slightly faster to complement the orbital motion
+    this.controls.autoRotate = false;
+    this.controls.autoRotateSpeed = 0.4; // Slightly faster to complement the orbital motion
 
     // Enable rotation and panning
     this.controls.enableRotate = true;
@@ -633,7 +633,7 @@ createCustomObjects() {
  */
 createCentralObject(centralObj) {
   // Create a larger circular geometry for the central object
-  const geometry = new THREE.CircleGeometry(this.config.logoSize * 0.8, 64);
+  const geometry = new THREE.CircleGeometry(this.config.logoSize * 0.8, 32);
 
   // Define image file path
   const imagePath = `assets/object-images/700.webp`;
@@ -1039,10 +1039,8 @@ addMultipleOrbitPaths() {
 addCentralGlowEffect(mesh, customObj) {
   // Create multiple glow layers for enhanced effect
   const glowLayers = [
-    { size: 0.4, opacity: 1.2, color: 0x000000, animation: { duration: 1.4, intensity: 2.0 } },
     { size: 0.8, opacity: 0.8, color: 0x4CAF50, animation: { duration: 1.8, intensity: 1.4 } },
     { size: 1.2, opacity: 0.4, color: 0x2196F3, animation: { duration: 2.0, intensity: 0.8 } },
-    { size: 1.4, opacity: 0.2, color: 0x9C27B0, animation: { duration: 2.4, intensity: 0.4 } },
   ];
 
   glowLayers.forEach((layer, index) => {
@@ -1104,75 +1102,6 @@ addCentralGlowEffect(mesh, customObj) {
     }
   });
 
-  // Add energy rings around the central object
-  this.addEnergyRings(mesh);
-}
-
-/**
- * Add rotating energy rings around the central object
- */
-addEnergyRings(mesh) {
-  const ringCount = 1;
-  const rings = [];
-
-  for (let i = 0; i < ringCount; i++) {
-    const ringGeometry = new THREE.RingGeometry(
-      (this.config.logoSize * 1.2) + (i * 0.8),
-      (this.config.logoSize * 1.2) + (i * 0.8),
-      32
-    );
-
-    const ringMaterial = new THREE.MeshBasicMaterial({
-      color: new THREE.Color().setHSL(0.4 + i * 0.2, 0.8, 0.4),
-      transparent: true,
-      opacity: 0.3 - (i * 0.08),
-      side: THREE.DoubleSide,
-      blending: THREE.AdditiveBlending,
-    });
-
-    const ringMesh = new THREE.Mesh(ringGeometry, ringMaterial);
-    ringMesh.position.z = -0.1 - (i * 0.05);
-    
-    // Tilt rings at different angles
-    ringMesh.rotation.x = (i * Math.PI / 6);
-    ringMesh.rotation.y = (i * Math.PI / 4);
-    
-    mesh.add(ringMesh);
-    rings.push(ringMesh);
-
-    if (window.gsap) {
-      // Rotate each ring at different speeds
-      gsap.to(ringMesh.rotation, {
-        z: Math.PI * 2 * (i % 2 === 0 ? 1 : -1),
-        duration: 6 + (i * 2),
-        repeat: -1,
-        ease: "none",
-      });
-
-      // Pulsing opacity
-      gsap.to(ringMaterial, {
-        opacity: (0.3 - (i * 0.08)) * 2,
-        duration: 2 + (i * 0.5),
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      // Scale pulsing
-      gsap.to(ringMesh.scale, {
-        x: 1.1,
-        y: 1.1,
-        z: 1.1,
-        duration: 3 + i,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-    }
-  }
-
-  // Store rings reference
-  mesh.userData.energyRings = rings;
 }
   /**
    * Create a fallback texture when image loading fails
@@ -2481,8 +2410,8 @@ document.addEventListener("DOMContentLoaded", () => {
           height: isMobile ? window.innerHeight * 0.8 : window.innerHeight,
           backgroundColor: 0x0a0a14,
           apiInstance: window.objectApi,
-          objectCount: isMobile ? 15 : 20,
-          logoSize: isMobile ? 2.5 : 3.5,
+          objectCount: isMobile ? 8 : 8,
+          logoSize: isMobile ? 2.0 : 2.8,
           hoverDuration: isMobile ? 6000 : 8000,
         };
 
