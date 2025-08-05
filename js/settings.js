@@ -6,7 +6,7 @@
       slidesPerView: "auto",
       initialSlide: 4,
       coverflowEffect: {
-        rotate: 40,
+        rotate: 8,
         stretch: 0,
         depth: 80,
         modifier: 1,

@@ -4,16 +4,19 @@
   width: 100%;
   padding-top: 8%;
   padding-bottom: 4%;
+  cursor: none; /* Hide the default cursor */
 }
 
 .swiper-slide {
   background-position: center;
   background-size: cover;
+  cursor: none; /* Hide the default cursor */
 }
 
 .swiper-slide img {
   display: block;
   width: 100%;
+  cursor: none; /* Hide the default cursor */
 }
 
 .lion {
@@ -42,6 +45,25 @@
   background-color: transparent;
 }
 
+.hero {
+  cursor: none; /* Hide the default cursor */
+}
+
+#hero-cursor {
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  background-image: url('../../media/img/Group.webp'); /* Update this path if needed */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
 .bottom-left,
 .hero-title {
   position: absolute;
@@ -57,7 +79,7 @@
   justify-content: center;
   align-items: baseline;
   pointer-events: none;
-  color: #000;
+  color: #fff;
 }
 
 .hero-title > span {
@@ -690,6 +712,7 @@
   top: 100%;
   z-index: -1;
   -webkit-transition: top 0.09s ease-in;
+  transition: top 0.09s ease-in;
 }
 
 .golden:hover:before {
@@ -712,6 +735,7 @@
   top: 100%;
   z-index: -1;
   -webkit-transition: top 0.09s ease-in;
+  transition: top 0.09s ease-in;
 }
 
 .white:hover:before {

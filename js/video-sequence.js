@@ -102,3 +102,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.querySelector('.type');
+  
+  if (!video) return;
+
+  // Create intersection observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Play video when it enters the viewport
+        video.play().catch(e => {
+          console.log('Video play failed:', e);
+        });
+        
+        // Disconnect observer after first play to ensure it only plays once
+        observer.unobserve(video);
+      }
+    });
+  }, {
+    threshold: 0.8 // Video will play when 50% of it is visible
+  });
+
+  // Start observing the video
+  observer.observe(video);
+});

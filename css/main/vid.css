@@ -44,6 +44,22 @@
   overflow: hidden;
   text-align: center;
   z-index: 2;
+  cursor: none; /* Hide the default cursor */
+}
+
+#custom-cursor {
+  position: fixed;
+  width: 64px;
+  height: 64px;
+  background-image: url('../../media/img/Group\ \(1\).webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translate(-50%,-50%);
 }
 
 .vidimg > video {
@@ -52,7 +68,7 @@
   margin-bottom: 4%;
   z-index: 2;
   pointer-events: visible;
-  cursor: none;
+  cursor: none; /* Hide the default cursor */
 }
 
 /* Cursor follower image */

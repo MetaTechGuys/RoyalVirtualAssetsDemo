@@ -88,7 +88,7 @@
   transform: translateX(0) !important;
   opacity: 1 !important;
   visibility: visible !important;
-  transition: transform 0.8s ease, opacity 0.4s ease, visibility 0.4s !important;
+  transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s !important;
 }
 .dropstart .dropdown-menu {
   top: -1vh !important;
@@ -122,6 +122,15 @@
 .dropdown-item:hover a {
   color: #2a2b41 !important;
   >img{filter: invert(1);}
+}
+.hlphome{
+  text-align: center;
+  >a{
+    margin: 0 !important;
+  }
+}
+.hlphome:hover .logo1 {
+  filter: invert(0) !important; /* Remove invert on hover */
 }
 /* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
@@ -384,13 +393,14 @@
   }
 
   .hambur {
-    margin-left: 114%;
+    margin-left: 108%;
   }
 
   .justright {
-    width: 24px;
-    height: 24px;
-    margin-left: 9vw;
+    width: 28px;
+    height: 28px;
+    margin-left: 8vw;
+    margin-top: 2vw;
     float: right !important;
   }
 

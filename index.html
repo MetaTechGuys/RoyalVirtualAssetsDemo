@@ -2,37 +2,130 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Royal Virtual Assets a new global atmosphere for investment and trading." />
-    <link defer
-    rel="stylesheet"
-    href="./bootstrap/bootstrap-5.3.5-dist/css/bootstrap.min.css"
-    />
-    <link defer rel="stylesheet" href="./swiper/swiper@11/css/swiper-bundle.min.css"/>
-    <link rel="stylesheet"  href="./css/main/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="RVA Virtual Assets">
+    
+  <!-- Mobile-specific meta tags -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="Royal Virtual Assets - Virtual Asset Platform" />
+    <meta name="description" content="Royal Virtual Assets (RVA) - The world's leading virtual assets platform. Trade, invest, and manage virtual assets with advanced blockchain technology. Secure virtual assets trading with 24/7 support. Start your virtual assets journey today." />
+    <meta name="keywords" content="virtual assets, virtual assets platform, virtual assets trading, virtual assets investment, blockchain virtual assets, digital virtual assets, virtual assets exchange, virtual assets wallet, RVA, Royal Virtual Assets, cryptocurrency virtual assets, defi virtual assets" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Royal Virtual Assets" />
+    
+    <!-- Enhanced Open Graph for virtual assets -->
+<meta property="og:title" content="Virtual Assets Platform | Royal Virtual Assets - #1 Trading Platform">
+    <meta property="og:description" content="Leading virtual assets platform with advanced trading tools, secure wallet, and blockchain technology. Join millions trading virtual assets with RVA.">
+    <meta property="og:url" content="https://royalvirtualassets.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Royal Virtual Assets">
+    <meta property="og:image" content="https://royalvirtualassets.com/media/img/logo2-01-03.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Virtual Assets Platform - Royal Virtual Assets">
+    
+    <!-- Twitter Cards for Virtual Assets -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Virtual Assets Platform | Royal Virtual Assets">
+    <meta name="twitter:description" content="Leading virtual assets platform with advanced trading tools and blockchain technology">
+    <meta name="twitter:image" content="https://royalvirtualassets.com/media/img/logo2-01-03.webp">
+    
+    <!-- Enhanced Structured Data for Virtual Assets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "Royal Virtual Assets",
+      "alternateName": "RVA Virtual Assets Platform",
+      "description": "Leading virtual assets platform for trading, investment, and blockchain technology",
+      "url": "https://royalvirtualassets.com",
+      "logo": "https://royalvirtualassets.com/media/img/logo2-01-03.webp",
+      "image": "https://royalvirtualassets.com/media/img/logo2-01-03.webp",
+      "serviceType": "Virtual Assets Platform",
+      "areaServed": "Worldwide",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Virtual Assets Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Virtual Assets Trading",
+              "description": "Professional virtual assets trading platform"
+            }
+          },
+          {
+            "@type": "Offer", 
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Virtual Assets Wallet",
+              "description": "Secure virtual assets storage and management"
+            }
+          }
+        ]
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "url": "https://royalvirtualassets.com/contactus.html"
+      },
+      "sameAs": [
+        "https://twitter.com/royalvirtualassets",
+        "https://t.me/royalvirtualassets"
+      ]
+    }
+    </script>
+    
+    <!-- Additional Schema for Virtual Assets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Royal Virtual Assets",
+      "url": "https://royalvirtualassets.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://royalvirtualassets.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://royalvirtualassets.com/" />
+    
+    <!-- Sitemap references -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    
+    <!-- Structured Data for Rich Snippets -->
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Virtual Assets","name":"Royal Virtual Assets","alternateName":"RVA","url":"https://royalvirtualassets.com","logo":"https://royalvirtualassets.com/media/img/logo2-01-03.webp","description":"Leading virtual assets platform for cryptocurrency trading and blockchain investment","serviceType":"Virtual Assets Trading Platform","areaServed":"Worldwide","contactPoint":{"@type":"ContactPoint","contactType":"Customer Service","url":"https://royalvirtualassets.com/contactus.html"}}</script>
+
+    <link defer rel="stylesheet" href="./bootstrap/bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <link defer rel="stylesheet" href="./swiper/swiper@11/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./css/main/main.css">
 
     <link rel="icon" type="image/webp" href="./media/icon/Artboard 19.webp">
     <link rel="preload" href="./Fonts/sora/Sora-Bold.woff" as="font" type="font/woff" crossorigin>
 
-    <title>Royal Virtual Assets</title>
+<link rel="preconnect" href="//api.coingecko.com">
+
+    <title>Royal Virtual Assets | Virtual Assets Platform</title>
   
-  <style>
-  @font-face {
-    font-family: 'sora-b';
-    src: url('./Fonts/sora/Sora-Bold.woff') format('woff');
-    font-display: swap;
-    font-weight: bold;
-  }
-  .bottom-left {
-    font-family: 'sora-b', Arial, sans-serif; /* Add fallback fonts */
-  }
-  
+<style>
+ .page-loader{position:fixed;top:0;left:0;width:100%;height:100vh;background:radial-gradient(circle at 20% 80%,rgba(120,119,198,.3) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(255,119,198,.3) 0%,transparent 50%),radial-gradient(circle at 40% 40%,#78dbff33 0%,transparent 50%),linear-gradient(135deg,#0f0f23 0%,#1a1a2e 50%,#16213e 100%);display:flex;justify-content:center;align-items:center;z-index:9999;visibility:visible;overflow:hidden}.loader-content{text-align:center;color:#fff;position:relative;z-index:2}.loader-logo{width:120px;height:120px;margin:0 auto 30px;position:relative;display:flex;align-items:center;justify-content:center}.loader-ring{position:absolute;width:100%;height:100%;border:2px solid transparent;border-top:2px solid #00d4ff;border-right:2px solid #1e88e5;border-radius:50%;animation:rotate 2s linear infinite}.loader-ring-inner{position:absolute;width:80%;height:80%;top:10%;left:10%;border:2px solid transparent;border-bottom:2px solid #4ecdc4;border-left:2px solid #1e88e5;border-radius:50%;animation:rotate-reverse 1.5s linear infinite}.loader-icon{width:50px;height:50px;background:linear-gradient(45deg,#00d4ff,#1e88e5);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold;color:#0f0f23;animation:pulse-glow 2s ease-in-out infinite;position:relative;z-index:3}@keyframes rotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes rotate-reverse{0%{transform:rotate(360deg)}100%{transform:rotate(0deg)}}@keyframes pulse-glow{0%,100%{transform:scale(1);box-shadow:0 0 20px rgba(0,212,255,.5)}50%{transform:scale(1.1);box-shadow:0 0 30px rgba(0,212,255,.8)}}.loader-text{font-size:28px;font-weight:bold;margin-bottom:15px;letter-spacing:3px;background:linear-gradient(45deg,#00d4ff,#1e88e5);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradient-shift 3s ease infinite}.loader-subtitle{font-size:16px;opacity:.8;margin-bottom:30px;animation:fadeInOut 2s infinite}@keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}.loader-progress{width:300px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;margin:0 auto;overflow:hidden;position:relative}.loader-progress-bar{height:100%;background:linear-gradient(90deg,#00d4ff,#1e88e5);border-radius:2px;width:0%;animation:loading-progress 3s ease-in-out infinite}@keyframes loading-progress{0%{width:0%}50%{width:70%}100%{width:100%}}
 </style>
+
 
   </head>
   <body>
-    <div id="cursor"></div>
-    <div id="cursor-border"></div>
+
     <header id="nb" class="head">
       <nav
       class="navbar navbar-expand-lg bg-body-tertiary p-0"
@@ -57,7 +150,7 @@
 
                     </button>
                     <ul class="dropdown-menu">
-                      <li class="dropdown-item">
+                      <li class="dropdown-item hlphome">
                 <a aria-label="home" href="index.html">
   <img
   class="logo1"
@@ -140,7 +233,7 @@
                   aria-current="page"
                   href="#"
                   >
-                  <img style="filter: invert(1);" src="./media/svg/search.svg" alt="search">
+                  <img src="./media/svg/search.svg" alt="search">
                   <form class="form" action="action_page.php">
                    <label for="search" style="display: none;">search</label>
                     <input type="text" id="search" name="search" />
@@ -153,6 +246,25 @@
       </nav>
     </header>
     <div class="wrapper">
+
+      <!-- Loading Screen - Holographic Theme -->
+<div class="page-loader" id="pageLoader">
+  <div class="loader-particles">
+  </div>
+  
+  <div class="loader-content">
+    <div class="loader-logo">
+      <div class="loader-ring"></div>
+      <div class="loader-ring-inner"></div>
+      <div class="loader-icon">RVA</div>
+    </div>
+    <div class="loader-text">ROYAL VIRTUAL ASSETS</div>
+    <div class="loader-subtitle">Initializing blockchain ecosystem...</div>
+    <div class="loader-progress">
+      <div class="loader-progress-bar"></div>
+    </div>
+  </div>
+</div>
 
       <!-- AI Chat Component -->
 <div id="ai-chat-container" class="ai-chat-hidden">
@@ -330,7 +442,7 @@
 
               </div>
               <div class="roboimg">
-               <video class="type" src="./media/videos/she is typing.webm" autoplay muted></video>
+               <video class="type" src="./media/videos/she is typing.webm" muted></video>
             </div>
             </section>
         
@@ -562,12 +674,14 @@
                               <img src="./media/svg/twitter.svg" alt="X" />
                             </button>
                           </div>
+                          
                         </div>
                 
                     
                     <div class="end">
 
                       <h4>©2025 Royal Virtual Assets All rights reserved.</h4>
+                      
                     </div>
                   </div>
                 </footer>
@@ -588,5 +702,110 @@
 <script defer src="./js/video-sequence.js"></script>
 <script defer src="./js/slider.js"></script>
 <script defer src="./js/cursor.js"></script>
+<!-- Simpler CSS Loading Detection Script -->
+<script>
+  (function() {
+    'use strict';
+    
+    let loadAttempts = 0;
+    const maxAttempts = 40; // 2 seconds max wait
+    
+    // Simple CSS detection
+    function isCSSLoaded() {
+      // Just check if DOM is ready and give it a moment for CSS
+      return document.readyState === 'complete' || loadAttempts > 10;
+    }
+    
+    // Initialize page
+    function initializePage() {
+      console.log('🚀 Initializing RVA page...');
+      
+      // Update loader text
+      const subtitle = document.querySelector('.loader-subtitle');
+      if (subtitle) {
+        subtitle.textContent = 'Welcome to RVA!';
+      }
+      
+      // Add loaded class to body
+      document.body.classList.add('loaded');
+      
+      // Remove loader
+      setTimeout(() => {
+        const loader = document.getElementById('pageLoader');
+        if (loader) {
+          loader.remove();
+        }
+      }, 1200);
+    }
+    
+    // Wait for page to be ready
+    function waitForPage() {
+      loadAttempts++;
+      
+      if (document.readyState === 'complete' || loadAttempts >= maxAttempts) {
+        initializePage();
+      } else {
+        setTimeout(waitForPage, 50);
+      }
+    }
+    
+    // Start when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', waitForPage);
+    } else {
+      waitForPage();
+    }
+  })();
+</script>
+
+<!-- Voice search optimization for virtual assets -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best virtual assets platform?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Royal Virtual Assets (RVA) is the leading virtual assets platform, offering secure trading, advanced blockchain technology, and comprehensive digital asset management solutions for over 2 million users worldwide."
+      }
+    },
+    {
+      "@type": "Question", 
+      "name": "How do I start trading virtual assets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To start trading virtual assets: 1) Create a free account on RVA platform, 2) Complete identity verification, 3) Deposit funds, 4) Choose your virtual assets, 5) Place your first trade using our advanced trading tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are virtual assets safe to invest in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Virtual assets can be safe when using regulated platforms like RVA. We provide bank-grade security, insurance protection, cold storage, and regulatory compliance to protect your virtual assets investments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What virtual assets can I trade on RVA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RVA supports over 500 virtual assets including Bitcoin, Ethereum, major altcoins, DeFi tokens, NFTs, and emerging digital assets. All virtual assets are carefully vetted for security and compliance."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Replace JavaScript with static meta tags -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
   </body>
 </html>

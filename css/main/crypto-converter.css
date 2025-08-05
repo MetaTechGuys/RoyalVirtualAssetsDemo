@@ -6,7 +6,7 @@
 }
 
 .convert > img {
-  width: 102%;
+  width: 100%;
   height: auto;
   z-index: -1;
   position: absolute;
@@ -298,9 +298,9 @@ input[type="number"] {
 
   .crypto-converter {
     max-width: 1000px;
-    margin-bottom: 12%;
+    margin-bottom: 14%;
     margin-right: 4%;
-    margin-top: 12%;
+    margin-top: 14%;
     padding: 48px;
   }
 
@@ -351,9 +351,9 @@ input[type="number"] {
 
   .crypto-converter {
     max-width: 680px;
-    margin-bottom: 48px;
+    margin-bottom: 12%;
     margin-right: 8%;
-    margin-top: 8%;
+    margin-top: 12%;
     padding: 40px;
   }
 
@@ -405,9 +405,9 @@ input[type="number"] {
   .crypto-converter {
     max-width: 480px;
     max-height: 680px;
-    margin-bottom: 48px;
+    margin-bottom: 8%;
     margin-right: 8%;
-    margin-top: 4%;
+    margin-top: 8%;
     padding: 40px;
   }
 
@@ -457,9 +457,9 @@ input[type="number"] {
   }
 
   .crypto-converter {
-    max-width: 480px;
+    max-width: 600px;
     margin-right: 4%;
-    margin-top: 4%;
+    /* margin-top: 4%; */
     padding: 14px;
   }
 
@@ -509,15 +509,14 @@ input[type="number"] {
   }
 
   .crypto-converter {
-    max-width: 440px;
+    max-width: 480px;
     margin-right: 4%;
-    margin-top: 4%;
     padding: 8px;
   }
 
   .crypto-converter h3 {
     margin-bottom: 14px;
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .crypto-converter h3:after {
@@ -536,12 +535,12 @@ input[type="number"] {
   }
 
   .crypto-result {
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
 
   .crypto-equals {
     font-size: 8px;
-    margin-top: 2%;
+    margin-top: 0%;
   }
 
   .crypto-input-group.clogos {
@@ -549,8 +548,8 @@ input[type="number"] {
   }
 
   #crypto-amount {
-    font-size: 12px;
-    padding: 12px;
+    font-size: 10px;
+    padding: 10px;
   }
 
   .currency-logo {

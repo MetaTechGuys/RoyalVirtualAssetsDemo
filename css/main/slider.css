@@ -3,35 +3,56 @@
   width: 100%;
   position: relative;
   background-color: #2a2b41;
+  cursor: none; /* Hide the default cursor */
 }
-
+#slider-cursor {
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  background-image: url('../../media/img/Group.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
 .slidehelp {
   width: 100% !important;
   background-color: transparent !important;
+  cursor: none; /* Hide the default cursor */
 }
 
 
 .stext {
   position: absolute;
   top: 14%;
+  cursor: none; /* Hide the default cursor */
 }
 
 .stext > h3 {
   font-family: "sora-b" !important;
   color: whitesmoke !important;
   margin-bottom: 2%;
+  cursor: none; /* Hide the default cursor */
+
 }
 
 .stext > h4 {
   color: whitesmoke !important;
   font-family: "jb-mono" !important;
   margin-bottom: 2%;
+  cursor: none; /* Hide the default cursor */
+
 }
 
 .carousel-item > img {
   height: auto !important;
   margin: 0 0 !important;
   border-radius: 28px !important;
+  
 }
 
 .slimge {
@@ -63,12 +84,13 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
-  cursor: pointer;
   transition: 0.08s ease-in;
   -o-transition: 0.08s ease-in;
   -ms-transition: 0.08s ease-in;
   -moz-transition: 0.08s ease-in;
   -webkit-transition: 0.08s ease-in;
+  cursor: none !important; /* Hide the default cursor */
+
 }
 
 .white1:hover {
@@ -87,6 +109,7 @@
   top: 100%;
   z-index: -1;
   -webkit-transition: top 0.09s ease-in;
+  transition: top 0.09s ease-in;
 }
 
 .white1:hover:before {
@@ -107,13 +130,16 @@
 }
 /* Add these styles to your existing slider.css */
 
-.carousel {
-    cursor: grab;
-    user-select: none;
+.carousel-item {
+  cursor: none; /* Change from 'grab' to 'none' */
+  user-select: none;
 }
 
 .carousel.active {
-    cursor: grabbing;
+  cursor: none; /* Change from 'grabbing' to 'none' */
+}
+.carousel-item.active {
+  cursor: none; /* Change from 'grabbing' to 'none' */
 }
 
 .carousel-inner {
@@ -124,6 +150,8 @@
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
+  cursor: none; /* Hide the default cursor */
+
 }
 
 .carousel-item .stext * {
@@ -238,18 +266,18 @@
   }
 
   .stext {
-    left: 48%;
+    left: 40%;
   }
 
   .stext > h3 {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .carousel-item > img {
   width: 28% !important;
   }
   .stext > h4 {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .slimge {

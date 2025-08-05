@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         carouselInner.style.transform = `translateX(${clampedX}px)`;
         
         // Add subtle scale effect based on drag distance
-        const scale = 1 - Math.abs(clampedX) / (maxDrag * 10);
+        const scale = 1 - Math.abs(clampedX) / (maxDrag * 4);
         carouselInner.style.transform += ` scale(${Math.max(0.98, scale)})`;
     }
     

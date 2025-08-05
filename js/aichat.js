@@ -4197,14 +4197,14 @@ class RVAAIChatQuickActions {
     quickActionsContainer.className = "ai-chat-quick-actions";
     quickActionsContainer.innerHTML = `
       <div class="quick-actions-tabs">
-        <button class="quick-tab active" data-tab="crypto">💰 Crypto</button>
+        <button class="quick-tab" data-tab="crypto">💰 Crypto</button>
         <button class="quick-tab" data-tab="rva">🏢 RVA</button>
         <button class="quick-tab" data-tab="edu">📚 Education</button>
         <button class="quick-tab" data-tab="help">❓ Help</button>
       </div>
       
       <!-- Crypto Tab -->
-      <div class="quick-tab-content active" data-content="crypto">
+      <div class="quick-tab-content" data-content="crypto">
         <div class="quick-actions-section">
           <div class="section-title">Popular Cryptocurrencies</div>
           <div class="quick-actions-buttons">
@@ -4304,7 +4304,7 @@ class RVAAIChatQuickActions {
     this.setupQuickActionListeners();
   }
 
-  setupQuickActionListeners() {
+    setupQuickActionListeners() {
     const chatContainer = document.getElementById("ai-chat-container");
     if (!chatContainer) return;
 
@@ -4314,19 +4314,28 @@ class RVAAIChatQuickActions {
       if (e.target.classList.contains("quick-tab")) {
         const tabName = e.target.dataset.tab;
 
-        // Remove active class from all tabs and content
-        chatContainer
-          .querySelectorAll(".quick-tab")
-          .forEach((tab) => tab.classList.remove("active"));
-        chatContainer
-          .querySelectorAll(".quick-tab-content")
-          .forEach((content) => content.classList.remove("active"));
+        // Check if the clicked tab is already active
+        if (e.target.classList.contains("active")) {
+          // If already active, deactivate it
+          e.target.classList.remove("active");
+          chatContainer
+            .querySelector(`[data-content="${tabName}"]`)
+            .classList.remove("active");
+        } else {
+          // Remove active class from all tabs and content
+          chatContainer
+            .querySelectorAll(".quick-tab")
+            .forEach((tab) => tab.classList.remove("active"));
+          chatContainer
+            .querySelectorAll(".quick-tab-content")
+            .forEach((content) => content.classList.remove("active"));
 
-        // Add active class to clicked tab and corresponding content
-        e.target.classList.add("active");
-        chatContainer
-          .querySelector(`[data-content="${tabName}"]`)
-          .classList.add("active");
+          // Add active class to clicked tab and corresponding content
+          e.target.classList.add("active");
+          chatContainer
+            .querySelector(`[data-content="${tabName}"]`)
+            .classList.add("active");
+        }
       }
 
       // Handle quick action buttons
@@ -4336,6 +4345,7 @@ class RVAAIChatQuickActions {
       }
     });
   }
+
 
   switchTab(tabName) {
     // Remove active class from all tabs and contents

@@ -42,7 +42,7 @@
   border: none !important;
   visibility: visible !important;
   padding: 0 !important;
-  filter: invert(1);
+  filter: invert(0);
 }
 
 .justright {
@@ -120,7 +120,7 @@
   transform: translateX(0) !important;
   opacity: 1 !important;
   visibility: visible !important;
-  transition: transform 0.8s ease, opacity 0.4s ease, visibility 0.4s !important;
+  transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s !important;
   z-index: 1000 !important;
 }
 
@@ -158,6 +158,15 @@
   >img{filter: invert(1);}
 }
 
+.hlphome{
+  text-align: center;
+  >a{
+    margin: 0 !important;
+  }
+}
+.hlphome:hover .logo1 {
+  filter: invert(0) !important; /* Remove invert on hover */
+}
 /* Media Query Specific Styles */
 @media (min-width: 1921px) and (max-width: 2560px) {
   #nb {

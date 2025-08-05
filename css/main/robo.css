@@ -124,7 +124,7 @@
 @media (min-width: 993px) and (max-width: 1200px) {
 
   .robo {
-    border: 8px solid transparent;
+    border: 0px solid transparent;
     border-bottom: 0px solid transparent;
     border-top: 4px solid transparent;
   }
@@ -155,13 +155,13 @@
   }
 
   .roboimg {
-    width: 100%;
+    width: 60%;
     text-align: center;
   }
 
   .roboimg > video {
-    width: 40%;
-    margin-top: 4%;
+    width: 100%;
+    /* margin-top: 4%; */
   }
 }
 

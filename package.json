@@ -1,8 +1,13 @@
 {
   "name": "roial-virtual-assets",
-  "version": "1.0.0",
+  "version": "1.14.8",
   "description": "Royal Virtual Assets CSS optimization",
-  "scripts": {},
+  "scripts": {
+    "patch": "npm version patch --no-git-tag-version && npm run postinstall && git add . && npx cross-var git commit -m \" v$npm_package_version\" && git push",
+    "minor": "npm version minor --no-git-tag-version && npm run postinstall && git add . && npx cross-var git commit -m \" v$npm_package_version\" && git push",
+    "major": "npm version major --no-git-tag-version && npm run postinstall && git add . && npx cross-var git commit -m \" v$npm_package_version\" && git push",
+    "postinstall": "node scripts/write-version.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

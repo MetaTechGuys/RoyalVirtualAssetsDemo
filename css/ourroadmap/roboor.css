@@ -422,18 +422,18 @@ margin-bottom: -4%;
     justify-content: center;
   }
   .golden {
-    width: 140px;
+    width: 114px;
     height: 32px;
     border-radius: 20px !important;
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
 
   .white {
-    width: 140px;
+    width: 114px;
     height: 32px;
     border-radius: 20px !important;
-    font-size: 12px !important;
-    margin-left: 14px;
+    font-size: 11px !important;
+    margin-left: 10px;
     border-width: 2px !important;
   }
 }

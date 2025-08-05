@@ -480,14 +480,14 @@
 
   .golden,
   .white {
-    width: 140px;
+    width: 120px;
     height: 36px;
     border-radius: 20px !important;
     font-size: 10px !important;
   }
 
   .white {
-    margin-left: 18px;
+    margin-left: 16px;
     border-width: 2px !important;
   }
 }
